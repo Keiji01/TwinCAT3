@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Name>Drive Manager 2</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{73897d83-52a8-4963-8912-54cd465e1d87}</ProjectGuid>
+    <TcPath>
+    </TcPath>
+    <AssemblyName>ServoKit_DM2</AssemblyName>
+    <RootNamespace>ServoKit_DM2</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Drive 8 %28AX5203-0000-0214%29.tcdmdrv">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+</Project>
