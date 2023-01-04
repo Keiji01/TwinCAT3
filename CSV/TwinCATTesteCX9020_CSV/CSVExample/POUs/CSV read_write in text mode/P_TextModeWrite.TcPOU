@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.24">
+  <POU Name="P_TextModeWrite" Id="{fb25ce16-634e-49ae-8973-412dcfc474bb}">
+    <Declaration><![CDATA[(* Writing of CSV file in text mode. None of the field value is containing any non-printing control characters like line feed, carriage return, quotation marks, semicolon... *)
+PROGRAM P_TextModeWrite
+VAR
+	bWrite			: BOOL := FALSE;(* Rising edge starts program execution *)
+	sNetId			: T_AmsNetId := '';	(* TwinCAT system network address *)
+	sFileName		: T_MaxString := 'C:\Temp\TextModeGen.csv';(* CSV destination file path and name *)
+	sCSVLine		: T_MaxString := '';(* Single CSV text line (row, record), we are using string as record buffer (your are able to see created fields) *)
+	sCSVField		: T_MaxString := '';(* Single CSV field value (column, record field) *)
+	bBusy			: BOOL;
+	bError			: BOOL;
+	nErrId			: UDINT;
+	nRow	 		: UDINT 	:= 0;(* Row number (record) *)
+	nColumn			: UDINT 	:= 0;(* Column number (record field) *)
+	hFile			: UINT		:= 0;(* File handle of the source file *)
+	step			: DWORD 	:= 0;
+	fbFileOpen		: FB_FileOpen;(* Opens file *)
+	fbFileClose		: FB_FileClose;(* Closes file *)
+	fbFilePuts		: FB_FilePuts;(* Writes one record (line) *)
+	fbWriter		: FB_CSVMemBufferWriter;(* Helper function block used to create CSV data bytes (single record line) *)
+
+	database		: ARRAY[0..MAX_CSV_ROWS, 0..MAX_CSV_COLUMNS ] OF STRING(MAX_CSV_FIELD_LENGTH) :=[ (* Source PLC database *)
+	'0_0', '0_1', '0_2', '0_3', '0_4', '0_5',
+	'1_0', '1_1', '1_2', '1_3', '1_4', '1_5',
+	'2_0', '2_1', '2_2', '2_3', '2_4', '2_5',
+	'3_0', '3_1', '3_2', '3_3', '3_4', '3_5',
+	'4_0', '4_1', '4_2', '4_3', '4_4', '4_5',
+	'5_0', '5_1', '5_2', '5_3', '5_4', '5_5'];
+
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE step OF
+	0:	(* Wait for rising edge at bWrite variable *)
+		IF bWrite THEN
+			bWrite 	:= FALSE;
+			bBusy 	:= TRUE;
+			bError	:= FALSE;
+			nErrId	:= 0;
+			hFile	:= 0;
+			nRow	:= 0;
+			nColumn	:= 0;
+			step 	:= 1;
+		END_IF
+
+	1:	(* Open source file *)
+		fbFileOpen(  bExecute := FALSE  );
+		fbFileOpen( sNetId := sNetId, sPathName := sFileName, nMode := FOPEN_MODEWRITE OR FOPEN_MODETEXT,(* Open file in TEXT mode! *)
+					ePath := PATH_GENERIC, bExecute := TRUE );
+		step := 2;
+
+	2:(* Wait until open not busy *)
+		fbFileOpen( bExecute := FALSE, bError => bError, nErrID => nErrID, hFile => hFile );
+		IF NOT fbFileOpen.bBusy THEN
+			IF NOT fbFileOpen.bError THEN
+				step := 3;
+			ELSE(* Error: file not found? *)
+				step := 100;
+			END_IF
+		END_IF
+
+	3:(* Convert one PLC record to CSV format *)
+		sCSVLine := '';
+		fbWriter.eCmd := eEnumCmd_First;(* Write first field value *)
+		IF nRow <= MAX_CSV_ROWS THEN
+
+			FOR nColumn := 0 TO MAX_CSV_COLUMNS BY 1 DO
+
+				sCSVField := STRING_TO_CSVFIELD( database[ nRow, nColumn ], FALSE );(* TODO: Get field value from your application *)
+
+				(* Add new field to the record buffer *)
+				fbWriter( 	pBuffer := ADR( sCSVLine ), cbBuffer := SIZEOF( sCSVLine ) - 1, putValue := sCSVField, pValue := 0, cbValue := 0,
+							bCRLF := ( nColumn = MAX_CSV_COLUMNS ) );(* bCRLF == TRUE => Write CRLF after the last field value *)
+				IF fbWriter.bOk THEN
+					fbWriter.eCmd := eEnumCmd_Next;(* Write next field value *)
+				ELSE(* Error *)
+					step := 100;
+					RETURN;
+				END_IF
+
+			END_FOR(* FOR nColumn := 0... *)
+
+			(* FB_FilePuts adds allready CR (carriage return) to the written line.
+			We have to replace the $R$L characters with $L character to avoid double CR. *)
+			IF RIGHT( sCSVLine, 2 ) = '$R$L' THEN
+				sCSVLine := REPLACE( sCSVLine, '$L', 2, LEN( sCSVLine ) - 1 );
+			END_IF
+
+			nRow := nRow + 1;(* Increment number of created records (rows) *)
+			step := 4;(* Write record to the file *)
+
+		ELSE(* All rows written => Close file *)
+			step := 10;
+		END_IF
+
+	4:	(* Write single text line *)
+		fbFilePuts( bExecute := FALSE );
+		fbFilePuts( sNetId := sNetId, hFile := hFile, sLine := sCSVLine, bExecute := TRUE );
+		step := 5;
+
+	5:(* Wait until write not busy *)
+		fbFilePuts( bExecute := FALSE, bError => bError, nErrID => nErrID );
+		IF NOT fbFilePuts.bBusy THEN
+			IF NOT fbFilePuts.bError THEN
+				step := 3;(* Write next record *)
+			ELSE(* Error *)
+				step := 100;
+			END_IF
+		END_IF
+
+	10:	(* Close source file *)
+		fbFileClose( bExecute := FALSE );
+		fbFileClose( sNetId := sNetId, hFile := hFile, bExecute := TRUE );
+		step := 11;
+
+	11:(* Wait until close not busy *)
+		fbFileClose( bExecute := FALSE, bError => bError, nErrID => nErrID );
+		IF ( NOT fbFileClose.bBusy ) THEN
+			hFile := 0;
+			step := 100;
+		END_IF
+
+	100: (* Error or ready step => cleanup *)
+		IF ( hFile <> 0 ) THEN
+			step := 10; (* Close the source file *)
+		ELSE
+			bBusy := FALSE;
+			step := 0;	(* Ready *)
+		END_IF
+
+END_CASE
+
+
+
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

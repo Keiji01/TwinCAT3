@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.24">
+  <POU Name="P_BinaryModeRead" Id="{ef38aedc-2e6e-4599-82a4-fe42bd73f399}">
+    <Declaration><![CDATA[(* Reading of CSV file in binary mode. Field values may contain non-printing control characters (binary data or special characters like line feed, carriage return or quotation mark...). *)
+PROGRAM P_BinaryModeRead
+VAR
+	bRead		: BOOL := FALSE;(* Rising edge starts program execution *)
+	sNetId		: T_AmsNetId := '';	(* TwinCAT system network address *)
+	sFileName	: T_MaxString := 'C:\Temp\BinaryModeGen.csv';(* CSV source file path and name *)
+	bBusy		: BOOL;
+	bError		: BOOL;
+	nErrId		: UDINT;
+	nRow	 	: UDINT 	:= 0;(* Row number (record) *)
+	nColumn		: UDINT 	:= 0;(* Column number (record field) *)
+	cbDone		: UDINT 	:= 0;(* Counts allready parsed data bytes *)
+	hFile		: UINT		:= 0;(* File handle of the source file *)
+	step		: DWORD 	:= 0;
+	fbFileOpen	: FB_FileOpen;(* Opens file *)
+	fbFileClose	: FB_FileClose;(* Closes file *)
+	fbFileRead	: FB_FileRead;(* Writes binary data *)
+	fbReader	: FB_CSVMemBufferReader;(* Helper function block used to parse CSV data bytes *)
+
+	record		: ARRAY[0..1024] OF BYTE;(* Binary row data buffer. The size of this buffer have to be > length of longest record line + 2 (CRLF)  *)
+	cbRecord	: UDINT := 0;(* Number of bytes in row buffer *)
+	cbField		: UDINT;(* Number of bytes in field buffer *)
+
+	database	: ARRAY[0..MAX_CSV_ROWS ] OF ST_CSV_Record;(* Target PLC database *)
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE step OF
+	0:	(* Wait for rising edge at bRead variable *)
+		IF bRead THEN
+			bRead 	:= FALSE;
+			bBusy 	:= TRUE;
+			bError	:= FALSE;
+			nErrId	:= 0;
+			hFile	:= 0;
+			nRow	:= 0;
+			nColumn	:= 0;
+			cbRecord:= 0;
+			cbDone 	:= 0;
+			step 	:= 1;
+		END_IF
+
+	1:	(* Open source file *)
+		fbFileOpen(  bExecute := FALSE  );
+		fbFileOpen( sNetId := sNetId, sPathName := sFileName, nMode := FOPEN_MODEREAD OR FOPEN_MODEBINARY,(* Open file in BINARY mode! *)
+					ePath := PATH_GENERIC, bExecute := TRUE );
+		step := 2;
+
+	2:(* Wait until open not busy *)
+		fbFileOpen( bExecute := FALSE, bError => bError, nErrID => nErrID, hFile => hFile );
+		IF NOT fbFileOpen.bBusy THEN
+			IF NOT fbFileOpen.bError THEN
+				step := 3;
+			ELSE(* Error: file not found? *)
+				step := 100;
+			END_IF
+		END_IF
+
+	3:	(* Read data bytes from file *)
+		fbFileRead( bExecute := FALSE );
+		fbFileRead( sNetId := sNetId, hFile := hFile, pReadBuff := ADR( record[ cbRecord ] ), cbReadLen := SIZEOF( record ) - cbRecord, bExecute :=TRUE );
+		step := 4;
+
+	4:(* Wait until read not busy *)
+		fbFileRead( bExecute := FALSE, bError => bError, nErrID => nErrID );
+		IF NOT fbFileRead.bBusy THEN
+			IF NOT fbFileRead.bError THEN
+				IF fbFileRead.bEOF THEN
+					step := 10;(* End of file reached => Close source file *)
+				ELSE
+					cbRecord := cbRecord + fbFileRead.cbRead;(* Recalculate the new size of data buffer *)
+					step := 5;(* Parse binary data *)
+				END_IF
+			ELSE(* Error *)
+				step := 100;
+			END_IF
+		END_IF
+
+	5:(* Parse binary data *)
+		cbDone := 0;(* Reset number of parsed data bytes *)
+		fbReader.eCmd := eEnumCmd_First;(* Read first field value *)
+		REPEAT
+			fbReader( pBuffer := ADR( record ), cbBuffer := cbRecord );
+			IF fbReader.bOk THEN
+				fbReader.eCmd := eEnumCmd_Next;(* Read next field value *)
+				cbDone := cbDone + fbReader.cbRead;(* Count the number of successfully parsed data bytes *)
+
+				IF ( nRow <= MAX_CSV_ROWS ) THEN
+					(* Convert every CSV data field to PLC data field format *)
+					CASE nColumn OF
+						0:(* sName : T_MaxString *)
+							cbField := CSVFIELD_TO_ARG( fbReader.pValue, fbReader.cbValue,  TRUE, F_STRING( database[nRow].sName ) );
+						1:(* nNumber : UDINT *)
+							cbField := CSVFIELD_TO_ARG( fbReader.pValue, fbReader.cbValue,  TRUE, F_UDINT( database[nRow].nNumber ) );
+						2:(* fPos : LREAL *)
+							cbField := CSVFIELD_TO_ARG( fbReader.pValue, fbReader.cbValue,  TRUE, F_LREAL( database[nRow].fPos ) );
+						3:(* bOP : BOOL *)
+							cbField := CSVFIELD_TO_ARG( fbReader.pValue, fbReader.cbValue,  TRUE, F_BOOL( database[nRow].bOP ) );
+						4:(* sDesc : STRING(40) *)
+							cbField := CSVFIELD_TO_ARG( fbReader.pValue, fbReader.cbValue,  TRUE, F_BIGTYPE( ADR( database[nRow].sDesc ), SIZEOF( database[nRow].sDesc ) ) );
+						5:(* data : ARRAY[0..7] OF BYTE *)
+							cbField := CSVFIELD_TO_ARG( fbReader.pValue, fbReader.cbValue,  TRUE, F_BIGTYPE( ADR( database[nRow].data ), SIZEOF( database[nRow].data ) ) );
+					ELSE
+						;
+					END_CASE
+				END_IF
+
+				nColumn := nColumn + 1;(* Increment number of read columns *)
+				IF fbReader.bCRLF THEN(* CRLF == TRUE => End of reacord reached *)
+					nRow 		:= nRow + 1;(* Increment number of read records *)
+					nColumn 	:= 0;(* Reset number of columns *)
+				END_IF
+
+			ELSE(* Error: End of buffer reached or all fields parsed *)
+				cbRecord := MEMMOVE( ADR( record ), ADR( record[ cbDone ] ), cbRecord - cbDone );(* Shift left the remaining (not allready read) data bytes *)
+				step := 3;(* Read new data bytes *)
+			END_IF
+		UNTIL NOT fbReader.bOk
+		END_REPEAT
+
+	10:	(* Close source file *)
+		fbFileClose( bExecute := FALSE );
+		fbFileClose( sNetId := sNetId, hFile := hFile, bExecute := TRUE );
+		step := 11;
+
+	11:(* Wait until close not busy *)
+		fbFileClose( bExecute := FALSE, bError => bError, nErrID => nErrID );
+		IF ( NOT fbFileClose.bBusy ) THEN
+			hFile := 0;
+			step := 100;
+		END_IF
+
+	100: (* Error or ready step => cleanup *)
+		IF ( hFile <> 0 ) THEN
+			step := 10; (* Close the source file *)
+		ELSE
+			bBusy := FALSE;
+			step := 0;	(* Ready *)
+		END_IF
+
+END_CASE
+
+
+
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

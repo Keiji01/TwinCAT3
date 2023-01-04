@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.24">
+  <POU Name="P_ArgToConvExample" Id="{9227025e-83e6-43cc-b460-21c7de6b6e98}">
+    <Declaration><![CDATA[PROGRAM P_ArgToConvExample
+VAR
+	(* PLC data to be converted to or from CSV format *)
+	bOperating	: BOOL := TRUE;
+	fAxPos		: LREAL := 12.2;
+	nCounter 	: UDINT := 7;
+	sName		: T_MaxString := 'Module: "XAF", $04$05, 20';
+	binData		: ARRAY[0..9] OF BYTE :=[ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+	sShort		: STRING(10) := 'XAF';
+
+	(* conversion buffer *)
+	field1 : ARRAY[0..50 ] OF BYTE;
+	field2 : ARRAY[0..50 ] OF BYTE;
+	field3 : ARRAY[0..50 ] OF BYTE;
+	field4 : ARRAY[0..50 ] OF BYTE;
+	field5 : ARRAY[0..50 ] OF BYTE;
+	field6 : ARRAY[0..50 ] OF BYTE;
+
+	cbField1 : UDINT;
+	cbField2 : UDINT;
+	cbField3 : UDINT;
+	cbField4 : UDINT;
+	cbField5 : UDINT;
+	cbField6 : UDINT;
+
+	cbVar1 : UDINT;
+	cbVar2 : UDINT;
+	cbVar3 : UDINT;
+	cbVar4 : UDINT;
+	cbVar5 : UDINT;
+	cbVar6 : UDINT;
+
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[cbField1 := ARG_TO_CSVFIELD( F_BOOL( bOperating ), TRUE, ADR( field1 ), SIZEOF( field1 ) );
+cbField2 := ARG_TO_CSVFIELD( F_LREAL( fAxPos ), TRUE, ADR( field2 ), SIZEOF( field2 ) );
+cbField3 := ARG_TO_CSVFIELD( F_UDINT( nCounter ), TRUE, ADR( field3 ), SIZEOF( field3 ) );
+cbField4 := ARG_TO_CSVFIELD( F_STRING( sName ), TRUE, ADR( field4 ), SIZEOF( field4 ) );
+cbField5 := ARG_TO_CSVFIELD( F_BIGTYPE( ADR( binData ), SIZEOF( binData ) ), TRUE, ADR( field5 ), SIZEOF( field5 ) );
+cbField6 := ARG_TO_CSVFIELD( F_BIGTYPE( ADR( sShort ), INT_TO_DWORD( LEN( sShort ) ) ), TRUE, ADR( field6 ), SIZEOF( field6 ) );
+
+cbVar1 := CSVFIELD_TO_ARG( ADR( field1 ), cbField1, TRUE, F_BOOL( bOperating ) );
+cbVar2 := CSVFIELD_TO_ARG( ADR( field2 ), cbField2, TRUE, F_LREAL( fAxPos ) );
+cbVar3 := CSVFIELD_TO_ARG( ADR( field3 ), cbField3, TRUE, F_UDINT( nCounter ) );
+cbVar4 := CSVFIELD_TO_ARG( ADR( field4 ), cbField4, TRUE, F_STRING( sName ) );
+cbVar5 := CSVFIELD_TO_ARG( ADR( field5 ), cbField5, TRUE, F_BIGTYPE( ADR( binData ), SIZEOF( binData ) ) );
+cbVar6 := CSVFIELD_TO_ARG( ADR( field6 ), cbField6, TRUE, F_BIGTYPE( ADR( sShort ), INT_TO_DWORD( LEN( sShort ) ) ) );
+
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

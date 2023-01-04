@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.24">
+  <POU Name="P_BinaryModeWrite" Id="{ca967da4-0388-4655-8343-10ea96b66f6e}">
+    <Declaration><![CDATA[(* Writing of CSV file in binary mode. Field values may contain non-printing control characters (binary data or special characters like line feed, carriage return or quotation mark...). *)
+PROGRAM P_BinaryModeWrite
+VAR
+	bWrite		: BOOL := FALSE;(* Rising edge starts program execution *)
+	sNetId		: T_AmsNetId := '';	(* TwinCAT system network address *)
+	sFileName	: T_MaxString := 'C:\Temp\BinaryModeGen.csv';(* CSV destination file path and name *)
+	bBusy		: BOOL;
+	bError		: BOOL;
+	nErrId		: UDINT;
+	nRow	 	: UDINT 	:= 0;(* Row number (record) *)
+	nColumn		: UDINT 	:= 0;(* Column number (record field) *)
+	hFile		: UINT		:= 0;(* File handle of the source file *)
+	step		: DWORD 	:= 0;
+
+	fbFileOpen	: FB_FileOpen;(* Opens file *)
+	fbFileClose	: FB_FileClose;(* Closes file *)
+	fbFileWrite	: FB_FileWrite;(* Reads binary data *)
+	fbWriter	: FB_CSVMemBufferWriter;(* Helper function block used to create CSV data bytes *)
+
+	record		: ARRAY[0..1024] OF BYTE;(* Binary (row) data buffer. The size of this buffer have to be > length of longest record line + 2 (CRLF)  *)
+	cbRecord	: UDINT := 0;(* Number of bytes in row buffer *)
+	field		: ARRAY[0..MAX_CSV_FIELD_LENGTH] OF BYTE;(* Binary (field) data buffer. The size of this buffer have to be > length of the longest field *)
+	cbField		: UDINT;(* Number of bytes in field buffer *)
+
+	database 	: ARRAY[0..MAX_CSV_ROWS] OF ST_CSV_Record :=[ (* Source PLC database *)
+	( sName := '0_0', nNumber := 1,  fPos := 0.1, bOp := FALSE, sDesc := 'Module: "ADX1", ID: $01;$R$L', data 	:=[ 0,1,2,3,4,5,6,7] ),
+	( sName := '1_0', nNumber := 2,  fPos := 0.2, bOp := TRUE, 	sDesc := 'Module: "BDX2", ID: $02;$R$L', data 	:=[ 8,9,10,11,12,13,14,15] ),
+	( sName := '2_0', nNumber := 3,  fPos := 0.3, bOp := FALSE, sDesc := 'Module: "CDX3", ID: $03;$R$L', data 	:=[ 16,17,18,19,20,21,22,23] ),
+	( sName := '3_0', nNumber := 4,  fPos := 0.4, bOp := TRUE, 	sDesc := 'Module: "DDX4", ID: $04;$R$L', data 	:=[ 24,25,26,27,28,29,30,31] ),
+	( sName := '4_0', nNumber := 5,  fPos := 0.5, bOp := FALSE, sDesc := 'Module: "EDX5", ID: $05;$R$L', data 	:=[ 32,33,34,35,36,37,38,39] ),
+	( sName := '5_0', nNumber := 6,  fPos := 0.6, bOp := TRUE, 	sDesc := 'Module: "FDX6", ID: $06;$R$L', data 	:=[ 40,41,42,43,44,45,46,47] )];
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE step OF
+	0:	(* Wait for rising edge at bWrite variable *)
+		IF bWrite THEN
+			bWrite 	:= FALSE;
+			bBusy 	:= TRUE;
+			bError	:= FALSE;
+			nErrId	:= 0;
+			hFile	:= 0;
+			nRow	:= 0;
+			nColumn := 0;
+			step 	:= 1;
+		END_IF
+
+	1:	(* Open source file *)
+		fbFileOpen( bExecute := FALSE  );
+		fbFileOpen( sNetId := sNetId, sPathName := sFileName, nMode := FOPEN_MODEWRITE OR FOPEN_MODEBINARY, (* Open file in BINARY mode! *)
+					ePath := PATH_GENERIC, bExecute := TRUE );
+		step := 2;
+
+	2:(* Wait until open not busy *)
+		fbFileOpen( bExecute := FALSE, bError => bError, nErrID => nErrID, hFile => hFile );
+		IF NOT fbFileOpen.bBusy THEN
+			IF NOT fbFileOpen.bError THEN
+				step := 3;
+			ELSE(* Error: file not found? *)
+				step := 100;
+			END_IF
+		END_IF
+
+	3:(* Convert one PLC record to CSV format *)
+		cbRecord := 0;
+		fbWriter.eCmd := eEnumCmd_First;(* Write first field value *)
+		IF nRow <= MAX_CSV_ROWS THEN
+
+			(* Convert every PLC data field to the CSV data field format *)
+			FOR nColumn := 0 TO MAX_CSV_COLUMNS BY 1 DO
+
+				cbField := 0;(* Reset *)
+				CASE nColumn OF
+					0:(* sName : T_MaxString *)
+						cbField := ARG_TO_CSVFIELD( F_STRING( database[ nRow ].sName ), TRUE, ADR( field ), SIZEOF( field ) );
+					1:(* nNumber : UDINT *)
+						cbField := ARG_TO_CSVFIELD( F_UDINT( database[ nRow ].nNumber ), TRUE, ADR( field ), SIZEOF( field ) );
+					2:(* fPos : LREAL *)
+						cbField := ARG_TO_CSVFIELD( F_LREAL( database[ nRow ].fPos ), TRUE, ADR( field ), SIZEOF( field ) );
+					3:(* bOP : BOOL  *)
+						cbField := ARG_TO_CSVFIELD( F_BOOL( database[ nRow ].bOP ), TRUE, ADR( field ), SIZEOF( field ) );
+					4:(* sDesc : STRING(40) *)
+						cbField := ARG_TO_CSVFIELD( F_BIGTYPE( ADR( database[ nRow ].sDesc ), INT_TO_DWORD(LEN( database[ nRow ].sDesc ) ) ), TRUE, ADR( field ), SIZEOF( field ) );
+					5:(* data :ARRAY[0..7] OF BYTE *)
+						cbField := ARG_TO_CSVFIELD( F_BIGTYPE( ADR( database[ nRow ].data ), SIZEOF( database[ nRow ].data ) ), TRUE, ADR( field ), SIZEOF( field ) );
+				ELSE
+					;
+				END_CASE
+
+				IF cbField > 0 THEN
+					(* Add new field to the record buffer *)
+					fbWriter( 	pBuffer := ADR( record ), cbBuffer := SIZEOF( record ), putValue :='',  pValue := ADR( field ), cbValue := cbField,
+								bCRLF := ( nColumn = MAX_CSV_COLUMNS ) );(* bCRLF == TRUE => Write CRLF after the last field value *)
+					IF fbWriter.bOk THEN
+						fbWriter.eCmd 	:= eEnumCmd_Next;(* Write next field value *)
+						cbRecord 		:= cbRecord + fbWriter.cbWrite;(* Calculate the new record size *)
+					ELSE(* Error *)
+						step := 100;
+						RETURN;
+					END_IF
+				END_IF
+
+			END_FOR(* FOR nColumn := 0... *)
+
+			nRow := nRow + 1;(* Increment number of created records (rows) *)
+			step := 4;(* Write record to the file *)
+
+		ELSE(* All rows written => Close file *)
+			step := 10;
+		END_IF
+
+
+	4:	(* Write record to file *)
+		fbFileWrite( bExecute := FALSE );
+		fbFileWrite( sNetId := sNetId, hFile := hFile, pWriteBuff := ADR( record ), cbWriteLen := cbRecord, bExecute := TRUE );
+		step := 5;
+
+	5:(* Wait until write not busy *)
+		fbFileWrite( bExecute := FALSE, bError => bError, nErrID => nErrID );
+		IF NOT fbFileWrite.bBusy THEN
+			IF NOT fbFileWrite.bError THEN
+				step := 3;(* Write next record *)
+			ELSE(* Error *)
+				step := 100;
+			END_IF
+		END_IF
+
+	10:	(* Close source file *)
+		fbFileClose( bExecute := FALSE );
+		fbFileClose( sNetId := sNetId, hFile := hFile, bExecute := TRUE );
+		step := 11;
+
+	11:(* Wait until close not busy *)
+		fbFileClose( bExecute := FALSE, bError => bError, nErrID => nErrID );
+		IF ( NOT fbFileClose.bBusy ) THEN
+			hFile := 0;
+			step := 100;
+		END_IF
+
+	100: (* Error or ready step => cleanup *)
+		IF ( hFile <> 0 ) THEN
+			step := 10; (* Close the source file *)
+		ELSE
+			bBusy := FALSE;
+			step := 0;	(* Ready *)
+		END_IF
+
+END_CASE
+
+
+
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{dfb670b1-7fad-4b69-9923-8a1cfddd9bc2}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+(*	In USA/UK the CSV field separator is a comma.
+	In Germany and some other European countries the CSV field separator is a semicolon. *)
+	bChangeSeparatorToComma	: BOOL := FALSE;
+	
+	bLer:BOOL;
+	myTrig:R_TRIG;
+	myNomeArquivo : STRING := 'C:\Users\LucasK\Documents\gits\TwinCAT3\CSV\CSV_sample.csv';
+	ArrayVisuDB: ARRAY[0..10,0..10] OF STRING(MAX_CSV_FIELD_LENGTH);
+	
+	myTrig2:R_TRIG;
+	i: INT;
+	x: INT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+
+IF bChangeSeparatorToComma THEN
+	DEFAULT_CSV_FIELD_SEP := 16#2C;(* Comma ASCII code *)
+ELSE
+	DEFAULT_CSV_FIELD_SEP := 16#3B;(* Semicolon ASCII code *)
+END_IF
+
+//Visualization (botão leitura)
+myTrig(CLK:= bLer);
+IF  myTrig.Q THEN
+	P_TextModeRead.sFileName := myNomeArquivo;
+	P_TextModeRead.bRead := TRUE;
+	FOR i:=0 TO 10 DO
+		FOR x:= 0 TO 10 DO
+			ArrayVisuDB[i,x] := '';
+		END_FOR
+	END_FOR
+
+END_IF
+
+P_TextModeRead();(* This sample program opens and reads CSV file in text mode *)
+
+//P_TextModeWrite();(* This sample program opens and writes CSV file in text mode *)
+
+//P_BinaryModeRead();(* This sample program opens and reads CSV file in binary mode *)
+
+//P_BinaryModeWrite();(* This sample program opens and writes CSV file in binary mode *)
+
+//P_ArgToConvExample();(* This sample program shows the usage of the ARG_TO_CSVFIELD and CSVFILED_TO_ARG conversion functions *)
+
+//P_StringToConvExample();(* This sample program shows the usage of the STRING_TO_CSVFIELD and CSVFIELD_TO_STRING conversion functions *)
+
+
+myTrig2(CLK := P_TextModeRead.bDone);
+IF  myTrig2.Q THEN
+	FOR i:=0 TO 10 DO
+		FOR x:= 0 TO 10 DO
+			ArrayVisuDB[i,x] := P_TextModeRead.database[i,x];
+		END_FOR
+	END_FOR
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="24" Count="2" />
+      <LineId Id="3" Count="4" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="29" Count="1" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="72" Count="4" />
+      <LineId Id="71" Count="0" />
+      <LineId Id="34" Count="1" />
+      <LineId Id="9" Count="9" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="69" Count="1" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="53" Count="1" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="45" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == ''">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{b717f561-dc94-46f7-b3ea-9a96912c26da}</ProjectGuid>
+    <Name>CSVExample</Name>
+    <TypeSystem>{09773585-93e3-4e5f-ac45-f78ffcd58a63}</TypeSystem>
+    <Implicit_Task_Info>{7934ce1f-25e1-472c-98cf-6f9e96cb48d4}</Implicit_Task_Info>
+    <Implicit_Jitter_Distribution>{272d4abe-1c01-4e1c-8244-d353b1437666}</Implicit_Jitter_Distribution>
+    <Implicit_KindOfTask>{1bb89575-6309-4fe1-9b17-2264110e4d06}</Implicit_KindOfTask>
+    <Application>{100148b3-ea0c-41e9-b7f9-6119d97efdd9}</Application>
+    <ExternalTypes>
+      <Type Guid="{18071995-0000-0000-0000-000000000019}">HRESULT</Type>
+      <Type Guid="{18071995-0000-0000-0000-000000000025}">IID</Type>
+      <Type Guid="{00000030-0000-0000-e000-000000000064}">ITComObjectServer</Type>
+      <Type Guid="{02000002-0000-0000-e000-000000000064}">ITcTask</Type>
+      <Type Guid="{00000001-0000-0000-e000-000000000064}">ITcUnknown</Type>
+      <Type Guid="{d91e046a-a488-4d27-8d43-0f3c40ed5081}">PlcAppSystemInfo</Type>
+      <Type Guid="{6a76d020-03a2-465c-a678-c341951e9ef3}">PlcTaskSystemInfo</Type>
+    </ExternalTypes>
+    <FileVersion>1.0.0.0</FileVersion>
+    <LibraryReferences>{2b9aa3b1-5ecc-489c-a57b-0081049e5806}</LibraryReferences>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <ProgramVersion>3.1.0.8</ProgramVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' " />
+  <ItemGroup>
+    <Folder Include="DUTs" />
+    <Folder Include="GVLs" />
+    <Folder Include="POUs" />
+    <Folder Include="POUs\CSV read_write in binary mode" />
+    <Folder Include="POUs\CSV read_write in text mode" />
+    <Folder Include="VISUs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DUTs\ST_CSV_Record.TcDUT">
+      <ObjectGuid>{f3b045fa-0646-4df9-ac8c-36a0a87a4b15}</ObjectGuid>
+    </Compile>
+    <Compile Include="GlobalTextList.TcGTLO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\GVL.TcGVL">
+      <ObjectGuid>{44469a28-03d3-42b1-b274-3d87aae2f87d}</ObjectGuid>
+    </Compile>
+    <Compile Include="POUs\CSV read_write in binary mode\P_BinaryModeRead.TcPOU">
+      <ObjectGuid>{ef38aedc-2e6e-4599-82a4-fe42bd73f399}</ObjectGuid>
+    </Compile>
+    <Compile Include="POUs\CSV read_write in binary mode\P_BinaryModeWrite.TcPOU">
+      <ObjectGuid>{ca967da4-0388-4655-8343-10ea96b66f6e}</ObjectGuid>
+    </Compile>
+    <Compile Include="POUs\CSV read_write in text mode\P_TextModeRead.TcPOU">
+      <ObjectGuid>{f3115fd0-e05a-484a-8721-db5714ee2bf3}</ObjectGuid>
+    </Compile>
+    <Compile Include="POUs\CSV read_write in text mode\P_TextModeWrite.TcPOU">
+      <ObjectGuid>{fb25ce16-634e-49ae-8973-412dcfc474bb}</ObjectGuid>
+    </Compile>
+    <Compile Include="POUs\MAIN.TcPOU">
+      <ObjectGuid>{dfb670b1-7fad-4b69-9923-8a1cfddd9bc2}</ObjectGuid>
+    </Compile>
+    <Compile Include="POUs\P_ArgToConvExample.TcPOU">
+      <ObjectGuid>{9227025e-83e6-43cc-b460-21c7de6b6e98}</ObjectGuid>
+    </Compile>
+    <Compile Include="POUs\P_StringToConvExample.TcPOU">
+      <ObjectGuid>{37f86ff5-868e-4575-9dde-a6497a03f5b5}</ObjectGuid>
+    </Compile>
+    <Compile Include="PlcTask.TcTTO">
+      <ObjectGuid>{42e226c5-8bf1-4c73-96ad-ddfc81abc0a2}</ObjectGuid>
+    </Compile>
+    <Compile Include="Visualization Manager.TcVMO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="VISUs\Visualization.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CSVExample.tmc">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PlaceholderReference Include="System_VisuElemMeter">
+      <DefaultResolution>VisuElemMeter, 3.5.13.0 (System)</DefaultResolution>
+      <Namespace>VisuElemMeter</Namespace>
+      <SystemLibrary>true</SystemLibrary>
+      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
+    </PlaceholderReference>
+    <PlaceholderReference Include="System_VisuElems">
+      <DefaultResolution>VisuElems, 3.5.13.40 (System)</DefaultResolution>
+      <Namespace>VisuElems</Namespace>
+      <SystemLibrary>true</SystemLibrary>
+      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
+    </PlaceholderReference>
+    <PlaceholderReference Include="System_VisuElemsSpecialControls">
+      <DefaultResolution>VisuElemsSpecialControls, 3.5.13.0 (System)</DefaultResolution>
+      <Namespace>VisuElemsSpecialControls</Namespace>
+      <SystemLibrary>true</SystemLibrary>
+      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
+    </PlaceholderReference>
+    <PlaceholderReference Include="System_VisuElemsWinControls">
+      <DefaultResolution>VisuElemsWinControls, 3.5.13.20 (System)</DefaultResolution>
+      <Namespace>VisuElemsWinControls</Namespace>
+      <SystemLibrary>true</SystemLibrary>
+      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
+    </PlaceholderReference>
+    <PlaceholderReference Include="System_VisuElemTextEditor">
+      <DefaultResolution>VisuElemTextEditor, 3.5.13.0 (System)</DefaultResolution>
+      <Namespace>VisuElemTextEditor</Namespace>
+      <SystemLibrary>true</SystemLibrary>
+      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
+    </PlaceholderReference>
+    <PlaceholderReference Include="system_visuinputs">
+      <DefaultResolution>visuinputs, 3.5.13.0 (system)</DefaultResolution>
+      <Namespace>visuinputs</Namespace>
+      <SystemLibrary>true</SystemLibrary>
+      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
+    </PlaceholderReference>
+    <PlaceholderReference Include="System_VisuNativeControl">
+      <DefaultResolution>VisuNativeControl, 3.5.13.0 (System)</DefaultResolution>
+      <Namespace>VisuNativeControl</Namespace>
+      <SystemLibrary>true</SystemLibrary>
+      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_Standard">
+      <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Standard</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_System">
+      <DefaultResolution>Tc2_System, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_System</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_Utilities">
+      <DefaultResolution>Tc2_Utilities, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Utilities</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc3_Module">
+      <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc3_Module</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="VisuDialogs">
+      <DefaultResolution>VisuDialogs, * (System)</DefaultResolution>
+      <Namespace>VisuDialogs</Namespace>
+    </PlaceholderReference>
+  </ItemGroup>
+  <ProjectExtensions>
+    <PlcProjectOptions>
+      <XmlArchive>
+  <Data>
+    <o xml:space="preserve" t="OptionKey">
+      <v n="Name">"&lt;ProjectRoot&gt;"</v>
+      <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
+        <v>{246001F4-279D-43AC-B241-948EB31120E1}</v>
+        <o>
+          <v n="Name">"{246001F4-279D-43AC-B241-948EB31120E1}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" ckt="String" cvt="Boolean">
+            <v>UnicodeStrings</v>
+            <v>False</v>
+          </d>
+        </o>
+        <v>{40450F57-0AA3-4216-96F3-5444ECB29763}</v>
+        <o>
+          <v n="Name">"{40450F57-0AA3-4216-96F3-5444ECB29763}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" ckt="String" cvt="String">
+            <v>ActiveVisuProfile</v>
+            <v>IR0whWr8bwfwBwAAiD2qpQAAAABVAgAA37x72QAAAAABAAAAAAAAAAEaUwB5AHMAdABlAG0ALgBTAHQAcgBpAG4AZwACTHsAZgA5ADUAYgBiADQAMgA2AC0ANQA1ADIANAAtADQAYgA0ADUALQA5ADQAMAAwAC0AZgBiADAAZgAyAGUANwA3AGUANQAxAGIAfQADCE4AYQBtAGUABDBUAHcAaQBuAEMAQQBUACAAMwAuADEAIABCAHUAaQBsAGQAIAA0ADAAMgA0AC4ANwAFFlAAcgBvAGYAaQBsAGUARABhAHQAYQAGTHsAMQA2AGUANQA1AGIANgAwAC0ANwAwADQAMwAtADQAYQA2ADMALQBiADYANQBiAC0ANgAxADQANwAxADMAOAA3ADgAZAA0ADIAfQAHEkwAaQBiAHIAYQByAGkAZQBzAAhMewAzAGIAZgBkADUANAA1ADkALQBiADAANwBmAC0ANABkADYAZQAtAGEAZQAxAGEALQBhADgAMwAzADUANgBhADUANQAxADQAMgB9AAlMewA5AGMAOQA1ADgAOQA2ADgALQAyAGMAOAA1AC0ANAAxAGIAYgAtADgAOAA3ADEALQA4ADkANQBmAGYAMQBmAGUAZABlADEAYQB9AAoOVgBlAHIAcwBpAG8AbgALBmkAbgB0AAwKVQBzAGEAZwBlAA0KVABpAHQAbABlAA4aVgBpAHMAdQBFAGwAZQBtAE0AZQB0AGUAcgAPDkMAbwBtAHAAYQBuAHkAEAxTAHkAcwB0AGUAbQARElYAaQBzAHUARQBsAGUAbQBzABIwVgBpAHMAdQBFAGwAZQBtAHMAUwBwAGUAYwBpAGEAbABDAG8AbgB0AHIAbwBsAHMAEyhWAGkAcwB1AEUAbABlAG0AcwBXAGkAbgBDAG8AbgB0AHIAbwBsAHMAFCRWAGkAcwB1AEUAbABlAG0AVABlAHgAdABFAGQAaQB0AG8AcgAVIlYAaQBzAHUATgBhAHQAaQB2AGUAQwBvAG4AdAByAG8AbAAWFHYAaQBzAHUAaQBuAHAAdQB0AHMAFwxzAHkAcwB0AGUAbQAYGFYAaQBzAHUARQBsAGUAbQBCAGEAcwBlABkmRABlAHYAUABsAGEAYwBlAGgAbwBsAGQAZQByAHMAVQBzAGUAZAAaCGIAbwBvAGwAGyJQAGwAdQBnAGkAbgBDAG8AbgBzAHQAcgBhAGkAbgB0AHMAHEx7ADQAMwBkADUAMgBiAGMAZQAtADkANAAyAGMALQA0ADQAZAA3AC0AOQBlADkANAAtADEAYgBmAGQAZgAzADEAMABlADYAMwBjAH0AHRxBAHQATABlAGEAcwB0AFYAZQByAHMAaQBvAG4AHhRQAGwAdQBnAGkAbgBHAHUAaQBkAB8WUwB5AHMAdABlAG0ALgBHAHUAaQBkACBIYQBmAGMAZAA1ADQANAA2AC0ANAA5ADEANAAtADQAZgBlADcALQBiAGIANwA4AC0AOQBiAGYAZgBlAGIANwAwAGYAZAAxADcAIRRVAHAAZABhAHQAZQBJAG4AZgBvACJMewBiADAAMwAzADYANgBhADgALQBiADUAYwAwAC0ANABiADkAYQAtAGEAMAAwAGUALQBlAGIAOAA2ADAAMQAxADEAMAA0AGMAMwB9ACMOVQBwAGQAYQB0AGUAcwAkTHsAMQA4ADYAOABmAGYAYwA5AC0AZQA0AGYAYwAtADQANQAzADIALQBhAGMAMAA2AC0AMQBlADMAOQBiAGIANQA1ADcAYgA2ADkAfQAlTHsAYQA1AGIAZAA0ADgAYwAzAC0AMABkADEANwAtADQAMQBiADUALQBiADEANgA0AC0ANQBmAGMANgBhAGQAMgBiADkANgBiADcAfQAmFk8AYgBqAGUAYwB0AHMAVAB5AHAAZQAnVFUAcABkAGEAdABlAEwAYQBuAGcAdQBhAGcAZQBNAG8AZABlAGwARgBvAHIAQwBvAG4AdgBlAHIAdABpAGIAbABlAEwAaQBiAHIAYQByAGkAZQBzACgQTABpAGIAVABpAHQAbABlACkUTABpAGIAQwBvAG0AcABhAG4AeQAqHlUAcABkAGEAdABlAFAAcgBvAHYAaQBkAGUAcgBzACs4UwB5AHMAdABlAG0ALgBDAG8AbABsAGUAYwB0AGkAbwBuAHMALgBIAGEAcwBoAHQAYQBiAGwAZQAsEnYAaQBzAHUAZQBsAGUAbQBzAC1INgBjAGIAMQBjAGQAZQAxAC0AZAA1AGQAYwAtADQAYQAzAGIALQA5ADAANQA0AC0AMgAxAGYAYQA3ADUANgBhADMAZgBhADQALihJAG4AdABlAHIAZgBhAGMAZQBWAGUAcgBzAGkAbwBuAEkAbgBmAG8AL0x7AGMANgAxADEAZQA0ADAAMAAtADcAZgBiADkALQA0AGMAMwA1AC0AYgA5AGEAYwAtADQAZQAzADEANABiADUAOQA5ADYANAAzAH0AMBhNAGEAagBvAHIAVgBlAHIAcwBpAG8AbgAxGE0AaQBuAG8AcgBWAGUAcgBzAGkAbwBuADIMTABlAGcAYQBjAHkAMzBMAGEAbgBnAHUAYQBnAGUATQBvAGQAZQBsAFYAZQByAHMAaQBvAG4ASQBuAGYAbwA0MEwAbwBhAGQATABpAGIAcgBhAHIAaQBlAHMASQBuAHQAbwBQAHIAbwBqAGUAYwB0ADUaQwBvAG0AcABhAHQAaQBiAGkAbABpAHQAeQDQAAIaA9ADAS0E0AUGGgfQBwgaAUUHCQjQAAkaBEUKCwQDAAAABQAAAA0AAAAAAAAA0AwLrQIAAADQDQEtDtAPAS0Q0AAJGgRFCgsEAwAAAAUAAAANAAAAKAAAANAMC60BAAAA0A0BLRHQDwEtENAACRoERQoLBAMAAAAFAAAADQAAAAAAAADQDAutAgAAANANAS0S0A8BLRDQAAkaBEUKCwQDAAAABQAAAA0AAAAUAAAA0AwLrQIAAADQDQEtE9APAS0Q0AAJGgRFCgsEAwAAAAUAAAANAAAAAAAAANAMC60CAAAA0A0BLRTQDwEtENAACRoERQoLBAMAAAAFAAAADQAAAAAAAADQDAutAgAAANANAS0V0A8BLRDQAAkaBEUKCwQDAAAABQAAAA0AAAAAAAAA0AwLrQIAAADQDQEtFtAPAS0X0AAJGgRFCgsEAwAAAAUAAAANAAAAKAAAANAMC60EAAAA0A0BLRjQDwEtENAZGq0BRRscAdAAHBoCRR0LBAMAAAAFAAAADQAAAAAAAADQHh8tINAhIhoCRSMkAtAAJRoFRQoLBAMAAAADAAAAAAAAAAoAAADQJgutAAAAANADAS0n0CgBLRHQKQEtENAAJRoFRQoLBAMAAAADAAAAAAAAAAoAAADQJgutAQAAANADAS0n0CgBLRHQKQEtEJoqKwFFAAEC0AABLSzQAAEtF9AAHy0t0C4vGgPQMAutAQAAANAxC60XAAAA0DIarQDQMy8aA9AwC60CAAAA0DELrQMAAADQMhqtANA0Gq0A0DUarQA=</v>
+          </d>
+        </o>
+        <v>{29BD8D0C-3586-4548-BB48-497B9A01693F}</v>
+        <o>
+          <v n="Name">"{29BD8D0C-3586-4548-BB48-497B9A01693F}"</v>
+          <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
+            <v>Rules</v>
+            <o>
+              <v n="Name">"Rules"</v>
+              <d n="SubKeys" t="Hashtable" />
+              <d n="Values" t="Hashtable" />
+            </o>
+          </d>
+          <d n="Values" t="Hashtable" />
+        </o>
+        <v>{8F99A816-E488-41E4-9FA3-846536012284}</v>
+        <o>
+          <v n="Name">"{8F99A816-E488-41E4-9FA3-846536012284}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" />
+        </o>
+        <v>{192FAD59-8248-4824-A8DE-9177C94C195A}</v>
+        <o>
+          <v n="Name">"{192FAD59-8248-4824-A8DE-9177C94C195A}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" />
+        </o>
+      </d>
+      <d n="Values" t="Hashtable" />
+    </o>
+  </Data>
+  <TypeList>
+    <Type n="Boolean">System.Boolean</Type>
+    <Type n="Hashtable">System.Collections.Hashtable</Type>
+    <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+    <Type n="String">System.String</Type>
+  </TypeList>
+</XmlArchive>
+    </PlcProjectOptions>
+  </ProjectExtensions>
+</Project>

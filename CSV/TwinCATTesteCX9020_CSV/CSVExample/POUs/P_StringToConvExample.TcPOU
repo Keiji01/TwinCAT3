@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.24">
+  <POU Name="P_StringToConvExample" Id="{37f86ff5-868e-4575-9dde-a6497a03f5b5}">
+    <Declaration><![CDATA[PROGRAM P_StringToConvExample
+VAR
+	s1	: STRING;
+	s2	: STRING;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[s1 := STRING_TO_CSVFIELD( 'Module_"ALFA_$05"_6', TRUE  );
+s2 := STRING_TO_CSVFIELD( 'Module_50', FALSE );
+
+s1 := CSVFIELD_TO_STRING( '"ab_$04_$05_cd-""ALFA""_5"', TRUE  );
+s2 := CSVFIELD_TO_STRING( 'Module_50', FALSE );
+
+
+]]></ST>
+    </Implementation>
+    <ObjectProperties />
+  </POU>
+</TcPlcObject>
