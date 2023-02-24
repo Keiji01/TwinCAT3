@@ -383,6 +383,10 @@
       </TcLink>
       <OrderCode>AX5203-0000-02xx</OrderCode>
       <Name>Drive 8 (AX5203-0000-0214)</Name>
+      <FirmwareVersion>Firmware: v2.14 (Build 0004) / Bootloader: v2.02 (Build 0002)</FirmwareVersion>
+      <CatalogNo>AX5203-0000-0214</CatalogNo>
+      <HardwareVersion>c:0180  p:0103  d:0102  f:0101  o:----  s:----</HardwareVersion>
+      <SerialNr>Serial#: 000250621</SerialNr>
       <ProductRevision>AX5203-0000-0214</ProductRevision>
       <WatchLog UpdateIntervalInMs="500">
         <WatchLogItem>
@@ -478,7 +482,7 @@
             <Name>ControllerModuloType</Name>
             <Parameter>
               <PropertyName>Modulo_IsOn</PropertyName>
-              <Value>1</Value>
+              <Value>0</Value>
             </Parameter>
             <Parameter>
               <PropertyName>Modulo_DataStorage</PropertyName>
@@ -3382,6 +3386,50 @@
               <Elements>64</Elements>
               <Attribute>0</Attribute>
               <Data>00001000</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[Autotuning parameter]]></Comment>
+              <Timeout>0</Timeout>
+              <OpCode>3</OpCode>
+              <DriveNo>0</DriveNo>
+              <IDN>33419</IDN>
+              <Elements>64</Elements>
+              <Attribute>0</Attribute>
+              <Data>160016000000000000000100680168013c001e00000000006400</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[Position loop Kv-factor]]></Comment>
+              <Timeout>0</Timeout>
+              <OpCode>3</OpCode>
+              <DriveNo>0</DriveNo>
+              <IDN>104</IDN>
+              <Elements>64</Elements>
+              <Attribute>0</Attribute>
+              <Data>6400</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[Autotuning parameter]]></Comment>
+              <Timeout>0</Timeout>
+              <OpCode>3</OpCode>
+              <DriveNo>1</DriveNo>
+              <IDN>33419</IDN>
+              <Elements>64</Elements>
+              <Attribute>0</Attribute>
+              <Data>160016000000000000000100680168013c001e00000000006400</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[Position loop Kv-factor]]></Comment>
+              <Timeout>0</Timeout>
+              <OpCode>3</OpCode>
+              <DriveNo>1</DriveNo>
+              <IDN>104</IDN>
+              <Elements>64</Elements>
+              <Attribute>0</Attribute>
+              <Data>6400</Data>
             </InitCmd>
           </InitCmds>
         </SoE>

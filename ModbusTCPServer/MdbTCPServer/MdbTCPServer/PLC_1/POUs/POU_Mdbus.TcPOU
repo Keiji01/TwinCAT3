@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="POU_Mdbus" Id="{ddc8f663-349b-408b-9cdc-8af2ab3999ef}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM POU_Mdbus
+VAR
+    fbModbusRead : FB_MBReadRegs ;
+    fbModbusWrite : FB_MBWriteRegs ;
+     
+    iStep: INT;
+     
+    aModbusRead : ARRAY[1..10] OF INT ;
+    aModbusWrite : ARRAY[1..10] OF INT ;    
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE iStep OF
+    0:
+        fbModbusRead(bExecute:= FALSE );
+        fbModbusWrite(bExecute := FALSE);       
+        iStep := 10 ;
+     
+     
+    10 : 
+        fbModbusRead(
+            sIPAddr:= '192.168.2.102', 
+            nTCPPort:= 502, 
+            nUnitID:= 255, 
+            nQuantity:= 10, 
+            nMBAddr:= 8000, 
+            cbLength:= SIZEOF(aModbusRead), 
+            pDestAddr:= ADR(aModbusRead), 
+            bExecute:= TRUE, 
+            tTimeout:= T#2S, 
+            bBusy=> , 
+            bError=> , 
+            nErrId=> , 
+            cbRead=> );
+     
+             
+        IF  NOT fbModbusRead.bBusy THEN
+            IF  NOT fbModbusRead.bError THEN 
+                iStep := 20 ;
+            ELSE
+                iStep := 30 ;
+            END_IF  
+        END_IF
+             
+             
+     
+    20:
+		iStep := 0;
+     //  fbModbusWrite(
+     //      sIPAddr:= '192.168.2.102', 
+     //      nTCPPort:= 502, 
+     //      nUnitID:= 1, 
+     //      nQuantity:= 10, 
+     //      nMBAddr:= 20, 
+     //      cbLength:= SIZEOF(aModbusWrite), 
+     //      pSrcAddr:= ADR(aModbusWrite), 
+     //      bExecute:= TRUE, 
+     //      tTimeout:= T#2S, 
+     //      bBusy=> , 
+     //      bError=> , 
+     //      nErrId=> );
+     //       
+     //
+     //  IF  NOT fbModbusWrite.bError OR fbModbusWrite.bBusy THEN
+     //      iStep := 0 ;
+     //  ELSE
+     //      iStep := 30 ;
+     //  END_IF
+             
+             
+    30:
+    ; //MODBUS READ ERROR
+     
+    31:
+    ; //MODBUS WRITE ERROR
+     
+     
+END_CASE]]></ST>
+    </Implementation>
+    <LineIds Name="POU_Mdbus">
+      <LineId Id="6" Count="34" />
+      <LineId Id="80" Count="19" />
+      <LineId Id="60" Count="9" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

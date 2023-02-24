@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL" Id="{269a7c0f-be29-47ff-b39c-5f5b350cd038}">
+    <Declaration><![CDATA[//{attribute 'qualified_only'}
+VAR_GLOBAL
+	mb_Input_Coils	: ARRAY [0..255] OF BOOL ;
+	mb_Output_Coils	: ARRAY [0..255] OF BOOL ; 
+	mb_Input_Registers : ARRAY [0..255] OF WORD ;
+	mb_Output_Registers	: ARRAY [0..255] OF WORD ;
+		
+	iCounter AT %MW0 : WORD ;
+
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
