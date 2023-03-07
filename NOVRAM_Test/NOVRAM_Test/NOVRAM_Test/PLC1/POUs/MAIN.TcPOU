@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{3cf672cf-c568-4572-bb0b-92ceaaa57fb6}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR RETAIN
+	x	: UINT;
+	y	: UINT;
+	z	: UINT;
+	arrTest : ARRAY[0..49] OF INT;
+	arrTest2 : ARRAY[0..49] OF INT;
+	
+	nivelBomba : INT;
+END_VAR
+
+VAR
+	i	: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*
+FOR i := 0  TO 49 BY 1 DO
+	IF ((i MOD 2) <> 0) THEN
+		arrTest[i] 		:= i + 1969;
+		arrTest2[i] 	:= arrTest[i+1];
+	ELSE
+		arrTest[i] 		:= i - 1998;
+		arrTest2[i] 	:= arrTest[i+1];
+	END_IF;
+END_FOR;
+*)]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="34" Count="0" />
+      <LineId Id="26" Count="7" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="35" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.35">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{A75E9389-6482-D33E-FA44-EDFDDA695D96}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..49] OF INT</Name>
+			<BitSize>800</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>50</Elements>
+			</ArrayInfo>
+		</DataType>
+	</DataTypes>
+	<Project ProjectGUID="{8D749E5C-4D3A-4243-8C19-98D80A28B61D}" TargetNetId="5.25.243.28.1.1" ShowHideConfigurations="#x106">
+		<System>
+			<Tasks>
+				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
+					<Name>PlcTask</Name>
+				</Task>
+			</Tasks>
+		</System>
+		<Plc>
+			<Project GUID="{4BC339DD-5021-49A8-B9E7-F8FDF70E8AAF}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{84346395-3FB8-4033-F533-828B396AC85C}">
+					<Name>PLC1 Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Vars VarGrpType="8" AreaNo="4">
+						<Name>PlcTask Retains</Name>
+						<Var>
+							<Name>MAIN.x</Name>
+							<Type>UINT</Type>
+							<InOut>7</InOut>
+						</Var>
+						<Var>
+							<Name>MAIN.y</Name>
+							<Type>UINT</Type>
+							<InOut>7</InOut>
+						</Var>
+						<Var>
+							<Name>MAIN.z</Name>
+							<Type>UINT</Type>
+							<InOut>7</InOut>
+						</Var>
+						<Var>
+							<Name>MAIN.nivelBomba</Name>
+							<Type>INT</Type>
+							<InOut>7</InOut>
+						</Var>
+						<Var>
+							<Name>MAIN.arrTest2</Name>
+							<Type GUID="{A75E9389-6482-D33E-FA44-EDFDDA695D96}">ARRAY [0..49] OF INT</Type>
+							<InOut>7</InOut>
+						</Var>
+						<Var>
+							<Name>MAIN.arrTest</Name>
+							<Type GUID="{A75E9389-6482-D33E-FA44-EDFDDA695D96}">ARRAY [0..49] OF INT</Type>
+							<InOut>7</InOut>
+						</Var>
+					</Vars>
+					<RetainDataMapping AreaNo="4" OTCID="#x03020001"/>
+					<Contexts>
+						<Context>
+							<Id NeedCalleeCall="true">0</Id>
+							<Name>PlcTask</Name>
+							<ManualConfig>
+								<OTCID>#x02010030</OTCID>
+							</ManualConfig>
+							<Priority>20</Priority>
+							<CycleTime>10000000</CycleTime>
+						</Context>
+					</Contexts>
+					<TaskPouOids>
+						<TaskPouOid Prio="20" OTCID="#x08502001"/>
+					</TaskPouOids>
+				</Instance>
+			</Project>
+		</Plc>
+		<Io>
+			<Device Id="1" Disabled="true" DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="5.25.243.28.2.1" RemoteName="Device 1 (EtherCAT)" InfoImageId="2">
+				<Name>Device 1 (EtherCAT)</Name>
+				<AddressInfo>
+					<Ccat>
+						<Address>-268435456</Address>
+						<Offset>65536</Offset>
+						<Size>32768</Size>
+						<BaseAddr>0</BaseAddr>
+						<BusNo>65535</BusNo>
+						<SlotNo>0</SlotNo>
+						<TimeSize>128</TimeSize>
+						<TimeOffs>1024</TimeOffs>
+						<GpioSize>32</GpioSize>
+						<GpioOffs>768</GpioOffs>
+						<EepromSize>64</EepromSize>
+						<EepromOffs>512</EepromOffs>
+						<IntCtrlSize>16</IntCtrlSize>
+						<IntCtrlOffs>640</IntCtrlOffs>
+					</Ccat>
+				</AddressInfo>
+				<Image Id="1" AddrType="9" ImageType="3">
+					<Name>Image</Name>
+				</Image>
+				<EtherCAT/>
+			</Device>
+			<Device Id="3" DevType="121">
+				<Name>Device 3 (NOV-DP-RAM)</Name>
+				<AddressInfo>
+					<Isa>
+						<Address>-267386880</Address>
+						<Size>131072</Size>
+					</Isa>
+				</AddressInfo>
+				<Vars VarGrpType="1" InsertType="1">
+					<Name>Inputs</Name>
+				</Vars>
+				<Vars VarGrpType="2" InsertType="1">
+					<Name>Outputs</Name>
+				</Vars>
+				<Image Id="4" AddrType="5" ImageType="2">
+					<Name>Image</Name>
+				</Image>
+				<Box Id="1" BoxType="6000">
+					<Name>Box 1 (Retain Handler)</Name>
+					<ImageId>276</ImageId>
+					<Vars VarGrpType="8">
+						<Name>Retains</Name>
+						<Var NotLinkable="true">
+							<Name>MAIN.x_[851]</Name>
+							<Type>UINT</Type>
+							<InOut>7</InOut>
+							<UserHandle>33620016</UserHandle>
+						</Var>
+						<Var NotLinkable="true">
+							<Name>MAIN.y_[851]</Name>
+							<Type>UINT</Type>
+							<BitOffs>16</BitOffs>
+							<InOut>7</InOut>
+							<UserHandle>33620016</UserHandle>
+						</Var>
+						<Var NotLinkable="true">
+							<Name>MAIN.z_[851]</Name>
+							<Type>UINT</Type>
+							<BitOffs>32</BitOffs>
+							<InOut>7</InOut>
+							<UserHandle>33620016</UserHandle>
+						</Var>
+						<Var NotLinkable="true">
+							<Name>MAIN.nivelBomba_[851]</Name>
+							<Type>INT</Type>
+							<BitOffs>48</BitOffs>
+							<InOut>7</InOut>
+							<UserHandle>33620016</UserHandle>
+						</Var>
+						<Var NotLinkable="true">
+							<Name>MAIN.arrTest2_[851]</Name>
+							<Type GUID="{A75E9389-6482-D33E-FA44-EDFDDA695D96}">ARRAY [0..49] OF INT</Type>
+							<BitOffs>64</BitOffs>
+							<InOut>7</InOut>
+							<UserHandle>33620016</UserHandle>
+						</Var>
+						<Var NotLinkable="true">
+							<Name>MAIN.arrTest_[851]</Name>
+							<Type GUID="{A75E9389-6482-D33E-FA44-EDFDDA695D96}">ARRAY [0..49] OF INT</Type>
+							<BitOffs>864</BitOffs>
+							<InOut>7</InOut>
+							<UserHandle>33620016</UserHandle>
+						</Var>
+					</Vars>
+					<Retain AreaSize="131072" DataSize="65504" ContextCnt="4"/>
+				</Box>
+				<DpRam/>
+			</Device>
+		</Io>
+	</Project>
+	<Mappings>
+		<MappingInfo Identifier="{4239AC1D-BF57-B41E-7A16-0E511B3279E3}" Id="#x02030010"/>
+		<OwnerA Name="TIPC^PLC1^PLC1 Instance">
+			<OwnerB Name="TIID^Device 3 (NOV-DP-RAM)^Box 1 (Retain Handler)">
+				<Link VarA="PlcTask Retains^MAIN.arrTest" VarB="Retains^MAIN.arrTest_[851]" AutoLink="true" PeerAutoLink="true"/>
+				<Link VarA="PlcTask Retains^MAIN.arrTest2" VarB="Retains^MAIN.arrTest2_[851]" AutoLink="true" PeerAutoLink="true"/>
+				<Link VarA="PlcTask Retains^MAIN.nivelBomba" VarB="Retains^MAIN.nivelBomba_[851]" AutoLink="true" PeerAutoLink="true"/>
+				<Link VarA="PlcTask Retains^MAIN.x" VarB="Retains^MAIN.x_[851]" AutoLink="true" PeerAutoLink="true"/>
+				<Link VarA="PlcTask Retains^MAIN.y" VarB="Retains^MAIN.y_[851]" AutoLink="true" PeerAutoLink="true"/>
+				<Link VarA="PlcTask Retains^MAIN.z" VarB="Retains^MAIN.z_[851]" AutoLink="true" PeerAutoLink="true"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
+</TcSmProject>
