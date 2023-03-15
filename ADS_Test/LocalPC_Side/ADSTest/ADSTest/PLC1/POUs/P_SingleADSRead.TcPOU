@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="P_SingleADSRead" Id="{0fc71a70-662d-4925-ab84-f80201b69856}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_SingleADSRead
+VAR
+	fbADSRead 		: Tc2_System.ADSREAD;
+	sNetId			: Tc2_System.T_AmsNetID := '192.168.10.9.1.1';
+	sPort			: Tc2_System.T_AmsPort 	:= 851;
+	bRead			: BOOL;
+	bReadBool		: BOOL;
+	iVarDest		: INT;
+	iVarDestBool	: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbADSRead(
+	NETID:= sNetId, 
+	PORT:= sPort, 
+	IDXGRP:= 16#4020, 
+	IDXOFFS:= 385000, 
+	LEN:= SIZEOF(iVarDest), 	// Tamanho da variável de destino	
+	DESTADDR:= ADR(iVarDest), 	// Endereço da variável de destino 
+	READ:= bRead, 
+	TMOUT:= T#2S, 
+	BUSY=> , 
+	ERR=> , 
+	ERRID=> );
+	
+fbADSRead(
+	NETID:= sNetId, 
+	PORT:= sPort, 
+	IDXGRP:= 16#4020, 
+	IDXOFFS:= 385027, 
+	LEN:= SIZEOF(iVarDestBool), 	// Tamanho da variável de destino	
+	DESTADDR:= ADR(iVarDestBool), 	// Endereço da variável de destino 
+	READ:= bReadBool, 
+	TMOUT:= T#2S, 
+	BUSY=> , 
+	ERR=> , 
+	ERRID=> );	]]></ST>
+    </Implementation>
+    <LineIds Name="P_SingleADSRead">
+      <LineId Id="6" Count="10" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="27" Count="10" />
+      <LineId Id="26" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
