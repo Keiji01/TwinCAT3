@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_Motor" Id="{794e1372-b388-4a05-ba78-6561b776a7a6}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Motor
+VAR_INPUT
+	bLiga, bDesliga, bReset:BOOL;
+	rTemp:REAL;
+END_VAR
+VAR_OUTPUT
+	bLigaMotor, bError:BOOL;
+END_VAR
+VAR
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF rTemp >=100 THEN
+	bError:=TRUE;
+END_IF
+IF bLiga AND NOT bDesliga AND NOT bError AND rTemp<80 THEN
+	bLigaMotor:=TRUE;
+ELSIF bDesliga OR bError THEN
+	bLigaMotor:=FALSE;
+END_IF
+
+IF bReset AND rTemp < 80 THEN
+	bError:=FALSE;
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_Motor">
+      <LineId Id="18" Count="2" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="16" Count="1" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="23" Count="2" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="prgLab16" Id="{b2de806b-72e7-491e-8489-90d0479cacb9}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM prgLab16
+VAR
+	rAddSin:LREAL:=0.01;
+	rResultSin:LREAL;
+	rSin:LREAL;
+	rAddTri:LREAL:=0.01;
+	rResultTri:LREAL:=0.01;
+	rTri:LREAL;
+	rVector:ARRAY[1..5] OF LREAL:=[1,5,6,2,8];
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[rResultSin:=rResultSin+rAddSin;
+rSin:=SIN(rResultSin);
+
+rTri:=rTri+rResultTri;
+IF rTri>=1 THEN
+	rResultTri:= -rAddTri;
+ELSIF rTri <=-1 THEN
+	rResultTri:= rAddTri;
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="prgLab16">
+      <LineId Id="5" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="17" Count="1" />
+      <LineId Id="20" Count="1" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="13" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

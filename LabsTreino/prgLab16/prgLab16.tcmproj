@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{30f4a881-3f2d-494f-8885-2c33bbee36e3}</ProjectGuid>
+    <AssemblyName>prgLab16</AssemblyName>
+    <Name>prgLab16</Name>
+    <RootNamespace>prgLab16</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Scope Project1.tcscopex">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scope Project2.tcscopex">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scope Project3.tcscopex">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scope Project4.tcscopex">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="YT Scope Project.tcscopex">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+</Project>

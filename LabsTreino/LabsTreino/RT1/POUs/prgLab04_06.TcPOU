@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="prgLab04_06" Id="{3badfea7-7024-42bd-8287-83b174bd26b9}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM prgLab04_06
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Primeiro iremos conduzir as comparações básicas
+
+IF GVL.Room1.OccupancySensor THEN
+	GVL.Room1.Lighting:=TRUE;
+	IF GVL.Room1.Temp > 24 THEN
+		GVL.Room1.Heating:=FALSE;
+	ELSIF GVL.Room1.Temp <20 THEN
+		GVL.Room1.Heating:=TRUE;	
+	END_IF
+ELSE
+	GVL.Room1.Lighting:=GVL.Room1.Heating:=FALSE;	
+END_IF
+IF GVL.Room1.AirQuality >= GVL.Room1.setpoint THEN
+	GVL.Room1.Ventilation:=TRUE;
+ELSE
+	GVL.Room1.Ventilation:=FALSE;	
+END_IF
+//Solução lab 06
+IF GVL.Room1.Temp< 20 THEN
+	GVL.statusRoom1:= E_ROOM_TEMP_STS.baixa;
+ELSIF GVL.Room1.Temp >=20 AND GVL.Room1.Temp < 24 THEN
+	GVL.statusRoom1:= E_ROOM_TEMP_STS.normal;
+ELSIF GVL.Room1.Temp >=24 AND GVL.Room1.Temp < 27 THEN
+	GVL.statusRoom1:= E_ROOM_TEMP_STS.moderada;
+ELSIF GVL.Room1.Temp >=27 AND GVL.Room1.Temp < 32 THEN
+	GVL.statusRoom1:= E_ROOM_TEMP_STS.alta;
+ELSIF GVL.Room1.Temp >=32 THEN
+	GVL.statusRoom1:= E_ROOM_TEMP_STS.muito_alta;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="prgLab04_06">
+      <LineId Id="5" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="11" Count="2" />
+      <LineId Id="15" Count="1" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="17" Count="1" />
+      <LineId Id="20" Count="1" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="46" Count="9" />
+      <LineId Id="36" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

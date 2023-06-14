@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="prgLab14B" Id="{54dd10cf-42c1-4320-ba74-0149af57acea}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM prgLab14B
+VAR
+	r1:REAL:=10;
+	r2:REAL:=1;
+	r3:REAL;
+	b1 AT %I*:BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF b1 THEN
+	r2:=0;
+END_IF
+
+r3:=r1/r2;]]></ST>
+    </Implementation>
+    <LineIds Name="prgLab14B">
+      <LineId Id="10" Count="0" />
+      <LineId Id="19" Count="1" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

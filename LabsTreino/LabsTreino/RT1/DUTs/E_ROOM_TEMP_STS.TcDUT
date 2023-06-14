@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <DUT Name="E_ROOM_TEMP_STS" Id="{9242d6f2-7607-4296-b47c-673b40174353}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_ROOM_TEMP_STS :
+(
+	baixa:=1,
+	normal:=2,
+	moderada:=3,
+	alta:=4,
+	muito_alta:=5
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

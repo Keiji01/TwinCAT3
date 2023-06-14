@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.42" ClassName="CNestedPlcProjDef">
+	<Project GUID="{D60F1AE0-5067-4C71-912E-041DAE885E52}" Name="RT1" PrjFilePath="..\..\RT1\RT1.plcproj" TmcFilePath="..\..\RT1\RT1.tmc" ReloadTmc="true" AmsPort="851" TargetArchiveSettings="#x000e" FileArchiveSettings="#x001e" SymbolicMapping="true">
+		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="RT1\RT1.tmc" TmcHash="{F69E28FE-D5A9-DF27-CE8C-5872BA3C0E69}">
+			<Name>RT1 Instance</Name>
+			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+			<Vars VarGrpType="1">
+				<Name>PlcTask Inputs</Name>
+				<Var>
+					<Name>prgLab02.di1</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>prgLab02.entradaAnalogica</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>prgLab14B.b1</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>prgLab10_11.bLiga</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>prgLab10_11.bDesliga</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>prgLab10_11.reset</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>prgLab10_11.analogInput</Name>
+					<Type>INT</Type>
+				</Var>
+			</Vars>
+			<Vars VarGrpType="2" AreaNo="1">
+				<Name>PlcTask Outputs</Name>
+				<Var>
+					<Name>prgLab02.do1</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>prgLab02.do2</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>prgLab10_11.saidaMotor</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>prgLab10_11.error</Name>
+					<Type>BOOL</Type>
+				</Var>
+			</Vars>
+			<Contexts>
+				<Context>
+					<Id NeedCalleeCall="true">0</Id>
+					<Name>PlcTask</Name>
+					<ManualConfig>
+						<OTCID>#x02010030</OTCID>
+					</ManualConfig>
+					<Priority>20</Priority>
+					<CycleTime>10000000</CycleTime>
+				</Context>
+			</Contexts>
+			<TaskPouOids>
+				<TaskPouOid Prio="20" OTCID="#x08502001"/>
+			</TaskPouOids>
+		</Instance>
+	</Project>
+	<Mappings>
+		<OwnerA Name="RT1 Instance">
+			<OwnerB Name="TIID^Device 3 (EtherCAT)^Term 1 (EK1100)^Term 2 (EL1012)">
+				<Link VarA="PlcTask Inputs^prgLab14B.b1" VarB="Channel 1^Input" Size="1"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
+</TcSmItem>

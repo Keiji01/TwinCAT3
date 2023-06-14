@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="prgLab05_07" Id="{00ba17da-63d6-4e5f-a89a-1f7c6ef8a3c2}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM prgLab05_07
+VAR
+	i: INT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Na segunda parte desse mesmo exercício o objetivo é basicamente de expandí-lo transformando o que era um único
+//Elemento em um vetor de 3
+
+FOR i:=1 TO 3 DO
+	IF GVL.aRooms[i].OccupancySensor THEN
+		GVL.aRooms[i].Lighting:=TRUE;
+		IF GVL.aRooms[i].Temp > 24 THEN
+			GVL.aRooms[i].Heating:=FALSE;
+		ELSIF GVL.aRooms[i].Temp <20 THEN
+			GVL.aRooms[i].Heating:=TRUE;	
+		END_IF
+	ELSE
+		GVL.aRooms[i].Lighting:=GVL.aRooms[i].Heating:=FALSE;	
+	END_IF
+	IF GVL.aRooms[i].AirQuality >= GVL.aRooms[i].setpoint THEN
+		GVL.aRooms[i].Ventilation:=TRUE;
+	ELSE
+		GVL.aRooms[i].Ventilation:=FALSE;	
+	END_IF	
+	//Solução Lab 07
+	IF GVL.aRooms[i].Temp< 20 THEN
+		GVL.aRooms[i].status:= E_ROOM_TEMP_STS.baixa;
+	ELSIF GVL.aRooms[i].Temp >=20 AND GVL.aRooms[i].Temp < 24 THEN
+		GVL.aRooms[i].status:= E_ROOM_TEMP_STS.normal;
+	ELSIF GVL.aRooms[i].Temp >=24 AND GVL.aRooms[i].Temp < 27 THEN
+		GVL.aRooms[i].status:= E_ROOM_TEMP_STS.moderada;
+	ELSIF GVL.aRooms[i].Temp >=27 AND GVL.aRooms[i].Temp < 32 THEN
+		GVL.aRooms[i].status:= E_ROOM_TEMP_STS.alta;
+	ELSIF GVL.aRooms[i].Temp >=32 THEN
+		GVL.aRooms[i].status:= E_ROOM_TEMP_STS.muito_alta;
+	END_IF	
+END_FOR]]></ST>
+    </Implementation>
+    <LineIds Name="prgLab05_07">
+      <LineId Id="6" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="27" Count="13" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="48" Count="9" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="25" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

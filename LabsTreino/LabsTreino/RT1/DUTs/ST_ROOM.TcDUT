@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <DUT Name="ST_ROOM" Id="{cac4af86-8dfa-4002-9404-ff39b71f0724}">
+    <Declaration><![CDATA[TYPE ST_ROOM :
+STRUCT
+	OccupancySensor: BOOL;	//Sensor de ocupação
+	Lighting:BOOL;          //Iluminação
+	Heating:BOOL;           //Aquecimento
+	Ventilation:BOOL;       //Ventilador
+	AirQuality: REAL;       //Qualidade do ar
+	setpoint:REAL:=50;      //Setpoint
+	Temp:REAL;
+	status:E_ROOM_TEMP_STS;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

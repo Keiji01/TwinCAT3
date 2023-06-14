@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="F_AnalogScale" Id="{6635f974-a528-4874-8b24-7cde931511a1}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION F_AnalogScale : REAL
+VAR_INPUT
+	in:INT;
+	rInMin:REAL:=0;
+	rInMax:REAL:=32767;
+	rOutMin:REAL:=0;
+	rOutMax:REAL:=200;
+END_VAR
+VAR
+	
+	validParams: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[validParams:= (rInMax-rInMin)>0;
+IF validParams THEN
+	F_AnalogScale:= INT_TO_REAL(in)*(rOutMax-rOutMin)/(rInMax-rInMin) + rOutMin;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="F_AnalogScale">
+      <LineId Id="14" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="17" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

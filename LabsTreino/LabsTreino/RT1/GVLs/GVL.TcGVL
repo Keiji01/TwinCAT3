@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <GVL Name="GVL" Id="{8ef181c7-43bb-4501-969e-16f157cdf4f9}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	Room1:ST_ROOM;
+	statusRoom1:E_ROOM_TEMP_STS;
+	aRooms:ARRAY[1..3] OF ST_ROOM;
+END_VAR
+VAR_GLOBAL PERSISTENT
+	iPersistent:INT;
+	sPersistent:STRING;
+	rPersistent:REAL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
