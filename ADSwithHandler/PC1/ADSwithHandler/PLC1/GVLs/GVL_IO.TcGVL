@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL_IO" Id="{9fcf2d66-b2bf-4ccd-8eb7-2224545f276c}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	bInput1 AT%I* : BOOL;
+	uiMasterState AT%I* : UINT;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

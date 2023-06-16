@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL_ADS" Id="{e5d0bdd2-67a7-4a7e-bbb2-d0064fe134f0}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+	Array_EPB_TDA_INT AT%MB1100:ARRAY [0..20] OF INT;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

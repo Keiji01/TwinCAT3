@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_ReadADS" Id="{55ce5236-85f9-4052-81d9-23044d92b916}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ReadADS
+(* Recomendada a leitura de arrays para melhor performance *)
+VAR_INPUT
+	bStart			: BOOL; // Start Comm	
+	bReset			: BOOL;
+	netId 			: T_AmsNetId;
+	varIn 			: STRING;
+	PLCPort			: UINT;
+	outAddress		: DWORD;
+	lenAddress		: UDINT;	
+END_VAR         	
+VAR_OUTPUT      		
+	bDone 			: BOOL;
+	bBusy 			: BOOL;
+	bError 			: BOOL;
+	iErrorID 		: UDINT;
+END_VAR
+VAR
+	netidAux 		: T_AmsNetId;     	          	
+	getHandle 		: ADSRDWRT; (*Bloco para obter o handle*)
+	handles 		: UDINT; (*Handle para a variavel remota*)
+	reader 			: ADSREAD; (*Bloco de leitura via ADS*)  
+	state 			: INT;
+	varAux			: STRING;
+	iHandleErrorId	: UDINT;
+	iReadErrorId	: UDINT;
+	iConsecutiveError		: INT; (* Erros consecutivos *)
+	TON_ConsecutiveError	: TON;
+	TON_ReadOK		: TON;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF bReset THEN
+	state := 0;
+	iConsecutiveError := 0;
+END_IF
+
+CASE state OF
+	0: // Start of ADS Communication
+		bDone := FALSE;
+		iErrorID := 0;
+		netidAux 	:= netid;		
+		varAux 		:= varIn;
+			
+		bBusy	 	:= FALSE; // Status Variable to Inform User
+		bError		:= FALSE; // Status Variable to Inform User
+		
+		getHandle(WRTRD:= FALSE);
+		reader(READ:= FALSE);
+		
+		IF NOT bReset AND bStart THEN			
+			state 		:= 10;	
+		END_IF
+		
+	10: // ADS get Handler
+		getHandle(
+			NETID		:= netidAux,
+			PORT		:= PLCPort,
+			IDXGRP		:= 16#F003,
+			IDXOFFS		:= 0,
+			WRITELEN	:= INT_TO_UDINT(LEN(varAux)+1),
+			READLEN		:= SIZEOF(handles),
+			SRCADDR		:= ADR(varAux),
+			DESTADDR	:= ADR(handles),
+			WRTRD		:= TRUE,
+			TMOUT		:= T#10S,
+			BUSY 		=> ,
+			ERR 		=> ,
+			ERRID 		=>
+		);
+		IF NOT getHandle.BUSY THEN
+			IF getHandle.ERR THEN				
+				iHandleErrorId := getHandle.ERRID;			
+				state := 999;
+			ELSE
+				state := 20;
+			END_IF
+		END_IF
+		
+	20:	// ADS Read 
+		reader(
+			NETID			:= netidAux,
+			PORT			:= PLCPort,
+			IDXGRP			:= 16#F005,
+			IDXOFFS			:= handles,
+			LEN				:= lenAddress,
+			DESTADDR		:= outAddress,
+			READ			:= TRUE,
+			TMOUT			:= T#10S,
+			BUSY 			=>,
+			ERR 			=>,
+			ERRID 			=>
+		);
+		
+		IF NOT reader.BUSY THEN 
+			IF reader.ERR THEN
+				iReadErrorId := reader.ERRID;			
+				state := 999;
+			ELSE			
+				state := 30;
+			END_IF				
+		END_IF
+		
+	30: (* Close Open Handles *)
+		iConsecutiveError := 0;		
+		getHandle(
+			NETID		:= netidAux,
+			PORT		:= PLCPort,
+			IDXGRP		:= 16#F006,
+			IDXOFFS		:= 0,
+			WRITELEN	:= INT_TO_UDINT(LEN(varAux)+1),
+			READLEN		:= SIZEOF(handles),
+			SRCADDR		:= ADR(varAux),
+			DESTADDR	:= ADR(handles),
+			WRTRD		:= TRUE,
+			TMOUT		:= T#10S,
+			BUSY 		=> ,
+			ERR 		=> ,
+			ERRID 		=>
+		);
+		IF NOT getHandle.BUSY THEN
+			IF getHandle.ERR THEN
+				iHandleErrorId := getHandle.ERRID;
+				state := 999;
+			ELSE				
+				state := 40;
+			END_IF
+		END_IF
+		
+	40: // Wait until next read
+		IF TON_ReadOK.Q THEN
+			bDone := TRUE;
+			state := 0;
+		END_IF
+		
+	999: // Error State	
+		IF iConsecutiveError > 3 THEN	
+			bError		:= TRUE; // Status Variable to Inform User
+			iErrorID	:= iReadErrorId OR iHandleErrorId;
+			
+			getHandle(WRTRD:= FALSE);
+			reader(READ:= FALSE);
+		ELSE
+			iConsecutiveError := iConsecutiveError + 1;
+			IF TON_ConsecutiveError.Q THEN
+				state := 0;
+			END_IF						
+		END_IF
+END_CASE
+
+TON_ReadOK(IN:= state=40, PT:= T#500MS, Q=> , ET=> );	
+TON_ConsecutiveError(IN:= state=999, PT:= T#2S, Q=> , ET=> );
+
+
+bBusy := state > 0 AND state < 999; // Status Variable to Inform User]]></ST>
+    </Implementation>
+    <LineIds Name="FB_ReadADS">
+      <LineId Id="685" Count="121" />
+      <LineId Id="472" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
