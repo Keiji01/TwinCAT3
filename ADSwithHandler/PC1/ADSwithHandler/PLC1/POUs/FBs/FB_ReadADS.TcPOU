@@ -142,9 +142,9 @@ CASE state OF
 			
 			getHandle(WRTRD:= FALSE);
 			reader(READ:= FALSE);
-		ELSE
-			iConsecutiveError := iConsecutiveError + 1;
+		ELSE			
 			IF TON_ConsecutiveError.Q THEN
+				iConsecutiveError := iConsecutiveError + 1;
 				state := 0;
 			END_IF						
 		END_IF
@@ -157,7 +157,10 @@ TON_ConsecutiveError(IN:= state=999, PT:= T#2S, Q=> , ET=> );
 bBusy := state > 0 AND state < 999; // Status Variable to Inform User]]></ST>
     </Implementation>
     <LineIds Name="FB_ReadADS">
-      <LineId Id="685" Count="121" />
+      <LineId Id="685" Count="110" />
+      <LineId Id="797" Count="0" />
+      <LineId Id="836" Count="0" />
+      <LineId Id="798" Count="8" />
       <LineId Id="472" Count="0" />
     </LineIds>
   </POU>
