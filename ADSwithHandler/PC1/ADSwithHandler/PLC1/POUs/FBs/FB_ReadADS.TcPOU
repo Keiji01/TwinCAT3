@@ -131,6 +131,8 @@ CASE state OF
 		
 	40: // Wait until next read
 		IF TON_ReadOK.Q THEN
+			iHandleErrorId := 0; (* Cleaning previous errors *)
+			iReadErrorId := 0; (* Cleaning previous errors *)
 			bDone := TRUE;
 			state := 0;
 		END_IF
@@ -157,7 +159,9 @@ TON_ConsecutiveError(IN:= state=999, PT:= T#2S, Q=> , ET=> );
 bBusy := state > 0 AND state < 999; // Status Variable to Inform User]]></ST>
     </Implementation>
     <LineIds Name="FB_ReadADS">
-      <LineId Id="685" Count="110" />
+      <LineId Id="685" Count="98" />
+      <LineId Id="866" Count="1" />
+      <LineId Id="784" Count="11" />
       <LineId Id="797" Count="0" />
       <LineId Id="836" Count="0" />
       <LineId Id="798" Count="8" />
