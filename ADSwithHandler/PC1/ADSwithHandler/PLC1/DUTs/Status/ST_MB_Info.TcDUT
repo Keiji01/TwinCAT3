@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="ST_MB_Info" Id="{cff0c3f5-8ba0-404f-8c38-1e25eafab315}">
+    <Declaration><![CDATA[TYPE ST_MB_Info :
+STRUCT
+	sRevision		: STRING;
+	rTemp			: REAL;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

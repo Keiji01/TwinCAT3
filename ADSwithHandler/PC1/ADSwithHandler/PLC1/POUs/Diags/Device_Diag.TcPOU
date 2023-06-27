@@ -1,0 +1,887 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="Device_Diag" Id="{b885a582-929c-4b15-9a64-ea6e6c01d3c8}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Device_Diag
+VAR
+	eState					: INT;
+	eStateNIC				: INT;
+	eStateSoftware			: INT;
+	eStateTask				: INT;
+	
+	sAmsNetId				: STRING(23);
+	stDevIdent				: ST_DeviceIdentification;
+
+    // FB instances
+	fbGetLocalAmsNetId			: FB_GetLocalAmsNetId;	// instancia para leitura do AMS Net Id da CPU
+	fbGetDeviceIdentification	: FB_GetDeviceIdentification; // instancia para leitura dos dados do Device (CPU)
+    fbReadMDPElement			: FB_MDP_ReadElement;	// instancia para leitura dos elementos MDP  
+    fbReadMDPSoftware			: FB_MDP_ReadElement;	// instancia para leitura dos elementos MDP  
+	fbReadMDP					: FB_MDP_Read;			// instancia para leitura de MDP gerais
+	stMDP_Addr					: ST_MDP_Addr;			// estrutura com os endereços dos parâmetros a serem lidos  
+	stMDP_AddrSoftware			: ST_MDP_Addr;			// estrutura com os endereços dos parâmetros a serem lidos  
+	sData						: STRING;				// Dados lidos no formato "string"
+	diData						: DINT;					// Dados lidos no formato "Double Int"     
+	iData						: UINT;					// data storage for unsigned integer     
+	siData						: USINT;				// data storage for unsigned short integer     
+	liData						: ULINT;				// data storage for unsigned long integer
+	
+	iMB_Revision		: USINT;			// 1x
+	iMB_MajorVersion	: USINT;			// 1x
+	iMB_MinorVersion	: USINT;			// 1x
+
+	rAux 				: REAL;
+	fbFormatString		: FB_FormatString;
+
+	fbMDP_NIC_Read				: FB_MDP_NIC_Read;
+	iModIdx						: USINT;
+
+	(* Get CPU Usage Info  *)
+	fbTC_CpuUsage				: TC_CpuUsage;
+	fbTC_SysLatency				: TC_SysLatency;
+
+	TwinCAT_revision			: UINT;
+
+	fbADSReadEx					: ADSREADEX;
+	SAF_Task					: UDINT;
+	
+END_VAR
+VAR_INPUT
+	bRestart			: BOOL := TRUE;
+END_VAR
+VAR_OUTPUT
+	stDeviceDiag		: ST_Device_Info;
+	stNICDiag			: ARRAY[1..10] OF ST_NIC_Info;
+	stSoftwareDiag		: ST_Software_Info;
+	stTaskInfo			: ARRAY[1..10] OF ST_Task_Info;
+	bError				: BOOL;
+	nErrID				: UDINT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+act_Hardware();
+
+act_NIC();
+
+act_Software();
+]]></ST>
+    </Implementation>
+    <Action Name="act_Hardware" Id="{857834d1-38f7-491b-921d-2c6e776c5590}">
+      <Implementation>
+        <ST><![CDATA[
+
+
+stDeviceDiag.sAmsNetId		:= sAmsNetId;
+stDeviceDiag.Model_Version 	:= CONCAT(CONCAT(stDevIdent.strHardwareModel , '0 V') , stDevIdent.strHardwareVersion);
+stDeviceDiag.SerialNumber 	:= stDevIdent.strHardwareSerialNo;
+
+stDeviceDiag.stMB.sRevision := CONCAT(CONCAT(CONCAT(CONCAT(CONCAT('Rev',USINT_TO_STRING(iMB_Revision)) , '  BIOS_') , USINT_TO_STRING(iMB_MajorVersion)) , '.'), USINT_TO_STRING(iMB_MinorVersion));
+
+
+(* Device Diagnostics *)
+
+CASE eState OF
+	0: // Inicio
+	
+		// Zera a execução de todos os blocos
+		fbGetLocalAmsNetId.bExecute			:= FALSE;
+		fbGetDeviceIdentification.bExecute	:= FALSE;
+		fbReadMDPElement.bExecute			:= FALSE;
+		fbReadMDP.bExecute					:= FALSE;
+	
+	//	fbGetDeviceIDs.START		:= FALSE;
+	//	fbGetDeviceNetId.START		:= FALSE;
+	//	fbGetDeviceType.START		:= FALSE;
+		
+		eState := 10;
+
+	10: // Coleta AmsNetID da CPU
+		fbGetLocalAmsNetId.bExecute:= TRUE; 
+		IF fbGetLocalAmsNetId.bBusy THEN
+			eState := 11;
+		END_IF
+
+	11:
+		IF NOT fbGetLocalAmsNetId.bBusy THEN
+			fbGetLocalAmsNetId.bExecute:= FALSE;
+			IF fbGetLocalAmsNetId.bError THEN
+				bError		:= TRUE;				// set error flag
+				nErrID		:= fbGetLocalAmsNetId.nErrId;	// store error id
+				eState := 99;
+			ELSE
+				sAmsNetId := fbGetLocalAmsNetId.AddrString;	
+				eState := 14;
+			END_IF
+		END_IF
+
+	14: // Coleta dados da CPU
+		fbGetDeviceIdentification.bExecute:= TRUE;
+		IF fbGetDeviceIdentification.bBusy THEN
+			eState := 15;
+		END_IF
+	
+	15:
+		IF NOT fbGetDeviceIdentification.bBusy THEN
+			fbGetDeviceIdentification.bExecute:= FALSE;
+			IF fbGetDeviceIdentification.bError THEN
+				bError		:= TRUE;				// set error flag
+				nErrID		:= fbGetDeviceIdentification.nErrorID;	// store error id
+				eState := 99;
+			ELSE
+				stDevIdent := fbGetDeviceIdentification.stDevIdent;	
+				eState := 18;
+			END_IF
+		END_IF
+
+	18: // Leitura do nome da CPU na rede
+		stMDP_Addr.nArea    := INT_TO_BYTE(eMDP_Area_GeneralArea);
+		stMDP_Addr.nTableId := 8;				//** table ID in module for "Device Name"
+		stMDP_Addr.nSubIdx  := 0;				//** subindex in table ID for "Device Name"                     
+        
+		fbReadMDP.sAmsNetId			:= sAmsNetId;
+		fbReadMDP.stMDP_DynAddr		:= stMDP_Addr;
+		fbReadMDP.pDstBuf			:= ADR(sData); // Buffer para amarzenar os dados "string"
+		fbReadMDP.cbDstBufLen		:= SIZEOF(sData); // Buffer para amarzenar os dados "string"
+		fbReadMDP.bExecute    		:= TRUE;          
+   
+        IF fbReadMDP.bBusy THEN					// FB executed?
+ 	       eState := 19;
+		END_IF
+		
+	19: // Leitura do nome da CPU na rede
+		IF NOT fbReadMDP.bBusy THEN				
+			fbReadMDP.bExecute := FALSE;
+            IF fbReadMDP.bError THEN			// Error?
+				bError		:= TRUE;				// set error flag
+				nErrID		:= fbReadMDP.nErrID;	// store error id
+                eState		:= 99;					// termina a leitura, estado de erro!
+			ELSE								// Sem erro
+				stDeviceDiag.Name	:= sData;            		//** armazena o nome da CPU na estrutura
+                eState		:= 22;				// próximo passo 
+			END_IF
+		END_IF
+		
+	22:	// Leitura da frequencia da CPU
+		stMDP_Addr.nArea    := INT_TO_BYTE(eMDP_Area_ConfigArea);
+		stMDP_Addr.nTableId := 1;				//** table ID in module for "CPU Properties"
+		stMDP_Addr.nSubIdx  := 1;				//** subindex in table ID for "CPU Frequency"                     
+        
+		fbReadMDPElement.sAmsNetId			:= sAmsNetId;
+		fbReadMDPElement.stMDP_Addr			:= stMDP_Addr;
+		fbReadMDPElement.eModuleType		:= eMDP_ModT_CPU; // Module type = CPU         
+		fbReadMDPElement.pDstBuf			:= ADR(diData); // Buffer para amarzenar os dados "dint"
+		fbReadMDPElement.cbDstBufLen		:= SIZEOF(diData); // Buffer para amarzenar os dados "dint"
+		fbReadMDPElement.bExecute    		:= TRUE;          
+   
+        IF fbReadMDPElement.bBusy THEN					// FB executed?
+ 	       eState := 23;
+		END_IF
+
+	23: // Leitura da frequencia da CPU
+		IF NOT fbReadMDPElement.bBusy THEN				
+			fbReadMDPElement.bExecute := FALSE;
+            IF fbReadMDPElement.bError THEN		// Error?
+				bError		:= TRUE;				// set error flag
+				nErrID		:= fbReadMDPElement.nErrID;	// store error id
+                eState		:= 99;					// termina a leitura, estado de erro!
+			ELSE								// Sem erro
+				stDeviceDiag.stCPU.rFrequency	:= diData;			//** armazena a frequência da CPU na estrutura
+                eState			:= 26;				// próximo passo 
+			END_IF
+		END_IF
+
+	26:	// Leitura da Revisão da Placa Mãe
+		stMDP_Addr.nArea    := INT_TO_BYTE(eMDP_Area_ConfigArea);
+		stMDP_Addr.nTableId := 2;				//** table ID in module for "MB Version Information"
+		stMDP_Addr.nSubIdx  := 1;				//** subindex in table ID for "MB Revision"                     
+        
+		fbReadMDPElement.sAmsNetId			:= sAmsNetId;
+		fbReadMDPElement.stMDP_Addr			:= stMDP_Addr;
+		fbReadMDPElement.eModuleType		:= eMDP_ModT_Mainboard; // Module type = Mainboard         
+		fbReadMDPElement.pDstBuf			:= ADR(siData); // Buffer para amarzenar os dados "sint"
+		fbReadMDPElement.cbDstBufLen		:= SIZEOF(siData); // Buffer para amarzenar os dados "sint"
+		fbReadMDPElement.bExecute    		:= TRUE;          
+   
+        IF fbReadMDPElement.bBusy THEN					// FB executed?
+ 	       eState := 27;
+		END_IF
+
+	27: // Leitura da Revisão da Placa Mãe
+		IF NOT fbReadMDPElement.bBusy THEN				
+			fbReadMDPElement.bExecute := FALSE;
+            IF fbReadMDPElement.bError THEN		// Error?
+				bError		:= TRUE;				// set error flag
+				nErrID		:= fbReadMDPElement.nErrID;	// store error id
+                eState		:= 99;					// termina a leitura, estado de erro!
+			ELSE								// Sem erro
+				iMB_Revision	:= siData;			//** armazena a revisão da Placa Mãe na estrutura
+                eState			:= 30;				// próximo passo 
+			END_IF
+		END_IF
+
+	30:	// Leitura da Revisão da Placa Mãe
+		stMDP_Addr.nArea    := INT_TO_BYTE(eMDP_Area_ConfigArea);
+		stMDP_Addr.nTableId := 2;				//** table ID in module for "MB Version Information"
+		stMDP_Addr.nSubIdx  := 2;				//** subindex in table ID for "MB Bios Major Version"                     
+        
+		fbReadMDPElement.sAmsNetId			:= sAmsNetId;
+		fbReadMDPElement.stMDP_Addr			:= stMDP_Addr;
+		fbReadMDPElement.eModuleType		:= eMDP_ModT_Mainboard; // Module type = Mainboard         
+		fbReadMDPElement.pDstBuf			:= ADR(siData); // Buffer para amarzenar os dados "sint"
+		fbReadMDPElement.cbDstBufLen		:= SIZEOF(siData); // Buffer para amarzenar os dados "sint"
+		fbReadMDPElement.bExecute    		:= TRUE;          
+   
+        IF fbReadMDPElement.bBusy THEN					// FB executed?
+ 	       eState := 31;
+		END_IF
+
+	31: // Leitura da Revisão da Placa Mãe
+		IF NOT fbReadMDPElement.bBusy THEN				
+			fbReadMDPElement.bExecute := FALSE;
+            IF fbReadMDPElement.bError THEN		// Error?
+				bError		:= TRUE;				// set error flag
+				nErrID		:= fbReadMDPElement.nErrID;	// store error id
+                eState		:= 99;					// termina a leitura, estado de erro!
+			ELSE								// Sem erro
+				iMB_MajorVersion:= siData;			//** armazena a versão da BIOS da Placa Mãe na estrutura
+                eState			:= 34;				// próximo passo 
+			END_IF
+		END_IF
+
+	34:	// Leitura da Revisão da Placa Mãe
+		stMDP_Addr.nArea    := INT_TO_BYTE(eMDP_Area_ConfigArea);
+		stMDP_Addr.nTableId := 2;				//** table ID in module for "MB Version Information"
+		stMDP_Addr.nSubIdx  := 3;				//** subindex in table ID for "MB Bios Minor Version"                     
+        
+		fbReadMDPElement.sAmsNetId			:= sAmsNetId;
+		fbReadMDPElement.stMDP_Addr			:= stMDP_Addr;
+		fbReadMDPElement.eModuleType		:= eMDP_ModT_Mainboard; // Module type = Mainboard         
+		fbReadMDPElement.pDstBuf			:= ADR(siData); // Buffer para amarzenar os dados "sint"
+		fbReadMDPElement.cbDstBufLen		:= SIZEOF(siData); // Buffer para amarzenar os dados "sint"
+		fbReadMDPElement.bExecute    		:= TRUE;          
+   
+        IF fbReadMDPElement.bBusy THEN					// FB executed?
+ 	       eState := 35;
+		END_IF
+
+	35: // Leitura da Revisão da Placa Mãe
+		IF NOT fbReadMDPElement.bBusy THEN				
+			fbReadMDPElement.bExecute := FALSE;
+            IF fbReadMDPElement.bError THEN		// Error?
+				bError		:= TRUE;				// set error flag
+				nErrID		:= fbReadMDPElement.nErrID;	// store error id
+                eState		:= 99;					// termina a leitura, estado de erro!
+			ELSE								// Sem erro
+				iMB_MinorVersion:= siData;			//** armazena a versão da BIOS da Placa Mãe na estrutura
+                eState			:= 38;				// próximo passo 
+			END_IF
+		END_IF
+
+	38:	// Leitura do Nome do Sistema Operacional
+		stMDP_Addr.nArea    := INT_TO_BYTE(eMDP_Area_ConfigArea);
+		stMDP_Addr.nTableId := 0;				//** table ID in module for "OS Information"
+		stMDP_Addr.nSubIdx  := 3;				//** subindex in table ID for "OS Name"                     
+        
+		fbReadMDPElement.sAmsNetId			:= sAmsNetId;
+		fbReadMDPElement.stMDP_Addr			:= stMDP_Addr;
+		fbReadMDPElement.eModuleType		:= eMDP_ModT_OS; // Module type = OS         
+		fbReadMDPElement.pDstBuf			:= ADR(sData); // Buffer para amarzenar os dados "string"
+		fbReadMDPElement.cbDstBufLen		:= SIZEOF(sData); // Buffer para amarzenar os dados "string"
+		fbReadMDPElement.bExecute    		:= TRUE;          
+   
+        IF fbReadMDPElement.bBusy THEN					// FB executed?
+ 	       eState := 39;
+		END_IF
+
+	39: // Leitura do Nome do Sistema Operacional
+		IF NOT fbReadMDPElement.bBusy THEN				
+			fbReadMDPElement.bExecute := FALSE;
+            IF fbReadMDPElement.bError THEN		// Error?
+				bError		:= TRUE;				// set error flag
+				nErrID		:= fbReadMDPElement.nErrID;	// store error id
+                eState		:= 99;					// termina a leitura, estado de erro!
+			ELSE								// Sem erro
+				stDeviceDiag.OSName		:= sData;			//** armazena o Nome do Sistema Operacional na estrutura
+                eState			:= 42;				// próximo passo 
+			END_IF
+		END_IF
+		
+	42:	// Leitura do Total da memória
+		stMDP_Addr.nArea    := INT_TO_BYTE(eMDP_Area_ConfigArea);
+		stMDP_Addr.nTableId := 1;				//** table ID in module for "Memory Information"
+		stMDP_Addr.nSubIdx  := 6;				//** subindex in table ID for "Memory Allocated"                     
+        
+		fbReadMDPElement.sAmsNetId			:= sAmsNetId;
+		fbReadMDPElement.stMDP_Addr			:= stMDP_Addr;
+		fbReadMDPElement.eModuleType		:= eMDP_ModT_Memory; // Module type = Memory         
+		fbReadMDPElement.pDstBuf			:= ADR(liData); // Buffer para amarzenar os dados "Lint"
+		fbReadMDPElement.cbDstBufLen		:= SIZEOF(liData); // Buffer para amarzenar os dados "Lint"
+		fbReadMDPElement.bExecute    		:= TRUE;          
+   
+        IF fbReadMDPElement.bBusy THEN					// FB executed?
+ 	       eState := 43;
+		END_IF
+
+	43: // Leitura do Total da memória
+		IF NOT fbReadMDPElement.bBusy THEN				
+			fbReadMDPElement.bExecute := FALSE;
+            IF fbReadMDPElement.bError THEN		// Error?
+				bError		:= TRUE;				// set error flag
+				nErrID		:= fbReadMDPElement.nErrID;	// store error id
+                eState		:= 99;					// termina a leitura, estado de erro!
+			ELSE								// Sem erro
+				stDeviceDiag.stMemory.rTotal:= liData;			//** armazena a memória total na estrutura
+                eState			:= 50;				// próximo passo 
+			END_IF
+		END_IF
+		
+	// LEITURAS CíCLICAS
+
+	50:	// Leitura do uso da CPU
+		stMDP_Addr.nArea    := INT_TO_BYTE(eMDP_Area_ConfigArea);
+		stMDP_Addr.nTableId := 1;				//** table ID in module for "CPU Properties"
+		stMDP_Addr.nSubIdx  := 2;				//** subindex in table ID for "CPU Usage"                     
+        
+		fbReadMDPElement.sAmsNetId			:= sAmsNetId;
+		fbReadMDPElement.stMDP_Addr			:= stMDP_Addr;
+		fbReadMDPElement.eModuleType		:= eMDP_ModT_CPU; // Module type = CPU         
+		fbReadMDPElement.pDstBuf			:= ADR(iData); // Buffer para amarzenar os dados "int"
+		fbReadMDPElement.cbDstBufLen		:= SIZEOF(iData); // Buffer para amarzenar os dados "int"
+		fbReadMDPElement.bExecute    		:= TRUE;          
+   
+        IF fbReadMDPElement.bBusy THEN					// FB executed?
+ 	       eState := 51;
+		END_IF
+
+	51: // Leitura do uso da CPU
+		IF NOT fbReadMDPElement.bBusy THEN				
+			fbReadMDPElement.bExecute := FALSE;
+            IF fbReadMDPElement.bError THEN		// Error?
+				bError		:= TRUE;				// set error flag
+				nErrID		:= fbReadMDPElement.nErrID;	// store error id
+                eState		:= 99;					// termina a leitura, estado de erro!
+			ELSE								// Sem erro
+				stDeviceDiag.stCPU.rUsage:= iData;			//** armazena o uso da CPU na estrutura
+                eState			:= 54;				// próximo passo 
+			END_IF
+		END_IF
+ 
+	54:	// Leitura da temperatura da CPU
+		stMDP_Addr.nArea    := INT_TO_BYTE(eMDP_Area_ConfigArea);
+		stMDP_Addr.nTableId := 1;				//** table ID in module for "CPU Properties"
+		stMDP_Addr.nSubIdx  := 3;				//** subindex in table ID for "CPU Temperature"                     
+        
+		fbReadMDPElement.sAmsNetId			:= sAmsNetId;
+		fbReadMDPElement.stMDP_Addr			:= stMDP_Addr;
+		fbReadMDPElement.eModuleType		:= eMDP_ModT_CPU; // Module type = CPU         
+		fbReadMDPElement.pDstBuf			:= ADR(iData); // Buffer para amarzenar os dados "int"
+		fbReadMDPElement.cbDstBufLen		:= SIZEOF(iData); // Buffer para amarzenar os dados "int"
+		fbReadMDPElement.bExecute    		:= TRUE;          
+   
+        IF fbReadMDPElement.bBusy THEN					// FB executed?
+ 	       eState := 55;
+		END_IF
+
+	55: // Leitura da temperatura da CPU
+		IF NOT fbReadMDPElement.bBusy THEN				
+			fbReadMDPElement.bExecute := FALSE;
+            IF fbReadMDPElement.bError THEN		// Error?
+				bError		:= TRUE;				// set error flag
+				nErrID		:= fbReadMDPElement.nErrID;	// store error id
+                eState		:= 99;					// termina a leitura, estado de erro!
+			ELSE								// Sem erro
+				stDeviceDiag.stCPU.rTemp	:= iData;			//** armazena a temperatura da CPU na estrutura
+                eState			:= 58;				// próximo passo 
+			END_IF
+		END_IF
+
+	58:	// Leitura da temperatura da MB
+		stMDP_Addr.nArea    := INT_TO_BYTE(eMDP_Area_ConfigArea);
+		stMDP_Addr.nTableId := 1;				//** table ID in module for "MB Information"
+		stMDP_Addr.nSubIdx  := 10;				//** subindex in table ID for "MB Temperature"                     
+        
+		fbReadMDPElement.sAmsNetId			:= sAmsNetId;
+		fbReadMDPElement.stMDP_Addr			:= stMDP_Addr;
+		fbReadMDPElement.eModuleType		:= eMDP_ModT_Mainboard; // Module type = Mainboard         
+		fbReadMDPElement.pDstBuf			:= ADR(iData); // Buffer para amarzenar os dados "int"
+		fbReadMDPElement.cbDstBufLen		:= SIZEOF(iData); // Buffer para amarzenar os dados "int"
+		fbReadMDPElement.bExecute    		:= TRUE;          
+   
+        IF fbReadMDPElement.bBusy THEN					// FB executed?
+ 	       eState := 59;
+		END_IF
+
+	59: // Leitura da temperatura da MB
+		IF NOT fbReadMDPElement.bBusy THEN				
+			fbReadMDPElement.bExecute := FALSE;
+            IF fbReadMDPElement.bError THEN		// Error?
+				bError		:= TRUE;				// set error flag
+				nErrID		:= fbReadMDPElement.nErrID;	// store error id
+                eState		:= 99;					// termina a leitura, estado de erro!
+			ELSE								// Sem erro
+				stDeviceDiag.stMB.rTemp	:= iData;			//** armazena a temperatura da Placa Mãe na estrutura
+                eState			:= 62;				// próximo passo 
+			END_IF
+		END_IF
+
+	62:	// Leitura do Uso da memória
+		stMDP_Addr.nArea    := INT_TO_BYTE(eMDP_Area_ConfigArea);
+		stMDP_Addr.nTableId := 1;				//** table ID in module for "Memory Information"
+		stMDP_Addr.nSubIdx  := 7;				//** subindex in table ID for "Memory Available"                     
+        
+		fbReadMDPElement.sAmsNetId			:= sAmsNetId;
+		fbReadMDPElement.stMDP_Addr			:= stMDP_Addr;
+		fbReadMDPElement.eModuleType		:= eMDP_ModT_Memory; // Module type = Memory         
+		fbReadMDPElement.pDstBuf			:= ADR(liData); // Buffer para amarzenar os dados "Lint"
+		fbReadMDPElement.cbDstBufLen		:= SIZEOF(liData); // Buffer para amarzenar os dados "Lint"
+		fbReadMDPElement.bExecute    		:= TRUE;          
+   
+        IF fbReadMDPElement.bBusy THEN					// FB executed?
+ 	       eState := 63;
+		END_IF
+
+	63: // Leitura do Uso da memória
+		IF NOT fbReadMDPElement.bBusy THEN				
+			fbReadMDPElement.bExecute := FALSE;
+            IF fbReadMDPElement.bError THEN		// Error?
+				bError		:= TRUE;				// set error flag
+				nErrID		:= fbReadMDPElement.nErrID;	// store error id
+                eState		:= 99;					// termina a leitura, estado de erro!
+			ELSE								// Sem erro
+				stDeviceDiag.stMemory.rUsage := stDeviceDiag.stMemory.rTotal - liData;			//** armazena a memória usada na estrutura
+                eState			:= 66;				// próximo passo 
+			END_IF
+		END_IF
+		
+	66: // Fim das leituras Cíclicas
+		eState		:= 50; // Retorna para o início das leituras cíclicas
+	
+	99: // ESTADO DE FALHA
+		IF bRestart THEN	// flag = TRUE -> restart state machine
+			bError			:= FALSE;	// zera a flag de erro
+			nErrID			:= 0;		// zera error ID
+			eState 			:= 0;		//Reinicia as leituras;
+		END_IF    
+
+	ELSE // Se algum estado indefinido
+
+		eState := 0;	// Reinicia as leituras
+
+END_CASE	
+
+
+
+// Cálculo da porcentagem utilizada de memória
+	IF stDeviceDiag.stMemory.rTotal > 0.0 THEN
+		stDeviceDiag.stMemory.rUsage_percent := (stDeviceDiag.stMemory.rUsage / stDeviceDiag.stMemory.rTotal) * 100.0;
+	ELSE
+		stDeviceDiag.stMemory.rUsage_percent := 0.0;
+	END_IF
+	// Ajuste do texto de memória
+	IF (stDeviceDiag.stMemory.rTotal / 1073741824.0) > 1.0 THEN
+		rAux := (stDeviceDiag.stMemory.rTotal/1073741824.0);
+		fbFormatString(
+			sFormat:= '%.1f GB', 
+			arg1:= F_REAL(rAux), 
+			sOut=> stDeviceDiag.stMemory.sTotal);
+	ELSIF (stDeviceDiag.stMemory.rTotal / 1048576.0) > 1.0 THEN
+		rAux := (stDeviceDiag.stMemory.rTotal/1048576.0);
+		fbFormatString(
+			sFormat:= '%.1f MB', 
+			arg1:= F_REAL(rAux), 
+			sOut=> stDeviceDiag.stMemory.sTotal);
+	ELSE 
+		rAux := (stDeviceDiag.stMemory.rTotal/1000.0);
+		fbFormatString(
+			sFormat:= '%.1f KB', 
+			arg1:= F_REAL(rAux), 
+			sOut=> stDeviceDiag.stMemory.sTotal);
+	END_IF
+	IF (stDeviceDiag.stMemory.rUsage / 1073741824.0) > 1.0 THEN
+		rAux := (stDeviceDiag.stMemory.rUsage/1073741824.0);
+		fbFormatString(
+			sFormat:= '%.1f GB', 
+			arg1:= F_REAL(rAux), 
+			sOut=> stDeviceDiag.stMemory.sUsage);
+	ELSIF (stDeviceDiag.stMemory.rUsage / 1048576.0) > 1.0 THEN
+		rAux := (stDeviceDiag.stMemory.rUsage/1048576.0);
+		fbFormatString(
+			sFormat:= '%.1f MB', 
+			arg1:= F_REAL(rAux), 
+			sOut=> stDeviceDiag.stMemory.sUsage);
+	ELSE 
+		rAux := (stDeviceDiag.stMemory.rUsage/1000.0);
+		fbFormatString(
+			sFormat:= '%.1f KB', 
+			arg1:= F_REAL(rAux), 
+			sOut=> stDeviceDiag.stMemory.sUsage);
+	END_IF
+
+
+// ############################################################
+// **********  BLOCOS DE DIAGNÓSTICO DO CONTROLADOR  **********	
+// ############################################################
+
+// Leitura do AmsNetId do controlador	
+fbGetLocalAmsNetId();
+
+// Diagnóstico do Device	
+fbGetDeviceIdentification();
+
+// Leitura dos elementos MDP
+fbReadMDPElement();
+fbReadMDP();
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="act_NIC" Id="{e67bf8e0-fb4f-4cd4-9300-a3b02b721018}">
+      <Implementation>
+        <ST><![CDATA[
+
+CASE eStateNIC OF
+	0: // Inicio
+	
+		// Zera a execução de todos os blocos
+		fbMDP_NIC_Read.bExecute				:= FALSE;
+		eStateNIC := 10;
+
+	10: // Prepara para ler o primeiro dispositivo
+		iModIdx := 0;
+		eStateNIC := 20;
+		
+	20: // Leitura do dispositivo de Rede
+		fbMDP_NIC_Read.sAmsNetId 	:= sAmsNetId;
+		fbMDP_NIC_Read.iModIdx 		:= iModIdx;
+		fbMDP_NIC_Read.bExecute		:= TRUE;
+
+		IF fbMDP_NIC_Read.bBusy THEN
+			eStateNIC	:= 30;
+		END_IF
+
+	30: // Verifica se fez a leitura
+		IF NOT fbMDP_NIC_Read.bBusy THEN
+			fbMDP_NIC_Read.bExecute		:= FALSE;
+			IF fbMDP_NIC_Read.bError THEN // Se não fez leitura
+				eStateNIC	:= 0; // Volta para o início
+			ELSE
+				stNICDiag[iModIdx+1].sName 				:= LEFT(STR:= fbMDP_NIC_Read.stMDP_ModuleHeader.sName, SIZE:= (FIND(STR1:= fbMDP_NIC_Read.stMDP_ModuleHeader.sName, STR2:= '['))-1);
+				stNICDiag[iModIdx+1].sMACAddress		:= fbMDP_NIC_Read.stMDP_ModuleContent.sMACAddress;
+				stNICDiag[iModIdx+1].sIPAddress			:= fbMDP_NIC_Read.stMDP_ModuleContent.sIPAddress;
+				stNICDiag[iModIdx+1].sSubnetMask		:= fbMDP_NIC_Read.stMDP_ModuleContent.sSubnetMask;
+				IF fbMDP_NIC_Read.stMDP_ModuleContent.bDHCP THEN
+					stNICDiag[iModIdx+1].sDHCP := 'Habilitado';
+				ELSE
+					stNICDiag[iModIdx+1].sDHCP := 'Desabilitado';					
+				END_IF
+				eStateNIC	:= 40;				
+			END_IF			
+		END_IF
+
+	40: // Próximo dispositivo
+		iModIdx := iModIdx + 1;	
+		eStateNIC	:= 20;				
+
+	ELSE
+		eStateNIC 	:= 0;	
+
+END_CASE
+
+fbMDP_NIC_Read();
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="act_Software" Id="{6f5ed55b-6e2c-4261-972f-f57298b1da76}">
+      <Implementation>
+        <ST><![CDATA[
+
+
+stSoftwareDiag.sTwinCATVersion := CONCAT( CONCAT( CONCAT( CONCAT( CONCAT( CONCAT( CONCAT( CONCAT('v',stDevIdent.strTwinCATVersion),'.' ),stDevIdent.strTwinCATRevision ), ' (Build '), stDevIdent.strTwinCATBuild), '.'), UDINT_TO_STRING(TwinCAT_revision) ), ')');
+
+stSoftwareDiag.iADSPort		:= _AppInfo.AdsPort;
+stSoftwareDiag.sProjectName	:= _AppInfo.ProjectName;
+stSoftwareDiag.sAppTimeStamp:= _AppInfo.AppTimestamp;
+
+
+CASE eStateSoftware OF
+	0: // Inicio
+	
+		// Zera a execução de todos os blocos
+		fbTC_CpuUsage.START				:= FALSE;
+		fbTC_SysLatency.START			:= FALSE;
+		fbReadMDPSoftware.bExecute 		:= FALSE;
+		eStateSoftware := 10;
+
+	10: // Leitura do uso da CPU pelo RealTime
+		fbTC_CpuUsage.NETID		:= sAmsNetId;
+		fbTC_CpuUsage.START 	:= TRUE;
+
+		IF fbTC_CpuUsage.BUSY THEN
+			eStateSoftware	:= 20;
+		END_IF
+
+	20: // Verifica se fez a leitura
+		IF NOT fbTC_CpuUsage.BUSY THEN
+			fbTC_CpuUsage.START		:= FALSE;
+			IF fbTC_CpuUsage.ERR THEN // Se não fez leitura
+				eStateSoftware	:= 0; // Volta para o início
+			ELSE
+				stSoftwareDiag.rRealTimeUsage		:= UDINT_TO_REAL(fbTC_CpuUsage.USAGE);
+				eStateSoftware	:= 30;				
+			END_IF			
+		END_IF
+
+	30: // Leitura do uso da Latência do sistema
+		fbTC_SysLatency.NETID	:= sAmsNetId;
+		fbTC_SysLatency.START 	:= TRUE;
+
+		IF fbTC_SysLatency.BUSY THEN
+			eStateSoftware	:= 40;
+		END_IF
+
+	40: // Verifica se fez a leitura
+		IF NOT fbTC_SysLatency.BUSY THEN
+			fbTC_SysLatency.START	:= FALSE;
+			IF fbTC_SysLatency.ERR THEN // Se não fez leitura
+				eStateSoftware	:= 0; // Volta para o início
+			ELSE
+				stSoftwareDiag.rRealTimeLatency		:= UDINT_TO_REAL(fbTC_SysLatency.ACTUAL);
+				eStateSoftware	:= 50;				
+			END_IF			
+		END_IF
+
+	50:	// Leitura do Uso da memória
+		stMDP_AddrSoftware.nArea    := INT_TO_BYTE(eMDP_Area_ConfigArea);
+		stMDP_AddrSoftware.nTableId := 1;				//** table ID in module for "TwinCAT Information"
+		stMDP_AddrSoftware.nSubIdx  := 12;				//** subindex in table ID for "TwinCAT Revision"                     
+        
+		fbReadMDPSoftware.sAmsNetId			:= sAmsNetId;
+		fbReadMDPSoftware.stMDP_Addr			:= stMDP_AddrSoftware;
+		fbReadMDPSoftware.eModuleType		:= eMDP_ModT_TwinCAT; // Module type = TwinCAT         
+		fbReadMDPSoftware.pDstBuf			:= ADR(iData); // Buffer para amarzenar os dados "int"
+		fbReadMDPSoftware.cbDstBufLen		:= SIZEOF(iData); // Buffer para amarzenar os dados "int"
+		fbReadMDPSoftware.bExecute    		:= TRUE;          
+   
+        IF fbReadMDPSoftware.bBusy THEN					// FB executed?
+ 	       eStateSoftware := 60;
+		END_IF
+
+	60: // Leitura do Uso da memória
+		IF NOT fbReadMDPSoftware.bBusy THEN				
+			fbReadMDPSoftware.bExecute := FALSE;
+            IF fbReadMDPSoftware.bError THEN		// Error?
+                eStateSoftware		:= 0;					// termina a leitura, estado de erro!
+			ELSE								// Sem erro
+				TwinCAT_revision 		:= iData;			//** armazena a memória usada na estrutura
+                eStateSoftware			:= 0;				// próximo passo 
+			END_IF
+		END_IF
+
+
+	ELSE
+		eStateSoftware 	:= 0;	
+
+END_CASE
+
+fbTC_CpuUsage();
+fbTC_SysLatency();
+
+// Leitura dos elementos MDP
+fbReadMDPSoftware();
+
+
+CASE eStateTask OF
+	0: // Inicio
+	
+		// Zera a execução de todos os blocos
+		fbADSReadEx.READ			:= FALSE;
+		eStateTask := 10;
+
+	10: // Leitura do uso da Task SAF
+		fbADSReadEx.NETID		:= sAmsNetId;
+		fbADSReadEx.PORT 		:= 500;
+		fbADSReadEx.IDXGRP		:= 16#1000;
+		fbADSReadEx.IDXOFFS		:= 16#10;
+		fbADSReadEx.LEN			:= SIZEOF(SAF_Task);
+		fbADSReadEx.DESTADDR	:= ADR(SAF_Task);
+		fbADSReadEx.READ		:= TRUE;
+		
+		IF fbADSReadEx.BUSY THEN
+			eStateTask	:= 20;
+		END_IF
+
+	20: // Verifica se fez a leitura
+		IF NOT fbADSReadEx.BUSY THEN
+			fbADSReadEx.READ		:= FALSE;
+			IF fbADSReadEx.ERR THEN // Se não fez leitura
+				eStateTask	:= 0; // Volta para o início
+			ELSE
+				stTaskInfo[3].rCycleTime		:= UDINT_TO_REAL(SAF_Task)/10000;
+				eStateTask	:= 30;				
+			END_IF			
+		END_IF
+
+	30: // Leitura do uso da Task SAF
+		fbADSReadEx.NETID		:= sAmsNetId;
+		fbADSReadEx.PORT 		:= 500;
+		fbADSReadEx.IDXGRP		:= 16#1100;
+		fbADSReadEx.IDXOFFS		:= 16#20;
+		fbADSReadEx.LEN			:= SIZEOF(SAF_Task);
+		fbADSReadEx.DESTADDR	:= ADR(SAF_Task);
+		fbADSReadEx.READ		:= TRUE;
+		
+		IF fbADSReadEx.BUSY THEN
+			eStateTask	:= 40;
+		END_IF
+
+	40: // Verifica se fez a leitura
+		IF NOT fbADSReadEx.BUSY THEN
+			fbADSReadEx.READ		:= FALSE;
+			IF fbADSReadEx.ERR THEN // Se não fez leitura
+				eStateTask	:= 0; // Volta para o início
+			ELSE
+				stTaskInfo[3].rLastExecTime		:= UDINT_TO_REAL(SAF_Task)/1000;
+				eStateTask	:= 0;				
+			END_IF			
+		END_IF
+
+
+	ELSE
+		eStateTask 	:= 0;	
+
+END_CASE		
+
+fbADSReadEx();
+	
+// TASK 1 - FAST
+//stTaskInfo[1].sName := RIGHT(STR:= _TaskInfo[1].TaskName, SIZE:= (LEN(STR:=_TaskInfo[1].TaskName) - FIND(STR1:= _TaskInfo[1].TaskName, STR2:= '_')) );
+stTaskInfo[1].sName := 'Fast';
+stTaskInfo[1].rCycleTime := UDINT_TO_REAL(_TaskInfo[1].CycleTime) / 10000.0;
+stTaskInfo[1].rLastExecTime := UDINT_TO_REAL(_TaskInfo[1].LastExecTime) / 10000.0;
+IF stTaskInfo[1].rCycleTime <> 0 THEN
+	stTaskInfo[1].rPercentUsage := (stTaskInfo[1].rLastExecTime / stTaskInfo[1].rCycleTime) * 100.0;
+ELSE
+	stTaskInfo[1].rPercentUsage := 0.0;	
+END_IF
+IF stTaskInfo[1].bResetCounter THEN
+	stTaskInfo[1].bResetCounter := FALSE;
+	stTaskInfo[1].iExceedCounter := 0;
+ELSIF _TaskInfo[1].CycleTimeExceeded THEN
+	stTaskInfo[1].iExceedCounter := stTaskInfo[1].iExceedCounter +1;
+END_IF
+
+(*// TASK 2 - STANDARD
+//stTaskInfo[2].sName := RIGHT(STR:= _TaskInfo[2].TaskName, SIZE:= (LEN(STR:=_TaskInfo[2].TaskName) - FIND(STR1:= _TaskInfo[2].TaskName, STR2:= '_')) );
+stTaskInfo[2].sName := 'Standard';
+stTaskInfo[2].rCycleTime := UDINT_TO_REAL(_TaskInfo[2].CycleTime) / 10000.0;
+stTaskInfo[2].rLastExecTime := UDINT_TO_REAL(_TaskInfo[2].LastExecTime) / 10000.0;
+IF stTaskInfo[2].rCycleTime <> 0 THEN
+	stTaskInfo[2].rPercentUsage := (stTaskInfo[2].rLastExecTime / stTaskInfo[2].rCycleTime) * 100.0;
+ELSE
+	stTaskInfo[2].rPercentUsage := 0.0;	
+END_IF
+IF stTaskInfo[2].bResetCounter THEN
+	stTaskInfo[2].bResetCounter := FALSE;
+	stTaskInfo[2].iExceedCounter := 0;
+ELSIF _TaskInfo[2].CycleTimeExceeded THEN
+	stTaskInfo[2].iExceedCounter := stTaskInfo[2].iExceedCounter +1;
+END_IF
+
+// TASK 3 - NC SAF
+stTaskInfo[3].sName := 'Motion';
+IF stTaskInfo[3].rCycleTime <> 0 THEN
+	stTaskInfo[3].rPercentUsage := (stTaskInfo[3].rLastExecTime / stTaskInfo[3].rCycleTime) * 100.0;
+ELSE
+	stTaskInfo[3].rPercentUsage := 0.0;	
+END_IF
+stTaskInfo[3].iExceedCounter := 0;*)
+
+]]></ST>
+      </Implementation>
+    </Action>
+    <LineIds Name="Device_Diag">
+      <LineId Id="808" Count="1" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="811" Count="0" />
+      <LineId Id="810" Count="0" />
+      <LineId Id="813" Count="0" />
+      <LineId Id="812" Count="0" />
+      <LineId Id="814" Count="0" />
+    </LineIds>
+    <LineIds Name="Device_Diag.act_Hardware">
+      <LineId Id="2" Count="462" />
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="Device_Diag.act_NIC">
+      <LineId Id="2" Count="50" />
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="Device_Diag.act_Software">
+      <LineId Id="2" Count="1" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="25" Count="1" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="32" Count="4" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="136" Count="0" />
+      <LineId Id="38" Count="1" />
+      <LineId Id="44" Count="2" />
+      <LineId Id="48" Count="10" />
+      <LineId Id="67" Count="4" />
+      <LineId Id="85" Count="17" />
+      <LineId Id="107" Count="20" />
+      <LineId Id="130" Count="5" />
+      <LineId Id="103" Count="0" />
+      <LineId Id="75" Count="7" />
+      <LineId Id="104" Count="2" />
+      <LineId Id="165" Count="1" />
+      <LineId Id="189" Count="4" />
+      <LineId Id="196" Count="4" />
+      <LineId Id="220" Count="0" />
+      <LineId Id="201" Count="0" />
+      <LineId Id="222" Count="0" />
+      <LineId Id="221" Count="0" />
+      <LineId Id="223" Count="1" />
+      <LineId Id="202" Count="5" />
+      <LineId Id="225" Count="0" />
+      <LineId Id="209" Count="5" />
+      <LineId Id="167" Count="0" />
+      <LineId Id="226" Count="23" />
+      <LineId Id="314" Count="0" />
+      <LineId Id="215" Count="0" />
+      <LineId Id="217" Count="2" />
+      <LineId Id="216" Count="0" />
+      <LineId Id="83" Count="0" />
+      <LineId Id="173" Count="0" />
+      <LineId Id="188" Count="0" />
+      <LineId Id="137" Count="0" />
+      <LineId Id="139" Count="0" />
+      <LineId Id="317" Count="0" />
+      <LineId Id="141" Count="0" />
+      <LineId Id="143" Count="0" />
+      <LineId Id="284" Count="4" />
+      <LineId Id="145" Count="0" />
+      <LineId Id="320" Count="0" />
+      <LineId Id="322" Count="0" />
+      <LineId Id="321" Count="0" />
+      <LineId Id="146" Count="0" />
+      <LineId Id="142" Count="0" />
+      <LineId Id="140" Count="0" />
+      <LineId Id="147" Count="1" />
+      <LineId Id="318" Count="0" />
+      <LineId Id="149" Count="1" />
+      <LineId Id="279" Count="4" />
+      <LineId Id="323" Count="2" />
+      <LineId Id="151" Count="5" />
+      <LineId Id="275" Count="0" />
+      <LineId Id="164" Count="0" />
+      <LineId Id="276" Count="2" />
+      <LineId Id="160" Count="0" />
+      <LineId Id="316" Count="0" />
+      <LineId Id="31" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
