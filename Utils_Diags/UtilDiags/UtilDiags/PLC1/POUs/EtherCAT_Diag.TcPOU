@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="EtherCAT_Diag" Id="{19d4d488-96de-460d-8889-3c07cce15059}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM EtherCAT_Diag
+VAR
+	step		: INT;
+	idx			: INT;
+
+	sAmsNetId				: STRING(23);
+
+	fbGetDeviceIDs			: IOF_GetDeviceIDs;
+	IdsData					: ARRAY[0..20] OF WORD;
+	
+	fbGetDeviceNetId		: IOF_GetDeviceNetId;
+	SearchID				: INT;
+
+	fbGetDeviceType			: IOF_GetDeviceType;
+	IODeviceType			: IODEVICETYPES;
+
+	fbEcGetMasterDevState		: FB_EcGetMasterDevState;
+	
+	fbEcMasterFrameStatistic	: FB_EcMasterFrameStatistic;
+	
+	fbGetAllSlaveCrcErrors		: FB_EcGetAllSlaveCrcErrors;
+	ArrCrcErrors				: ARRAY [1..100] OF DWORD;
+
+	fbEcGetConfSlaves			: FB_EcGetConfSlaves;
+	ArrSlaveConfigData			: ARRAY [1..100] OF ST_EcSlaveConfigData;
+
+	fbEcGetAllSlaveStates		: FB_EcGetAllSlaveStates;
+	ArrSlaveState				: ARRAY[1..100] OF ST_EcSlaveState;
+
+	nSlave						: INT;
+	fbEcGetSlaveCrcErrorEx		: FB_EcGetSlaveCrcErrorEx;
+
+(* Clear EtherCAT network CRC Errors  PUSH BUTTON *)
+	fbEcMasterFrameStatisticClearCRC	: FB_EcMasterFrameStatisticClearCRC;
+(* Clear EtherCAT network Frame Errors PUSH BUTTON *)
+	fbEcMasterFrameStatisticClearFrames	: FB_EcMasterFrameStatisticClearFrames;
+
+	bClearEtherCATStat					: BOOL;
+END_VAR
+
+VAR_OUTPUT
+	stEtherCATInfo			: ST_EtherCAT_Info;
+	stEtherCATSlaveInfo		: ARRAY[1..100] OF ST_EtherCATSlave_Info;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+CASE step OF
+0:
+	fbGetDeviceIDs.START		:= FALSE;
+	fbGetDeviceNetId.START		:= FALSE;
+	fbGetDeviceType.START		:= FALSE;
+	
+	step := 10;
+
+10: // Coleta a quantidade de devices e os endereços
+	fbGetDeviceIDs.NETID := sAmsNetId;
+	fbGetDeviceIDs.START := TRUE;
+	IF fbGetDeviceIDs.BUSY THEN
+		step := 15;
+	END_IF
+
+15:
+	IF NOT fbGetDeviceIDs.BUSY THEN
+		fbGetDeviceIDs.START := FALSE;
+		IF fbGetDeviceIDs.ERR THEN
+			step := 99;
+		ELSE
+			step := 20;
+		END_IF
+	END_IF
+	
+20: // Se encontrar pelo menos um device
+	IF IdsData[0] > 0 THEN
+		SearchID := 1;	
+		step := 25;
+	ELSE
+		step := 99;	
+	END_IF
+
+25: // Procura pelo Device EtherCAT
+	fbGetDeviceType.NETID:= sAmsNetId; 
+	fbGetDeviceType.DEVICEID:= IdsData[SearchID]; 
+	fbGetDeviceType.START:= TRUE; 
+	IF fbGetDeviceType.BUSY THEN
+		step := 30;
+	END_IF
+	
+30:
+	IF NOT fbGetDeviceType.BUSY THEN
+		fbGetDeviceType.START:= FALSE;
+		IF fbGetDeviceType.ERR THEN
+			step := 99;
+		ELSE
+			IODeviceType := fbGetDeviceType.IODeviceType;		
+			step := 35;			
+		END_IF
+	END_IF
+
+35:	
+	IF IODeviceType = IODEVICETYPE_ETHERCAT THEN
+		step := 40;
+	ELSE
+		IF SearchID < IdsData[0] THEN
+			SearchID := SearchID + 1;
+			step := 25;
+		ELSE
+			step := 99;	
+		END_IF
+	END_IF
+
+40:
+	fbGetDeviceNetId.NETID:= sAmsNetId; 
+	fbGetDeviceNetId.DEVICEID:= IdsData[SearchID]; 
+	fbGetDeviceNetId.START:= TRUE; 
+	IF fbGetDeviceNetId.BUSY THEN
+		step := 45;
+	END_IF
+	
+45:
+	IF NOT fbGetDeviceNetId.BUSY THEN
+		fbGetDeviceNetId.START:= FALSE; 
+		IF fbGetDeviceNetId.ERR THEN
+			step := 99;
+		ELSE
+			stEtherCATInfo.sAmsNetId := fbGetDeviceNetId.DeviceNetId;
+			step := 50;
+		END_IF
+	END_IF
+		
+50: // FIM com o Net ID etherCAT descoberto
+	fbEcGetMasterDevState.bExecute := FALSE;
+
+	step := 100;
+
+99: // ERRO na leitura de status do device
+	step := 0;
+	
+	
+100: // diagnóstico EtherCAT	
+	fbEcGetMasterDevState.bExecute 		:= FALSE;
+	fbEcMasterFrameStatistic.bExecute 	:= FALSE;
+	fbGetAllSlaveCrcErrors.bExecute		:= FALSE;
+	fbEcGetConfSlaves.bExecute			:= FALSE;
+	fbEcGetAllSlaveStates.bExecute		:= FALSE; 
+ 	fbEcGetSlaveCrcErrorEx.bExecute		:= FALSE; 
+	step := 110;
+	
+110: // Estado do Mestre EtherCAT	
+	fbEcGetMasterDevState.bExecute := TRUE;
+	IF fbEcGetMasterDevState.bBusy THEN
+		step := 115;
+	END_IF
+
+115:
+	IF NOT fbEcGetMasterDevState.bBusy THEN
+		fbEcGetMasterDevState.bExecute := FALSE;
+		IF fbEcGetMasterDevState.bError THEN
+			step := 999;
+		ELSE
+			stEtherCATInfo.sStateMaster := F_ConvMasterDevStateToString(fbEcGetMasterDevState.nDevState);
+			step := 120;
+		END_IF
+	END_IF
+
+120: // Get the EtherCAT Network Statistics 
+	fbEcMasterFrameStatistic.bExecute:= TRUE;
+	IF fbEcMasterFrameStatistic.bBusy THEN
+		step := 125;
+	END_IF
+
+125:
+	IF NOT fbEcMasterFrameStatistic.bBusy THEN
+		fbEcMasterFrameStatistic.bExecute:= FALSE;
+		IF fbEcMasterFrameStatistic.bError THEN
+			step := 999;
+		ELSE
+			stEtherCATInfo.nLostFrames				:= fbEcMasterFrameStatistic.nLostFrames;
+			stEtherCATInfo.fFramesPerSecond			:= fbEcMasterFrameStatistic.fFramesPerSecond;
+			stEtherCATInfo.nLostQueuedFrames		:= fbEcMasterFrameStatistic.nLostQueuedFrames;
+			stEtherCATInfo.fQueuedFramesPerSecond	:= fbEcMasterFrameStatistic.fQueuedFramesPerSecond;
+			step := 130;			
+		END_IF
+	END_IF
+
+130:
+	fbGetAllSlaveCrcErrors.bExecute:= TRUE;
+	IF fbGetAllSlaveCrcErrors.bBusy THEN
+		step := 135;
+	END_IF
+	
+135:
+	IF NOT fbGetAllSlaveCrcErrors.bBusy THEN
+		fbGetAllSlaveCrcErrors.bExecute:= FALSE;
+		IF fbGetAllSlaveCrcErrors.bError THEN
+			step := 999;
+		ELSE
+			stEtherCATInfo.nTotalSlave := fbGetAllSlaveCrcErrors.nSlaves;
+			stEtherCATInfo.nTotalCrcErrors := 0;
+			FOR idx := 1 TO stEtherCATInfo.nTotalSlave DO
+				stEtherCATInfo.nTotalCrcErrors := stEtherCATInfo.nTotalCrcErrors + ArrCrcErrors[idx];
+			END_FOR
+			step := 140;
+		END_IF
+	END_IF
+
+140:
+	fbEcGetConfSlaves.bExecute:= TRUE;
+	IF fbEcGetConfSlaves.bBusy THEN
+		step := 145;
+	END_IF
+ 
+145:
+	IF NOT fbEcGetConfSlaves.bBusy THEN
+		fbEcGetConfSlaves.bExecute:= FALSE;
+		IF fbEcGetConfSlaves.bError THEN
+			step := 999;
+		ELSE			
+			FOR idx := 1 TO stEtherCATInfo.nTotalSlave DO
+				stEtherCATSlaveInfo[idx].nAdrr := ArrSlaveConfigData[idx].nAddr;
+				stEtherCATSlaveInfo[idx].sName := ArrSlaveConfigData[idx].sName;
+				stEtherCATSlaveInfo[idx].sType := ArrSlaveConfigData[idx].sType;
+			END_FOR		
+			step := 150;
+		END_IF
+	END_IF
+
+150:
+	fbEcGetAllSlaveStates.bExecute:= TRUE; 
+	IF fbEcGetAllSlaveStates.bBusy THEN
+		step := 155;
+	END_IF
+
+155:
+	IF NOT fbEcGetAllSlaveStates.bBusy THEN
+		fbEcGetAllSlaveStates.bExecute:= FALSE; 
+		IF fbEcGetAllSlaveStates.bError THEN
+			step := 999;
+		ELSE
+			FOR idx := 1 TO stEtherCATInfo.nTotalSlave DO
+				stEtherCATSlaveInfo[idx].stStateBits :=  F_ConvSlaveStateToBits(ArrSlaveState[idx]);
+			END_FOR
+			step := 160;			
+		END_IF
+	END_IF
+
+160:
+	nSlave := 1;
+	step := 161;
+	
+161:
+	fbEcGetSlaveCrcErrorEx.nSlaveAddr:= stEtherCATSlaveInfo[nSlave].nAdrr;
+ 	fbEcGetSlaveCrcErrorEx.bExecute:= TRUE; 
+	IF fbEcGetSlaveCrcErrorEx.bBusy THEN
+		step := 165;
+	END_IF
+
+165:
+	IF NOT fbEcGetSlaveCrcErrorEx.bBusy THEN
+	 	fbEcGetSlaveCrcErrorEx.bExecute:= FALSE; 
+		IF fbEcGetSlaveCrcErrorEx.bError THEN
+			step := 999;
+		ELSE
+			stEtherCATSlaveInfo[nSlave].nCRC_portA := fbEcGetSlaveCrcErrorEx.crcError.portA;
+			stEtherCATSlaveInfo[nSlave].nCRC_portB := fbEcGetSlaveCrcErrorEx.crcError.portB;
+			stEtherCATSlaveInfo[nSlave].nCRC_portC := fbEcGetSlaveCrcErrorEx.crcError.portC;
+			stEtherCATSlaveInfo[nSlave].nCRC_portD := fbEcGetSlaveCrcErrorEx.crcError.portD;
+			IF nSlave < stEtherCATInfo.nTotalSlave THEN
+				nSlave := nSlave + 1;
+				step := 161;
+			ELSE
+				step := 170;
+			END_IF							
+		END_IF
+	END_IF
+	
+170:
+	step := 100;
+	
+	
+999: // ERRRO na leitura EtheCAT!!!	
+	step := 100;
+	
+
+	
+	
+	
+END_CASE
+
+
+// Leitura da quantidade e endereço dos Devices	
+fbGetDeviceIDs(
+	LEN:= SIZEOF(IdsData), 
+	DESTADDR:= ADR(IdsData));	
+
+// Leitura do tipo de Device	
+fbGetDeviceType();		
+
+// Leitura do AmsNetId de cada device	
+fbGetDeviceNetId();
+
+
+// ############################################################
+// **********  BLOCOS DE DIAGNÓSTICO DO CONTROLADOR  **********	
+// ############################################################
+
+// Leitura do Estado do Mestre EtherCAT
+fbEcGetMasterDevState(sNetId:= stEtherCATInfo.sAmsNetId);
+
+// Leitura dos frames EtherCATs
+fbEcMasterFrameStatistic(sNetId:= stEtherCATInfo.sAmsNetId);
+
+// Leitura de qualquer erro de CRC present
+fbGetAllSlaveCrcErrors(sNetId:= stEtherCATInfo.sAmsNetId,
+	pCrcErrorBuf := 	ADR(ArrCrcErrors),
+	cbBufLen:= 		SIZEOF(ArrCrcErrors));
+
+fbEcGetConfSlaves(sNetId:= stEtherCATInfo.sAmsNetId, 
+	pArrEcConfSlaveInfo:= ADR(ArrSlaveConfigData), 
+	cbBufLen:= SIZEOF(ArrSlaveConfigData));
+
+fbEcGetAllSlaveStates(sNetId:= stEtherCATInfo.sAmsNetId,
+	pStateBuf:= ADR(ArrSlaveState), 
+	cbBufLen:= SIZEOF(ArrSlaveState));
+
+fbEcGetSlaveCrcErrorEx(sNetId:= stEtherCATInfo.sAmsNetId);	
+
+
+(* This FB sends the command to clear EtherCAT Network CRC errors PUSH BUTTON *)
+fbEcMasterFrameStatisticClearCRC(sNetId:= 		stEtherCATInfo.sAmsNetId,
+								bExecute:= 	bClearEtherCATStat,
+								tTimeout:=  	T#2S);
+
+(* This FB sends the command to clear EtherCAT Network Frame errors PUSH BUTTON *)
+fbEcMasterFrameStatisticClearFrames(sNetId:= stEtherCATInfo.sAmsNetId,
+									bExecute:= bClearEtherCATStat,
+									tTimeout:= T#2S);
+
+IF bClearEtherCATStat THEN
+	bClearEtherCATStat := FALSE;
+END_IF
+									]]></ST>
+    </Implementation>
+    <LineIds Name="EtherCAT_Diag">
+      <LineId Id="8" Count="3" />
+      <LineId Id="15" Count="60" />
+      <LineId Id="303" Count="0" />
+      <LineId Id="132" Count="19" />
+      <LineId Id="153" Count="5" />
+      <LineId Id="304" Count="0" />
+      <LineId Id="159" Count="14" />
+      <LineId Id="305" Count="0" />
+      <LineId Id="175" Count="63" />
+      <LineId Id="353" Count="0" />
+      <LineId Id="358" Count="0" />
+      <LineId Id="239" Count="0" />
+      <LineId Id="352" Count="0" />
+      <LineId Id="351" Count="0" />
+      <LineId Id="240" Count="40" />
+      <LineId Id="359" Count="2" />
+      <LineId Id="281" Count="15" />
+      <LineId Id="86" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="88" Count="1" />
+      <LineId Id="87" Count="0" />
+      <LineId Id="91" Count="37" />
+      <LineId Id="416" Count="5" />
+      <LineId Id="425" Count="3" />
+      <LineId Id="432" Count="1" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="436" Count="1" />
+      <LineId Id="434" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

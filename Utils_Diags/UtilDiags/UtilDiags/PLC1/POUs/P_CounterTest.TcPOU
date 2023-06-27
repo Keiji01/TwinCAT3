@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="P_CounterTest" Id="{2425c3ab-e7fe-4c29-818b-039c06e0d523}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_CounterTest
+VAR
+	i: INT := 0;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(* Counter just to use memory *)
+
+i := i+1;
+IF i >= 65535 THEN
+	i := 0;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="P_CounterTest">
+      <LineId Id="5" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="10" Count="1" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

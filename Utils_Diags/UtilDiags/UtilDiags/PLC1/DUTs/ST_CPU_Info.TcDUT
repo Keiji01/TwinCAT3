@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="ST_CPU_Info" Id="{31b1788c-1245-473e-bc1c-dc73d48551e7}">
+    <Declaration><![CDATA[TYPE ST_CPU_Info :
+STRUCT
+	rFrequency		: REAL;
+	rUsage			: REAL;
+	rTemp			: REAL;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

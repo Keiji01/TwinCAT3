@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="ST_EtherCAT_Info" Id="{8962c722-a16d-4e11-bed2-1b173536dda7}">
+    <Declaration><![CDATA[TYPE ST_EtherCAT_Info :
+STRUCT
+	sAmsNetId				: STRING(23);
+	sStateMaster			: STRING;
+	nLostFrames				: UDINT;
+	fFramesPerSecond		: LREAL;
+	nLostQueuedFrames		: UDINT;
+	fQueuedFramesPerSecond	: LREAL;
+	nTotalSlave				: UINT;
+	nTotalCrcErrors			: UDINT;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

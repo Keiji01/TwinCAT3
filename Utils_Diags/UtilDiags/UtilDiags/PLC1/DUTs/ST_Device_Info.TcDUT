@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="ST_Device_Info" Id="{301ca07d-cc21-49bc-bc0b-0d5dbb1ac8c0}">
+    <Declaration><![CDATA[TYPE ST_Device_Info :
+STRUCT
+	Name			: STRING;
+	Model_Version	: STRING;
+	SerialNumber	: STRING;
+	OSName			: STRING;
+	sAmsNetId		: STRING(23);
+	stCPU			: ST_CPU_Info;
+	stMB			: ST_MB_Info;
+	stMemory		: ST_Memory_Info;
+	
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

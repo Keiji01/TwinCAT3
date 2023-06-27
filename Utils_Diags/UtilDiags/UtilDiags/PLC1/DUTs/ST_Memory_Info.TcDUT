@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="ST_Memory_Info" Id="{fe219a10-6f0d-4ed0-842c-5c675fe8ed4e}">
+    <Declaration><![CDATA[TYPE ST_Memory_Info :
+STRUCT
+	rTotal			: REAL;
+	rUsage			: REAL;
+	rUsage_percent	: REAL;
+	sTotal			: STRING(20);
+	sUsage			: STRING(20);	
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

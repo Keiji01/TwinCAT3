@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="ST_EtherCATSlave_Info" Id="{bdad22aa-c094-43fa-9b4b-143ceeb77722}">
+    <Declaration><![CDATA[TYPE ST_EtherCATSlave_Info :
+STRUCT
+	nAdrr			: UINT;
+	sName			: STRING(31);
+	sType			: STRING(15);
+	stStateBits		: ST_EcSlaveStateBits;
+	nCRC_portA		: UDINT;	
+	nCRC_portB		: UDINT;	
+	nCRC_portC		: UDINT;	
+	nCRC_portD		: UDINT;	
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

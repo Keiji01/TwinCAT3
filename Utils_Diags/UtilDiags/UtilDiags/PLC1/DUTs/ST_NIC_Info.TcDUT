@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="ST_NIC_Info" Id="{87d96701-7a87-41cf-94a8-d0524b91db88}">
+    <Declaration><![CDATA[TYPE ST_NIC_Info :
+STRUCT
+	sName			: STRING;
+	sMACAddress		: STRING;
+	sIPAddress		: STRING;
+	sSubnetMask		: STRING;
+	sDHCP			: STRING;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

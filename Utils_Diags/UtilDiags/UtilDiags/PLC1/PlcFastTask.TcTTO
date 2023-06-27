@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Task Name="PlcFastTask" Id="{8cb115df-f23a-473d-ae62-db1987724ff4}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>10000</CycleTime>
+    <Priority>21</Priority>
+    <PouCall>
+      <Name>P_CounterTest</Name>
+    </PouCall>
+    <TaskFBGuid>{d397bf07-2c53-44ee-99d9-27ad21de5df2}</TaskFBGuid>
+    <Fb_init>{2966175f-6a73-4a48-89d1-9a9aa4790a74}</Fb_init>
+    <Fb_exit>{49311525-0dd6-42d4-aefb-ebede6938ebc}</Fb_exit>
+    <CycleUpdate>{5e9852cc-e1cf-4ffa-9308-78edcd8efd6e}</CycleUpdate>
+    <PostCycleUpdate>{0251cfe8-c3ba-4d0f-8ba6-077c7cf1e23a}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>
