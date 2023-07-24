@@ -1,0 +1,2004 @@
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.42">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-000000000041}" TcBaseType="true" HideSubItems="true" CName="AmsNetId">AMSNETID</Name>
+			<BitSize>48</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>6</Elements>
+			</ArrayInfo>
+			<Format>
+				<Printf>%d.%d.%d.%d.%d.%d</Printf>
+				<Parameter>[0]</Parameter>
+				<Parameter>[1]</Parameter>
+				<Parameter>[2]</Parameter>
+				<Parameter>[3]</Parameter>
+				<Parameter>[4]</Parameter>
+				<Parameter>[5]</Parameter>
+			</Format>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-00200000000F}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..14] OF BIT</Name>
+			<BitSize>15</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>15</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000006}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..5] OF BIT</Name>
+			<BitSize>6</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>6</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000002}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..1] OF BIT</Name>
+			<BitSize>2</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>2</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-00200000000D}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..12] OF BIT</Name>
+			<BitSize>13</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>13</Elements>
+			</ArrayInfo>
+		</DataType>
+	</DataTypes>
+	<ImageDatas>
+		<ImageData Id="1000">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
+		<ImageData Id="1001">424dd6020000000000003600000028000000100000000e0000000100180000000000a002000000000000000000000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
+	</ImageDatas>
+	<Project ProjectGUID="{698F4DC5-2354-4770-A6A2-E5DE1163AEF3}" Target64Bit="true" ShowHideConfigurations="#x106">
+		<Io>
+			<Device Id="1" DevType="144" AmsPort="28673" AmsNetId="10.199.163.130.2.1" RemoteName="Device 1 (EtherCAT Simulation)">
+				<Name>Device 1 (EtherCAT Simulation)</Name>
+				<DevData>000000000000000000000000000000005c4445564943455c7b43423042393333352d354133322d343233392d413739392d3644393739363933443236377d00000000000000000000910aa8c000ffffffd09466b6573a010000000000000000000000000000000000000000000000000000000000000000000000000000000000</DevData>
+				<Vars VarGrpType="1">
+					<Name>Inputs</Name>
+					<Var>
+						<Name>Status</Name>
+						<Type>UDINT</Type>
+					</Var>
+					<Var>
+						<Name>Telegram Counter</Name>
+						<Type>UDINT</Type>
+						<BitOffs>32</BitOffs>
+					</Var>
+					<Var>
+						<Name>Dc Time</Name>
+						<Type>ULINT</Type>
+						<BitOffs>64</BitOffs>
+					</Var>
+					<Var>
+						<Name>Dc Time to System Time Offset</Name>
+						<Type>ULINT</Type>
+						<BitOffs>128</BitOffs>
+					</Var>
+					<Var>
+						<Name>DevState</Name>
+						<Comment><![CDATA[0x0001 = Link error
+0x0100 = At least one device in 'INIT' state
+0x0200 = At least one device in 'PRE-OP' state
+0x0400 = At least one device in 'SAFE-OP' state
+0x0800 = At least one device indicates an error state
+]]></Comment>
+						<Type>UINT</Type>
+						<BitOffs>256</BitOffs>
+					</Var>
+					<Var>
+						<Name>AmsNetId</Name>
+						<Comment><![CDATA[AmsNetId of Simulation device]]></Comment>
+						<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
+						<BitOffs>1536</BitOffs>
+					</Var>
+				</Vars>
+				<Vars VarGrpType="2">
+					<Name>Outputs</Name>
+					<Var>
+						<Name>Control</Name>
+						<Type>UDINT</Type>
+					</Var>
+				</Vars>
+				<Image Id="1" AddrType="1" ImageType="3" SizeIn="65536" SizeOut="65536">
+					<Name>Image</Name>
+				</Image>
+				<Box Id="3" BoxType="9910">
+					<Name>Term 1 (EK1100)</Name>
+					<Comment><![CDATA[EK1100-0000-0018]]></Comment>
+					<ImageId>1000</ImageId>
+					<Vars VarGrpType="3" InsertType="1">
+						<Name>InfoData</Name>
+						<Var>
+							<Name>State</Name>
+							<Type>UINT</Type>
+							<BitOffs>2080</BitOffs>
+							<InOut>0</InOut>
+						</Var>
+					</Vars>
+					<EcatSimuBox Type="EK1100 EtherCAT Coupler (2A E-Bus)" Desc="EK1100">
+						<BoxSettings PhysAddr="1001" PortDesc="59" UsedPorts="3" PdiControl="3072" VendorId="2" ProductCode="72100946" Revision="1179648" Flags="2">
+							<Fmmu/>
+							<Fmmu/>
+							<Fmmu/>
+							<Fmmu/>
+							<Fmmu/>
+							<Fmmu/>
+							<Fmmu/>
+							<Fmmu/>
+							<Sm/>
+							<Sm/>
+							<Sm/>
+							<Sm/>
+							<Sm/>
+							<Sm/>
+							<Sm/>
+							<Sm/>
+						</BoxSettings>
+					</EcatSimuBox>
+				</Box>
+				<Box Id="4" BoxType="9910">
+					<Name>Term 2 (EL3443)</Name>
+					<Comment><![CDATA[EL3443-0000-0022]]></Comment>
+					<ImageId>1001</ImageId>
+					<Vars VarGrpType="3" InsertType="1">
+						<Name>InfoData</Name>
+						<Var>
+							<Name>FrameCountIn</Name>
+							<Type>UDINT</Type>
+							<BitOffs>2048</BitOffs>
+							<InOut>0</InOut>
+						</Var>
+						<Var>
+							<Name>State</Name>
+							<Type>UINT</Type>
+							<BitOffs>2096</BitOffs>
+							<InOut>0</InOut>
+						</Var>
+					</Vars>
+					<EcatSimuBox Type="EL3443 3Ch. Power Measuring" Desc="EL3443" PortConnectionAddress="0000e90300000000">
+						<BoxSettings PhysAddr="1002" PortDesc="10" UsedPorts="1" PdiControl="3072" MbxWriteStart="4096" MbxWriteSize="128" MbxReadStart="4224" MbxReadSize="128" OutputStart="4352" InputStart="4382" InputSize="160" VendorId="2" ProductCode="225652818" Revision="1441792" InOffset="2048" StateOffset="128" StateMask="1" PreviuosPortPort="1" PreviuosPortEcAdr="1001" Flags="2" InputBitSize="1280">
+							<Fmmu WriteEnable="true"/>
+							<Fmmu LogStart="16777216" LogLength="160" LogEndBit="7" PhysStart="4382" ReadEnable="true" Enable="true"/>
+							<Fmmu LogStart="150994944" LogLength="1" PhysStart="2061" ReadEnable="true" Enable="true"/>
+							<Fmmu/>
+							<Fmmu/>
+							<Fmmu/>
+							<Fmmu/>
+							<Fmmu/>
+							<Sm/>
+							<Sm/>
+							<Sm SmStart="4352" SmControl="36"/>
+							<Sm SmStart="4382" SmLength="160" SmControl="32" SmActivate="1"/>
+							<Sm/>
+							<Sm/>
+							<Sm/>
+							<Sm/>
+						</BoxSettings>
+						<Pdo Name="Total Variant Value Out" Index="#x1600" Flags="#x0010">
+							<Entry Name="Index 1 REAL" BitLen="16" Index="#xf700" Sub="#x11">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Index 2 REAL" BitLen="16" Index="#xf700" Sub="#x12">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Index 3 REAL" BitLen="16" Index="#xf700" Sub="#x13">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Index 4 ULINT" BitLen="16" Index="#xf700" Sub="#x14">
+								<Type>UINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Total Interval" Index="#x1601" Flags="#x0010">
+							<Entry Name="Reset Interval" BitLen="1" Index="#xf701" Sub="#x01">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry BitLen="15">
+								<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L1 Status" Index="#x1a00" InOut="1" Flags="#x0010" SyncMan="3">
+							<Entry Name="Voltage Sign Bit" BitLen="1" Index="#x6000" Sub="#x01">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Overvoltage" BitLen="1" Index="#x6000" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Overcurrent" BitLen="1" Index="#x6000" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Inaccurate Voltage" BitLen="1" Index="#x6000" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Inaccurate Current" BitLen="1" Index="#x6000" Sub="#x05">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Voltage Guard Warning" BitLen="1" Index="#x6000" Sub="#x06">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Voltage Guard Error" BitLen="1" Index="#x6000" Sub="#x07">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Current Guard Warning" BitLen="1" Index="#x6000" Sub="#x08">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Current Guard Error" BitLen="1" Index="#x6000" Sub="#x09">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry BitLen="6">
+								<Type GUID="{18071995-0000-0000-0000-002000000006}">ARRAY [0..5] OF BIT</Type>
+							</Entry>
+							<Entry Name="TxPDO Toggle" BitLen="1" Index="#x6000" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L1 Basic" Index="#x1a01" InOut="1" Flags="#x0010" SyncMan="3">
+							<Entry Name="Voltage" BitLen="32" Index="#x6001" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Current" BitLen="32" Index="#x6001" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L1 Power" Index="#x1a02" InOut="1" Flags="#x0010" SyncMan="3">
+							<Entry Name="Active Power" BitLen="32" Index="#x6002" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Power" BitLen="32" Index="#x6002" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Power" BitLen="32" Index="#x6002" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Power Factor" BitLen="32" Index="#x6002" Sub="#x14">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L1 Energy" Index="#x1a03" InOut="1" Flags="#x0010">
+							<Entry Name="Active Energy" BitLen="64" Index="#x6004" Sub="#x11">
+								<Type>LINT</Type>
+							</Entry>
+							<Entry Name="Apparent Energy" BitLen="64" Index="#x6004" Sub="#x12">
+								<Type>LINT</Type>
+							</Entry>
+							<Entry Name="Reactive Energy" BitLen="64" Index="#x6004" Sub="#x13">
+								<Type>LINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L1 Timing" Index="#x1a04" InOut="1" Flags="#x0010" SyncMan="3">
+							<Entry Name="Voltage Last Zero Crossing" BitLen="64" Index="#x6006" Sub="#x12">
+								<Type>ULINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L1 Advanced" Index="#x1a05" InOut="1" Flags="#x0010">
+							<Entry BitLen="15">
+								<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+							</Entry>
+							<Entry Name="TxPDO Toggle" BitLen="1" Index="#x6007" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Voltage Total Harmonic Distortion" BitLen="32" Index="#x6007" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Current Distortion Factor" BitLen="32" Index="#x6007" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Current Total Harmonic Distortion" BitLen="32" Index="#x6007" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Cos Phi" BitLen="32" Index="#x6007" Sub="#x14">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L1 Statistic Voltage" Index="#x1a06" InOut="1" Flags="#x0010">
+							<Entry Name="Voltage Peak" BitLen="32" Index="#x6008" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Voltage RMS Minimum" BitLen="32" Index="#x6008" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Voltage RMS Maximum" BitLen="32" Index="#x6008" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L1 Statistic Current" Index="#x1a07" InOut="1" Flags="#x0010">
+							<Entry Name="Current Peak" BitLen="32" Index="#x6009" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Current RMS Minimum" BitLen="32" Index="#x6009" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Current RMS Maximum" BitLen="32" Index="#x6009" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L1 Statistic Power" Index="#x1a08" InOut="1" Flags="#x0010">
+							<Entry Name="Active Power Avg" BitLen="32" Index="#x600a" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Active Power Min" BitLen="32" Index="#x600a" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Active Power Max" BitLen="32" Index="#x600a" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Power Avg" BitLen="32" Index="#x600a" Sub="#x14">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Power Max" BitLen="32" Index="#x600a" Sub="#x15">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Power Avg" BitLen="32" Index="#x600a" Sub="#x16">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Power Min" BitLen="32" Index="#x600a" Sub="#x17">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Power Max" BitLen="32" Index="#x600a" Sub="#x18">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Power Min" BitLen="32" Index="#x600a" Sub="#x19">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L1 Classic" Index="#x1a09" InOut="1" Flags="#x0010">
+							<Entry BitLen="15">
+								<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+							</Entry>
+							<Entry Name="TxPDO Toggle" BitLen="1" Index="#x600b" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Voltage" BitLen="32" Index="#x600b" Sub="#x11">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Current" BitLen="32" Index="#x600b" Sub="#x12">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Frequency" BitLen="32" Index="#x600b" Sub="#x13">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Active Power" BitLen="32" Index="#x600b" Sub="#x14">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Apparent Power" BitLen="32" Index="#x600b" Sub="#x15">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Reactive Power" BitLen="32" Index="#x600b" Sub="#x16">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L2 Status" Index="#x1a0a" InOut="1" Flags="#x0010" SyncMan="3">
+							<Entry Name="Voltage Sign Bit" BitLen="1" Index="#x6010" Sub="#x01">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Overvoltage" BitLen="1" Index="#x6010" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Overcurrent" BitLen="1" Index="#x6010" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Inaccurate Voltage" BitLen="1" Index="#x6010" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Inaccurate Current" BitLen="1" Index="#x6010" Sub="#x05">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Voltage Guard Warning" BitLen="1" Index="#x6010" Sub="#x06">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Voltage Guard Error" BitLen="1" Index="#x6010" Sub="#x07">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Current Guard Warning" BitLen="1" Index="#x6010" Sub="#x08">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Current Guard Error" BitLen="1" Index="#x6010" Sub="#x09">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry BitLen="6">
+								<Type GUID="{18071995-0000-0000-0000-002000000006}">ARRAY [0..5] OF BIT</Type>
+							</Entry>
+							<Entry Name="TxPDO Toggle" BitLen="1" Index="#x6010" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L2 Basic" Index="#x1a0b" InOut="1" Flags="#x0010" SyncMan="3">
+							<Entry Name="Voltage" BitLen="32" Index="#x6011" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Current" BitLen="32" Index="#x6011" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L2 Power" Index="#x1a0c" InOut="1" Flags="#x0010" SyncMan="3">
+							<Entry Name="Active Power" BitLen="32" Index="#x6012" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Power" BitLen="32" Index="#x6012" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Power" BitLen="32" Index="#x6012" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Power Factor" BitLen="32" Index="#x6012" Sub="#x14">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L2 Energy" Index="#x1a0d" InOut="1" Flags="#x0010">
+							<Entry Name="Active Energy" BitLen="64" Index="#x6014" Sub="#x11">
+								<Type>LINT</Type>
+							</Entry>
+							<Entry Name="Apparent Energy" BitLen="64" Index="#x6014" Sub="#x12">
+								<Type>LINT</Type>
+							</Entry>
+							<Entry Name="Reactive Energy" BitLen="64" Index="#x6014" Sub="#x13">
+								<Type>LINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L2 Timing" Index="#x1a0e" InOut="1" Flags="#x0010" SyncMan="3">
+							<Entry Name="Voltage Last Zero Crossing" BitLen="64" Index="#x6016" Sub="#x12">
+								<Type>ULINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L2 Advanced" Index="#x1a0f" InOut="1" Flags="#x0010">
+							<Entry BitLen="15">
+								<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+							</Entry>
+							<Entry Name="TxPDO Toggle" BitLen="1" Index="#x6017" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Voltage Total Harmonic Distortion" BitLen="32" Index="#x6017" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Current Distortion Factor" BitLen="32" Index="#x6017" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Current Total Harmonic Distortion" BitLen="32" Index="#x6017" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Cos Phi" BitLen="32" Index="#x6017" Sub="#x14">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L2 Statistic Voltage" Index="#x1a10" InOut="1" Flags="#x0010">
+							<Entry Name="Voltage Peak" BitLen="32" Index="#x6018" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Voltage RMS Minimum" BitLen="32" Index="#x6018" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Voltage RMS Maximum" BitLen="32" Index="#x6018" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L2 Statistic Current" Index="#x1a11" InOut="1" Flags="#x0010">
+							<Entry Name="Current Peak" BitLen="32" Index="#x6019" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Current RMS Minimum" BitLen="32" Index="#x6019" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Current RMS Maximum" BitLen="32" Index="#x6019" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L2 Statistic Power" Index="#x1a12" InOut="1" Flags="#x0010">
+							<Entry Name="Active Power Avg" BitLen="32" Index="#x601a" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Active Power Min" BitLen="32" Index="#x601a" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Active Power Max" BitLen="32" Index="#x601a" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Power Avg" BitLen="32" Index="#x601a" Sub="#x14">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Power Max" BitLen="32" Index="#x601a" Sub="#x15">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Power Avg" BitLen="32" Index="#x601a" Sub="#x16">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Power Min" BitLen="32" Index="#x601a" Sub="#x17">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Power Max" BitLen="32" Index="#x601a" Sub="#x18">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Power Min" BitLen="32" Index="#x601a" Sub="#x19">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L2 Classic" Index="#x1a13" InOut="1" Flags="#x0010">
+							<Entry BitLen="15">
+								<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+							</Entry>
+							<Entry Name="TxPDO Toggle" BitLen="1" Index="#x601b" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Voltage" BitLen="32" Index="#x601b" Sub="#x11">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Current" BitLen="32" Index="#x601b" Sub="#x12">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Frequency" BitLen="32" Index="#x601b" Sub="#x13">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Active Power" BitLen="32" Index="#x601b" Sub="#x14">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Apparent Power" BitLen="32" Index="#x601b" Sub="#x15">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Reactive Power" BitLen="32" Index="#x601b" Sub="#x16">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L3 Status" Index="#x1a14" InOut="1" Flags="#x0010" SyncMan="3">
+							<Entry Name="Voltage Sign Bit" BitLen="1" Index="#x6020" Sub="#x01">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Overvoltage" BitLen="1" Index="#x6020" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Overcurrent" BitLen="1" Index="#x6020" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Inaccurate Voltage" BitLen="1" Index="#x6020" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Inaccurate Current" BitLen="1" Index="#x6020" Sub="#x05">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Voltage Guard Warning" BitLen="1" Index="#x6020" Sub="#x06">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Voltage Guard Error" BitLen="1" Index="#x6020" Sub="#x07">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Current Guard Warning" BitLen="1" Index="#x6020" Sub="#x08">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Current Guard Error" BitLen="1" Index="#x6020" Sub="#x09">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry BitLen="6">
+								<Type GUID="{18071995-0000-0000-0000-002000000006}">ARRAY [0..5] OF BIT</Type>
+							</Entry>
+							<Entry Name="TxPDO Toggle" BitLen="1" Index="#x6020" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L3 Basic" Index="#x1a15" InOut="1" Flags="#x0010" SyncMan="3">
+							<Entry Name="Voltage" BitLen="32" Index="#x6021" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Current" BitLen="32" Index="#x6021" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L3 Power" Index="#x1a16" InOut="1" Flags="#x0010" SyncMan="3">
+							<Entry Name="Active Power" BitLen="32" Index="#x6022" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Power" BitLen="32" Index="#x6022" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Power" BitLen="32" Index="#x6022" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Power Factor" BitLen="32" Index="#x6022" Sub="#x14">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L3 Energy" Index="#x1a17" InOut="1" Flags="#x0010">
+							<Entry Name="Active Energy" BitLen="64" Index="#x6024" Sub="#x11">
+								<Type>LINT</Type>
+							</Entry>
+							<Entry Name="Apparent Energy" BitLen="64" Index="#x6024" Sub="#x12">
+								<Type>LINT</Type>
+							</Entry>
+							<Entry Name="Reactive Energy" BitLen="64" Index="#x6024" Sub="#x13">
+								<Type>LINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L3 Timing" Index="#x1a18" InOut="1" Flags="#x0010" SyncMan="3">
+							<Entry Name="Voltage Last Zero Crossing" BitLen="64" Index="#x6026" Sub="#x12">
+								<Type>ULINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L3 Advanced" Index="#x1a19" InOut="1" Flags="#x0010">
+							<Entry BitLen="15">
+								<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+							</Entry>
+							<Entry Name="TxPDO Toggle" BitLen="1" Index="#x6027" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Voltage Total Harmonic Distortion" BitLen="32" Index="#x6027" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Current Distortion Factor" BitLen="32" Index="#x6027" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Current Total Harmonic Distortion" BitLen="32" Index="#x6027" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Cos Phi" BitLen="32" Index="#x6027" Sub="#x14">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L3 Statistic Voltage" Index="#x1a1a" InOut="1" Flags="#x0010">
+							<Entry Name="Voltage Peak" BitLen="32" Index="#x6028" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Voltage RMS Minimum" BitLen="32" Index="#x6028" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Voltage RMS Maximum" BitLen="32" Index="#x6028" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L3 Statistic Current" Index="#x1a1b" InOut="1" Flags="#x0010">
+							<Entry Name="Current Peak" BitLen="32" Index="#x6029" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Current RMS Minimum" BitLen="32" Index="#x6029" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Current RMS Maximum" BitLen="32" Index="#x6029" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L3 Statistic Power" Index="#x1a1c" InOut="1" Flags="#x0010">
+							<Entry Name="Active Power Avg" BitLen="32" Index="#x602a" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Active Power Min" BitLen="32" Index="#x602a" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Active Power Max" BitLen="32" Index="#x602a" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Power Avg" BitLen="32" Index="#x602a" Sub="#x14">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Power Max" BitLen="32" Index="#x602a" Sub="#x15">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Power Avg" BitLen="32" Index="#x602a" Sub="#x16">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Power Min" BitLen="32" Index="#x602a" Sub="#x17">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Power Max" BitLen="32" Index="#x602a" Sub="#x18">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Power Min" BitLen="32" Index="#x602a" Sub="#x19">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="L3 Classic" Index="#x1a1d" InOut="1" Flags="#x0010">
+							<Entry BitLen="15">
+								<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+							</Entry>
+							<Entry Name="TxPDO Toggle" BitLen="1" Index="#x602b" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Voltage" BitLen="32" Index="#x602b" Sub="#x11">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Current" BitLen="32" Index="#x602b" Sub="#x12">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Frequency" BitLen="32" Index="#x602b" Sub="#x13">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Active Power" BitLen="32" Index="#x602b" Sub="#x14">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Apparent Power" BitLen="32" Index="#x602b" Sub="#x15">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Reactive Power" BitLen="32" Index="#x602b" Sub="#x16">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Total Status" Index="#x1a1e" InOut="1" Flags="#x0011" SyncMan="3">
+							<Entry Name="System State" BitLen="1" Index="#xf600" Sub="#x01">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Grid Direction" BitLen="1" Index="#xf600" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Frequency Guard Warning" BitLen="1" Index="#xf600" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Frequency Guard Error" BitLen="1" Index="#xf600" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Neutral Current Guard Warning" BitLen="1" Index="#xf600" Sub="#x05">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Neutral Current Guard Error" BitLen="1" Index="#xf600" Sub="#x06">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Active Power Guard Warning" BitLen="1" Index="#xf600" Sub="#x07">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Active Power Guard Error" BitLen="1" Index="#xf600" Sub="#x08">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Apparent Power Guard Warning" BitLen="1" Index="#xf600" Sub="#x09">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Apparent Power Guard Error" BitLen="1" Index="#xf600" Sub="#x0a">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Power Quality Guard Warning" BitLen="1" Index="#xf600" Sub="#x0b">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Power Quality Guard Error" BitLen="1" Index="#xf600" Sub="#x0c">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry BitLen="2">
+								<Type GUID="{18071995-0000-0000-0000-002000000002}">ARRAY [0..1] OF BIT</Type>
+							</Entry>
+							<Entry Name="TxPDO State" BitLen="1" Index="#xf600" Sub="#x0f">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="TxPDO Toggle" BitLen="1" Index="#xf600" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Power Quality Factor" BitLen="32" Index="#xf600" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Total Basic" Index="#x1a1f" InOut="1" Flags="#x0010" SyncMan="3">
+							<Entry Name="Frequency" BitLen="32" Index="#xf601" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Power Factor" BitLen="32" Index="#xf601" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Calculated Neutral Line Current" BitLen="32" Index="#xf601" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Total Advanced" Index="#x1a20" InOut="1" Flags="#x0010">
+							<Entry Name="Unbalance Guard Warning" BitLen="1" Index="#xf602" Sub="#x01">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Unbalance Guard Error" BitLen="1" Index="#xf602" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry BitLen="13">
+								<Type GUID="{18071995-0000-0000-0000-00200000000D}">ARRAY [0..12] OF BIT</Type>
+							</Entry>
+							<Entry Name="TxPDO Toggle" BitLen="1" Index="#xf602" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Max Voltage Harmonic Distortion" BitLen="32" Index="#xf602" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Max Current Harmonic Distortion" BitLen="32" Index="#xf602" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Max Current Distortion Factor" BitLen="32" Index="#xf602" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Voltage Unbalance" BitLen="32" Index="#xf602" Sub="#x14">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Total Active" Index="#x1a21" InOut="1" Flags="#x0010" SyncMan="3">
+							<Entry Name="Active Power" BitLen="32" Index="#xf603" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Active Energy" BitLen="64" Index="#xf603" Sub="#x12">
+								<Type>LINT</Type>
+							</Entry>
+							<Entry Name="Active Positive Energy" BitLen="64" Index="#xf603" Sub="#x13">
+								<Type>ULINT</Type>
+							</Entry>
+							<Entry Name="Active Negative Energy" BitLen="64" Index="#xf603" Sub="#x14">
+								<Type>ULINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Total Apparent" Index="#x1a22" InOut="1" Flags="#x0010">
+							<Entry Name="Apparent Power" BitLen="32" Index="#xf605" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Energy" BitLen="64" Index="#xf605" Sub="#x12">
+								<Type>LINT</Type>
+							</Entry>
+							<Entry Name="Apparent Positive Energy" BitLen="64" Index="#xf605" Sub="#x13">
+								<Type>ULINT</Type>
+							</Entry>
+							<Entry Name="Apparent Negative Energy" BitLen="64" Index="#xf605" Sub="#x14">
+								<Type>ULINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Total Reactive" Index="#x1a23" InOut="1" Flags="#x0010">
+							<Entry Name="Reactive Power" BitLen="32" Index="#xf607" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Energy" BitLen="64" Index="#xf607" Sub="#x12">
+								<Type>LINT</Type>
+							</Entry>
+							<Entry Name="Reactive Positive Energy" BitLen="64" Index="#xf607" Sub="#x13">
+								<Type>ULINT</Type>
+							</Entry>
+							<Entry Name="Reactive Negative Energy" BitLen="64" Index="#xf607" Sub="#x14">
+								<Type>ULINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Total L-L Voltage" Index="#x1a24" InOut="1" Flags="#x0010" SyncMan="3">
+							<Entry Name="L1-L2 Voltage" BitLen="32" Index="#xf609" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="L2-L3 Voltage" BitLen="32" Index="#xf609" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="L3-L1 Voltage" BitLen="32" Index="#xf609" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Total Variant Value In" Index="#x1a25" InOut="1" Flags="#x0010">
+							<Entry BitLen="15">
+								<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+							</Entry>
+							<Entry Name="TxPDO Toggle" BitLen="1" Index="#xf60a" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Index 1 REAL" BitLen="16" Index="#xf60a" Sub="#x11">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Value 1 REAL" BitLen="32" Index="#xf60a" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Index 2 REAL" BitLen="16" Index="#xf60a" Sub="#x13">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Value 2 REAL" BitLen="32" Index="#xf60a" Sub="#x14">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Index 3 REAL" BitLen="16" Index="#xf60a" Sub="#x15">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Value 3 REAL" BitLen="32" Index="#xf60a" Sub="#x16">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Index 4 ULINT" BitLen="16" Index="#xf60a" Sub="#x17">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Value 4 ULINT" BitLen="64" Index="#xf60a" Sub="#x18">
+								<Type>ULINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Total Statistic Power" Index="#x1a26" InOut="1" Flags="#x0010">
+							<Entry Name="Active Power Avg" BitLen="32" Index="#xf60b" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Active Power Min" BitLen="32" Index="#xf60b" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Active Power Max" BitLen="32" Index="#xf60b" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Power Avg" BitLen="32" Index="#xf60b" Sub="#x14">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Power Min" BitLen="32" Index="#xf60b" Sub="#x15">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Power Max" BitLen="32" Index="#xf60b" Sub="#x16">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Power Avg" BitLen="32" Index="#xf60b" Sub="#x17">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Power Min" BitLen="32" Index="#xf60b" Sub="#x18">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Power Max" BitLen="32" Index="#xf60b" Sub="#x19">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Total Statistic PQF" Index="#x1a27" InOut="1" Flags="#x0010">
+							<Entry Name="PQF Avg" BitLen="32" Index="#xf60c" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="PQF Min" BitLen="32" Index="#xf60c" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="PQF Max" BitLen="32" Index="#xf60c" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Total Interval Energy" Index="#x1a28" InOut="1" Flags="#x0010">
+							<Entry BitLen="15">
+								<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+							</Entry>
+							<Entry Name="TxPDO Toggle" BitLen="1" Index="#xf60d" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Active Energy" BitLen="32" Index="#xf60d" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Active Energy Positive" BitLen="32" Index="#xf60d" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Active Energy Negative" BitLen="32" Index="#xf60d" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Energy" BitLen="32" Index="#xf60d" Sub="#x14">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Energy Positive" BitLen="32" Index="#xf60d" Sub="#x15">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Energy Negative" BitLen="32" Index="#xf60d" Sub="#x16">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Energy" BitLen="32" Index="#xf60d" Sub="#x17">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Energy Positive" BitLen="32" Index="#xf60d" Sub="#x18">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Energy Negative" BitLen="32" Index="#xf60d" Sub="#x19">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Total Active Reduced" Index="#x1a29" InOut="1" Flags="#x0010">
+							<Entry Name="Active Power" BitLen="32" Index="#xf612" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Active Energy" BitLen="64" Index="#xf612" Sub="#x12">
+								<Type>LINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Total Apparent Reduced" Index="#x1a2a" InOut="1" Flags="#x0010">
+							<Entry Name="Apparent Power" BitLen="32" Index="#xf613" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Energy" BitLen="64" Index="#xf613" Sub="#x12">
+								<Type>LINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Total Reactive Reduced" Index="#x1a2b" InOut="1" Flags="#x0010">
+							<Entry Name="Reactive Power" BitLen="32" Index="#xf614" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Energy" BitLen="64" Index="#xf614" Sub="#x12">
+								<Type>LINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Total Interval Energy Reduced" Index="#x1a2c" InOut="1" Flags="#x0010">
+							<Entry BitLen="15">
+								<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+							</Entry>
+							<Entry Name="TxPDO Toggle" BitLen="1" Index="#xf615" Sub="#x10">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Active Energy" BitLen="32" Index="#xf615" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Apparent Energy" BitLen="32" Index="#xf615" Sub="#x12">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Reactive Energy" BitLen="32" Index="#xf615" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DPM Data" Index="#x1a2d" InOut="1" Flags="#x0010">
+							<Entry Name="Data 1" BitLen="32" Index="#xf630" Sub="#x01">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 2" BitLen="32" Index="#xf630" Sub="#x02">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 3" BitLen="32" Index="#xf630" Sub="#x03">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 4" BitLen="32" Index="#xf630" Sub="#x04">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 5" BitLen="32" Index="#xf630" Sub="#x05">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 6" BitLen="32" Index="#xf630" Sub="#x06">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 7" BitLen="32" Index="#xf630" Sub="#x07">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 8" BitLen="32" Index="#xf630" Sub="#x08">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 9" BitLen="32" Index="#xf630" Sub="#x09">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 10" BitLen="32" Index="#xf630" Sub="#x0a">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 11" BitLen="32" Index="#xf630" Sub="#x0b">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 12" BitLen="32" Index="#xf630" Sub="#x0c">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 13" BitLen="32" Index="#xf630" Sub="#x0d">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 14" BitLen="32" Index="#xf630" Sub="#x0e">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 15" BitLen="32" Index="#xf630" Sub="#x0f">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 16" BitLen="32" Index="#xf630" Sub="#x10">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 17" BitLen="32" Index="#xf630" Sub="#x11">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 18" BitLen="32" Index="#xf630" Sub="#x12">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 19" BitLen="32" Index="#xf630" Sub="#x13">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Data 20" BitLen="32" Index="#xf630" Sub="#x14">
+								<Type>UDINT</Type>
+							</Entry>
+						</Pdo>
+					</EcatSimuBox>
+				</Box>
+				<EcatSimu>
+					<GeneralSettings DeviceDesc="Ethernet (Realtek PCIe GbE Family Controller)" SecondAdapter="00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
+					<DevSettings InOffset="416" OutOffset="256" StateOffset="129" Flags="1"/>
+					<LogInAddrMaps LogAddr="16777216" PhysAddr="256" Size="160" WC="1"/>
+					<LogStateAddrMaps LogAddr="150994944" PhysAddr="128" Size="1" WC="1"/>
+				</EcatSimu>
+			</Device>
+			<Device Id="2" Disabled="true" DevType="111" DevFlags="#x0003" AmsPort="28674" AmsNetId="10.199.163.130.3.1" RemoteName="Device 2 (EtherCAT)" InfoImageId="3">
+				<Name>Device 2 (EtherCAT)</Name>
+				<AddressInfo>
+					<Pnp>
+						<DeviceDesc></DeviceDesc>
+						<DeviceName></DeviceName>
+						<DeviceData>000000000000</DeviceData>
+					</Pnp>
+				</AddressInfo>
+				<Image Id="2" AddrType="9" ImageType="3">
+					<Name>Image</Name>
+				</Image>
+				<Box Id="1" BoxType="9099">
+					<Name>Term 1 (EK1100)</Name>
+					<ImageId>1000</ImageId>
+					<EtherCAT SlaveType="1" PdiType="#x0d00" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x044c2c52" RevisionNo="#x00120000" PortPhys="305" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1100 EtherCAT Coupler (2A E-Bus)" Desc="EK1100" PortABoxInfo="#x00ffffff"/>
+					<Box Id="2" BoxType="9099" BoxFlags="#x00000020">
+						<Name>Term 2 (EL3443)</Name>
+						<ImageId>1001</ImageId>
+						<EtherCAT SlaveType="2" PdiType="#x0c05" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="39" FoeType="1" VendorId="#x00000002" ProductCode="#x0d733052" RevisionNo="#x00160000" InfoDataAddr="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL3443 3Ch. Power Measuring" Desc="EL3443" PortABoxInfo="#x01000001">
+							<SyncMan>001080002600010001000000800080008000001026010000</SyncMan>
+							<SyncMan>801080002200010002000000800080008000801022010000</SyncMan>
+							<SyncMan>001100002400000003000000000000000000001124010000</SyncMan>
+							<SyncMan>1e11a000200001000400000000000000a0001e1120010000</SyncMan>
+							<Fmmu>0000000000000000000000020000000001000000000000000000000000000000</Fmmu>
+							<Fmmu>00000000000000001e1100010100000002000000000000000000000000000000</Fmmu>
+							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+							<BootStrapData>0010f400f410f400</BootStrapData>
+							<DcMode>4672656552756e0000000000000000004672656552756e00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</DcMode>
+							<DcMode>4443000000000000000000000000000044432d53796e6368726f6e000000000000000000000000000000000000000000000000007cfcffff00000000000020030100000000000000000000000000000000000000000000000000000000000000</DcMode>
+							<MBoxUserCmdData>004003000c0000000000000003000000000000000000000000000000000000002081f001040000000000160000</MBoxUserCmdData>
+							<MBoxUserCmdData>004003000a0000001f000000030010000000000000000000000000000000000020f31005020000000100456e61626c6520446961674d65737361676520617320656d657267656e637900</MBoxUserCmdData>
+							<Pdo Name="L1 Status" Index="#x1a00" Flags="#x0010" SyncMan="3">
+								<Entry Name="Voltage Sign Bit" Index="#x6000" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Overvoltage" Index="#x6000" Sub="#x02">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Overcurrent" Index="#x6000" Sub="#x03">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Inaccurate Voltage" Index="#x6000" Sub="#x04">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Inaccurate Current" Index="#x6000" Sub="#x05">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Voltage Guard Warning" Index="#x6000" Sub="#x06">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Voltage Guard Error" Index="#x6000" Sub="#x07">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Current Guard Warning" Index="#x6000" Sub="#x08">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Current Guard Error" Index="#x6000" Sub="#x09">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry>
+									<Type GUID="{18071995-0000-0000-0000-002000000006}">ARRAY [0..5] OF BIT</Type>
+								</Entry>
+								<Entry Name="TxPDO Toggle" Index="#x6000" Sub="#x10">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L1 Basic" Index="#x1a01" Flags="#x0010" SyncMan="3">
+								<Entry Name="Voltage" Index="#x6001" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Current" Index="#x6001" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L1 Power" Index="#x1a02" Flags="#x0010" SyncMan="3">
+								<Entry Name="Active Power" Index="#x6002" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Power" Index="#x6002" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Power" Index="#x6002" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Power Factor" Index="#x6002" Sub="#x14">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L1 Energy" Index="#x1a03" Flags="#x0010">
+								<Entry Name="Active Energy" Index="#x6004" Sub="#x11">
+									<Type>LINT</Type>
+								</Entry>
+								<Entry Name="Apparent Energy" Index="#x6004" Sub="#x12">
+									<Type>LINT</Type>
+								</Entry>
+								<Entry Name="Reactive Energy" Index="#x6004" Sub="#x13">
+									<Type>LINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L1 Timing" Index="#x1a04" Flags="#x0010" SyncMan="3">
+								<Entry Name="Voltage Last Zero Crossing" Index="#x6006" Sub="#x12">
+									<Type>ULINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L1 Advanced" Index="#x1a05" Flags="#x0010">
+								<Entry>
+									<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+								</Entry>
+								<Entry Name="TxPDO Toggle" Index="#x6007" Sub="#x10">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Voltage Total Harmonic Distortion" Index="#x6007" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Current Distortion Factor" Index="#x6007" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Current Total Harmonic Distortion" Index="#x6007" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Cos Phi" Index="#x6007" Sub="#x14">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L1 Statistic Voltage" Index="#x1a06" Flags="#x0010">
+								<Entry Name="Voltage Peak" Index="#x6008" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Voltage RMS Minimum" Index="#x6008" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Voltage RMS Maximum" Index="#x6008" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L1 Statistic Current" Index="#x1a07" Flags="#x0010">
+								<Entry Name="Current Peak" Index="#x6009" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Current RMS Minimum" Index="#x6009" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Current RMS Maximum" Index="#x6009" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L1 Statistic Power" Index="#x1a08" Flags="#x0010">
+								<Entry Name="Active Power Avg" Index="#x600a" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Active Power Min" Index="#x600a" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Active Power Max" Index="#x600a" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Power Avg" Index="#x600a" Sub="#x14">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Power Max" Index="#x600a" Sub="#x15">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Power Avg" Index="#x600a" Sub="#x16">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Power Min" Index="#x600a" Sub="#x17">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Power Max" Index="#x600a" Sub="#x18">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Power Min" Index="#x600a" Sub="#x19">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L1 Classic" Index="#x1a09" Flags="#x0010">
+								<Entry>
+									<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+								</Entry>
+								<Entry Name="TxPDO Toggle" Index="#x600b" Sub="#x10">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Voltage" Index="#x600b" Sub="#x11">
+									<Type>DINT</Type>
+								</Entry>
+								<Entry Name="Current" Index="#x600b" Sub="#x12">
+									<Type>DINT</Type>
+								</Entry>
+								<Entry Name="Frequency" Index="#x600b" Sub="#x13">
+									<Type>DINT</Type>
+								</Entry>
+								<Entry Name="Active Power" Index="#x600b" Sub="#x14">
+									<Type>DINT</Type>
+								</Entry>
+								<Entry Name="Apparent Power" Index="#x600b" Sub="#x15">
+									<Type>DINT</Type>
+								</Entry>
+								<Entry Name="Reactive Power" Index="#x600b" Sub="#x16">
+									<Type>DINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L2 Status" Index="#x1a0a" Flags="#x0010" SyncMan="3">
+								<Entry Name="Voltage Sign Bit" Index="#x6010" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Overvoltage" Index="#x6010" Sub="#x02">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Overcurrent" Index="#x6010" Sub="#x03">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Inaccurate Voltage" Index="#x6010" Sub="#x04">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Inaccurate Current" Index="#x6010" Sub="#x05">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Voltage Guard Warning" Index="#x6010" Sub="#x06">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Voltage Guard Error" Index="#x6010" Sub="#x07">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Current Guard Warning" Index="#x6010" Sub="#x08">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Current Guard Error" Index="#x6010" Sub="#x09">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry>
+									<Type GUID="{18071995-0000-0000-0000-002000000006}">ARRAY [0..5] OF BIT</Type>
+								</Entry>
+								<Entry Name="TxPDO Toggle" Index="#x6010" Sub="#x10">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L2 Basic" Index="#x1a0b" Flags="#x0010" SyncMan="3">
+								<Entry Name="Voltage" Index="#x6011" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Current" Index="#x6011" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L2 Power" Index="#x1a0c" Flags="#x0010" SyncMan="3">
+								<Entry Name="Active Power" Index="#x6012" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Power" Index="#x6012" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Power" Index="#x6012" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Power Factor" Index="#x6012" Sub="#x14">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L2 Energy" Index="#x1a0d" Flags="#x0010">
+								<Entry Name="Active Energy" Index="#x6014" Sub="#x11">
+									<Type>LINT</Type>
+								</Entry>
+								<Entry Name="Apparent Energy" Index="#x6014" Sub="#x12">
+									<Type>LINT</Type>
+								</Entry>
+								<Entry Name="Reactive Energy" Index="#x6014" Sub="#x13">
+									<Type>LINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L2 Timing" Index="#x1a0e" Flags="#x0010" SyncMan="3">
+								<Entry Name="Voltage Last Zero Crossing" Index="#x6016" Sub="#x12">
+									<Type>ULINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L2 Advanced" Index="#x1a0f" Flags="#x0010">
+								<Entry>
+									<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+								</Entry>
+								<Entry Name="TxPDO Toggle" Index="#x6017" Sub="#x10">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Voltage Total Harmonic Distortion" Index="#x6017" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Current Distortion Factor" Index="#x6017" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Current Total Harmonic Distortion" Index="#x6017" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Cos Phi" Index="#x6017" Sub="#x14">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L2 Statistic Voltage" Index="#x1a10" Flags="#x0010">
+								<Entry Name="Voltage Peak" Index="#x6018" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Voltage RMS Minimum" Index="#x6018" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Voltage RMS Maximum" Index="#x6018" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L2 Statistic Current" Index="#x1a11" Flags="#x0010">
+								<Entry Name="Current Peak" Index="#x6019" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Current RMS Minimum" Index="#x6019" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Current RMS Maximum" Index="#x6019" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L2 Statistic Power" Index="#x1a12" Flags="#x0010">
+								<Entry Name="Active Power Avg" Index="#x601a" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Active Power Min" Index="#x601a" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Active Power Max" Index="#x601a" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Power Avg" Index="#x601a" Sub="#x14">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Power Max" Index="#x601a" Sub="#x15">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Power Avg" Index="#x601a" Sub="#x16">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Power Min" Index="#x601a" Sub="#x17">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Power Max" Index="#x601a" Sub="#x18">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Power Min" Index="#x601a" Sub="#x19">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L2 Classic" Index="#x1a13" Flags="#x0010">
+								<Entry>
+									<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+								</Entry>
+								<Entry Name="TxPDO Toggle" Index="#x601b" Sub="#x10">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Voltage" Index="#x601b" Sub="#x11">
+									<Type>DINT</Type>
+								</Entry>
+								<Entry Name="Current" Index="#x601b" Sub="#x12">
+									<Type>DINT</Type>
+								</Entry>
+								<Entry Name="Frequency" Index="#x601b" Sub="#x13">
+									<Type>DINT</Type>
+								</Entry>
+								<Entry Name="Active Power" Index="#x601b" Sub="#x14">
+									<Type>DINT</Type>
+								</Entry>
+								<Entry Name="Apparent Power" Index="#x601b" Sub="#x15">
+									<Type>DINT</Type>
+								</Entry>
+								<Entry Name="Reactive Power" Index="#x601b" Sub="#x16">
+									<Type>DINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L3 Status" Index="#x1a14" Flags="#x0010" SyncMan="3">
+								<Entry Name="Voltage Sign Bit" Index="#x6020" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Overvoltage" Index="#x6020" Sub="#x02">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Overcurrent" Index="#x6020" Sub="#x03">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Inaccurate Voltage" Index="#x6020" Sub="#x04">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Inaccurate Current" Index="#x6020" Sub="#x05">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Voltage Guard Warning" Index="#x6020" Sub="#x06">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Voltage Guard Error" Index="#x6020" Sub="#x07">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Current Guard Warning" Index="#x6020" Sub="#x08">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Current Guard Error" Index="#x6020" Sub="#x09">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry>
+									<Type GUID="{18071995-0000-0000-0000-002000000006}">ARRAY [0..5] OF BIT</Type>
+								</Entry>
+								<Entry Name="TxPDO Toggle" Index="#x6020" Sub="#x10">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L3 Basic" Index="#x1a15" Flags="#x0010" SyncMan="3">
+								<Entry Name="Voltage" Index="#x6021" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Current" Index="#x6021" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L3 Power" Index="#x1a16" Flags="#x0010" SyncMan="3">
+								<Entry Name="Active Power" Index="#x6022" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Power" Index="#x6022" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Power" Index="#x6022" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Power Factor" Index="#x6022" Sub="#x14">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L3 Energy" Index="#x1a17" Flags="#x0010">
+								<Entry Name="Active Energy" Index="#x6024" Sub="#x11">
+									<Type>LINT</Type>
+								</Entry>
+								<Entry Name="Apparent Energy" Index="#x6024" Sub="#x12">
+									<Type>LINT</Type>
+								</Entry>
+								<Entry Name="Reactive Energy" Index="#x6024" Sub="#x13">
+									<Type>LINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L3 Timing" Index="#x1a18" Flags="#x0010" SyncMan="3">
+								<Entry Name="Voltage Last Zero Crossing" Index="#x6026" Sub="#x12">
+									<Type>ULINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L3 Advanced" Index="#x1a19" Flags="#x0010">
+								<Entry>
+									<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+								</Entry>
+								<Entry Name="TxPDO Toggle" Index="#x6027" Sub="#x10">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Voltage Total Harmonic Distortion" Index="#x6027" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Current Distortion Factor" Index="#x6027" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Current Total Harmonic Distortion" Index="#x6027" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Cos Phi" Index="#x6027" Sub="#x14">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L3 Statistic Voltage" Index="#x1a1a" Flags="#x0010">
+								<Entry Name="Voltage Peak" Index="#x6028" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Voltage RMS Minimum" Index="#x6028" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Voltage RMS Maximum" Index="#x6028" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L3 Statistic Current" Index="#x1a1b" Flags="#x0010">
+								<Entry Name="Current Peak" Index="#x6029" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Current RMS Minimum" Index="#x6029" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Current RMS Maximum" Index="#x6029" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L3 Statistic Power" Index="#x1a1c" Flags="#x0010">
+								<Entry Name="Active Power Avg" Index="#x602a" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Active Power Min" Index="#x602a" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Active Power Max" Index="#x602a" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Power Avg" Index="#x602a" Sub="#x14">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Power Max" Index="#x602a" Sub="#x15">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Power Avg" Index="#x602a" Sub="#x16">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Power Min" Index="#x602a" Sub="#x17">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Power Max" Index="#x602a" Sub="#x18">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Power Min" Index="#x602a" Sub="#x19">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="L3 Classic" Index="#x1a1d" Flags="#x0010">
+								<Entry>
+									<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+								</Entry>
+								<Entry Name="TxPDO Toggle" Index="#x602b" Sub="#x10">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Voltage" Index="#x602b" Sub="#x11">
+									<Type>DINT</Type>
+								</Entry>
+								<Entry Name="Current" Index="#x602b" Sub="#x12">
+									<Type>DINT</Type>
+								</Entry>
+								<Entry Name="Frequency" Index="#x602b" Sub="#x13">
+									<Type>DINT</Type>
+								</Entry>
+								<Entry Name="Active Power" Index="#x602b" Sub="#x14">
+									<Type>DINT</Type>
+								</Entry>
+								<Entry Name="Apparent Power" Index="#x602b" Sub="#x15">
+									<Type>DINT</Type>
+								</Entry>
+								<Entry Name="Reactive Power" Index="#x602b" Sub="#x16">
+									<Type>DINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Total Status" Index="#x1a1e" Flags="#x0011" SyncMan="3">
+								<Entry Name="System State" Index="#xf600" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Grid Direction" Index="#xf600" Sub="#x02">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Frequency Guard Warning" Index="#xf600" Sub="#x03">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Frequency Guard Error" Index="#xf600" Sub="#x04">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Neutral Current Guard Warning" Index="#xf600" Sub="#x05">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Neutral Current Guard Error" Index="#xf600" Sub="#x06">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Active Power Guard Warning" Index="#xf600" Sub="#x07">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Active Power Guard Error" Index="#xf600" Sub="#x08">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Apparent Power Guard Warning" Index="#xf600" Sub="#x09">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Apparent Power Guard Error" Index="#xf600" Sub="#x0a">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Power Quality Guard Warning" Index="#xf600" Sub="#x0b">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Power Quality Guard Error" Index="#xf600" Sub="#x0c">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry>
+									<Type GUID="{18071995-0000-0000-0000-002000000002}">ARRAY [0..1] OF BIT</Type>
+								</Entry>
+								<Entry Name="TxPDO State" Index="#xf600" Sub="#x0f">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="TxPDO Toggle" Index="#xf600" Sub="#x10">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Power Quality Factor" Index="#xf600" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Total Basic" Index="#x1a1f" Flags="#x0010" SyncMan="3">
+								<Entry Name="Frequency" Index="#xf601" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Power Factor" Index="#xf601" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Calculated Neutral Line Current" Index="#xf601" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Total Advanced" Index="#x1a20" Flags="#x0010">
+								<Entry Name="Unbalance Guard Warning" Index="#xf602" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Unbalance Guard Error" Index="#xf602" Sub="#x02">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry>
+									<Type GUID="{18071995-0000-0000-0000-00200000000D}">ARRAY [0..12] OF BIT</Type>
+								</Entry>
+								<Entry Name="TxPDO Toggle" Index="#xf602" Sub="#x10">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Max Voltage Harmonic Distortion" Index="#xf602" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Max Current Harmonic Distortion" Index="#xf602" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Max Current Distortion Factor" Index="#xf602" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Voltage Unbalance" Index="#xf602" Sub="#x14">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Total Active" Index="#x1a21" Flags="#x0010" SyncMan="3">
+								<Entry Name="Active Power" Index="#xf603" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Active Energy" Index="#xf603" Sub="#x12">
+									<Type>LINT</Type>
+								</Entry>
+								<Entry Name="Active Positive Energy" Index="#xf603" Sub="#x13">
+									<Type>ULINT</Type>
+								</Entry>
+								<Entry Name="Active Negative Energy" Index="#xf603" Sub="#x14">
+									<Type>ULINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Total Apparent" Index="#x1a22" Flags="#x0010">
+								<Entry Name="Apparent Power" Index="#xf605" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Energy" Index="#xf605" Sub="#x12">
+									<Type>LINT</Type>
+								</Entry>
+								<Entry Name="Apparent Positive Energy" Index="#xf605" Sub="#x13">
+									<Type>ULINT</Type>
+								</Entry>
+								<Entry Name="Apparent Negative Energy" Index="#xf605" Sub="#x14">
+									<Type>ULINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Total Reactive" Index="#x1a23" Flags="#x0010">
+								<Entry Name="Reactive Power" Index="#xf607" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Energy" Index="#xf607" Sub="#x12">
+									<Type>LINT</Type>
+								</Entry>
+								<Entry Name="Reactive Positive Energy" Index="#xf607" Sub="#x13">
+									<Type>ULINT</Type>
+								</Entry>
+								<Entry Name="Reactive Negative Energy" Index="#xf607" Sub="#x14">
+									<Type>ULINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Total L-L Voltage" Index="#x1a24" Flags="#x0010" SyncMan="3">
+								<Entry Name="L1-L2 Voltage" Index="#xf609" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="L2-L3 Voltage" Index="#xf609" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="L3-L1 Voltage" Index="#xf609" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Total Variant Value In" Index="#x1a25" Flags="#x0010">
+								<Entry>
+									<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+								</Entry>
+								<Entry Name="TxPDO Toggle" Index="#xf60a" Sub="#x10">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Index 1 REAL" Index="#xf60a" Sub="#x11">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Value 1 REAL" Index="#xf60a" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Index 2 REAL" Index="#xf60a" Sub="#x13">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Value 2 REAL" Index="#xf60a" Sub="#x14">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Index 3 REAL" Index="#xf60a" Sub="#x15">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Value 3 REAL" Index="#xf60a" Sub="#x16">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Index 4 ULINT" Index="#xf60a" Sub="#x17">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Value 4 ULINT" Index="#xf60a" Sub="#x18">
+									<Type>ULINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Total Statistic Power" Index="#x1a26" Flags="#x0010">
+								<Entry Name="Active Power Avg" Index="#xf60b" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Active Power Min" Index="#xf60b" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Active Power Max" Index="#xf60b" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Power Avg" Index="#xf60b" Sub="#x14">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Power Min" Index="#xf60b" Sub="#x15">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Power Max" Index="#xf60b" Sub="#x16">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Power Avg" Index="#xf60b" Sub="#x17">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Power Min" Index="#xf60b" Sub="#x18">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Power Max" Index="#xf60b" Sub="#x19">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Total Statistic PQF" Index="#x1a27" Flags="#x0010">
+								<Entry Name="PQF Avg" Index="#xf60c" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="PQF Min" Index="#xf60c" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="PQF Max" Index="#xf60c" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Total Interval Energy" Index="#x1a28" Flags="#x0010">
+								<Entry>
+									<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+								</Entry>
+								<Entry Name="TxPDO Toggle" Index="#xf60d" Sub="#x10">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Active Energy" Index="#xf60d" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Active Energy Positive" Index="#xf60d" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Active Energy Negative" Index="#xf60d" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Energy" Index="#xf60d" Sub="#x14">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Energy Positive" Index="#xf60d" Sub="#x15">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Energy Negative" Index="#xf60d" Sub="#x16">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Energy" Index="#xf60d" Sub="#x17">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Energy Positive" Index="#xf60d" Sub="#x18">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Energy Negative" Index="#xf60d" Sub="#x19">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Total Active Reduced" Index="#x1a29" Flags="#x0010">
+								<Entry Name="Active Power" Index="#xf612" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Active Energy" Index="#xf612" Sub="#x12">
+									<Type>LINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Total Apparent Reduced" Index="#x1a2a" Flags="#x0010">
+								<Entry Name="Apparent Power" Index="#xf613" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Energy" Index="#xf613" Sub="#x12">
+									<Type>LINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Total Reactive Reduced" Index="#x1a2b" Flags="#x0010">
+								<Entry Name="Reactive Power" Index="#xf614" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Energy" Index="#xf614" Sub="#x12">
+									<Type>LINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Total Interval Energy Reduced" Index="#x1a2c" Flags="#x0010">
+								<Entry>
+									<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+								</Entry>
+								<Entry Name="TxPDO Toggle" Index="#xf615" Sub="#x10">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Active Energy" Index="#xf615" Sub="#x11">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Apparent Energy" Index="#xf615" Sub="#x12">
+									<Type>REAL</Type>
+								</Entry>
+								<Entry Name="Reactive Energy" Index="#xf615" Sub="#x13">
+									<Type>REAL</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="DPM Data" Index="#x1a2d" Flags="#x0010">
+								<Entry Name="Data 1" Index="#xf630" Sub="#x01">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 2" Index="#xf630" Sub="#x02">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 3" Index="#xf630" Sub="#x03">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 4" Index="#xf630" Sub="#x04">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 5" Index="#xf630" Sub="#x05">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 6" Index="#xf630" Sub="#x06">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 7" Index="#xf630" Sub="#x07">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 8" Index="#xf630" Sub="#x08">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 9" Index="#xf630" Sub="#x09">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 10" Index="#xf630" Sub="#x0a">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 11" Index="#xf630" Sub="#x0b">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 12" Index="#xf630" Sub="#x0c">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 13" Index="#xf630" Sub="#x0d">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 14" Index="#xf630" Sub="#x0e">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 15" Index="#xf630" Sub="#x0f">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 16" Index="#xf630" Sub="#x10">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 17" Index="#xf630" Sub="#x11">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 18" Index="#xf630" Sub="#x12">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 19" Index="#xf630" Sub="#x13">
+									<Type>UDINT</Type>
+								</Entry>
+								<Entry Name="Data 20" Index="#xf630" Sub="#x14">
+									<Type>UDINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Total Variant Value Out" Index="#x1600" InOut="1" Flags="#x0010">
+								<Entry Name="Index 1 REAL" Index="#xf700" Sub="#x11">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Index 2 REAL" Index="#xf700" Sub="#x12">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Index 3 REAL" Index="#xf700" Sub="#x13">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Index 4 ULINT" Index="#xf700" Sub="#x14">
+									<Type>UINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Total Interval" Index="#x1601" InOut="1" Flags="#x0010">
+								<Entry Name="Reset Interval" Index="#xf701" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry>
+									<Type GUID="{18071995-0000-0000-0000-00200000000F}">ARRAY [0..14] OF BIT</Type>
+								</Entry>
+							</Pdo>
+							<CoeProfile ProfileNo="22352777" DisplayName="Power Measuring Ext"/>
+							<CoeProfile ProfileNo="22352777" DisplayName="Power Measuring Ext"/>
+							<CoeProfile ProfileNo="22352777" DisplayName="Power Measuring Ext"/>
+						</EtherCAT>
+					</Box>
+				</Box>
+				<EtherCAT/>
+			</Device>
+		</Io>
+	</Project>
+</TcSmProject>

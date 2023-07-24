@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Refactors>
+  <Renames>
+    <RenamedType>
+      <Type guid="f8cfb79b-0b82-4ad5-83ef-3a002eff3d81">EL3443_PHASES</Type>
+      <From>EL3443_Data</From>
+      <To>EL3443_Phase_Status</To>
+    </RenamedType>
+    <RenamedType>
+      <Type guid="a8e6e8ac-3b79-4e29-8e9c-81592f10909e">EL3443_PHASE_SIMPLE</Type>
+      <From>EL3443_Phase_Simple</From>
+      <To>EL3443_Phase_Basic</To>
+    </RenamedType>
+  </Renames>
+</Refactors>

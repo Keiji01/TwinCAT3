@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="EL3443_Phase_Power" Id="{b33c64bc-421e-49c5-abab-0ea51f6f5307}">
+    <Declaration><![CDATA[TYPE EL3443_Phase_Power :
+STRUCT
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
