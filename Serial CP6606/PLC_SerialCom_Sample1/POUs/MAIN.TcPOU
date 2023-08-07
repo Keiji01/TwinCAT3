@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.38">
+  <POU Name="MAIN" Id="{aef089b1-c7c5-479f-8336-a7bf9b8b2785}" SpecialFunc="None">
+    <Declaration><![CDATA[(*
+SerialCom_InfoSys_Sample1 (v2.0)
+This sample sends and receives a string via serial communication.
+Three hardware interfaces are used: Pc COM port, EL terminal, KL terminal
+*)
+PROGRAM MAIN
+VAR
+	fbPcCom		: FB_SerialCom;
+	fbEL6001	: FB_SerialCom;
+	fbKL6001	: FB_SerialCom;
+	
+	(* exchange buffers with background communication with the PC COM port device *)
+	RxBufferPcCom	: ComBuffer;	(* Receive data buffer; used with all receive function blocks *)
+	TxBufferPcCom	: ComBuffer;	(* Transmit data buffer; used with all receive function blocks *)
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+(* background communication with the PC COM port device *)
+BackgroundPcCOM(RxBufferPcCom:=RxBufferPcCom, TxBufferPcCom:=TxBufferPcCom);
+
+
+(* Send and receive commands *)
+fbPcCom(TxBuffer:=TxBufferPcCom, RxBuffer:=RxBufferPcCom);
+
+fbEL6001(TxBuffer:=TxBufferEL, RxBuffer:=RxBufferEL);
+
+fbKL6001(TxBuffer:=TxBufferKL, RxBuffer:=RxBufferKL);
+
+
+
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

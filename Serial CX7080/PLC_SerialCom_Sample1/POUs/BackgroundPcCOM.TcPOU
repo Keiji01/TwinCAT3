@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.38">
+  <POU Name="BackgroundPcCOM" Id="{ec886f4e-14a2-4c47-a10f-0691ac35721d}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM BackgroundPcCOM
+VAR_IN_OUT
+	RxBufferPcCom		: ComBuffer;	(* Receive data buffer; used with all receive function blocks *)
+	TxBufferPcCom		: ComBuffer;	(* Transmit data buffer; used with all receive function blocks *)
+END_VAR
+VAR
+	(* background communication with the PC COM port device *)
+	fbPcComCtrl			: SerialLineControl;
+	bPcComCtrlError		: BOOL;
+	ePcComCtrlErrorID	: ComError_t;	
+	(* 	I/O variables for a PC-COM port *)
+	stIn_PcCom AT %I*	: PcComInData;	(* linked to the port in the TwinCAT System Manager *)
+	stOut_PcCom AT %Q*	: PcComOutData;	(* linked to the port in the TwinCAT System Manager *)
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*
+The SerialLineControl function block is supposed to be called in every PLC cycle.
+It communicates with the serial line hardware device and transmits or receives data.
+The SerialLineControl can be called in the standard task (e.g.for PcCOM port usage) 
+or in a separate fast task (e.g.for terminal usage) as well.
+A fast separate task will be necessary at high baud rates or with KL6001 terminals 
+which have a small process image (3 or 5 data bytes only)
+*)
+
+(* background communication with the PC COM port device *)
+fbPcComCtrl(
+	Mode:= SERIALLINEMODE_PC_COM_PORT, 
+	pComIn:= ADR(stIn_PcCom), 
+	pComOut:= ADR(stOut_PcCom), 
+	SizeComIn:= SIZEOF(stIn_PcCom), 
+	Error=> , 
+	ErrorID=> , 
+	TxBuffer:= TxBufferPcCom, 
+	RxBuffer:= RxBufferPcCom );
+IF fbPcComCtrl.Error THEN
+	bPcComCtrlError := TRUE;
+	ePcComCtrlErrorID := fbPcComCtrl.ErrorID;
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

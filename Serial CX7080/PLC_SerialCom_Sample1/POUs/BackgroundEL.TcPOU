@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.38">
+  <POU Name="BackgroundEL" Id="{9a20473f-0d3f-4584-b429-33e10587a848}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM BackgroundEL
+VAR
+	(* background communication with the EL6001 terminal *)
+	fbEL6001Ctrl		: SerialLineControl;
+	bEL6001CtrlError	: BOOL;
+	eEL6001CtrlErrorID	: ComError_t;
+	(* 	I/O variables for a EL6001 terminal*)
+	stIn_EL6001 AT %I*	: EL6inData22B;	(* linked to the EL6001 in the TwinCAT System Manager *)
+	stOut_EL6001 AT %Q*	: EL6outData22B;(* linked to the EL6001 in the TwinCAT System Manager *)
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*
+The SerialLineControl function block is supposed to be called in every PLC cycle.
+It communicates with the serial line hardware device and transmits or receives data.
+The SerialLineControl can be called in the standard task (e.g.for PcCOM port usage) 
+or in a separate fast task (e.g.for terminal usage) as well.
+A fast separate task will be necessary at high baud rates or with KL6001 terminals 
+which have a small process image (3 or 5 data bytes only)
+*)
+
+(* background communication with the EL6001 terminal *)
+fbEL6001Ctrl(
+	Mode:= SERIALLINEMODE_EL6_22B, 
+	pComIn:= ADR(stIn_EL6001), 
+	pComOut:= ADR(stOut_EL6001), 
+	SizeComIn:= SIZEOF(stIn_EL6001), 
+	Error=> , 
+	ErrorID=> , 
+	TxBuffer:= TxBufferEL, 
+	RxBuffer:= RxBufferEL );
+IF fbEL6001Ctrl.Error THEN
+	bEL6001CtrlError := TRUE;
+	eEL6001CtrlErrorID := fbEL6001Ctrl.ErrorID;
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

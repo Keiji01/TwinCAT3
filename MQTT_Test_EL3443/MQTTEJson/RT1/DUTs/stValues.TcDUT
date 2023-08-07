@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <DUT Name="stValues" Id="{a1e59352-054d-4679-85e7-1303afa8edcf}">
+    <Declaration><![CDATA[TYPE stValues :
+STRUCT
+	Sensor1:REAL;
+	Sensor2:UDINT;
+	Sensor3:UDINT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

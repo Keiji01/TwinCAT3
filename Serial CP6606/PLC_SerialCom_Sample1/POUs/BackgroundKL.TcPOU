@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.38">
+  <POU Name="BackgroundKL" Id="{acd81667-1820-401a-83c4-3bfc4226a8b5}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM BackgroundKL
+VAR
+	(* background communication with the KL6001 terminal (3byte) *)
+	fbKL6001Ctrl		: SerialLineControl;
+	bKL6001CtrlError	: BOOL;
+	eKL6001CtrlErrorID	: ComError_t;
+	fbKL6001Config		: KL6configuration;
+	bKL6001ConfigError	: BOOL;
+	eKL6001ConfigErrorID: ComError_t;
+	bKL6001ConfigExe	: BOOL := TRUE;
+	(* 	I/O variables for a KL6001 terminal*)
+	stIn_KL6001 AT %I*	: KL6inData;	(* linked to the KL6001 in the TwinCAT System Manager *)
+	stOut_KL6001 AT %Q*	: KL6outData;	(* linked to the KL6001 in the TwinCAT System Manager *)
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*
+The SerialLineControl function block is supposed to be called in every PLC cycle.
+It communicates with the serial line hardware device and transmits or receives data.
+The SerialLineControl can be called in the standard task (e.g.for PcCOM port usage) 
+or in a separate fast task (e.g.for terminal usage) as well.
+A fast separate task will be necessary at high baud rates or with KL6001 terminals 
+which have a small process image (3 or 5 data bytes only)
+*)
+
+(* background communication with the KL6001 terminal (3byte) *)
+fbKL6001Config(
+	Execute:= bKL6001ConfigExe, 
+	Mode:= SERIALLINEMODE_KL6_3B_ALTERNATIVE, 
+	Baudrate:= 9600, 
+	NoDatabits:= 8, 
+	Parity:= 0, 
+	Stopbits:= 1, 
+	Handshake:= HANDSHAKE_NONE, 
+	ContinousMode:= FALSE, 
+	pComIn:= ADR(stIn_KL6001), 
+	pComOut:= ADR(stOut_KL6001), 
+	SizeComIn:= SIZEOF(stIn_KL6001), 
+	Done=> , 
+	Busy=> , 
+	Error=> , 
+	ErrorId=>  );
+IF fbKL6001Config.Error THEN
+	bKL6001ConfigError := TRUE;
+	eKL6001ConfigErrorID := fbKL6001Config.ErrorId;
+END_IF
+	
+IF NOT fbKL6001Config.Busy AND NOT bKL6001ConfigError THEN
+	bKL6001ConfigExe := FALSE;
+	fbKL6001Ctrl(
+		Mode:= SERIALLINEMODE_KL6_3B_ALTERNATIVE,
+		pComIn:= ADR(stIn_KL6001),
+		pComOut:= ADR(stOut_KL6001),
+		SizeComIn:= SIZEOF(stIn_KL6001),
+		Error=> ,
+		ErrorID=> ,
+		TxBuffer:= TxBufferKL,
+		RxBuffer:= RxBufferKL );
+	IF fbKL6001Ctrl.Error THEN
+		bKL6001CtrlError := TRUE;
+		eKL6001CtrlErrorID := fbKL6001Ctrl.ErrorID;
+	END_IF
+END_IF
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

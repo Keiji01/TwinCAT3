@@ -1,0 +1,865 @@
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.42">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{A95422D7-1A59-4C9B-837B-D0BFB0A2FAD5}" Namespace="Tc2_SerialCom" AutoDeleteType="true">EL6inData22B</Name>
+			<Comment><![CDATA[ This data type is corresponding to the
+   KL-6xxx data structure used in the
+   TwinCAT SystemManager
+   (KL-6xxx version using 5 data bytes / 
+    non-alternative (standard) output ) 
+]]></Comment>
+			<BitSize>192</BitSize>
+			<SubItem>
+				<Name>Status</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>D</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>22</Elements>
+				</ArrayInfo>
+				<BitSize>176</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{1F9459C3-B201-4C05-81A9-8EBDE100AF30}" Namespace="Tc2_SerialCom" AutoDeleteType="true">KL6inData</Name>
+			<Comment><![CDATA[ This data type is corresponding to the
+   KL-6xxx data structure used in the
+   TwinCAT SystemManager
+   (KL-6xxx version using 3 data bytes / alternative output)
+]]></Comment>
+			<BitSize>40</BitSize>
+			<SubItem>
+				<Name>Status</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SerStatus</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>D</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>3</Elements>
+				</ArrayInfo>
+				<BitSize>24</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{B41AECC7-DC2B-4BCD-B703-6F20040607B3}" Namespace="Tc2_SerialCom" AutoDeleteType="true">EL6outData22B</Name>
+			<Comment><![CDATA[ This data type is corresponding to the
+   KL-6xxx data structure used in the
+   TwinCAT SystemManager
+   (KL-6xxx version using 5 data bytes / 
+    non-alternative (standard) output ) 
+]]></Comment>
+			<BitSize>192</BitSize>
+			<SubItem>
+				<Name>Ctrl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>D</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>22</Elements>
+				</ArrayInfo>
+				<BitSize>176</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{EB46C324-46C6-4473-8053-5631A6A6BD52}" Namespace="Tc2_SerialCom" AutoDeleteType="true">KL6outData</Name>
+			<Comment><![CDATA[ This data type is corresponding to the
+   KL-6xxx data structure used in the
+   TwinCAT SystemManager
+   (KL-6xxx version using 3 data bytes / alternative output)
+]]></Comment>
+			<BitSize>40</BitSize>
+			<SubItem>
+				<Name>Ctrl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SerCtrl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>D</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>3</Elements>
+				</ArrayInfo>
+				<BitSize>24</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{F1A1C51C-29D9-4ACB-8F06-F16B91849423}" Namespace="Tc2_SerialCom" AutoDeleteType="true">PcComInData</Name>
+			<Comment><![CDATA[ This data type is corresponding to the
+   PC COM-Port data structure used in
+   the TwinCAT SystemManager. 
+   (KL-6xxx emulation mode with 64 data bytes)
+]]></Comment>
+			<BitSize>528</BitSize>
+			<SubItem>
+				<Name>SerStatus</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>D</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>64</Elements>
+				</ArrayInfo>
+				<BitSize>512</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{DB4FA43F-EE08-412D-8836-04AA94BEA49F}" Namespace="Tc2_SerialCom" AutoDeleteType="true">PcComOutData</Name>
+			<Comment><![CDATA[ This data type is corresponding to the
+   PC COM-Port data structure used in
+   the TwinCAT SystemManager. 
+   (KL-6xxx emulation mode with 64 data bytes)
+]]></Comment>
+			<BitSize>528</BitSize>
+			<SubItem>
+				<Name>SerCtrl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>D</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>64</Elements>
+				</ArrayInfo>
+				<BitSize>512</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+	</DataTypes>
+	<ImageDatas>
+		<ImageData Id="1000">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
+		<ImageData Id="1001">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ff000000000000ff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ff000000ff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ffff00ffff00ffff00ffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ff000000ff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ff000000000000ff00ffff00ffff00ffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
+		<ImageData Id="1002">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000120b0000120b00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c00000c00000c00000c00000c00000c0ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc6c6c6000000c6c6c60000c0c6c6c6000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc6c6c600ffffc6c6c60000c0c6c6c600ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc6c6c6c6c6c6c6c6c60000c0c6c6c6c6c6c6808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc6c6c6000000c6c6c60000c0c6c6c6000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc6c6c6ff0000c6c6c60000c0c6c6c6ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc6c6c6c6c6c6c6c6c60000c0c6c6c6c6c6c6808080ff00ffff00ffff00ff007bff007bff007bff007bff007bff007bffc6c6c6000000c6c6c60000c0c6c6c6000000808080ff00ffff00ffff00ff007bff007bff007bff007bff007bff007bffc6c6c60000ffc6c6c60000c0c6c6c60000ff808080ff00ffff00ffff00ff007bff007bff007bff007bff007bff007bffc6c6c6c6c6c6c6c6c60000c0c6c6c6c6c6c6808080ff00ffff00ffff00ff007bff007bff007bff007bff007bff007bffc6c6c6000000c6c6c60000c0c6c6c6000000808080ff00ffff00ffff00ff007bff007bff007bff007bff007bff007bffc6c6c6c6c6c6c6c6c60000c0c6c6c6c6c6c6808080ff00ffff00ffff00ff007bff007bff007bff007bff007bff007bffc6c6c6008400c6c6c60000c0c6c6c6008400808080ff00ffff00ffff00ff007bff007bff007bff007bff007bff007bffc6c6c6c6c6c6c6c6c60000c0c6c6c6c6c6c6808080ff00ffff00ffff00ff</ImageData>
+	</ImageDatas>
+	<Project ProjectGUID="{21677248-0225-4971-8790-7DD82A1E00BA}" TargetNetId="5.109.45.144.1.1" ShowHideConfigurations="#x106">
+		<System>
+			<Tasks>
+				<Task Id="1" Priority="19" CycleTime="20000" AmsPort="350">
+					<Name>PlcTask_Fast</Name>
+				</Task>
+				<Task Id="2" Priority="20" CycleTime="100000" AmsPort="351">
+					<Name>PlcTask_Standard</Name>
+				</Task>
+			</Tasks>
+		</System>
+		<Plc>
+			<Project GUID="{06E8E57A-99E8-4AEF-B5F4-B628A65BAC60}" Name="PLC_SerialCom_Sample1" PrjFilePath="PLC_SerialCom_Sample1\PLC_SerialCom_Sample1.plcProj" TmcFilePath="PLC_SerialCom_Sample1\PLC_SerialCom_Sample1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x0002">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" TmcPath="PLC_SerialCom_Sample1\PLC_SerialCom_Sample1.tmc" TmcHash="{854B5E97-7A2B-18D2-E861-A1FD2407200D}">
+					<Name>PLC_SerialCom_Sample1 Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Vars VarGrpType="1">
+						<Name>PlcTask_Fast Inputs</Name>
+						<Var>
+							<Name>BackgroundEL.stIn_EL6001</Name>
+							<Comment><![CDATA[ linked to the EL6001 in the TwinCAT System Manager ]]></Comment>
+							<Type GUID="{A95422D7-1A59-4C9B-837B-D0BFB0A2FAD5}" Namespace="Tc2_SerialCom">EL6inData22B</Type>
+						</Var>
+						<Var>
+							<Name>BackgroundKL.stIn_KL6001</Name>
+							<Comment><![CDATA[ linked to the KL6001 in the TwinCAT System Manager ]]></Comment>
+							<Type GUID="{1F9459C3-B201-4C05-81A9-8EBDE100AF30}" Namespace="Tc2_SerialCom">KL6inData</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="2" AreaNo="1">
+						<Name>PlcTask_Fast Outputs</Name>
+						<Var>
+							<Name>BackgroundEL.stOut_EL6001</Name>
+							<Comment><![CDATA[ linked to the EL6001 in the TwinCAT System Manager ]]></Comment>
+							<Type GUID="{B41AECC7-DC2B-4BCD-B703-6F20040607B3}" Namespace="Tc2_SerialCom">EL6outData22B</Type>
+						</Var>
+						<Var>
+							<Name>BackgroundKL.stOut_KL6001</Name>
+							<Comment><![CDATA[ linked to the KL6001 in the TwinCAT System Manager ]]></Comment>
+							<Type GUID="{EB46C324-46C6-4473-8053-5631A6A6BD52}" Namespace="Tc2_SerialCom">KL6outData</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="1" ContextId="1" AreaNo="16">
+						<Name>PlcTask_Standard Inputs</Name>
+						<Var>
+							<Name>BackgroundPcCOM.stIn_PcCom</Name>
+							<Comment><![CDATA[ linked to the port in the TwinCAT System Manager ]]></Comment>
+							<Type GUID="{F1A1C51C-29D9-4ACB-8F06-F16B91849423}" Namespace="Tc2_SerialCom">PcComInData</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="2" ContextId="1" AreaNo="17">
+						<Name>PlcTask_Standard Outputs</Name>
+						<Var>
+							<Name>BackgroundPcCOM.stOut_PcCom</Name>
+							<Comment><![CDATA[ linked to the port in the TwinCAT System Manager ]]></Comment>
+							<Type GUID="{DB4FA43F-EE08-412D-8836-04AA94BEA49F}" Namespace="Tc2_SerialCom">PcComOutData</Type>
+						</Var>
+					</Vars>
+					<Contexts>
+						<Context>
+							<Id NeedCalleeCall="true">0</Id>
+							<Name>PlcTask_Fast</Name>
+							<ManualConfig>
+								<OTCID>#x02010010</OTCID>
+							</ManualConfig>
+							<Priority>19</Priority>
+							<CycleTime>2000000</CycleTime>
+						</Context>
+						<Context>
+							<Id NeedCalleeCall="true">1</Id>
+							<Name>PlcTask_Standard</Name>
+							<ManualConfig>
+								<OTCID>#x02010020</OTCID>
+							</ManualConfig>
+							<Priority>20</Priority>
+							<CycleTime>10000000</CycleTime>
+						</Context>
+					</Contexts>
+					<TaskPouOids>
+						<TaskPouOid Prio="19" OTCID="#x08502001"/>
+						<TaskPouOid Prio="20" OTCID="#x08502002"/>
+					</TaskPouOids>
+				</Instance>
+			</Project>
+		</Plc>
+		<Io>
+			<Device Id="1" DevType="11" AmsPort="28673">
+				<Name>Device 1 (COM Port)</Name>
+				<AddressInfo>
+					<Io>
+						<Port>1016</Port>
+					</Io>
+				</AddressInfo>
+				<Image Id="1" AddrType="1" ImageType="3">
+					<Name>Image</Name>
+				</Image>
+				<Serial Baud="19200" Port="1016" StopBit="1" RsType="1" UPSDisableSysShutdown="true" WaitTimeToShutdown="60" DataSize="64" BufSize="4096" DataBit="8" SyncMode="true" FifoSize="16" ComPortNo="1" Timeout="300"/>
+			</Device>
+			<Device Id="3" Disabled="true" DevType="111" DevFlags="#x0003" AmsPort="28675" AmsNetId="172.17.60.154.4.1" RemoteName="Device 3 (EtherCAT)" InfoImageId="2">
+				<Name>Device 3 (EtherCAT)</Name>
+				<AddressInfo>
+					<Pnp>
+						<DeviceDesc>Local Area Connection (Intel(R) 82579LM Gigabit Net</DeviceDesc>
+						<DeviceName>\DEVICE\{C9E3467B-7F35-46DA-A985-2B65BEA5EDBC}</DeviceName>
+						<DeviceData>e0db55e3f207</DeviceData>
+					</Pnp>
+				</AddressInfo>
+				<Image Id="3" AddrType="9" ImageType="3">
+					<Name>Image</Name>
+				</Image>
+				<Box Id="1" BoxType="9099">
+					<Name>Term 1 (EK1100)</Name>
+					<ImageId>1000</ImageId>
+					<EtherCAT SlaveType="1" PdiType="#x0100" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x044c2c52" RevisionNo="#x00010000" PortPhys="305" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1100 EtherCAT Coupler (2A E-Bus)" Desc="EK1100" PortABoxInfo="#x00ffffff"/>
+					<Box Id="2" BoxType="9101">
+						<Name>Term 2 (EL6001)</Name>
+						<ImageId>1001</ImageId>
+						<EtherCAT SlaveType="7" PdiType="#x0005" CycleMBoxPolling="true" CoeType="15" FoeType="1" VendorId="#x00000002" ProductCode="#x17713052" InfoDataAddr="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL6001 Interface (RS232)" Desc="EL6001" PortABoxInfo="#x01000001">
+							<SyncMan>0018f60026000100010000002800ce05f600001826010000</SyncMan>
+							<SyncMan>f618f60022000100020000002800ce05f600f61822010000</SyncMan>
+							<SyncMan>001018002400010003000000000000000000001024010000</SyncMan>
+							<SyncMan>001418002000010004000000000000000000001420010000</SyncMan>
+							<Fmmu>0000000000000000001000020100000001000000000000000000000000000000</Fmmu>
+							<Fmmu>0000000000000000001400010100000002000000000000000000000000000000</Fmmu>
+							<BootStrapData>0018f400f418f400</BootStrapData>
+							<Pdo Name="Inputs" Index="#x1a00" Flags="#x0010">
+								<ExcludePdo>#x1a01</ExcludePdo>
+								<ExcludePdo>#x1a02</ExcludePdo>
+								<Entry Name="Status" Index="#x3101" Sub="#x01">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 0" Index="#x3101" Sub="#x02">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 1" Index="#x3101" Sub="#x03">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 2" Index="#x3101" Sub="#x04">
+									<Type>USINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Inputs" Index="#x1a01" Flags="#x0010">
+								<ExcludePdo>#x1a00</ExcludePdo>
+								<ExcludePdo>#x1a02</ExcludePdo>
+								<Entry Name="Status" Index="#x3102" Sub="#x01">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 0" Index="#x3102" Sub="#x02">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 1" Index="#x3102" Sub="#x03">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 2" Index="#x3102" Sub="#x04">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 3" Index="#x3102" Sub="#x05">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 4" Index="#x3102" Sub="#x06">
+									<Type>USINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Inputs" Index="#x1a02" Flags="#x0010" SyncMan="3">
+								<ExcludePdo>#x1a00</ExcludePdo>
+								<ExcludePdo>#x1a01</ExcludePdo>
+								<Entry Name="Status" Index="#x3103" Sub="#x01">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 0" Index="#x3103" Sub="#x02">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 1" Index="#x3103" Sub="#x03">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 2" Index="#x3103" Sub="#x04">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 3" Index="#x3103" Sub="#x05">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 4" Index="#x3103" Sub="#x06">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 5" Index="#x3103" Sub="#x07">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 6" Index="#x3103" Sub="#x08">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 7" Index="#x3103" Sub="#x09">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 8" Index="#x3103" Sub="#x0a">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 9" Index="#x3103" Sub="#x0b">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 10" Index="#x3103" Sub="#x0c">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 11" Index="#x3103" Sub="#x0d">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 12" Index="#x3103" Sub="#x0e">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 13" Index="#x3103" Sub="#x0f">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 14" Index="#x3103" Sub="#x10">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 15" Index="#x3103" Sub="#x11">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 16" Index="#x3103" Sub="#x12">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 17" Index="#x3103" Sub="#x13">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 18" Index="#x3103" Sub="#x14">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 19" Index="#x3103" Sub="#x15">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 20" Index="#x3103" Sub="#x16">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 21" Index="#x3103" Sub="#x17">
+									<Type>USINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Outputs" Index="#x1600" InOut="1" Flags="#x0010">
+								<ExcludePdo>#x1601</ExcludePdo>
+								<ExcludePdo>#x1602</ExcludePdo>
+								<Entry Name="Ctrl" Index="#x3001" Sub="#x01">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 0" Index="#x3001" Sub="#x02">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 1" Index="#x3001" Sub="#x03">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 2" Index="#x3001" Sub="#x04">
+									<Type>USINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Outputs" Index="#x1601" InOut="1" Flags="#x0010">
+								<ExcludePdo>#x1600</ExcludePdo>
+								<ExcludePdo>#x1602</ExcludePdo>
+								<Entry Name="Ctrl" Index="#x3002" Sub="#x01">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 0" Index="#x3002" Sub="#x02">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 1" Index="#x3002" Sub="#x03">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 2" Index="#x3002" Sub="#x04">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 3" Index="#x3002" Sub="#x05">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 4" Index="#x3002" Sub="#x06">
+									<Type>USINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Outputs" Index="#x1602" InOut="1" Flags="#x0010" SyncMan="2">
+								<ExcludePdo>#x1600</ExcludePdo>
+								<ExcludePdo>#x1601</ExcludePdo>
+								<Entry Name="Ctrl" Index="#x3003" Sub="#x01">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 0" Index="#x3003" Sub="#x02">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 1" Index="#x3003" Sub="#x03">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 2" Index="#x3003" Sub="#x04">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 3" Index="#x3003" Sub="#x05">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 4" Index="#x3003" Sub="#x06">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 5" Index="#x3003" Sub="#x07">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 6" Index="#x3003" Sub="#x08">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 7" Index="#x3003" Sub="#x09">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 8" Index="#x3003" Sub="#x0a">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 9" Index="#x3003" Sub="#x0b">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 10" Index="#x3003" Sub="#x0c">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 11" Index="#x3003" Sub="#x0d">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 12" Index="#x3003" Sub="#x0e">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 13" Index="#x3003" Sub="#x0f">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 14" Index="#x3003" Sub="#x10">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 15" Index="#x3003" Sub="#x11">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 16" Index="#x3003" Sub="#x12">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 17" Index="#x3003" Sub="#x13">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 18" Index="#x3003" Sub="#x14">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 19" Index="#x3003" Sub="#x15">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 20" Index="#x3003" Sub="#x16">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 21" Index="#x3003" Sub="#x17">
+									<Type>USINT</Type>
+								</Entry>
+							</Pdo>
+						</EtherCAT>
+					</Box>
+					<Box Id="3" BoxType="9081" AmsPort="28928">
+						<Name>Box 3 (BK1250)</Name>
+						<ImageId>1002</ImageId>
+						<Vars VarGrpType="1">
+							<Name>Inputs</Name>
+							<Var>
+								<Name>CouplerState</Name>
+								<Comment><![CDATA[0x0000 = No error
+0x0001 = K-Bus error
+0x0002 = Configuration error
+0x0010 = Outputs disabled
+0x0020 = K-Bus overrun
+0x0040 = Communication error (Inputs)
+0x0080 = Communication error (Outputs)
+]]></Comment>
+								<Type>UINT</Type>
+								<BitOffs>504</BitOffs>
+							</Var>
+						</Vars>
+						<Vars VarGrpType="2">
+							<Name>Outputs</Name>
+							<Var>
+								<Name>CouplerCtrl</Name>
+								<Comment><![CDATA[0x0010 = Disable outputs
+0x0020 = Show K-Bus overrun
+]]></Comment>
+								<Type>UINT</Type>
+								<BitOffs>504</BitOffs>
+							</Var>
+						</Vars>
+						<BusCoupler ComplexTermSupport="true" NewHardware="true">
+							<Flags SupportVirtualTerms="true"/>
+							<Term Id="3" TermType="#x1001771" Fieldbus="7">
+								<Name>Term 3 (KL6001-A)</Name>
+								<ImageId>32</ImageId>
+								<Vars VarGrpType="3">
+									<Name>Channel 1</Name>
+									<Var>
+										<Name>State</Name>
+										<Type>USINT</Type>
+										<BitOffs>520</BitOffs>
+										<InOut>0</InOut>
+									</Var>
+									<Var>
+										<Name>Ser. State</Name>
+										<Type>USINT</Type>
+										<BitOffs>536</BitOffs>
+										<InOut>0</InOut>
+									</Var>
+									<Var>
+										<Name>Data In 0</Name>
+										<Type>USINT</Type>
+										<BitOffs>544</BitOffs>
+										<InOut>0</InOut>
+									</Var>
+									<Var>
+										<Name>Data In 1</Name>
+										<Type>USINT</Type>
+										<BitOffs>568</BitOffs>
+										<InOut>0</InOut>
+									</Var>
+									<Var>
+										<Name>Data In 2</Name>
+										<Type>USINT</Type>
+										<BitOffs>576</BitOffs>
+										<InOut>0</InOut>
+									</Var>
+									<Var>
+										<Name>Ctrl</Name>
+										<Type>USINT</Type>
+										<BitOffs>520</BitOffs>
+										<InOut>1</InOut>
+									</Var>
+									<Var>
+										<Name>Ser. Ctrl</Name>
+										<Type>USINT</Type>
+										<BitOffs>536</BitOffs>
+										<InOut>1</InOut>
+									</Var>
+									<Var>
+										<Name>Data Out 0</Name>
+										<Type>USINT</Type>
+										<BitOffs>544</BitOffs>
+										<InOut>1</InOut>
+									</Var>
+									<Var>
+										<Name>Data Out 1</Name>
+										<Type>USINT</Type>
+										<BitOffs>568</BitOffs>
+										<InOut>1</InOut>
+									</Var>
+									<Var>
+										<Name>Data Out 2</Name>
+										<Type>USINT</Type>
+										<BitOffs>576</BitOffs>
+										<InOut>1</InOut>
+									</Var>
+								</Vars>
+							</Term>
+							<Term Id="1" TermType="#x2332" Fieldbus="7">
+								<Name>End Term (KL9010)</Name>
+								<ImageId>32</ImageId>
+							</Term>
+						</BusCoupler>
+						<EtherCAT SlaveType="3" AdsServerAddress="ac113c9a0404eb03" PdiType="#x0008" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="51" FoeType="1" VendorId="#x00000002" ProductCode="#x04e22c22" RevisionNo="#x00100000" InfoDataAddr="true" InfoDataNetId="true" TimeoutMailbox2="6000" GenerateOwnNetId="true" PortPhys="3" PortABoxInfo="#x01000002">
+							<SyncMan>001c88002600010001000000400000028800001c26010000</SyncMan>
+							<SyncMan>001e88002200010002000000400000028800001e22010000</SyncMan>
+							<SyncMan>00100a006400010003000000000000000000001064010000</SyncMan>
+							<SyncMan>00160a000000010004000000000000000000001600010000</SyncMan>
+							<Fmmu>0000000000000000001000020100000001000000000000000000000000000000</Fmmu>
+							<Fmmu>0000000000000000001600010100000002000000000000000000000000000000</Fmmu>
+							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+							<BootStrapData>0010140200181402</BootStrapData>
+						</EtherCAT>
+					</Box>
+				</Box>
+				<EtherCAT DisplayFrmItState="false" SynUnitObjects="true"/>
+			</Device>
+			<Device Id="2" DevType="111" DevFlags="#x0003" AmsPort="28674" AmsNetId="5.109.45.144.3.1" RemoteName="Device 2 (EtherCAT)" InfoImageId="5">
+				<Name>Device 2 (EtherCAT)</Name>
+				<AddressInfo>
+					<Ccat>
+						<Address>-268435456</Address>
+						<Offset>65536</Offset>
+						<Size>32768</Size>
+						<BaseAddr>0</BaseAddr>
+						<BusNo>65535</BusNo>
+						<SlotNo>0</SlotNo>
+						<TimeSize>128</TimeSize>
+						<TimeOffs>1024</TimeOffs>
+						<GpioSize>32</GpioSize>
+						<GpioOffs>768</GpioOffs>
+						<EepromSize>64</EepromSize>
+						<EepromOffs>512</EepromOffs>
+						<IntCtrlSize>16</IntCtrlSize>
+						<IntCtrlOffs>640</IntCtrlOffs>
+					</Ccat>
+				</AddressInfo>
+				<Image Id="4" AddrType="9" ImageType="3">
+					<Name>Image</Name>
+				</Image>
+				<EtherCAT/>
+			</Device>
+		</Io>
+	</Project>
+	<Mappings>
+		<MappingInfo Identifier="{00000000-2002-0850-0120-500810000403}" Id="#x02030020"/>
+		<OwnerA Name="TIPC^PLC_SerialCom_Sample1^PLC_SerialCom_Sample1 Instance">
+			<OwnerB Name="TIID^Device 1 (COM Port)">
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data1"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data10" Size="8" OffsA="72"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data11" Size="8" OffsA="80"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data12" Size="8" OffsA="88"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data13" Size="8" OffsA="96"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data14" Size="8" OffsA="104"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data15" Size="8" OffsA="112"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data16" Size="8" OffsA="120"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data17" Size="8" OffsA="128"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data18" Size="8" OffsA="136"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data19" Size="8" OffsA="144"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data2" Size="8" OffsA="8"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data20" Size="8" OffsA="152"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data21" Size="8" OffsA="160"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data22" Size="8" OffsA="168"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data23" Size="8" OffsA="176"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data24" Size="8" OffsA="184"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data25" Size="8" OffsA="192"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data26" Size="8" OffsA="200"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data27" Size="8" OffsA="208"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data28" Size="8" OffsA="216"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data29" Size="8" OffsA="224"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data3" Size="8" OffsA="16"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data30" Size="8" OffsA="232"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data31" Size="8" OffsA="240"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data32" Size="8" OffsA="248"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data33" Size="8" OffsA="256"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data34" Size="8" OffsA="264"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data35" Size="8" OffsA="272"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data36" Size="8" OffsA="280"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data37" Size="8" OffsA="288"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data38" Size="8" OffsA="296"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data39" Size="8" OffsA="304"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data4" Size="8" OffsA="24"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data40" Size="8" OffsA="312"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data41" Size="8" OffsA="320"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data42" Size="8" OffsA="328"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data43" Size="8" OffsA="336"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data44" Size="8" OffsA="344"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data45" Size="8" OffsA="352"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data46" Size="8" OffsA="360"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data47" Size="8" OffsA="368"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data48" Size="8" OffsA="376"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data49" Size="8" OffsA="384"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data5" Size="8" OffsA="32"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data50" Size="8" OffsA="392"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data51" Size="8" OffsA="400"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data52" Size="8" OffsA="408"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data53" Size="8" OffsA="416"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data54" Size="8" OffsA="424"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data55" Size="8" OffsA="432"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data56" Size="8" OffsA="440"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data57" Size="8" OffsA="448"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data58" Size="8" OffsA="456"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data59" Size="8" OffsA="464"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data6" Size="8" OffsA="40"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data60" Size="8" OffsA="472"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data61" Size="8" OffsA="480"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data62" Size="8" OffsA="488"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data63" Size="8" OffsA="496"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data64" Size="8" OffsA="504"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data7" Size="8" OffsA="48"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data8" Size="8" OffsA="56"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^D" VarB="Inputs^Data9" Size="8" OffsA="64"/>
+				<Link VarA="PlcTask_Standard Inputs^BackgroundPcCOM.stIn_PcCom^SerStatus" VarB="Inputs^Status"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data1"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data10" Size="8" OffsA="72"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data11" Size="8" OffsA="80"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data12" Size="8" OffsA="88"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data13" Size="8" OffsA="96"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data14" Size="8" OffsA="104"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data15" Size="8" OffsA="112"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data16" Size="8" OffsA="120"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data17" Size="8" OffsA="128"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data18" Size="8" OffsA="136"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data19" Size="8" OffsA="144"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data2" Size="8" OffsA="8"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data20" Size="8" OffsA="152"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data21" Size="8" OffsA="160"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data22" Size="8" OffsA="168"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data23" Size="8" OffsA="176"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data24" Size="8" OffsA="184"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data25" Size="8" OffsA="192"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data26" Size="8" OffsA="200"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data27" Size="8" OffsA="208"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data28" Size="8" OffsA="216"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data29" Size="8" OffsA="224"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data3" Size="8" OffsA="16"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data30" Size="8" OffsA="232"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data31" Size="8" OffsA="240"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data32" Size="8" OffsA="248"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data33" Size="8" OffsA="256"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data34" Size="8" OffsA="264"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data35" Size="8" OffsA="272"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data36" Size="8" OffsA="280"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data37" Size="8" OffsA="288"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data38" Size="8" OffsA="296"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data39" Size="8" OffsA="304"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data4" Size="8" OffsA="24"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data40" Size="8" OffsA="312"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data41" Size="8" OffsA="320"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data42" Size="8" OffsA="328"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data43" Size="8" OffsA="336"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data44" Size="8" OffsA="344"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data45" Size="8" OffsA="352"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data46" Size="8" OffsA="360"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data47" Size="8" OffsA="368"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data48" Size="8" OffsA="376"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data49" Size="8" OffsA="384"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data5" Size="8" OffsA="32"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data50" Size="8" OffsA="392"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data51" Size="8" OffsA="400"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data52" Size="8" OffsA="408"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data53" Size="8" OffsA="416"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data54" Size="8" OffsA="424"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data55" Size="8" OffsA="432"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data56" Size="8" OffsA="440"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data57" Size="8" OffsA="448"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data58" Size="8" OffsA="456"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data59" Size="8" OffsA="464"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data6" Size="8" OffsA="40"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data60" Size="8" OffsA="472"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data61" Size="8" OffsA="480"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data62" Size="8" OffsA="488"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data63" Size="8" OffsA="496"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data64" Size="8" OffsA="504"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data7" Size="8" OffsA="48"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data8" Size="8" OffsA="56"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^D" VarB="Outputs^Data9" Size="8" OffsA="64"/>
+				<Link VarA="PlcTask_Standard Outputs^BackgroundPcCOM.stOut_PcCom^SerCtrl" VarB="Outputs^Ctrl"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 3 (EtherCAT)^Term 1 (EK1100)^Box 3 (BK1250)">
+				<Link VarA="PlcTask_Fast Inputs^BackgroundKL.stIn_KL6001^D[0]" VarB="Term 3 (KL6001-A)^Channel 1^Data In 0"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundKL.stIn_KL6001^D[1]" VarB="Term 3 (KL6001-A)^Channel 1^Data In 1"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundKL.stIn_KL6001^D[2]" VarB="Term 3 (KL6001-A)^Channel 1^Data In 2"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundKL.stIn_KL6001^SerStatus" VarB="Term 3 (KL6001-A)^Channel 1^Ser. State"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundKL.stIn_KL6001^Status" VarB="Term 3 (KL6001-A)^Channel 1^State"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundKL.stOut_KL6001^Ctrl" VarB="Term 3 (KL6001-A)^Channel 1^Ctrl"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundKL.stOut_KL6001^D[0]" VarB="Term 3 (KL6001-A)^Channel 1^Data Out 0"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundKL.stOut_KL6001^D[1]" VarB="Term 3 (KL6001-A)^Channel 1^Data Out 1"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundKL.stOut_KL6001^D[2]" VarB="Term 3 (KL6001-A)^Channel 1^Data Out 2"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundKL.stOut_KL6001^SerCtrl" VarB="Term 3 (KL6001-A)^Channel 1^Ser. Ctrl"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 3 (EtherCAT)^Term 1 (EK1100)^Term 2 (EL6001)">
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 0"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 1" Size="8" OffsA="8"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 10" Size="8" OffsA="80"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 11" Size="8" OffsA="88"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 12" Size="8" OffsA="96"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 13" Size="8" OffsA="104"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 14" Size="8" OffsA="112"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 15" Size="8" OffsA="120"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 16" Size="8" OffsA="128"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 17" Size="8" OffsA="136"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 18" Size="8" OffsA="144"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 19" Size="8" OffsA="152"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 2" Size="8" OffsA="16"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 20" Size="8" OffsA="160"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 21" Size="8" OffsA="168"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 3" Size="8" OffsA="24"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 4" Size="8" OffsA="32"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 5" Size="8" OffsA="40"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 6" Size="8" OffsA="48"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 7" Size="8" OffsA="56"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 8" Size="8" OffsA="64"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^D" VarB="Inputs^Data In 9" Size="8" OffsA="72"/>
+				<Link VarA="PlcTask_Fast Inputs^BackgroundEL.stIn_EL6001^Status" VarB="Inputs^Status"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^Ctrl" VarB="Outputs^Ctrl"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 0"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 1" Size="8" OffsA="8"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 10" Size="8" OffsA="80"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 11" Size="8" OffsA="88"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 12" Size="8" OffsA="96"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 13" Size="8" OffsA="104"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 14" Size="8" OffsA="112"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 15" Size="8" OffsA="120"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 16" Size="8" OffsA="128"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 17" Size="8" OffsA="136"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 18" Size="8" OffsA="144"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 19" Size="8" OffsA="152"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 2" Size="8" OffsA="16"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 20" Size="8" OffsA="160"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 21" Size="8" OffsA="168"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 3" Size="8" OffsA="24"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 4" Size="8" OffsA="32"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 5" Size="8" OffsA="40"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 6" Size="8" OffsA="48"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 7" Size="8" OffsA="56"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 8" Size="8" OffsA="64"/>
+				<Link VarA="PlcTask_Fast Outputs^BackgroundEL.stOut_EL6001^D" VarB="Outputs^Data Out 9" Size="8" OffsA="72"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
+</TcSmProject>

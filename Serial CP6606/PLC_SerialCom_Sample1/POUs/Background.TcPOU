@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.38">
+  <POU Name="Background" Id="{a474ab24-92b2-4faa-ab36-f1eb12602ab9}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Background
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*
+The SerialLineControl function block is supposed to be called in every PLC cycle.
+It communicates with the serial line hardware device and transmits or receives data.
+The SerialLineControl can be called in the standard task (e.g.for PcCOM port usage) 
+or in a separate fast task (e.g.for terminal usage) as well.
+A fast separate task will be necessary at high baud rates or with KL6001 terminals 
+which have a small process image (3 or 5 data bytes only)
+*)
+
+(* background communication with the EL6001 terminal *)
+BackgroundEL();
+
+(* background communication with the KL6001 terminal (3byte) *)
+BackgroundKL();]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

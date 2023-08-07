@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_MQTT" Id="{a16758bb-c025-4ae2-abe1-b7ec67e040b2}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_MQTT
+VAR_INPUT	
+	bConnect : BOOL; // Flag de conexão, inicia conexão
+	bPublish : BOOL; // Flag para autorizar publicação
+	iDataQtd : INT;  // Quantidade de variáveis para transmitir (Unitário)
+	valoresEnviar : stValues; // Valores para enviar
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	bInit		: BOOL;
+	Client		: FB_IotMqttClient;
+	i			: INT;
+	messaQueue	: I_IotMqttMessageQueue;
+	
+	abSubscribe		: ARRAY[1..iDataQtd] OF BOOL;
+	abSubscribed	: ARRAY[1..iDataQtd] OF BOOL;
+	asTopicSub		: STRING;
+	
+	fbJson			: FB_JsonSaxWriter;
+	fbJsonDataType  : FB_JsonReadWriteDatatype;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF bInit THEN
+	bInit:=FALSE;
+	Client.sClientId:='Test01';
+	Client.sHostName:='localhost';
+	Client.nHostPort:=1883;
+	Client.ipMessageQueue:=messaQueue;
+END_IF
+
+Client.Execute(bConnect);
+
+IF Client.bConnected THEN
+	FOR i:=1 TO 3 DO
+		IF abSubscribe[i] AND NOT abSubscribed[i] THEN
+			abSubscribed[i]:=Client.Subscribe(sTopic:=asTopicSub[i],eQoS:=TcIotMqttQos.AtMostOnceDelivery);
+		END_IF
+	END_FOR
+	IF bPublish THEN
+		fbJson.ResetDocument();
+		fbJsonDataType.AddJsonValueFromSymbol(fbJson,'stValues',SIZEOF(valoresEnviar),ADR(valoresEnviar));
+		sJsonDoc:=fbJson.GetDocument();
+		fbJson.CopyDocument(sJsonDoc2,SIZEOF(sJsonDoc2));
+
+		cliente.Publish(sTopic:= sTopicPub, 
+		pPayload:= ADR(sJsonDoc2), nPayloadSize:= LEN2(ADR(sJsonDoc2))+1, 
+		eQoS:= TcIotMqttQos.AtMostOnceDelivery, bRetain:= FALSE, bQueue:= FALSE );
+		bPublish:=FALSE;
+	END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="FB_MQTT">
+      <LineId Id="10" Count="25" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

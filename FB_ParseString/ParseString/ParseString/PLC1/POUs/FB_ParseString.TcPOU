@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_ParseString" Id="{7d98a99a-5b8c-4463-bed0-a0efa1e6537d}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ParseString
+VAR_INPUT
+	sCharToSearch : STRING;
+	sInputString  : STRING;
+END_VAR
+VAR_OUTPUT
+	sStringParsed : STRING;
+END_VAR
+VAR
+	Position: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Position := FIND(sInputString, sCharToSearch);
+sStringParsed := DELETE(sInputString, Position, LEN(sInputString));]]></ST>
+    </Implementation>
+    <LineIds Name="FB_ParseString">
+      <LineId Id="9" Count="0" />
+      <LineId Id="16" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
