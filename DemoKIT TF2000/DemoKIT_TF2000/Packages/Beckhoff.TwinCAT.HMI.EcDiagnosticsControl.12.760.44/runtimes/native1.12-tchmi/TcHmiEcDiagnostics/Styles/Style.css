@@ -1,0 +1,432 @@
+/** Styles for all themes */
+/** general */
+.beckhoff-ec-diagnostics {
+    margin: 0;
+    overscroll-behavior: none;
+}
+.beckhoff-ec-diagnostics * {
+    box-sizing: border-box;
+}
+.beckhoff-ec-diagnostics .round-brackets:before {
+    content: ' (';
+}
+.beckhoff-ec-diagnostics .round-brackets:after {
+    content: ')';
+}
+.beckhoff-ec-diagnostics .hide {
+    display: none;
+}
+.beckhoff-ec-diagnostics .bold {
+    font-weight: bold;
+}
+.beckhoff-ec-diagnostics .italic {
+    font-style: italic;
+}
+.beckhoff-ec-diagnostics .crossed-out {
+    text-decoration: line-through;
+}
+.beckhoff-ec-diagnostics .text-align-right {
+    text-align: right;
+}
+.beckhoff-ec-diagnostics .justify-content-center {
+    display: flex;
+    justify-content: center;
+}
+.beckhoff-ec-diagnostics .margin-top-20 {
+    display: block;
+    margin-top: 20px;
+}
+.beckhoff-ec-diagnostics .margin-bottom-20 {
+    display: block;
+    margin-bottom: 20px;
+}
+.beckhoff-ec-diagnostics .arrow-placeholder {
+    margin-top: 0.5em;
+    margin-left: 20px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+.beckhoff-ec-diagnostics .arrow {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    transition: transform 0.2s ease-in;
+    margin-right: 10px;
+}
+.beckhoff-ec-diagnostics .arrow-left {
+    transform: rotate(-225deg);
+}
+.beckhoff-ec-diagnostics .arrow-right {
+    transform: rotate(-45deg);
+}
+.beckhoff-ec-diagnostics .arrow-down {
+    transform: rotate(45deg);
+}
+.beckhoff-ec-diagnostics .online-value {
+    transition: background 1.2s;
+}
+.beckhoff-ec-diagnostics .change-highlight {
+    transition: background 0.3s;
+}
+.beckhoff-ec-diagnostics .error-change-highlight {
+    transition: background 0.3s;
+}
+.beckhoff-ec-diagnostics .underline {
+    text-decoration: underline;
+}
+.beckhoff-ec-diagnostics .text-msg-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.beckhoff-ec-diagnostics .text-msg {
+    white-space: normal;
+    text-align: left;
+    padding: 6px 15px;
+    flex-grow: 1;
+    width: 0;
+}
+.beckhoff-ec-diagnostics .text-msg div {
+    padding: 5px 0;
+}
+/** user interaction */
+.beckhoff-ec-diagnostics button.regular-button {
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.5s !important;
+}
+
+.beckhoff-ec-diagnostics select.regular-combobox {
+    height: 30px;
+}
+
+.beckhoff-ec-diagnostics input.regular-text-input {
+    display: block;
+    min-width: 30px;
+    width: 100%;
+    height: 12px;
+    padding: 5px 5px 8px 5px;
+    box-sizing: content-box;
+    text-align: center;
+    border: none;
+}
+
+/** toolbox */
+.beckhoff-ec-diagnostics .toolbox {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+}
+.beckhoff-ec-diagnostics .toolbox-reset-view {
+    background-size: contain;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.6;
+}
+.beckhoff-ec-diagnostics .toolbox-reset-view:hover {
+    opacity: 1;
+}
+.beckhoff-ec-diagnostics beckhoff-ec-diagnostics-drawing-layers canvas {
+    position: absolute;
+}
+.beckhoff-ec-diagnostics .drawing-wrapper {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    touch-action: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+.beckhoff-ec-diagnostics .drawing-wrapper .drawing-info {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    text-align: right;
+    z-index: 2;
+    padding: 4px;
+}
+.beckhoff-ec-diagnostics .drawing-wrapper .drawing-info:empty {
+    display: none;
+}
+.beckhoff-ec-diagnostics .layer-wrapper {
+    display: inline-block;
+    transform-origin: top left;
+    width: 100%;
+    height: 100%;
+}
+/* master info */
+.beckhoff-ec-diagnostics .master-info {
+    padding: 10px 0 0 0;
+}
+.beckhoff-ec-diagnostics .master-info .master-tabs {
+    margin-top: 20px;
+}
+
+.beckhoff-ec-diagnostics .master-info .master-first-port {
+    height: 30px;
+}
+
+.beckhoff-ec-diagnostics .master-info .master-redundancy-port {
+    height: 30px;
+}
+
+.beckhoff-ec-diagnostics .master-info .syncunit-list {
+    list-style-type: none;
+    padding-inline-start: 0px;
+}
+.beckhoff-ec-diagnostics .master-info .syncunit-list .syncunit-slave-list {
+    list-style-type: decimal;
+}
+
+.beckhoff-ec-diagnostics .master-info-static {
+    border-spacing: 20px 0px;
+}
+
+.beckhoff-ec-diagnostics .master-info-online {
+    border-spacing: 5px 5px;
+}
+.beckhoff-ec-diagnostics .master-info-online td {
+    padding: 6px 8px;
+    text-align: right;
+}
+
+.beckhoff-ec-diagnostics .master-info-static td:nth-child(1) {
+    font-weight: bold;
+}
+
+.beckhoff-ec-diagnostics .master-info-online tr:nth-child(1) {
+    font-weight: bold;
+}
+
+.beckhoff-ec-diagnostics .master-info-online td:nth-child(1) {
+    font-weight: bold;
+}
+/** trace view */
+.beckhoff-ec-diagnostics .trace-view .trace-drawing-wrap {
+    position: relative;
+}
+.beckhoff-ec-diagnostics .trace-view .trace-table-slave-name {
+    writing-mode: vertical-rl;
+    transform: rotate(-180deg);
+}
+.beckhoff-ec-diagnostics .trace-view .trace-drawing-wrap > .drawing-wrapper {
+    position: absolute;
+}
+.beckhoff-ec-diagnostics .trace-view .table-vertical {
+    display: flex;
+    width: auto;
+    border: none;
+    border-spacing: 0;
+}
+.beckhoff-ec-diagnostics .trace-view .table-vertical .head > div {
+    min-width: 150px;
+    padding: 10px;
+    white-space: nowrap;
+}
+.beckhoff-ec-diagnostics .trace-view .table-vertical .content {
+    position: relative;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+}
+.beckhoff-ec-diagnostics .trace-view .table-vertical .content .col {
+    position: relative;
+    cursor: pointer;
+    z-index: 3;
+}
+.beckhoff-ec-diagnostics .trace-view .table-vertical .content .col:hover {
+    z-index: 4 !important;
+}
+.beckhoff-ec-diagnostics .trace-view .table-vertical .content .col > div {
+    padding: 10px;
+    text-align: right;
+}
+.beckhoff-ec-diagnostics .trace-view .trace-view-slaves-table {
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 280px;
+    width: 100%;
+}
+/* slave view */
+.beckhoff-ec-diagnostics .slave-view {
+    margin: 20px 0 0 0;
+}
+.beckhoff-ec-diagnostics .slave-view .header-and-content-tabs-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.beckhoff-ec-diagnostics .slave-view .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    min-width: 300px;
+}
+.beckhoff-ec-diagnostics .slave-view .slave-view-header-name {
+    font-weight: bold;
+    margin-top: 20px;
+}
+.beckhoff-ec-diagnostics .slave-view .slave-drawing-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+.beckhoff-ec-diagnostics .slave-view tchmi-content-tabs {
+    flex-grow: 1;
+    min-width: 300px;
+}
+.beckhoff-ec-diagnostics .slave-view [name='EtherCAT'] {
+    text-align: left;
+}
+.beckhoff-ec-diagnostics .slave-view [name='EtherCAT'] > table {
+    width: 100%;
+}
+.beckhoff-ec-diagnostics .slave-view [name='EtherCAT'] > table > tbody > tr > td {
+    padding-right: 20px;
+}
+.beckhoff-ec-diagnostics .slave-view [name='online'] {
+    flex-direction: column;
+    justify-content: start;
+}
+.beckhoff-ec-diagnostics .slave-view .online-values {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 100%;
+    min-width: 300px;
+}
+.beckhoff-ec-diagnostics .slave-view .online-values .row {
+    display: flex;
+    flex: 1 1 100%;
+    margin-top: 10px;
+}
+.beckhoff-ec-diagnostics .slave-view .online-values .row > div {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.beckhoff-ec-diagnostics .slave-view .online-values .row > div:nth-child(2) {
+    text-align: right;
+    width: auto;
+    padding: 5px 10px 5px 10px;
+    margin-top: -5px;
+}
+.beckhoff-ec-diagnostics .slave-view [name='ports'] {
+    border-collapse: collapse;
+    width: 100%;
+}
+.beckhoff-ec-diagnostics .slave-view [name='ports'] .port {
+    display: block;
+    padding-top: 20px;
+}
+.beckhoff-ec-diagnostics .slave-view [name='ports'] .port td:nth-child(2) {
+    padding-left: 40px;
+    width: 200px;
+}
+.beckhoff-ec-diagnostics .slave-view [name='ports'] .port td:nth-child(3) {
+    text-align: right;
+    width: 200px;
+}
+.beckhoff-ec-diagnostics .slave-view [name='ports'] .port .port-title {
+    margin-bottom: 10px;
+}
+.beckhoff-ec-diagnostics .slave-view [name='ports'] .port .port-title .port-name {
+    font-weight: bold;
+}
+.beckhoff-ec-diagnostics .slave-view [name='ports'] .errorMessage {
+    display: block !important;
+}
+.beckhoff-ec-diagnostics .slave-view .errorMessage div {
+    text-align: left !important;
+}
+.beckhoff-ec-diagnostics .slave-view .channel-name {
+    width: 100%;
+}
+
+.beckhoff-ec-diagnostics .num {
+    text-align: right;
+}
+.beckhoff-ec-diagnostics .slave-view .slave-message {
+    padding: 10px !important;
+    display: block;
+}
+.beckhoff-ec-diagnostics .slave-view .slave-message-btn {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+    cursor: pointer;
+    border: transparent;
+    transition: 0.3s;
+    background: transparent;
+    border-radius: 2px;
+}
+.beckhoff-ec-diagnostics .slave-view .slave-message-btn.slave-message-btn-inline {
+    display: inline;
+    margin: 0px 5px;
+    padding: 5px;
+    font-size: inherit;
+}
+.beckhoff-ec-diagnostics .slave-view .slave-message-btn.slave-message-btn-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+.beckhoff-ec-diagnostics .slave-view .slave-message-btn.slave-message-btn-info {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: -10px;
+}
+
+.beckhoff-ec-diagnostics .navigation-link {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.beckhoff-ec-diagnostics .navigation-link:hover {
+    font-weight: bold;
+}
+
+.beckhoff-ec-diagnostics .boolean-representation {
+    display: inline-block;
+    padding: 5px;
+    text-transform: uppercase;
+    width: 40px;
+    height: 25px;
+    text-align: center;
+    vertical-align: middle;
+}
+.beckhoff-ec-diagnostics .forced-process-data-value-flag {
+    padding: 5px 0px;
+    border-radius: 100px;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.beckhoff-ec-diagnostics .forced-process-data-value-flag-placeholder {
+    padding: 5px 0px;
+    width: 25px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.beckhoff-ec-diagnostics .grid-full-row {
+    grid-column: 1 / -1;
+}
+
+.beckhoff-ec-diagnostics .grid-sub-group {
+    display: contents;
+}

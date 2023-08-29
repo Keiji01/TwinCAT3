@@ -1,0 +1,15 @@
+.beckhoff-ec-diagnostics beckhoff-ec-diagnostics-optional-bool-input {
+    background: #f8f8f8;
+    border-bottom: 1px #ccc solid;
+}
+
+.beckhoff-ec-diagnostics beckhoff-ec-diagnostics-optional-bool-input.false {
+    background: black;
+    color: white;
+    border: none;
+}
+.beckhoff-ec-diagnostics beckhoff-ec-diagnostics-optional-bool-input.true {
+    background: blue;
+    color: white;
+    border: none;
+}

@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="FB_TestHTTP_HeaderAuth" Id="{78f398a4-338a-4efe-bf5c-a180ce91ef4c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TestHTTP_HeaderAuth
+VAR_INPUT
+	bSend		: BOOL;
+END_VAR
+VAR_IN_OUT
+	fbClient			: FB_IotHttpClient;
+END_VAR
+VAR_OUTPUT
+	bBusy				: BOOL;
+	bError				: BOOL;
+END_VAR
+VAR
+	fbRequest			: FB_IotHttpRequest:= (eCompressionMode:=E_IotHttpCompressionMode.NoCompression);
+	fbHeader			: FB_IotHttpHeaderFieldMap;
+	fbJson				: FB_JsonDomParser;
+	nState				: UDINT;
+	RisingEdge			: R_TRIG;
+
+	bGetContentResult	: BOOL;
+	sContent			: STRING(5000);
+	
+	bGetJsonResult		: BOOL;
+	jsonDoc				: SJsonValue;
+	jsonVal				: SJsonValue;
+	bResultValue		: BOOL;
+	
+	nReqCount			: UDINT;
+	nResCount			: UDINT;
+	nValidResCount		: UDINT;
+	nErrCount			: UDINT;
+	bOnce				: BOOL:= TRUE;
+	AddField: INT;
+	solicitacao:STRING(500):= 'User-Agent: TcHttpClient
+Content-Type: application/json
+empresa: 1
+authorization: eyJhbGciOiJFUzI1NiJ9.eyJzdWIiOiJsdWNhcy5icmF1biIsImNzd1Rva2VuIjoiQ3VyQTk5Y2EiLCJkYk5hbWVTcGFjZSI6ImNvbnNpc3RlbSIsImlzcyI6ImFwaSIsImF1ZCI6ImFwaSIsImV4cCI6MTg0NTYzMzEwNH0.e3MuFy9_3RGJckYhq_CN56nID3yUWgQv32f5esS0QUZmGxbwy8JMuvr0tg8_k3nFbiN53bU_w1I9ZH-QX6TwLw
+Accept: */*
+Content-Length: 0';
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF bOnce THEN
+	
+	//fbHeader.AddField('Content-Type','application/json',FALSE);
+	fbRequest.sContentType:= 'application/json';
+	fbHeader.AddField('empresa','1',FALSE);
+	fbHeader.AddField('Content-Type','application/json',FALSE);
+	fbHeader.AddField('authorization', 'eyJhbGciOiJFUzI1NiJ9.eyJzdWIiOiJsdWNhcy5icmF1biIsImNzd1Rva2VuIjoiQ3VyQTk5Y2EiLCJkYk5hbWVTcGFjZSI6ImNvbnNpc3RlbSIsImlzcyI6ImFwaSIsImF1ZCI6ImFwaSIsImV4cCI6MTg0NTYzMzEwNH0.e3MuFy9_3RGJckYhq_CN56nID3yUWgQv32f5esS0QUZmGxbwy8JMuvr0tg8_k3nFbiN53bU_w1I9ZH-QX6TwLw', FALSE);
+
+	
+	//fbHeader.AddField('Accept', '*/*', TRUE);
+	//fbHeader.AddField('Content-Length','0',TRUE);
+	
+	bOnce:= FALSE;
+END_IF
+
+
+RisingEdge(CLK:= bSend);
+CASE nState OF
+0:	
+	IF RisingEdge.Q THEN 
+		//fbRequest.sContentType:= 'application/json';
+		//IF fbRequest.SendRequest(sUri:='/api/ppcppadrao/v10/ordemFabricacao/71604', fbClient:=fbClient,eRequestType:=ETcIotHttpRequestType.HTTP_GET,0,0,fbHeader) THEN
+		IF fbRequest.SendRequest(sUri:='/api/ppcppadrao/v10/ordemFabricacao/71605', fbClient:=fbClient,eRequestType:=ETcIotHttpRequestType.HTTP_GET,0,0,fbHeader) THEN		
+			nState:= 1;
+			nReqCount:= nReqCount+1;
+			bBusy:= TRUE;
+			bError:= FALSE;
+		END_IF
+	END_IF
+1:
+	IF NOT fbRequest.bBusy THEN
+		bError:= TRUE;
+		IF NOT fbRequest.bError THEN				 
+			bGetContentResult:= fbRequest.GetContent(pContent:= ADR(sContent), nContentSize:= SIZEOF(sContent), bSetNullTermination:= TRUE);
+			IF fbRequest.nStatusCode >= 200 AND fbRequest.nStatusCode < 302 THEN
+				bGetJsonResult:= FALSE;
+				jsonDoc:= fbRequest.GetJsonDomContent(fbJson);
+				IF jsonDoc <> 0 THEN
+					bGetJsonResult:= TRUE;
+					IF fbJson.HasMember(jsonDoc, 'data') THEN
+						jsonVal:= fbJson.FindMember(jsonDoc, 'data');						
+						IF fbJson.IsBool(jsonVal) THEN
+							bResultValue:= fbJson.GetBool(jsonVal);
+							nValidResCount:= nValidResCount+1;
+							bError:= FALSE;						
+						END_IF	
+					END_IF
+				END_IF							
+				nResCount:= nResCount+1;			
+			END_IF
+		END_IF
+		nState:= 0;
+		bBusy:= FALSE;
+		IF bError THEN
+			nErrCount:= nErrCount+1;
+		END_IF
+	END_IF  	
+END_CASE
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_TestHTTP_HeaderAuth">
+      <LineId Id="157" Count="0" />
+      <LineId Id="225" Count="0" />
+      <LineId Id="227" Count="0" />
+      <LineId Id="310" Count="0" />
+      <LineId Id="299" Count="0" />
+      <LineId Id="312" Count="0" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="295" Count="3" />
+      <LineId Id="224" Count="0" />
+      <LineId Id="192" Count="0" />
+      <LineId Id="159" Count="0" />
+      <LineId Id="309" Count="0" />
+      <LineId Id="85" Count="0" />
+      <LineId Id="10" Count="3" />
+      <LineId Id="262" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="356" Count="0" />
+      <LineId Id="15" Count="2" />
+      <LineId Id="355" Count="0" />
+      <LineId Id="19" Count="11" />
+      <LineId Id="87" Count="2" />
+      <LineId Id="93" Count="0" />
+      <LineId Id="86" Count="0" />
+      <LineId Id="125" Count="0" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="41" Count="11" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

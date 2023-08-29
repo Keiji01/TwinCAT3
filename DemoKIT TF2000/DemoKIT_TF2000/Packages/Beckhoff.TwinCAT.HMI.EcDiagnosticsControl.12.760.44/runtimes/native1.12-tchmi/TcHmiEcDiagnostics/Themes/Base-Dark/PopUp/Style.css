@@ -1,0 +1,9 @@
+.beckhoff-ec-diagnostics beckhoff-ec-diagnostics-pop-up {
+    background: rgba(0, 0, 0, 0.6);
+}
+.beckhoff-ec-diagnostics beckhoff-ec-diagnostics-pop-up > .inner-frame {
+    background: var(--main-background-color);
+    -webkit-box-shadow: 1px 1px 40px 1px var(--main-border-color);
+    -moz-box-shadow: 1px 1px 40px 1px var(--main-border-color);
+    box-shadow: 1px 1px 40px 1px var(--main-border-color);
+}

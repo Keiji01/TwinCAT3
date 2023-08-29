@@ -1,0 +1,12 @@
+{
+    "RUNTIMES": {
+        "PLC1": {
+            "ENABLED": true,
+            "NETID": "192.168.10.1.1.1",
+            "PORT": 851,
+            "READ_ONLY": false,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        }
+    }
+}

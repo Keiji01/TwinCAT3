@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="35px" height="80px" viewBox="0 0 35 80" enable-background="new 0 0 35 80" xml:space="preserve">
+<g>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="7.7783" y1="13.9053" x2="51.5714" y2="66.0958">
+		<stop  offset="0.5" style="stop-color:#EFF1F3"/>
+		<stop  offset="0.9998" style="stop-color:#AEB9C2"/>
+	</linearGradient>
+	<rect x="24.349" fill="url(#SVGID_1_)" width="10.651" height="80"/>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="-14.8477" y1="12.459" x2="31.3722" y2="67.5416">
+		<stop  offset="0.5" style="stop-color:#EFF1F3"/>
+		<stop  offset="0.9998" style="stop-color:#AEB9C2"/>
+	</linearGradient>
+	<rect fill="url(#SVGID_2_)" width="16.523" height="80"/>
+	
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="-14.6553" y1="-528.4473" x2="27.9784" y2="-477.6385" gradientTransform="matrix(-1 0 0 -1 27.0879 -463.043)">
+		<stop  offset="0.3332" style="stop-color:#EFF1F3"/>
+		<stop  offset="0.5" style="stop-color:#EFF1F3"/>
+	</linearGradient>
+	<rect x="16.503" fill="url(#SVGID_3_)" width="7.846" height="80"/>
+	<g opacity="0.4">
+		<ellipse cx="27.283" cy="27.994" rx="1.704" ry="1.684"/>
+		<ellipse cx="32.064" cy="27.994" rx="1.704" ry="1.684"/>
+	</g>
+	<g opacity="0.4">
+		<ellipse cx="27.283" cy="42.574" rx="1.704" ry="1.685"/>
+		<ellipse cx="32.064" cy="42.574" rx="1.704" ry="1.685"/>
+	</g>
+	<g opacity="0.4">
+		<ellipse cx="27.283" cy="56.86" rx="1.704" ry="1.685"/>
+		<ellipse cx="32.064" cy="56.86" rx="1.704" ry="1.685"/>
+	</g>
+	<g opacity="0.4">
+		<ellipse cx="27.283" cy="71.833" rx="1.704" ry="1.685"/>
+		<ellipse cx="32.064" cy="71.833" rx="1.704" ry="1.685"/>
+	</g>
+	<rect x="26.478" y="3.46" opacity="0.4" width="6.392" height="14.309"/>
+	<g>
+		<path fill="#C31924" d="M22.147,75.154h-3.445V74.12c0-0.605,0.197-1.076,0.892-1.076c0.303,0,0.574,0.108,0.726,0.385h0.011
+			c0.211-0.363,0.394-0.44,0.82-0.44c0.698,0,0.997,0.391,0.997,1.04V75.154z M20.058,74.356c-0.023-0.352,0-0.515-0.408-0.515
+			c-0.341,0-0.327,0.232-0.327,0.515H20.058z M21.527,74.356c-0.008-0.4,0.018-0.567-0.444-0.567c-0.4,0-0.391,0.227-0.405,0.567
+			H21.527z"/>
+		<path fill="#C31924" d="M22.147,72.622h-3.445v-1.831h0.688v1.031h0.635v-1h0.689v1h0.746v-1.086h0.688V72.622z"/>
+		<path fill="#C31924" d="M19.906,69.021h-0.221c-0.296,0-0.447,0.104-0.447,0.254c-0.004,0.25,0.134,0.309,0.359,0.309l1.704,0.005
+			c0.194,0,0.31-0.077,0.31-0.286c0-0.272-0.285-0.295-0.496-0.295h-0.313v-0.799h0.423c0.592,0,1.007,0.336,1.007,1.152
+			c0,0.737-0.395,1.022-1.099,1.022h-1.416c-0.749,0-1.099-0.341-1.099-1.071c0-0.682,0.296-1.09,0.997-1.09h0.291V69.021z"/>
+		<path fill="#C31924" d="M22.147,67.836h-3.445v-0.799h1.378v-0.01l-1.378-0.59V65.62l1.521,0.727l1.924-0.772v0.845l-1.198,0.44
+			l0.349,0.178h0.85V67.836z"/>
+		<path fill="#C31924" d="M22.147,65.325h-3.445v-0.799h1.322v-0.555h-1.322v-0.799h3.445v0.799h-1.434v0.555h1.434V65.325z"/>
+		<path fill="#C31924" d="M21.049,60.639c0.778,0,1.183,0.268,1.183,1.077c0,0.809-0.404,1.09-1.183,1.09h-1.399
+			c-0.662,0-1.031-0.392-1.031-1.09c0-0.699,0.369-1.077,1.031-1.077H21.049z M19.703,61.438c-0.212,0-0.465,0.018-0.465,0.282
+			c0,0.254,0.253,0.286,0.465,0.286h1.416c0.196,0,0.492-0.032,0.492-0.291c0-0.26-0.296-0.277-0.492-0.277H19.703z"/>
+		<path fill="#C31924" d="M22.147,60.241h-3.445V58.36h0.688v1.08h0.613v-0.994h0.689v0.994h1.455V60.241z"/>
+		<path fill="#C31924" d="M22.147,57.971h-3.445v-1.88h0.688v1.079h0.613v-0.993h0.689v0.993h1.455V57.971z"/>
+	</g>
+	<g>
+		<rect x="2.69" y="14.405" opacity="0.1" width="11.143" height="13.895"/>
+		<polygon opacity="0.4" points="4.285,16.291 4.285,19.574 3.22,19.574 3.22,23.436 4.285,23.436 4.285,26.719 12.095,26.719 
+			12.095,16.291 		"/>
+	</g>
+	<g>
+		<rect x="2.69" y="38.382" opacity="0.1" width="11.143" height="13.895"/>
+		<polygon opacity="0.4" points="4.285,40.268 4.285,43.551 3.22,43.551 3.22,47.412 4.285,47.412 4.285,50.696 12.095,50.696 
+			12.095,40.268 		"/>
+	</g>
+</g>
+</svg>

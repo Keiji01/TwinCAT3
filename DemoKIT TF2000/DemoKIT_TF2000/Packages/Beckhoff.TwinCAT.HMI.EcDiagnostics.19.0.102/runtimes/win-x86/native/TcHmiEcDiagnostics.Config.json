@@ -1,0 +1,1059 @@
+{
+  "$schema": "../../TcHmiSrv/schema/ExtensionSettings.Schema.json",
+  "version": "1.12.760.44",
+  "configVersion": "1.0.0.63",
+  "guid": "5DC96C56-5913-4dbb-92A5-8557E1B87658",
+  "policies": [
+    "StrictPropertyValidation"
+  ],
+  "symbols": {
+    "Diagnostics": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "readOnly": true,
+        "properties": {
+          "devices": {
+            "readOnly": true,
+            "type": "object",
+            "additionalProperties": {
+              "readOnly": true,
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "propertyOrder": 1,
+                  "readOnly": true,
+                  "type": "boolean",
+                  "hidden": true
+                },
+                "target": {
+                  "propertyOrder": 2,
+                  "readOnly": true,
+                  "type": "string"
+                },
+                "targetAvailable": {
+                  "propertyOrder": 3,
+                  "readOnly": true,
+                  "type": "boolean",
+                  "hidden": true
+                },
+                "connectionState": {
+                  "propertyOrder": 4,
+                  "readOnly": true,
+                  "type": "string"
+                },
+                "targetAdsVersion": {
+                  "propertyOrder": 5,
+                  "readOnly": true,
+                  "type": "string"
+                },
+                "targetAdsState": {
+                  "propertyOrder": 6,
+                  "readOnly": true,
+                  "type": "string"
+                },
+                "master": {
+                  "propertyOrder": 7,
+                  "readOnly": true,
+                  "type": "string"
+                },
+                "masterState": {
+                  "propertyOrder": 8,
+                  "readOnly": true,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "enabled",
+                "target",
+                "targetAvailable",
+                "connectionState",
+                "master"
+              ]
+            }
+          }
+        }
+      },
+      "description": "Get information about the connections between the HMI server and the configured EtherCAT masters."
+    },
+    "ListConfiguredDevices": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "readOnly": true,
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "targetNetId": {
+              "type": "string",
+              "format": "amsnetid"
+            },
+            "masterNetId": {
+              "type": "string",
+              "format": "amsnetid"
+            }
+          },
+          "required": [
+            "enabled",
+            "targetNetId",
+            "masterNetId"
+          ]
+        }
+      },
+      "description": "Get a list of all configured EtherCAT devices."
+    },
+    "ListMastersOfRoute": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true,
+        "type": "array",
+        "items": [
+          {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string",
+                "format": "amsnetid"
+              }
+            },
+            "required": [
+              "label",
+              "value"
+            ]
+          }
+        ]
+      },
+      "sample": {
+        "description": "List the EtherCAT masters of the '127.0.0.1.1.1' route.",
+        "value": "127.0.0.1.1.1"
+      },
+      "description": "Get a list of the EtherCAT masters that are available via a specific ADS route."
+    },
+    "GetTarget": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "properties": {
+          "available": {
+            "type": "boolean"
+          },
+          "config": {
+            "type": "object",
+            "properties": {
+              "masterNetId": {
+                "type": "string",
+                "format": "amsnetid"
+              }
+            },
+            "required": [
+              "masterNetId"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "netId": {
+            "type": "string"
+          },
+          "sysServiceAdsState": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "available",
+          "config",
+          "name",
+          "netId",
+          "sysServiceAdsState"
+        ]
+      },
+      "sample": {
+        "description": "Get information about the 'Device1' EtherCAT target.",
+        "value": "Device1"
+      },
+      "description": "Get information about a specific EtherCAT target."
+    },
+    "GetMaster": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "netId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "netId"
+        ]
+      },
+      "sample": {
+        "description": "Get information about the 'Device1' EtherCAT master.",
+        "value": "Device1"
+      },
+      "description": "Get information about a specific EtherCAT master."
+    },
+    "GetSlaves": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "properties": {
+          "slavesCount": {
+            "type": "number"
+          },
+          "disabledSlaves": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/slave"
+            }
+          },
+          "hotConnectGroups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/slave"
+            }
+          },
+          "master": {
+            "type": "object",
+            "properties": {
+              "configuredSlave": {
+                "$ref": "#/definitions/slave"
+              },
+              "portPhysic": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "required": [
+          "slavesCount"
+        ]
+      },
+      "sample": {
+        "description": "Get information about the slaves of the 'Device1' EtherCAT master.",
+        "value": "Device1"
+      },
+      "description": "Get information about the slaves of a specific EtherCAT master."
+    },
+    "GetSlavesScanned": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true,
+        "readValue": {
+          "type": "object",
+          "properties": {
+            "slaves": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "addr": {
+                      "type": "integer"
+                    },
+                    "productCode": {
+                      "type": "integer"
+                    },
+                    "revisionNumber": {
+                      "type": "integer"
+                    },
+                    "serialNumber": {
+                      "type": "integer"
+                    },
+                    "vendorId": {
+                      "type": "integer"
+                    },
+                    "vendorLabelName": {
+                      "type": "string"
+                    },
+                    "vendorMemberName": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "addr",
+                    "productCode",
+                    "revisionNumber",
+                    "serialNumber",
+                    "vendorId",
+                    "vendorLabelName",
+                    "vendorMemberName"
+                  ]
+                }
+              ]
+            },
+            "updated": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "slaves",
+            "updated"
+          ]
+        }
+      },
+      "sample": {
+        "description": "Get a list of scanned slaves in the network of the 'Device1'.",
+        "value": "Device1"
+      },
+      "description": "Get a list of scanned slaves in the network of an EtherCAT master."
+    },
+    "SendSlavesScanCmd": {
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true
+      },
+      "access": 2,
+      "sample": {
+        "description": "Scan the network for slaves of the 'Device1'.",
+        "value": "Device1"
+      },
+      "description": "Scan the network for slaves of an EtherCAT master."
+    },
+    "GetMasterOnlineInfo": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "properties": {
+          "frames": {
+            "type": "object",
+            "properties": {
+              "damaged": {
+                "type": "object",
+                "properties": {
+                  "received": {
+                    "type": "integer"
+                  },
+                  "sent": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "received",
+                  "sent"
+                ]
+              },
+              "missed": {
+                "type": "object",
+                "properties": {
+                  "acyclic": {
+                    "type": "integer"
+                  },
+                  "cyclic": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "acyclic",
+                  "cyclic"
+                ]
+              },
+              "perSec": {
+                "type": "object",
+                "properties": {
+                  "acyclic": {
+                    "type": "integer"
+                  },
+                  "cyclic": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "acyclic",
+                  "cyclic"
+                ]
+              },
+              "total": {
+                "type": "object",
+                "properties": {
+                  "acyclic": {
+                    "type": "integer"
+                  },
+                  "cyclic": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "acyclic",
+                  "cyclic"
+                ]
+              }
+            },
+            "required": [
+              "damaged",
+              "missed",
+              "perSec",
+              "total"
+            ]
+          },
+          "stateMachine": {
+            "type": "integer"
+          },
+          "stateMachineRequested": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "frames",
+          "stateMachine"
+        ]
+      },
+      "sample": {
+        "description": "Get the online information of the 'Device1' EtherCAT master.",
+        "value": "Device1"
+      },
+      "description": "Get the online information of a specific EtherCAT master."
+    },
+    "SetMasterStateMachine": {
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "device": {
+            "type": "string"
+          },
+          "state": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "device",
+          "state"
+        ]
+      },
+      "readValue": {
+        "function": true
+      },
+      "sample": {
+        "description": "Set the state machine of the 'Device1' EtherCAT master to operational.",
+        "value": {
+          "device": "Device1",
+          "state": 8
+        }
+      },
+      "description": "Set the state machine of a specific EtherCAT master."
+    },
+    "GetSlavesOnlineInfo": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "additionalProperties": {
+          "slaves": {
+            "type": "object",
+            "properties": {
+              "1001": {
+                "type": "object",
+                "properties": {
+                  "counter": {
+                    "type": "object",
+                    "properties": {
+                      "abnormalChanges": {
+                        "type": "integer"
+                      },
+                      "connectionLosses": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "abnormalChanges",
+                      "connectionLosses"
+                    ]
+                  },
+                  "current": {
+                    "type": "object",
+                    "properties": {
+                      "disabled": {
+                        "type": "boolean"
+                      },
+                      "identity": {
+                        "type": "object",
+                        "properties": {
+                          "isInvalid": {
+                            "type": "boolean"
+                          },
+                          "isInvalidOnPrevSlaves": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "isInvalid",
+                          "isInvalidOnPrevSlaves"
+                        ]
+                      },
+                      "initError": {
+                        "type": "boolean"
+                      },
+                      "presence": {
+                        "type": "object",
+                        "properties": {
+                          "notPresent": {
+                            "type": "boolean"
+                          },
+                          "notPresentOnPrevSlaves": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "notPresent",
+                          "notPresentOnPrevSlaves"
+                        ]
+                      },
+                      "signalsError": {
+                        "type": "boolean"
+                      },
+                      "stateMachine": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "disabled",
+                      "identity",
+                      "initError",
+                      "presence",
+                      "signalsError",
+                      "stateMachine"
+                    ]
+                  },
+                  "ports": {
+                    "type": "array",
+                    "items": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "counter": {
+                            "type": "object",
+                            "properties": {
+                              "crc": {
+                                "type": "object",
+                                "properties": {
+                                  "errorOnPrevPort": {
+                                    "type": "boolean"
+                                  },
+                                  "total": {
+                                    "type": "integer"
+                                  }
+                                },
+                                "required": [
+                                  "errorOnPrevPort",
+                                  "total"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "crc"
+                            ]
+                          },
+                          "current": {
+                            "type": "object",
+                            "properties": {
+                              "linkError": {
+                                "type": "boolean"
+                              },
+                              "missingLink": {
+                                "type": "boolean"
+                              },
+                              "unexpectedLink": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "linkError",
+                              "missingLink",
+                              "unexpectedLink"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "counter",
+                          "current"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "counter": {
+                            "type": "object",
+                            "properties": {
+                              "crc": {
+                                "type": "object",
+                                "properties": {
+                                  "errorOnPrevPort": {
+                                    "type": "boolean"
+                                  },
+                                  "total": {
+                                    "type": "integer"
+                                  }
+                                },
+                                "required": [
+                                  "errorOnPrevPort",
+                                  "total"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "crc"
+                            ]
+                          },
+                          "current": {
+                            "type": "object",
+                            "properties": {
+                              "linkError": {
+                                "type": "boolean"
+                              },
+                              "missingLink": {
+                                "type": "boolean"
+                              },
+                              "unexpectedLink": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "linkError",
+                              "missingLink",
+                              "unexpectedLink"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "counter",
+                          "current"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "counter": {
+                            "type": "object",
+                            "properties": {
+                              "crc": {
+                                "type": "object",
+                                "properties": {
+                                  "errorOnPrevPort": {
+                                    "type": "boolean"
+                                  },
+                                  "total": {
+                                    "type": "integer"
+                                  }
+                                },
+                                "required": [
+                                  "errorOnPrevPort",
+                                  "total"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "crc"
+                            ]
+                          },
+                          "current": {
+                            "type": "object",
+                            "properties": {
+                              "linkError": {
+                                "type": "boolean"
+                              },
+                              "missingLink": {
+                                "type": "boolean"
+                              },
+                              "unexpectedLink": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "linkError",
+                              "missingLink",
+                              "unexpectedLink"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "counter",
+                          "current"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "counter": {
+                            "type": "object",
+                            "properties": {
+                              "crc": {
+                                "type": "object",
+                                "properties": {
+                                  "errorOnPrevPort": {
+                                    "type": "boolean"
+                                  },
+                                  "total": {
+                                    "type": "integer"
+                                  }
+                                },
+                                "required": [
+                                  "errorOnPrevPort",
+                                  "total"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "crc"
+                            ]
+                          },
+                          "current": {
+                            "type": "object",
+                            "properties": {
+                              "linkError": {
+                                "type": "boolean"
+                              },
+                              "missingLink": {
+                                "type": "boolean"
+                              },
+                              "unexpectedLink": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "linkError",
+                              "missingLink",
+                              "unexpectedLink"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "counter",
+                          "current"
+                        ]
+                      }
+                    ]
+                  },
+                  "requested": {
+                    "type": "object",
+                    "properties": {
+                      "stateMachine": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "stateMachine"
+                    ]
+                  },
+                  "syncUnits": {
+                    "type": "object",
+                    "properties": {
+                      "0": {
+                        "type": "object",
+                        "properties": {
+                          "error": {
+                            "type": "boolean"
+                          },
+                          "frameMissedCounter": {
+                            "type": "integer"
+                          },
+                          "wcFaultCounter": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "error",
+                          "frameMissedCounter",
+                          "wcFaultCounter"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "0"
+                    ]
+                  }
+                },
+                "required": [
+                  "counter",
+                  "current",
+                  "ports",
+                  "requested",
+                  "syncUnits"
+                ]
+              }
+            }
+          }
+        },
+        "required": [
+          "slaves"
+        ]
+      },
+      "sample": {
+        "description": "Get online information from the slaves of the 'Device1' EtherCAT master.",
+        "value": "Device1"
+      },
+      "description": "Get online information from the slaves of a specific EtherCAT master."
+    },
+    "GetProcessDataValues": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "device": {
+            "type": "string"
+          },
+          "slaveAddr": {
+            "type": "integer"
+          },
+          "updateForcedState": {
+            "type": "boolean"
+          },
+          "updateValue": {
+            "type": "boolean"
+          }
+        }
+      },
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "properties": {
+          "in": {
+            "type": "array",
+            "items": [
+              {
+                "$ref": "#/definitions/EcDiagnosticsProcessDataInOutValues"
+              }
+            ]
+          },
+          "out": {
+            "type": "array",
+            "items": [
+              {
+                "$ref": "#/definitions/EcDiagnosticsProcessDataInOutValues"
+              }
+            ]
+          }
+        }
+      },
+      "sample": {
+        "description": "Get the process data of slave with the physical address 1003 of the 'Device1' EtherCAT master.",
+        "value": {
+          "device": "Device1",
+          "slaveAddr": 1003,
+          "updateForcedState": true
+        }
+      },
+      "description": "Get the process data of slave 1003 of a specific EtherCAT master."
+    },
+    "SetProcessDataValues": {
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "device": {
+            "type": "string"
+          },
+          "slaveAddr": {
+            "type": "integer"
+          },
+          "values": {
+            "type": "array",
+            "items": [
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/EcDiagnosticsProcessDataObjectEntryID"
+                  },
+                  {
+                    "$ref": "#/definitions/EcDiagnosticsProcessDataObjectEntryValue"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "readValue": {
+        "function": true
+      },
+      "sample": {
+        "description": "Set a specific value in the process data of the 'Device1' EtherCAT master.",
+        "value": {
+          "device": "Device1",
+          "slaveAddr": 1003,
+          "values": [
+            {
+              "io": "input",
+              "objectIndex": "#x1a00",
+              "entryIndex": "#x6000",
+              "entrySubIndex": "1",
+              "entryValue": true
+            }
+          ]
+        }
+      },
+      "description": "Set a specific value in the process data of a specific EtherCAT master."
+    },
+    "ForceProcessDataValues": {
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "device": {
+            "type": "string"
+          },
+          "slaveAddr": {
+            "type": "integer"
+          },
+          "values": {
+            "type": "array",
+            "items": [
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/EcDiagnosticsProcessDataObjectEntryID"
+                  },
+                  {
+                    "$ref": "#/definitions/EcDiagnosticsProcessDataObjectEntryValue"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "readValue": {
+        "function": true
+      },
+      "sample": {
+        "description": "Force a specific value in the process data of the 'Device1' EtherCAT master.",
+        "value": {
+          "device": "Device1",
+          "slaveAddr": 1003,
+          "values": [
+            {
+              "io": "input",
+              "objectIndex": "#x1a00",
+              "entryIndex": "#x6000",
+              "entrySubIndex": "1",
+              "entryValue": true
+            }
+          ]
+        }
+      },
+      "description": "Force a specific value in the process data of a specific EtherCAT master."
+    },
+    "ListSlavesWithForcedProcessData": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true
+      },
+      "sample": {
+        "description": "List physical addresses of all slaves with forced process data of the 'Device1' EtherCAT master.",
+        "value": "Device1"
+      },
+      "description": "List of physical addresses of all slaves with forced process data."
+    },
+    "ReleaseProcessDataValues": {
+      "writeValue": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "device": {
+                "type": "string"
+              },
+              "slaveAddr": {
+                "type": "integer"
+              },
+              "values": {
+                "type": "array",
+                "items": [
+                  {
+                    "$ref": "#/definitions/EcDiagnosticsProcessDataObjectEntryID"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "readValue": {
+        "function": true
+      },
+      "sample": {
+        "description": "Release a specific value in the process data of the 'Device1' EtherCAT master.",
+        "value": {
+          "device": "Device1",
+          "slaveAddr": 1003,
+          "values": [
+            {
+              "io": "input",
+              "objectIndex": "#x1a00",
+              "entryIndex": "#x6000",
+              "entrySubIndex": "1",
+              "entryValue": true
+            }
+          ]
+        }
+      },
+      "description": "Release a specific value in the process data of a specific EtherCAT master."
+    }
+  },
+  "packageVersion": "19.0.102",
+  "productVersion": "1.12.760.44",
+  "signature": "ao7m7RI3f8lxlCeO9ExHxVz9HkvlISXR4qqQa1UkYFkwtIBQ0oU/E/xNr5tA6xjFfUg5NBDzYeJ+qrq3RqaIATh3ZHkkQWZyIDeE+wSvIkvQ7DBfTw1EgtuKVScK3urfYHIAgBuYlFuDdaXB/lvba22eNpTD5zmIdkHUDa8+QA/c3PfLBbBwkhLwwaSe1l8QyoQgX7y9+veXN5s+eBYWdYdquOcoegSXuLKZ6neIELgtwz6p7tmeIvK1abhKH34I7Jg4eCALi6ECKf5NidUC7+7AFFxO+q0BUCFF2wFXANdsvwVYv8uA7VLJVm6t+SgENgaRIzBOa9UhzKLuQK1D5g=="
+}

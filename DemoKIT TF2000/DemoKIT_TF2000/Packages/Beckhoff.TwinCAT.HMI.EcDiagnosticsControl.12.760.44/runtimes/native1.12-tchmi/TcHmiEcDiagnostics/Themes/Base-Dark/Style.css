@@ -1,0 +1,270 @@
+.beckhoff-ec-diagnostics {
+    --main-background-color: black;
+    --main-text-color: #eee;
+    --main-tooltip-bg-color: rgba(0, 0, 0, 0.7);
+    --main-tooltip-text-color: white;
+    --main-toolbox-bg-color: rgba(80, 80, 80, 0.8);
+    --main-change-highlight: #4e4e4e;
+    --main-change-error-highlight: rgba(255, 0, 0, 0.4);
+    --main-grayed-out: #999;
+    --main-dark-color: #1e1e1e;
+    --main-dark-light-color: #333;
+    --main-light-color: #ccc;
+    --main-error-color: #d8000c;
+    --main-error-light-color: #ffd2d2;
+    --main-warning-color: #9f6000;
+    --main-warning-light-color: #feefb3;
+    --main-success-color: green;
+    --main-transparent: rgba(0, 0, 0, 0);
+    --main-border-color: #444;
+    --main-light-gray: #eee;
+    --main-trace-slave-highlight: rgba(100, 100, 100, 0.1);
+    --main-trace-odd-row: #222;
+    --main-process-data-input-light: #d8bb00;
+    --main-process-data-input: #9e8d00;
+    --main-process-data-output-light: #af3124;
+    --main-process-data-output: #9b1103;
+    --main-process-data-entry-even: rgb(30, 30, 30);
+    --main-slave-message-error-bg-color: #ffd2d2;
+    --main-slave-message-error-text-color: #d8000c;
+    --main-slave-message-warning-text-color: #9f6000;
+    --main-slave-message-warning-bg-color: #feefb3;
+    --main-slave-message-info-text-color: white;
+    --main-slave-message-info-bg-color: black;
+    --main-regular-button-bg-color: black;
+    --main-regular-button-text-color: white;
+    --main-regular-button-active-bg-color: white;
+    --main-regular-button-active-text-color: black;
+    --main-content-tabs-inative-tab: #222;
+}
+.beckhoff-ec-diagnostics .master-info,
+.beckhoff-ec-diagnostics .trace-view,
+.beckhoff-ec-diagnostics .slave-view {
+    color: var(--main-text-color);
+}
+.beckhoff-ec-diagnostics .arrow {
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+}
+
+.beckhoff-ec-diagnostics .crossed-out {
+    color: var(--main-error-color);
+}
+
+.beckhoff-ec-diagnostics .text-error {
+    color: var(--main-error-color);
+}
+
+.beckhoff-ec-diagnostics .text-warning {
+    color: var(--main-warning-color);
+}
+
+.beckhoff-ec-diagnostics .text-success {
+    color: var(--main-success-color);
+}
+
+.beckhoff-ec-diagnostics .no-value {
+    color: var(--main-grayed-out);
+}
+
+.beckhoff-ec-diagnostics .arrow:before {
+    border-color: transparent transparent #007bff transparent;
+}
+
+.beckhoff-ec-diagnostics .toolbox {
+    background: var(--main-toolbox-bg-color);
+}
+
+.beckhoff-ec-diagnostics .toolbox-reset-view {
+    background-color: var(--main-background-color);
+    background-image: url('center.png');
+}
+
+.beckhoff-ec-diagnostics .change-highlight {
+    background: var(--main-change-highlight) !important;
+}
+
+.beckhoff-ec-diagnostics .change-highlight.error-value {
+    background: var(--main-change-error-highlight) !important;
+}
+
+.beckhoff-ec-diagnostics button.regular-button {
+    background: var(--main-regular-button-bg-color);
+    color: var(--main-regular-button-text-color);
+    border: 1px solid var(--main-regular-button-text-color);
+}
+.beckhoff-ec-diagnostics button.regular-button:hover {
+    background: var(--main-regular-button-active-bg-color);
+    color: var(--main-regular-button-active-text-color);
+}
+.beckhoff-ec-diagnostics input.regular-text-input {
+    background: #111;
+    border-bottom: 1px solid #ccc;
+    color: white;
+}
+/** trace view*/
+.beckhoff-ec-diagnostics .trace-view .table-vertical .head {
+    border-right: 1px solid var(--main-border-color);
+}
+
+.beckhoff-ec-diagnostics .trace-view .table-vertical .content .col:hover {
+    box-shadow: 0px 0px 10px 1px var(--main-border-color);
+}
+
+.beckhoff-ec-diagnostics .trace-view .table-vertical .trace-slave-highlight,
+.table-vertical .col.trace-slave-highlight > div:nth-child(2n + 1) {
+    background: var(--main-trace-slave-highlight) !important;
+}
+
+.beckhoff-ec-diagnostics .trace-view .table-vertical .col > div:nth-child(2n + 1) {
+    background: var(--main-trace-odd-row);
+}
+/** slave view */
+.beckhoff-ec-diagnostics .slave-view {
+    background: var(--main-background-color);
+}
+
+.beckhoff-ec-diagnostics .slave-view .tab-content[tab='online'] .port {
+    border-top: 1px solid var(--main-border-color);
+}
+
+.beckhoff-ec-diagnostics .slave-view .tab-content[tab='online'] .port.not-connected {
+    color: var(--main-grayed-out);
+}
+/** error */
+.beckhoff-ec-diagnostics .slave-message.slave-message-error {
+    color: var(--main-slave-message-error-text-color);
+    background: var(--main-slave-message-error-bg-color);
+}
+
+.beckhoff-ec-diagnostics .slave-message-error .slave-message-btn {
+    color: var(--main-slave-message-error-text-color);
+    border: 1px solid var(--main-slave-message-error-text-color);
+}
+
+.beckhoff-ec-diagnostics .slave-message-error .slave-message-btn:hover {
+    color: white;
+    background: var(--main-slave-message-error-text-color);
+}
+
+/** warning */
+.beckhoff-ec-diagnostics .slave-message.slave-message-warning {
+    color: var(--main-slave-message-warning-text-color);
+    background: var(--main-slave-message-warning-bg-color);
+}
+
+.beckhoff-ec-diagnostics .slave-message-warning .slave-message-btn {
+    color: var(--main-slave-message-warning-text-color);
+    border: 1px solid var(--main-slave-message-warning-text-color);
+}
+
+.beckhoff-ec-diagnostics .slave-message-warning .slave-message-btn:hover {
+    color: white;
+    background: var(--main-slave-message-warning-text-color);
+}
+/** info */
+.beckhoff-ec-diagnostics .slave-message-btn.slave-message-btn-info {
+    color: var(--main-slave-message-info-text-color);
+    border: 1px solid var(--main-slave-message-info-text-color);
+    background: var(--main-slave-message-info-bg-color);
+}
+
+.beckhoff-ec-diagnostics .slave-message-btn.slave-message-btn-info:hover {
+    color: var(--main-slave-message-info-bg-color);
+    background: var(--main-slave-message-info-text-color);
+}
+/** process data */
+.beckhoff-ec-diagnostics .slave-view table.process-data tr.entry:nth-child(4n + 2) td:not(:first-child) {
+    background: var(--main-background-color);
+}
+
+.beckhoff-ec-diagnostics .slave-view table.process-data tr.entry-chart:nth-child(4n + 3) td:not(:first-child) {
+    background: var(--main-background-color);
+}
+/* input pdos */
+.beckhoff-ec-diagnostics .slave-view table.process-data-input tbody:nth-child(even) {
+    background: var(--main-process-data-input);
+}
+
+.beckhoff-ec-diagnostics .slave-view table.process-data-input tbody:nth-child(odd) {
+    background: var(--main-process-data-input-light);
+}
+/* output pdos */
+.beckhoff-ec-diagnostics .slave-view table.process-data-output tbody:nth-child(even) {
+    background: var(--main-process-data-output);
+}
+
+.beckhoff-ec-diagnostics .slave-view table.process-data-output tbody:nth-child(odd) {
+    background: var(--main-process-data-output-light);
+}
+
+.beckhoff-ec-diagnostics .slave-view table.process-data tr.entry:nth-child(4n + 0) td:not(:first-child) {
+    background: var(--main-process-data-entry-even);
+}
+
+.beckhoff-ec-diagnostics .slave-view table.process-data tr.entry-chart:nth-child(4n + 1) td:not(:first-child) {
+    background: var(--main-process-data-entry-even);
+}
+
+.beckhoff-ec-diagnostics beckhoff-ec-diagnostics-pop-up .inner-frame > .header {
+    border-bottom: 1px solid var(--main-border-color);
+}
+
+/** process data */
+.beckhoff-ec-diagnostics .forced-process-data-value-flag {
+    background: rgb(230, 115, 0);
+    color: white;
+}
+
+.beckhoff-ec-diagnostics .boolean-representation.false {
+    background: #222;
+    color: white;
+}
+
+.beckhoff-ec-diagnostics .boolean-representation.true {
+    background: blue;
+    color: white;
+}
+.beckhoff-ec-diagnostics .icon-input-channel {
+    background: url('TcBase/input_channel.png');
+}
+
+.beckhoff-ec-diagnostics .icon-input-struct-entry {
+    background: url('TcBase/input_struct_entry.png');
+}
+
+.beckhoff-ec-diagnostics .icon-input-array-entry {
+    background: url('TcBase/input_array_entry.png');
+}
+
+.beckhoff-ec-diagnostics .icon-input-entry {
+    background: url('TcBase/input_entry.png');
+}
+
+.beckhoff-ec-diagnostics .icon-input-entry-linked {
+    background: url('TcBase/input_entry_linked.png');
+}
+
+.beckhoff-ec-diagnostics .icon-output-channel {
+    background: url('TcBase/output_channel.png');
+}
+
+.beckhoff-ec-diagnostics .icon-output-struct-entry {
+    background: url('TcBase/output_struct_entry.png');
+}
+
+.beckhoff-ec-diagnostics .icon-output-array-entry {
+    background: url('TcBase/output_array_entry.png');
+}
+
+.beckhoff-ec-diagnostics .icon-output-entry {
+    background: url('TcBase/output_entry.png');
+}
+
+.beckhoff-ec-diagnostics .icon-output-entry-linked {
+    background: url('TcBase/output_entry_linked.png');
+}
+
+.beckhoff-ec-diagnostics .drawing-wrapper .drawing-info {
+    background: var(--main-dark-color);
+}

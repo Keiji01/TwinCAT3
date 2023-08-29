@@ -1,0 +1,7 @@
+.beckhoff-ec-diagnostics beckhoff-ec-diagnostics-canvas-tooltip {
+    display: none;
+    padding: 10px 20px;
+    position: absolute;
+    white-space: nowrap;
+    width: fit-content;
+}

@@ -1,0 +1,272 @@
+<!-- insert templates here -->
+<beckhoff-ec-diagnostics-pop-up template="popup-master" class="popup extended-info">
+    <div class="master-info">
+        <table class="master-info-static">
+            <tr>
+                <td colspan="2" style="font-size: 16px" data-localized-content-key="Target"></td>
+            </tr>
+            <tr>
+                <td data-localized-content-key="Name">Name</td>
+                <td class="target-name"></td>
+            </tr>
+            <tr>
+                <td data-localized-content-key="Net_Id">NetId</td>
+                <td class="target-netId"></td>
+            </tr>
+            <tr style="height: 30px"></tr>
+            <tr>
+                <td colspan="2" style="font-size: 16px" data-localized-content-key="Master">Master</td>
+            </tr>
+            <tr>
+                <td data-localized-content-key="Name">Name</td>
+                <td class="master-name"></td>
+            </tr>
+            <tr>
+                <td data-localized-content-key="Net_Id">NetId</td>
+                <td class="master-netId"></td>
+            </tr>
+            <tr>
+                <td data-localized-content-key="Master_Current_State">Current state</td>
+                <td class="master-currentState-name no-value">-</td>
+            </tr>
+            <tr>
+                <td data-localized-content-key="Master_Requested_State">Requested state</td>
+                <td class="master-requestedState-name no-value">-</td>
+            </tr>
+            <tr>
+                <td data-localized-content-key="Master_Set_State">Set state</td>
+                <td>
+                    <select name="master-setState-value" class="regular-combobox">
+                        <option value="0">No state selected</option>
+                        <option value="1">Init</option>
+                        <option value="2">PreOp</option>
+                        <option value="4">SafeOp</option>
+                        <option value="8">Operational</option>
+                    </select>
+                    <button name="master-setState-btn" class="regular-button">Set</button>
+                </td>
+            </tr>
+            <tr>
+                <td data-localized-content-key="Master_First_Slave">First slave</td>
+                <td class="master-first-port"></td>
+            </tr>
+            <tr>
+                <td data-localized-content-key="Master_Redundancy_Slave">Redundancy slave</td>
+                <td class="master-redundancy-port"></td>
+            </tr>
+        </table>
+        <tchmi-content-tabs>
+            <tchmi-tab-links class="master-tabs">
+                <tchmi-tab-link ref="online" data-localized-content-key="Master_Tab_Online">Online</tchmi-tab-link>
+                <tchmi-tab-link ref="slave-list" data-localized-content-key="Slaves">Slaves</tchmi-tab-link>
+                <tchmi-tab-link ref="syncunits" data-localized-content-key="Sync_Units">SyncUnits</tchmi-tab-link>
+            </tchmi-tab-links>
+            <tchmi-tab-contents use-max-content>
+                <tchmi-tab-content name="online">
+                    <table class="master-info-online">
+                        <!-- cylic / acyclic -->
+                        <tr>
+                            <td></td>
+                            <td data-localized-content-key="Master_Frames_Cyclic">Cyclic</td>
+                            <td data-localized-content-key="Master_Frames_Acyclic">Acyclic</td>
+                        </tr>
+                        <tr>
+                            <td data-localized-content-key="Master_Frames_Sent">Send Frames</td>
+                            <td class="sendFrames-cyclic no-value">-</td>
+                            <td class="sendFrames-acyclic no-value">-</td>
+                        </tr>
+                        <tr>
+                            <td data-localized-content-key="Master_Frames_Per_Second">Frames / Sec.</td>
+                            <td class="framesPerSec-cyclic no-value">-</td>
+                            <td class="framesPerSec-acyclic no-value">-</td>
+                        </tr>
+                        <tr>
+                            <td data-localized-content-key="Master_Lost_Frames">Lost Frames</td>
+                            <td class="lostFrames-cyclic error-value no-value">-</td>
+                            <td class="lostFrames-acyclic error-value no-value">-</td>
+                        </tr>
+                        <tr style="height: 30px"></tr>
+                        <!-- tx / rx -->
+                        <tr>
+                            <td></td>
+                            <td class="bold" data-localized-content-key="Master_Lost_Frames_Sent"><b>Sent</b></td>
+                            <td class="bold" data-localized-content-key="Master_Lost_Frames_Received">
+                                <b>Received</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-localized-content-key="Master_Damaged_Frames">Damaged Frames</td>
+                            <td class="damagedFrames-sent error-value no-value">-</td>
+                            <td class="damagedFrames-received error-value no-value">-</td>
+                        </tr>
+                    </table>
+                </tchmi-tab-content>
+                <tchmi-tab-content name="slave-list"></tchmi-tab-content>
+                <tchmi-tab-content name="syncunits">
+                    <span data-localized-content-key="Sync_Units_Select_To_Highlight">
+                        Select SyncUnit to highlight in topology view.
+                    </span>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class=""></th>
+                                <th class="" data-localized-content-key="Name">Name</th>
+                                <th class="" data-localized-content-key="Sync_Units_Wc_Fault_Counter">
+                                    WcFaultCounter
+                                </th>
+                                <th class="" data-localized-content-key="Sync_Units_Frames_Missed">FramesMissed</th>
+                            </tr>
+                        </thead>
+                        <tbody class="syncunit-list">
+                            <tr>
+                                <td>
+                                    <input type="radio" name="selectSyncUnit" id="noSyncUnit" class="no-sync-unit" />
+                                </td>
+                                <td>
+                                    <label
+                                        for="noSyncUnit"
+                                        data-localized-content-key="Sync_Unit_Highlight_No_Sync_Unit"
+                                        >No SyncUnit</label
+                                    >
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </tchmi-tab-content>
+            </tchmi-tab-contents>
+        </tchmi-content-tabs>
+    </div>
+</beckhoff-ec-diagnostics-pop-up>
+<beckhoff-ec-diagnostics-pop-up template="popup-slave" class="popup extended-info">
+    <div class="trace-view">
+        <div class="trace-table table-vertical">
+            <div class="head col"></div>
+            <div class="content">
+                <div class="trace-drawing-wrap"></div>
+            </div>
+        </div>
+    </div>
+    <div class="slave-view">
+        <div class="header-and-content-tabs-wrapper">
+            <div class="header">
+                <div class="name slave-view-header-name" data-localized-content-key="Placeholder_Name_Of_Slave">
+                    Name of slave
+                </div>
+                <div class="text-msg-wrapper">
+                    <div class="text-msg" data-no-placeholder></div>
+                </div>
+                <div class="slave-drawing-wrapper"></div>
+            </div>
+            <tchmi-content-tabs>
+                <tchmi-tab-links>
+                    <tchmi-tab-link ref="EtherCAT" data-localized-content-key="Slave_View_Tab_EtherCAT">
+                    </tchmi-tab-link>
+                    <tchmi-tab-link ref="online" data-localized-content-key="Slave_View_Tab_Online"> </tchmi-tab-link>
+                    <tchmi-tab-link ref="ports" data-localized-content-key="Ports"> </tchmi-tab-link>
+                </tchmi-tab-links>
+                <tchmi-tab-contents use-max-content>
+                    <tchmi-tab-content name="EtherCAT">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td
+                                        colspan="2"
+                                        class="bold"
+                                        data-localized-content-key="Slave_View_EtherCAT_General"
+                                    ></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span data-localized-content-key="Slave_View_EtherCAT_General_Name">Name</span>:
+                                    </td>
+                                    <td class="name"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span data-localized-content-key="Slave_View_EtherCAT_General_Type">Type</span>:
+                                    </td>
+                                    <td class="type"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span data-localized-content-key="Slave_View_EtherCAT_General_Vendor"
+                                            >Vendor</span
+                                        >:
+                                    </td>
+                                    <td class="memberName"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span data-localized-content-key="Slave_View_EtherCAT_General_EtherCAT_Addr"
+                                            >EtherCAT Addr</span
+                                        >:
+                                    </td>
+                                    <td class="EtherCAT-addr"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span data-localized-content-key="Slave_View_EtherCAT_General_Auto_Inc_Addr"
+                                            >Auto Inc Addr</span
+                                        >:
+                                    </td>
+                                    <td class="auto-inc-addr"></td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        colspan="2"
+                                        class="bold"
+                                        data-localized-content-key="Slave_View_EtherCAT_General_Identity"
+                                    ></td>
+                                </tr>
+                                <tr>
+                                    <td data-localized-content-key="Slave_View_EtherCAT_General_Vendor_Id">
+                                        Vendor Id
+                                    </td>
+                                    <td class="vendor"></td>
+                                </tr>
+                                <tr>
+                                    <td data-localized-content-key="Slave_View_EtherCAT_General_Product_Code"></td>
+                                    <td class="product"></td>
+                                </tr>
+                                <tr>
+                                    <td data-localized-content-key="Slave_View_EtherCAT_General_Revision_Number"></td>
+                                    <td class="revision"></td>
+                                </tr>
+                                <tr>
+                                    <td data-localized-content-key="Slave_View_EtherCAT_General_Serial_Number"></td>
+                                    <td class="serial"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </tchmi-tab-content>
+                    <tchmi-tab-content name="online">
+                        <div class="online-values">
+                            <div class="statemachine">
+                                <div class="row bold" data-localized-content-key="Slave_Statemachine">Statemachine</div>
+                                <div class="row">
+                                    <div data-localized-content-key="Slave_Statemachine_Current"></div>
+                                    <div class="currentState no-value">-</div>
+                                </div>
+                            </div>
+                            <div class="counter">
+                                <div class="row bold">Counter</div>
+                                <div class="row">
+                                    <div data-localized-content-key="Slave_Abnormal_State_Changes"></div>
+                                    <div class="abnormalChanges error-value no-value">-</div>
+                                </div>
+                                <div class="row">
+                                    <div data-localized-content-key="Slave_Connection_Losses">Connection losses</div>
+                                    <div class="connectionLosses error-value no-value">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </tchmi-tab-content>
+                    <tchmi-tab-content name="ports"></tchmi-tab-content>
+                </tchmi-tab-contents>
+            </tchmi-content-tabs>
+        </div>
+    </div>
+</beckhoff-ec-diagnostics-pop-up>

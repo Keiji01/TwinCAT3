@@ -1,0 +1,846 @@
+{
+    "$schema": "../../TcHmiFramework/Schema/ControlDescription.Schema.json",
+    "apiVersion": 1,
+    "name": "TcHmiEcDiagnostics",
+    "namespace": "TcHmi.Controls.Beckhoff",
+    "displayName": "EcDiagnostics",
+    "version": {
+        "full": "1.12.760.44",
+        "major": 1,
+        "minor": 12,
+        "build": 760,
+        "revision": 44
+    },
+    "visible": true,
+    "themeable": "Standard",
+    "base": "TcHmi.Controls.System.TcHmiControl",
+    "description": "Displays an EtherCAT topology.",
+    "defaultDesignerEvent": "",
+    "properties": {
+        "containerControl": false,
+        "geometry": {
+            "width": 500,
+            "height": 300
+        }
+    },
+    "icons": [
+        {
+            "name": "Icons/16x16.png",
+            "width": 16,
+            "height": 16
+        }
+    ],
+    "template": "Template.html",
+    "dependencyFiles": [
+        {
+            "name": "Styles/Style.css",
+            "type": "Stylesheet",
+            "description": ""
+        },
+        {
+            "name": "Styles/Notifications.css",
+            "type": "Stylesheet",
+            "description": ""
+        },
+        {
+            "name": "Styles/ExtendedInfo.css",
+            "type": "Stylesheet",
+            "description": ""
+        },
+        {
+            "name": "WebComponents/CanvasTooltip/Style.css",
+            "type": "Stylesheet",
+            "description": ""
+        },
+        {
+            "name": "WebComponents/PopUp/Style.css",
+            "type": "Stylesheet",
+            "description": ""
+        },
+        {
+            "name": "WebComponents/ProcessDataView/Style.css",
+            "type": "Stylesheet",
+            "description": ""
+        },
+        {
+            "name": "WebComponents/SlaveListView/Style.css",
+            "type": "Stylesheet",
+            "description": ""
+        },
+        {
+            "name": "WebComponents/OptionalBoolInput/Style.css",
+            "type": "Stylesheet",
+            "description": ""
+        },
+        {
+            "name": "Style.css",
+            "type": "Stylesheet",
+            "description": ""
+        },
+        {
+            "name": "TcHmiEcDiagnostics.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "themes": {
+        "Base": {
+            "resources": [
+                {
+                    "name": "Themes/Base/Style.css",
+                    "type": "Stylesheet",
+                    "description": ""
+                },
+                {
+                    "name": "Themes/Base/CanvasTooltip/Style.css",
+                    "type": "Stylesheet",
+                    "description": ""
+                },
+                {
+                    "name": "Themes/Base/OptionalBoolInput/Style.css",
+                    "type": "Stylesheet",
+                    "description": ""
+                },
+                {
+                    "name": "Themes/Base/PopUp/Style.css",
+                    "type": "Stylesheet",
+                    "description": ""
+                },
+                {
+                    "name": "Themes/Base/ProcessDataView/Style.css",
+                    "type": "Stylesheet",
+                    "description": ""
+                },
+                {
+                    "name": "Themes/Base/SlaveListView/Style.css",
+                    "type": "Stylesheet",
+                    "description": ""
+                },
+                {
+                    "name": "Themes/Base/Defaults.theme",
+                    "type": "ThemedValues",
+                    "description": ""
+                }
+            ]
+        },
+        "Base-Dark": {
+            "resources": [
+                {
+                    "name": "Themes/Base-Dark/Style.css",
+                    "type": "Stylesheet",
+                    "description": ""
+                },
+                {
+                    "name": "Themes/Base-Dark/Defaults.theme",
+                    "type": "ThemedValues",
+                    "description": ""
+                },
+                {
+                    "name": "Themes/Base-Dark/CanvasTooltip/Style.css",
+                    "type": "Stylesheet",
+                    "description": ""
+                },
+                {
+                    "name": "Themes/Base-Dark/OptionalBoolInput/Style.css",
+                    "type": "Stylesheet",
+                    "description": ""
+                },
+                {
+                    "name": "Themes/Base-Dark/PopUp/Style.css",
+                    "type": "Stylesheet",
+                    "description": ""
+                },
+                {
+                    "name": "Themes/Base-Dark/ProcessDataView/Style.css",
+                    "type": "Stylesheet",
+                    "description": ""
+                },
+                {
+                    "name": "Themes/Base-Dark/SlaveListView/Style.css",
+                    "type": "Stylesheet",
+                    "description": ""
+                }
+            ]
+        }
+    },
+    "attributes": [
+        {
+            "name": "data-tchmi-device",
+            "propertyName": "Device",
+            "propertySetterName": "setDevice",
+            "propertyGetterName": "getDevice",
+            "displayName": "Device",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 10,
+            "type": "tchmi:general#/definitions/String",
+            "category": "Common",
+            "description": "The EtherCAT device that topology should be displayed. Use a identifier from the list which was set in the server extension.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": "Device1",
+            "defaultValueInternal": ""
+        },
+        {
+            "name": "data-tchmi-allow-zoom-and-pan",
+            "propertyName": "AllowZoomAndPan",
+            "propertySetterName": "setAllowZoomAndPan",
+            "propertyGetterName": "getAllowZoomAndPan",
+            "displayName": "AllowZoomAndPan",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 10,
+            "type": "tchmi:general#/definitions/Boolean",
+            "category": "Common",
+            "description": "User can pan and zoom the topology view.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": true,
+            "defaultValueInternal": false
+        },
+        {
+            "name": "data-tchmi-toolbox-reset-view",
+            "propertyName": "ToolboxResetView",
+            "propertySetterName": "setToolboxResetView",
+            "propertyGetterName": "getToolboxResetView",
+            "displayName": "ToolboxResetView",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 11,
+            "type": "tchmi:general#/definitions/Boolean",
+            "category": "Common",
+            "description": "Shows button in toolbox to reset (center and unzoom) view.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": true,
+            "defaultValueInternal": false
+        },
+        {
+            "name": "data-tchmi-init-topology-view",
+            "propertyName": "InitTopologyView",
+            "propertySetterName": "setInitTopologyView",
+            "propertyGetterName": "getInitTopologyView",
+            "displayName": "InitTopologyView",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 12,
+            "type": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiEcDiagnostics.InitTopologyView",
+            "category": "Common",
+            "description": "Adjust the initial topology view with x, y and zoom.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "allowSymbolExpressionsInObject": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        }
+    ],
+    "attributeCategories": [],
+    "themedResources": [
+        {
+            "name": "fontFamily",
+            "displayName": "fontFamily",
+            "description": "",
+            "type": "tchmi:framework#/definitions/String"
+        },
+        {
+            "name": "hover/border/color",
+            "displayName": "hover/border/color",
+            "description": "Border Color of hover",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "hover/border/width",
+            "displayName": "hover/border/width",
+            "description": "Border width of hover",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "adsState/run",
+            "displayName": "adsState/run",
+            "description": "Color of Ads State Run",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "adsState/config",
+            "displayName": "adsState/config",
+            "description": "Color of Ads State Config",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "adsState/error",
+            "displayName": "adsState/error",
+            "description": "Color of Ads State Error",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "msgLevel/fallback",
+            "displayName": "msgLevel/fallback",
+            "description": "Color for message level fallback",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "msgLevel/disabled",
+            "displayName": "msgLevel/disabled",
+            "description": "Color for message level disabled",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "msgLevel/info",
+            "displayName": "msgLevel/info",
+            "description": "Color for message level info",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "msgLevel/success",
+            "displayName": "msgLevel/success",
+            "description": "Color of message level success",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "msgLevel/warning",
+            "displayName": "msgLevel/warning",
+            "description": "Color of message level warning",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "msgLevel/error",
+            "displayName": "msgLevel/error",
+            "description": "Color of message level error",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "stateMachine/init/bgColor",
+            "displayName": "stateMachine/init/bgColor",
+            "description": "Color of StateMachine state Init",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "stateMachine/preOp/bgColor",
+            "displayName": "stateMachine/preop/bgColor",
+            "description": "Color of StateMachine state PreOperational",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "stateMachine/boot/bgColor",
+            "displayName": "stateMachine/boot/bgColor",
+            "description": "Color of StateMachine state boot",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "stateMachine/safeOp/bgColor",
+            "displayName": "stateMachine/safeop/bgColor",
+            "description": "Color of StateMachine state SafeOp",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "stateMachine/operational/bgColor",
+            "displayName": "stateMachine/operational/bgColor",
+            "description": "Color of StateMachine state Operational",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "stateMachine/invalid/bgColor",
+            "displayName": "stateMachine/invalid/bgColor",
+            "description": "Color of invalid StateMachine state",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "statusFlag/border/color",
+            "displayName": "statusFlag/border/color",
+            "description": "Border color of status flag",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "statusFlag/border/width",
+            "displayName": "statusFlag/border/width",
+            "description": "Border width of status flag",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "master/frame/bgColor",
+            "displayName": "master/frame/bgColor",
+            "description": "Background color of frame of master",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "master/frame/border/color",
+            "displayName": "master/frame/border/color",
+            "description": "Border color of frame of master",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "master/frame/border/width",
+            "displayName": "master/frame/border/width",
+            "description": "Border width of frame of master",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "master/textColor",
+            "displayName": "master/textColor",
+            "description": "Text color of master interior",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "trace/label/bgColor",
+            "displayName": "trace/label/bgColor",
+            "description": "Background color of label of trace",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "trace/label/textColor",
+            "displayName": "trace/label/textColor",
+            "description": "Text color of label of trace",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "slave/frame/bgColor",
+            "displayName": "slave/frame/bgColor",
+            "description": "Background color of frame of slave",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "slave/frame/bgColorDisabled",
+            "displayName": "slave/frame/bgColorDisabled",
+            "description": "Background color of frame of disabled slave",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "slave/frame/border/color",
+            "displayName": "slave/frame/border/color",
+            "description": "Border color of frame of slave",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "slave/frame/border/width",
+            "displayName": "slave/frame/border/width",
+            "description": "Border with of frame of slave",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "slave/notPresent/frame/bgColor",
+            "displayName": "slave/notPresent/frame/bgColor",
+            "description": "Background color of frame of not present slave",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "slave/notPresent/frame/border/color",
+            "displayName": "slave/notPresent/frame/border/color",
+            "description": "Border color of frame of not present slave",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "slave/notPresent/frame/border/width",
+            "displayName": "slave/notPresent/frame/border/width",
+            "description": "Border width of frame of not present slave",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "slave/notPresent/interiorOpacity",
+            "displayName": "slave/notPresent/interiorOpacity",
+            "description": "Interior opacity of not present slave",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "slave/disabled/frame/bgColor",
+            "displayName": "slave/disabled/frame/bgColor",
+            "description": "Background color of frame of disabled slave",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "slave/disabled/frame/border/color",
+            "displayName": "slave/disabled/frame/border/color",
+            "description": "Border color of frame of disabled slave",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "slave/disabled/frame/border/width",
+            "displayName": "slave/disabled/frame/border/width",
+            "description": "Border width of frame of disabled slave",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "slave/disabled/interiorOpacity",
+            "displayName": "slave/disabled/interiorOpacity",
+            "description": "Interior opacity of disabled slave",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "slave/attachedLabel/error/bgColor",
+            "displayName": "slave/attachedLabel/error/bgColor",
+            "description": "Background color of attached label of slave with errors",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "slave/attachedLabel/error/textColor",
+            "displayName": "slave/attachedLabel/error/textColor",
+            "description": "Text color of attached label of slave with errors",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "slave/attachedLabel/warning/bgColor",
+            "displayName": "slave/attachedLabel/warning/bgColor",
+            "description": "Background color of attached label of slave with warnings",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "slave/attachedLabel/warning/textColor",
+            "displayName": "slave/attachedLabel/warning/textColor",
+            "description": "Text color of attached label of slave with warnings",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "slave/syncUnitHighlight/noError/frame/border/width",
+            "displayName": "slave/syncUnitHighlight/noError/frame/border/width",
+            "description": "Border width of SyncUnit highlight with no errors of slave",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "slave/syncUnitHighlight/noError/frame/border/color",
+            "displayName": "slave/syncUnitHighlight/noError/frame/border/color",
+            "description": "Border color of SyncUnit highlight with no errors of slave",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "slave/syncUnitHighlight/warning/frame/border/width",
+            "displayName": "slave/syncUnitHighlight/warning/frame/border/width",
+            "description": "Border width of SyncUnit highlight with warnings of slave",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "slave/syncUnitHighlight/warning/frame/border/color",
+            "displayName": "slave/syncUnitHighlight/warning/frame/border/color",
+            "description": "Border color of SyncUnit highlight with warnings of slave",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "slave/syncUnitHighlight/error/frame/border/width",
+            "displayName": "slave/syncUnitHighlight/error/frame/border/width",
+            "description": "Border width of SyncUnit highlight with errors of slave",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "slave/syncUnitHighlight/error/frame/border/color",
+            "displayName": "slave/syncUnitHighlight/error/frame/border/color",
+            "description": "Border color of SyncUnit highlight with errors of slave",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "slave/label/noError/textColor",
+            "displayName": "slave/label/noError/textColor",
+            "description": "Text color of Slave-Label with no errors",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "slave/label/vprsWarning/textColor",
+            "displayName": "slave/label/vprsWarning/textColor",
+            "description": "Text Color of Slave-Label with VPRS Warnings",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "slave/label/vprsError/textColor",
+            "displayName": "slave/label/vprsError/textColor",
+            "description": "Text Color of Slave-Label with VPRS Error",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "slaveTerminalGroup/label/textColor",
+            "displayName": "slaveTerminalGroup/label/textColor",
+            "description": "Text color of label of Slave Terminal Group",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "slaveCouplerGroup/label/textColor",
+            "displayName": "slaveCouplerGroup/label/textColor",
+            "description": "Text color of label of Slave Coupler Group",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "cable/notPresent/strokeColor",
+            "displayName": "cable/notPresent/strokeColor",
+            "description": "Color of cable with no connection",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "cable/notPresent/width",
+            "displayName": "cable/notPresent/width",
+            "description": "Width of cable with no connection",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "cable/noError/strokeColor",
+            "displayName": "cable/noError/strokeColor",
+            "description": "Color of cable with no errors",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "cable/noError/width",
+            "displayName": "cable/noError/width",
+            "description": "Width of cable with no error",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "cable/error/strokeColor",
+            "displayName": "cable/error/strokeColor",
+            "description": "Color of cable in error state",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "cable/error/width",
+            "displayName": "cable/error/width",
+            "description": "Width of cable with error",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "port/label/error/bgColor",
+            "displayName": "port/label/error/bgColor",
+            "description": "Background color of port label with errors",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "port/label/error/textColor",
+            "displayName": "port/label/error/textColor",
+            "description": "Text color of port label with errors",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "port/label/warning/bgColor",
+            "displayName": "port/label/warning/bgColor",
+            "description": "Background color of port label with warnings",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "port/label/warning/textColor",
+            "displayName": "port/label/warning/textColor",
+            "description": "Text color of port label with warnings",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "port/label/success/bgColor",
+            "displayName": "port/label/success/bgColor",
+            "description": "Background color of port label in success state",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "port/label/success/textColor",
+            "displayName": "port/label/success/textColor",
+            "description": "Text color of port label in success state",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "port/label/noError/bgColor",
+            "displayName": "port/label/noError/bgColor",
+            "description": "Background color of port label with no errors",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "port/label/noError/textColor",
+            "displayName": "port/label/noError/textColor",
+            "description": "Text color of port label with no errors",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "port/EBus/warning/border/width",
+            "displayName": "port/EBus/warning/border/width",
+            "description": "Border width of EBus port in warning state",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "port/EBus/warning/border/color",
+            "displayName": "port/EBus/warning/border/color",
+            "description": "Border color of EBus port in warning state",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "port/EBus/error/border/width",
+            "displayName": "port/EBus/error/border/width",
+            "description": "Border width of EBus port in error state",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "port/EBus/error/border/color",
+            "displayName": "port/EBus/error/border/color",
+            "description": "Border Color of EBus port in error state",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "port/PHY/noError/bgColor",
+            "displayName": "port/PHY/noError/bgColor",
+            "description": "Background color of PHY ports with no errors",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "port/PHY/noError/border/color",
+            "displayName": "port/PHY/noError/border/color",
+            "description": "Border color of PHY port with no errors",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "port/PHY/noError/border/width",
+            "displayName": "port/PHY/noError/border/width",
+            "description": "Border width of PHY port with no errors",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "port/PHY/warning/bgColor",
+            "displayName": "port/PHY/warning/bgColor",
+            "description": "Background color of PHY port in warning state",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "port/PHY/warning/border/color",
+            "displayName": "port/PHY/warning/border/color",
+            "description": "Border color of PHY port in warning state",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "port/PHY/warning/border/width",
+            "displayName": "port/PHY/warning/border/width",
+            "description": "Border width of PHY port in warning state",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "port/PHY/error/bgColor",
+            "displayName": "port/PHY/error/bgColor",
+            "description": "Background color of PHY port in error state",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "port/PHY/error/border/color",
+            "displayName": "port/PHY/error/border/color",
+            "description": "Border color of PHY port in error state",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "port/PHY/error/border/width",
+            "displayName": "port/PHY/error/border/width",
+            "description": "Border width of PHY port in error state",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "processData/historyChart/grid/lineColor",
+            "displayName": "processData/historyChart/grid/lineColor",
+            "description": "Line color of of grid in history chart.",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "processData/historyChart/grid/lineWidth",
+            "displayName": "processData/historyChart/grid/lineWidth",
+            "description": "Line width of of grid in history chart.",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "processData/historyChart/grid/numOfVerticalLines",
+            "displayName": "processData/historyChart/grid/numOfVerticalLines",
+            "description": "Number of vertical lines of grid in history chart.",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "processData/historyChart/grid/numOfHorizontalLines",
+            "displayName": "processData/historyChart/grid/numOfHorizontalLines",
+            "description": "Number of horizontal lines of grid in history chart.",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "processData/historyChart/grid/yOffsetBelow",
+            "displayName": "processData/historyChart/grid/yOffsetBelow",
+            "description": "y-Offset in grid below the data graph.",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "processData/historyChart/grid/yOffsetAbove",
+            "displayName": "processData/historyChart/grid/yOffsetAbove",
+            "description": "y-Offset in grid above the data graph.",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "processData/historyChart/grid/zeroValue/lineColor",
+            "displayName": "processData/historyChart/grid/zeroValue/lineColor",
+            "description": "Color of line marking the zero value in history chart.",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "processData/historyChart/grid/zeroValue/lineWidth",
+            "displayName": "processData/historyChart/grid/zeroValue/lineWidth",
+            "description": "Width of line marking the zero value in history chart.",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "processData/historyChart/grid/minValue/lineColor",
+            "displayName": "processData/historyChart/grid/minValue/lineColor",
+            "description": "Color of line marking the minimum value in history chart.",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "processData/historyChart/grid/minValue/lineWidth",
+            "displayName": "processData/historyChart/grid/minValue/lineWidth",
+            "description": "Width of line marking the minimum value in history chart.",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "processData/historyChart/grid/maxValue/lineColor",
+            "displayName": "processData/historyChart/grid/maxValue/lineColor",
+            "description": "Color of line marking the maximum value in history chart.",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "processData/historyChart/grid/maxValue/lineWidth",
+            "displayName": "processData/historyChart/grid/maxValue/lineWidth",
+            "description": "Width of line marking the maximum value in history chart.",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "processData/historyChart/forcedValue/color",
+            "displayName": "processData/historyChart/forcedValue/color",
+            "description": "Color of forced process data values in history chart.",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "processData/historyChart/forcedValue/width",
+            "displayName": "processData/historyChart/forcedValue/width",
+            "description": "Line width of forced process data values in history chart.",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        },
+        {
+            "name": "processData/historyChart/releasedValue/color",
+            "displayName": "processData/historyChart/releasedValue/color",
+            "description": "Color of released process data values in history chart.",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "processData/historyChart/releasedValue/width",
+            "displayName": "processData/historyChart/releasedValue/width",
+            "description": "Line width of released process data values in history chart.",
+            "type": "tchmi:framework#/definitions/MeasurementValue"
+        }
+    ],
+    "languages": {
+        "en": "Lang/en.json",
+        "de": "Lang/de.json"
+    },
+    "functions": [
+        {
+            "name": "resetView",
+            "displayName": "resetView",
+            "visible": true,
+            "description": "Resets the center and zoom of the view.",
+            "category": "Common",
+            "params": [],
+            "type": null,
+            "heritable": true
+        }
+    ],
+    "events": [],
+    "dataTypes": [
+        {
+            "schema": "Schema/Types.Schema.json"
+        }
+    ]
+}

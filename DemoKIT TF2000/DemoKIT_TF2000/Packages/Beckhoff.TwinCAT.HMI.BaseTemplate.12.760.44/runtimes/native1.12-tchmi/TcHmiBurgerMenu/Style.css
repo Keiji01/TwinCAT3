@@ -1,0 +1,4 @@
+/* General theme independent control css. */
+.TcHmi_Controls_BaseTemplate_TcHmiBurgerMenu-container {
+    position: absolute;
+}

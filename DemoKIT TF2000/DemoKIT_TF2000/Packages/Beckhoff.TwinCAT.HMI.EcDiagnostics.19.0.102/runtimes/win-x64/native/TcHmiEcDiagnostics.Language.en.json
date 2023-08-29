@@ -1,0 +1,28 @@
+{
+  "locale": "en",
+  "localizedText": {
+    "enabled": "Enabled",
+    "netId": "AmsNetId",
+    "target": "Target",
+    "targetNetId": "TargetNetId",
+    "targetAvailable": "Target available",
+    "connectionState": "Connection state",
+    "targetAdsVersion": "Target ADS version",
+    "targetAdsState": "Target ADS state",
+    "master": "Master",
+    "masterNetId": "MasterNetId",
+    "masterState": "Master state",
+    "vendorsOverwrite": "Vendors overwrite",
+    "descVendorsOverwrite": "Add vendor ID",
+    "devices": "EtherCAT Devices",
+    "masters": "Masters",
+    "longName": "Long name",
+    "shortName": "Short name",
+    "pattern": "Pattern",
+    "descSlave": "EtherCAT slave",
+    "descEcDiagnosticsProcessDataInOutValues": "Process data (IN-OUT values)",
+    "descEcDiagnosticsProcessDataObjectEntryValue": "Process data (Object entry value)",
+    "descEcDiagnosticsProcessDataObjectEntryID": "Process data (Object entry ID)",
+    "updateIntervals": "Update intervals"
+  }
+}

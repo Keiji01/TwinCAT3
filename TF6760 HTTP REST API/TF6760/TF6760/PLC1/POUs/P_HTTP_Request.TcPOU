@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="P_HTTP_Request" Id="{90af155f-0f2d-4851-84f9-6a75f8fe52d5}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_HTTP_Request
+VAR
+	DUT_Tls : ST_IotSocketTls;	
+	fbIoTHTTP_Client: FB_IotHttpClient := (sHostName := 'api.openweathermap.org');
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <LineIds Name="P_HTTP_Request">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

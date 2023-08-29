@@ -1,0 +1,57 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+        "TcHmi.Controls.Beckhoff.TcHmiEcDiagnostics": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "type": "object",
+            "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+            "frameworkControlType": "TcHmiEcDiagnostics",
+            "frameworkControlNamespace": "TcHmi.Controls.Beckhoff"
+        },
+        "TcHmiEcDiagnostics": {
+            "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiEcDiagnostics"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiEcDiagnostics.InitTopologyView": {
+            "title": "InitTopologyView",
+            "description": "Definition of cell options in the grid.",
+            "type": "object",
+            "propertiesMeta": [
+                {
+                    "name": "posX",
+                    "displayName": "PosX",
+                    "displayPriority": 10,
+                    "description": "Default is zero. Set a number to adjust the initial horizontal translation of the topology view in pixels.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "posY",
+                    "displayName": "PosY",
+                    "displayPriority": 11,
+                    "description": "Default is zero. Set a number to adjust the initial vertical translation of the topology view in pixels.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "zoom",
+                    "displayName": "Zoom",
+                    "displayPriority": 12,
+                    "description": "Default is the calculated zoom factor so that the topology covers the available space. Set a number to adjust the initial zoom of the topology view. Zoom 100 renders a terminal with 400px x 100px.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                }
+            ],
+            "properties": {
+                "posX": {
+                    "$ref": "tchmi:framework#/definitions/MeasurementValue"
+                },
+                "posY": {
+                    "$ref": "tchmi:framework#/definitions/MeasurementValue"
+                },
+                "zoom": {
+                    "$ref": "tchmi:framework#/definitions/MeasurementValue"
+                }
+            }
+        }
+    }
+}

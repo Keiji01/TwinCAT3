@@ -1,0 +1,64 @@
+<div id="StartPage" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-height="100" data-tchmi-width-unit="%" data-tchmi-height-unit="%" data-tchmi-width-mode="Value" data-tchmi-creator-viewport-width="1920" data-tchmi-height-mode="Content">
+<div id="TcHmiGrid" data-tchmi-type="TcHmi.Controls.System.TcHmiGrid" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="%" data-tchmi-top-unit="%" data-tchmi-width-unit="%" data-tchmi-right-unit="%" data-tchmi-bottom-unit="%" data-tchmi-top="0" data-tchmi-width-mode="Value" data-tchmi-height-mode="Content" data-tchmi-height="1080" data-tchmi-width="100" data-tchmi-max-width="1000">
+
+<script data-tchmi-target-attribute="data-tchmi-column-options" type="application/json">
+[
+  {
+    "width": 1.0,
+    "widthUnit": "factor",
+    "widthMode": "Value",
+    "maxWidthUnit": "px",
+    "minWidthUnit": "px",
+    "overflow": false
+  },
+  {
+    "width": 1.0,
+    "widthUnit": "factor",
+    "widthMode": "Value",
+    "maxWidthUnit": "px",
+    "minWidthUnit": "px",
+    "overflow": false
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-row-options" type="application/json">
+[
+  {
+    "height": 1.0,
+    "heightUnit": "factor",
+    "heightMode": "Value",
+    "maxHeightUnit": "px",
+    "minHeight": 500.0,
+    "minHeightUnit": "px",
+    "overflow": false
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-cell-options" type="application/json">
+[
+  {
+    "columnIndex": 0,
+    "rowIndex": 0,
+    "backgroundImageWidthUnit": "px",
+    "backgroundImageHeightUnit": "px",
+    "backgroundImageHorizontalAlignment": "Center",
+    "backgroundImageVerticalAlignment": "Center"
+  },
+  {
+    "columnIndex": 0,
+    "rowIndex": 1,
+    "backgroundImageWidthUnit": "px",
+    "backgroundImageHeightUnit": "px",
+    "backgroundImageHorizontalAlignment": "Center",
+    "backgroundImageVerticalAlignment": "Center"
+  }
+]
+</script>
+<div data-tchmi-grid-row-index="0" data-tchmi-grid-column-index="1" id="DemokitSideR_1" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-target-user-control="Pages/DemokitSideR.usercontrol" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-min-width="400" data-tchmi-min-height="400" data-tchmi-width-mode="Value" data-tchmi-sd1="%s%PLC1.GVL_IO.bLamps.0%/s%">
+</div>
+<div id="DemokitSideL" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-target-user-control="Pages/DemokitSideL.usercontrol" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-width-mode="Value" data-tchmi-height-mode="Value" data-tchmi-min-width="400" data-tchmi-min-height="400">
+</div>
+</div>
+</div>

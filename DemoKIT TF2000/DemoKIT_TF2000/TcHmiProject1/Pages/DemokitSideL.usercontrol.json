@@ -1,0 +1,5 @@
+{
+  "$schema": "./../../Packages/Beckhoff.TwinCAT.HMI.Framework.12.760.44/runtimes/native1.12-tchmi/Schema/UserControlConfig.Schema.json",
+  "parameters": [
+  ]
+}

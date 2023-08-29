@@ -1,0 +1,33 @@
+.beckhoff-ec-diagnostics .notifications-wrapper {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+}
+.beckhoff-ec-diagnostics .notifications-wrapper-category {
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid 1px #ddd;
+    background: #eee;
+}
+.beckhoff-ec-diagnostics .flex-col {
+    flex-direction: column;
+}
+
+.beckhoff-ec-diagnostics .notifications-wrapper-success {
+    background: #77bd76;
+}
+
+.beckhoff-ec-diagnostics .notifications-wrapper-error {
+    background: #ff3333;
+}
+
+.beckhoff-ec-diagnostics .notifications-wrapper-warning {
+    background: #f2de00;
+}

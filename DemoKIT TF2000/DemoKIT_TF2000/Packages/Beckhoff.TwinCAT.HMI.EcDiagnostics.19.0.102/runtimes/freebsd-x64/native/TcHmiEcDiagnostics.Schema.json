@@ -1,0 +1,494 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "slave": {
+      "description": "descSlave",
+      "type": "object",
+      "properties": {
+        "EtherCAT": {
+          "type": "object",
+          "properties": {
+            "identity": {
+              "type": "object",
+              "properties": {
+                "addrs": {
+                  "type": "object",
+                  "properties": {
+                    "autoInc": {
+                      "type": "integer"
+                    },
+                    "phys": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "autoInc",
+                    "phys"
+                  ]
+                },
+                "name": {
+                  "type": "string"
+                },
+                "product": {
+                  "type": "integer"
+                },
+                "revision": {
+                  "type": "integer"
+                },
+                "serial": {
+                  "type": "integer"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "vendor": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "memberNameLong": {
+                      "type": "string"
+                    },
+                    "memberNameShort": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "memberNameLong",
+                    "memberNameShort"
+                  ]
+                }
+              },
+              "required": [
+                "addrs",
+                "name",
+                "product",
+                "revision",
+                "serial",
+                "type",
+                "vendor"
+              ]
+            },
+            "syncUnitsAssignment": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "required": [
+            "identity",
+            "syncUnitsAssignment"
+          ]
+        },
+        "hotConnect": {
+          "type": "object",
+          "properties": {
+            "isHotConnectHead": {
+              "type": "boolean"
+            },
+            "isHotConnectSlave": {
+              "type": "boolean"
+            },
+            "slaveCountActual": {
+              "type": "integer"
+            },
+            "slaveCountConfig": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "isHotConnectHead",
+            "isHotConnectSlave",
+            "slaveCountActual",
+            "slaveCountConfig"
+          ]
+        },
+        "ports": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "autoIncAddr": {
+                  "type": "integer"
+                },
+                "configured": {
+                  "type": "boolean"
+                },
+                "physAddr": {
+                  "type": "integer"
+                },
+                "physic": {
+                  "type": "integer"
+                },
+                "redundancy": {
+                  "type": "boolean"
+                },
+                "redundancyPath": {
+                  "type": "boolean"
+                },
+                "configuredSlave": {
+                  "$ref": "#/definitions/slave"
+                }
+              },
+              "required": [
+                "autoIncAddr",
+                "configured",
+                "physAddr",
+                "physic"
+              ]
+            }
+          ]
+        },
+        "processData": {
+          "type": "object",
+          "properties": {
+            "in": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "entries": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "bitLength": {
+                              "type": "integer"
+                            },
+                            "index": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "subIndex": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "bitLength",
+                            "index",
+                            "name",
+                            "subIndex",
+                            "type"
+                          ]
+                        }
+                      ]
+                    },
+                    "index": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "entries",
+                    "index",
+                    "name"
+                  ]
+                }
+              ]
+            },
+            "out": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "entries": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "bitLength": {
+                              "type": "integer"
+                            },
+                            "index": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "subIndex": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "bitLength",
+                            "index",
+                            "name",
+                            "subIndex",
+                            "type"
+                          ]
+                        }
+                      ]
+                    },
+                    "index": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "entries",
+                    "index",
+                    "name"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "in",
+            "out"
+          ]
+        }
+      },
+      "required": [
+        "EtherCAT",
+        "hotConnect",
+        "ports",
+        "processData"
+      ]
+    },
+    "EcDiagnosticsProcessDataObjectEntryID": {
+      "description": "descEcDiagnosticsProcessDataObjectEntryID",
+      "type": "object",
+      "properties": {
+        "io": {
+          "type": "string"
+        },
+        "objectIndex": {
+          "type": "string"
+        },
+        "entryIndex": {
+          "type": "string"
+        },
+        "entrySubIndex": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "io",
+        "objectIndex",
+        "entryIndex",
+        "entrySubIndex"
+      ]
+    },
+    "EcDiagnosticsProcessDataObjectEntryValue": {
+      "description": "descEcDiagnosticsProcessDataObjectEntryValue",
+      "type": "object",
+      "properties": {
+        "entryValue": {}
+      },
+      "required": [
+        "entryValue"
+      ]
+    },
+    "EcDiagnosticsProcessDataInOutValues": {
+      "description": "descEcDiagnosticsProcessDataInOutValues",
+      "type": "object",
+      "properties": {
+        "entries": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "index": {
+                  "type": "string"
+                },
+                "subIndex": {
+                  "type": "string"
+                },
+                "value": {},
+                "forced": {
+                  "type": "boolean"
+                },
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "index",
+                "subIndex"
+              ]
+            }
+          ]
+        },
+        "index": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "in",
+        "out"
+      ]
+    }
+  },
+  "properties": {
+    "devices": {
+      "type": "object",
+      "description": "devices",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "targetNetId": {
+            "type": "string",
+            "format": "amsnetid",
+            "optionMethod": {
+              "symbol": "ADS.ListRoutes"
+            }
+          },
+          "masterNetId": {
+            "type": "string",
+            "format": "amsnetid",
+            "optionMethod": {
+              "symbol": "TcHmiEcDiagnostics.ListMastersOfRoute",
+              "writeValue": {
+                "$data": "#/properties/devices/additionalProperties/targetNetId"
+              }
+            }
+          }
+        },
+        "required": [
+          "enabled",
+          "targetNetId",
+          "masterNetId"
+        ]
+      },
+      "defaultConfigurable": true,
+      "default": {
+        "Device1": {
+          "enabled": true,
+          "targetNetId": "0.0.0.0.1.1",
+          "masterNetId": "0.0.0.0.2.1"
+        }
+      }
+    },
+    "updateIntervals": {
+      "type": "object",
+      "description": "Minimum time between two asynchronous requests for each request.",
+      "properties": {
+        "MasterList": {
+          "type": "integer",
+          "default": 1000,
+          "description": "Minimum time between two requests in ms."
+        },
+        "MasterOnlineInfo": {
+          "type": "integer",
+          "default": 300,
+          "description": "Including frame statistic (sent frames, damaged frames, lost frames, ...) and master state."
+        },
+        "Slaves": {
+          "type": "integer",
+          "default": 1000
+        },
+        "SlavesOnlineInfo": {
+          "type": "integer",
+          "default": 1000
+        },
+        "ProcessDataValues": {
+          "type": "integer",
+          "default": 1000
+        }
+      },
+      "required": [
+        "MasterList",
+        "MasterOnlineInfo",
+        "Slaves",
+        "SlavesOnlineInfo",
+        "ProcessDataValues"
+      ]
+    },
+    "vendorsOverwrite": {
+      "type": "object",
+      "description": "descVendorsOverwrite",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "longName": {
+            "type": "string"
+          },
+          "shortName": {
+            "type": "string"
+          },
+          "devices": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "pattern": {
+                  "type": "string"
+                },
+                "longName": {
+                  "type": "string"
+                },
+                "shortName": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "pattern"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "devices"
+        ],
+        "additionalProperties": false
+      },
+      "default": {
+        "1": {
+          "longName": "EtherCAT Technology Group",
+          "shortName": "ETG"
+        },
+        "2": {
+          "longName": "Beckhoff Automation GmbH & Co. KG",
+          "shortName": "Beckhoff"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "devices",
+    "vendorsOverwrite",
+    "updateIntervals"
+  ],
+  "additionalProperties": false
+}

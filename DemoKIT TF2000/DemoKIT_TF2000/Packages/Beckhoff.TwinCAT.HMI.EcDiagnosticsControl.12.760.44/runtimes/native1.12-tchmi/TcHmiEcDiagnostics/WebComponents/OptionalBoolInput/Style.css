@@ -1,0 +1,11 @@
+.beckhoff-ec-diagnostics beckhoff-ec-diagnostics-optional-bool-input {
+    user-select: none;
+    display: inline-block;
+    width: 40px;
+    height: 25px;
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: uppercase;
+    cursor: pointer;
+}

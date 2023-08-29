@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{143bab59-f628-46a1-9012-b918e4d6029d}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	mbRTUMaster			: ModbusRtuMaster_PcCOM;
+	byMb_ID				: BYTE;
+	wMb_ReadQtd			: WORD;
+	wMb_ReadAddr		: WORD;
+	arrData_Read		: ARRAY[1..10] OF INT;
+	wData_Write			: WORD;
+	bExecute			: BOOL;
+	bExecute_Write		: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[mbRTUMaster.ReadRegs(
+	UnitID:= byMb_ID, 
+	Quantity:= wMb_ReadQtd, 
+	MBAddr:= wMb_ReadAddr, 
+	cbLength:= SIZEOF(arrData_Read), 
+	pMemoryAddr:= ADR(arrData_Read), 
+	Execute:= bExecute, 
+	Timeout:= T#10S, 
+	BUSY=> , 
+	Error=> , 
+	ErrorId=> , 
+	cbRead=> );
+	
+	
+mbRTUMaster.WriteRegs(
+	UnitID:= byMb_ID, 
+	Quantity:= 1,
+	MBAddr:= wData_Write, 
+	cbLength:= SIZEOF(wData_Write), 
+	pMemoryAddr:= ADR(wData_Write), 
+	Execute:= bExecute_Write, 
+	Timeout:= T#10S, 
+	BUSY=> , 
+	Error=> , 
+	ErrorId=> , 
+	cbRead=> );]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="22" Count="10" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="33" Count="1" />
+      <LineId Id="36" Count="10" />
+      <LineId Id="35" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

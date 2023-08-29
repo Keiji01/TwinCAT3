@@ -1,0 +1,4 @@
+.beckhoff-ec-diagnostics beckhoff-ec-diagnostics-canvas-tooltip {
+    background: var(--main-tooltip-bg-color);
+    color: var(--main-tooltip-text-color);
+}
