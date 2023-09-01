@@ -73,7 +73,7 @@
 	<ImageDatas>
 		<ImageData Id="1000">424dd6020000000000003600000028000000100000000e0000000100180000000000a002000000000000000000000000000000000000ff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{B48CA72F-E569-459D-891C-CEE5BD660B06}" Target64Bit="true" ShowHideConfigurations="#x106">
+	<Project ProjectGUID="{B48CA72F-E569-459D-891C-CEE5BD660B06}" TargetNetId="5.132.90.65.1.1" ShowHideConfigurations="#x106">
 		<System>
 			<Tasks>
 				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
@@ -83,7 +83,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{B04D4A46-536C-4511-AD6E-64FD5FF33E37}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{4721B1C0-6917-A068-36F2-2878C039C31E}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC1\PLC1.tmc" TmcHash="{8D40DC7F-E2CA-1AF2-62E2-ADC3D8443372}">
 					<Name>PLC1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -141,7 +141,7 @@
 				</Image>
 				<DpRam/>
 			</Device>
-			<Device Id="2" DevType="161" AmsNetId="10.199.163.130.3.1">
+			<Device Id="2" DevType="161" AmsNetId="5.132.90.65.3.1">
 				<Name>Device 2 (CX7000)</Name>
 				<DevData>3412000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</DevData>
 				<Image Id="2" AddrType="1" ImageType="3" SizeIn="6" SizeOut="20">
@@ -347,21 +347,42 @@
 			<Device Id="3" DevType="11" AmsPort="28675">
 				<Name>Device 3 (COM Port)</Name>
 				<AddressInfo>
-					<Io>
-						<Port>1016</Port>
-					</Io>
+					<Ccat>
+						<Address>268435456</Address>
+						<Offset>131072</Offset>
+						<Size>512</Size>
+						<BaseAddr>0</BaseAddr>
+						<BusNo>65535</BusNo>
+						<SlotNo>0</SlotNo>
+					</Ccat>
 				</AddressInfo>
 				<Image Id="3" AddrType="1" ImageType="1">
 					<Name>Image</Name>
 				</Image>
-				<Serial Baud="19200" Port="1016" Parity="1" StopBit="1" RsType="1" UPSDisableSysShutdown="true" WaitTimeToShutdown="60" DataSize="64" BufSize="4096" DataBit="8" FifoSize="16" Timeout="300"/>
+				<Serial Baud="38400" Parity="1" StopBit="1" RsType="1" UPSDisableSysShutdown="true" WaitTimeToShutdown="60" BufSize="4096" DataBit="8" FifoSize="16" Timeout="300"/>
+			</Device>
+			<Device Id="4" DevType="11" AmsPort="28676">
+				<Name>Device 4 (COM Port)</Name>
+				<AddressInfo>
+					<Ccat>
+						<Address>268435456</Address>
+						<Offset>196608</Offset>
+						<Size>512</Size>
+						<BaseAddr>0</BaseAddr>
+						<BusNo>65535</BusNo>
+						<SlotNo>0</SlotNo>
+					</Ccat>
+				</AddressInfo>
+				<Image Id="4" AddrType="1" ImageType="1">
+					<Name>Image</Name>
+				</Image>
+				<Serial Baud="19200" Parity="1" StopBit="1" RsType="2" UPSDisableSysShutdown="true" WaitTimeToShutdown="60" DataSize="64" BufSize="4096" DataBit="8" FifoSize="16" Timeout="300"/>
 			</Device>
 		</Io>
 	</Project>
 	<Mappings>
-		<MappingInfo Identifier="{00000000-2001-0850-0020-500830000403}" Id="#x02030010"/>
 		<OwnerA Name="TIPC^PLC1^PLC1 Instance">
-			<OwnerB Name="TIID^Device 3 (COM Port)">
+			<OwnerB Name="TIID^Device 4 (COM Port)">
 				<Link VarA="PlcTask Inputs^MAIN.mbRTUMaster.InData^D" VarB="Inputs^Data1"/>
 				<Link VarA="PlcTask Inputs^MAIN.mbRTUMaster.InData^D" VarB="Inputs^Data10" Size="8" OffsA="72"/>
 				<Link VarA="PlcTask Inputs^MAIN.mbRTUMaster.InData^D" VarB="Inputs^Data11" Size="8" OffsA="80"/>
