@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{37116813-2d30-481f-9b29-9c1bc0788bbe}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	fbHttpClientPostman			: FB_IotHttpClient := (sHostName := '10.1.1.220',bKeepAlive:=TRUE);	
+	fbHttpHeaderAuth			: FB_TestHTTP_HeaderAuth;
+	
+	bHeaderAuth 				: BOOL;
+	bConvertBack				: BOOL;
+	fbJsonDataType				: FB_JsonReadWriteDatatype;
+	
+	fbJson     : FB_JsonDomParser;
+  		jsonProp   : SJsonValue;
+  		jsonValue  : SJsonValue;
+		
+	bHasMember				: BOOL;
+	operadorEncerrouLote	: DINT;
+	data					: STRING(5000);
+	insumos					: STRING(5000);
+	arraySize				: UDINT;
+	jsonIterator			: SJsonValue;
+	jsonIteratorEnd			: SJsonValue;
+	jsonIterator2			: SJsonValue;
+	jsonIteratorEnd2		: SJsonValue;
+	jsonIterator3			: SJsonValue;
+	jsonIteratorEnd3		: SJsonValue;
+	sName					: SJsonValue;
+	jsonRoot				: SJsonValue;
+	jsonRootInsumos			: SJsonValue;
+	jsonRootInsumosDados	: SJsonValue;
+	
+	sTest:STRING(5000)		:= '{"continuationToken":"","data":[{"Insumos":[{"continuationToken":"","dados":[{"bloqueiaTerc":null,"centroCusto":"1011201002","classificacao":"1","classificacaoOrigem":"2","engenharia":"0201010080-0","insumo":"202010158","kanban":false,"natureza":"3","possuiAlternativos":false,"quantidadeTotal":"20000000","seqConsumo":4,"seqOperacao":1,"tipoInsumo":"1","transacaoBaixaEstoque":31},{"bloqueiaTerc":null,"centroCusto":"1011201002","classificacao":"1","classificacaoOrigem":"2","engenharia":"0201010080-0","insumo":"204010081","kanban":false,"natureza":"3","possuiAlternativos":false,"quantidadeTotal":"20000000","seqConsumo":2,"seqOperacao":1,"tipoInsumo":"1","transacaoBaixaEstoque":31},{"bloqueiaTerc":null,"centroCusto":"1011201002","classificacao":"1","classificacaoOrigem":"2","engenharia":"0201010080-0","insumo":"205050005","kanban":false,"natureza":"3","possuiAlternativos":false,"quantidadeTotal":"20000000","seqConsumo":3,"seqOperacao":1,"tipoInsumo":"1","transacaoBaixaEstoque":31}]}],"Lotes":[{"OperadorEncerrouLote":"163","codLote":"1-1","codOF":71605,"dadosLote":{"Operador":"","bloqueado":"","codLote":"1-1","codOF":71605,"dataHoraLiberacao":"","dataInicio":"2023-06-26","dataTermino":"2023-06-26","loteProducao":"0","motivo1":"","motivo2":"","quantidade":"100000"},"dataBaixa":"2023-06-26","dataBaixaRefugado":"","dataCancelamento":"","dataHoraEncerramento":"2023-06-26 15:43:33","dataHoraEncerramentoLote":"2023-06-26 15:43:33","dataTerminoTrefila":"","documento":"","observacao1":"","observacao2":"","observacao3":"","observacao4":"","operador":"","quantidade":"100000","quantidadeProd":"100000","quantidadeRefugo":"0","quantidadeUnd":"","quantidadeUndProd":"100000","quantidadeUndRefugo":"0","situacao":1,"tipo":""}],"Processos":[{"continuationToken":"","processos":[{"centroCustos":"1011201002","dadosCustomizados":[],"engenharia":"0201010080-0","faseProducao":4,"ferramentas":"","maquina":"10207010","numOperadores":"1","operacao":50,"sequencia":1,"tempoPadrao":"80","tempoPreparacao":"0","tipoOperacao":""}]}],"anoMes":202306,"codigoIntegracao":"","controle":"S-21911","dadosCustomizados":[],"dataInicio":"2023-06-26","dataTermino":"2023-06-26","finalidade":"","maquina":"","observacao1":"OF gerada pela simulacao nr. 21911.","observacao2":"","observacao3":"","observacao4":"","ordemFabricacao":"71605","planoProducao":"","produto":"0201010080-0","quantidade":"100000","semanaProducao":""}]}';
+
+	i: INT;
+	j: INT;
+	
+	arrInsumos 				: ARRAY[0..99] OF ST_INSUMOS;
+	jsonProp2: SJsonValue;
+	jsonProp3: SJsonValue;
+	jsonProp4: SJsonValue;
+	bBreak: BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// init client parameters at startup
+IF NOT fbHttpClientPostman.bConfigured THEN 
+	fbHttpClientPostman.stTLS.sCA 				 := 'C:\Users\PC042\Desktop\BECKHOFF\sample_cert.cer';
+	fbHttpClientPostman.stTLS.bNoServerCertCheck := TRUE;
+	fbHttpClientPostman.nHostPort				 := 443;
+END_IF
+
+IF fbHttpClientPostman.bConfigured THEN 
+	fbHttpHeaderAuth(bSend:=bHeaderAuth, fbClient:=fbHttpClientPostman);
+END_IF 
+
+fbHttpClientPostman.Execute();
+
+IF bConvertBack THEN
+	jsonRoot:= fbJson.ParseDocument(sTest);	
+	jsonProp := fbJson.FindMemberPath(jsonRoot, 'data');
+	
+	IF jsonProp <> 0 THEN
+		jsonIterator := fbJson.ArrayBegin(jsonProp);
+		jsonIteratorEnd := fbJson.ArrayEnd(jsonProp);
+		WHILE jsonIterator <> jsonIteratorEnd DO
+			fbJson.CopyJson(jsonIterator,data,SIZEOF(data));			
+			jsonRootInsumos:= fbJson.ParseDocument(data);
+			
+			jsonProp2 := fbJson.FindMemberPath(jsonRootInsumos, 'Insumos');		
+			fbJson.CopyJson(jsonProp2,data,SIZEOF(data));	
+			
+			IF jsonProp2 <> 0 THEN				
+				jsonIterator2 := fbJson.ArrayBegin(jsonProp2);
+				jsonIteratorEnd2 := fbJson.ArrayEnd(jsonProp2);
+				WHILE jsonIterator2 <> jsonIteratorEnd2 DO	
+						fbJson.CopyJson(jsonIterator2,data,SIZEOF(data));
+						jsonRootInsumosDados:= fbJson.ParseDocument(data);
+						
+						jsonProp3 := fbJson.FindMemberPath(jsonRootInsumosDados, 'dados');
+						fbJson.CopyJson(jsonProp3,data,SIZEOF(data));	
+					
+						IF jsonProp3 <> 0 THEN
+							jsonIterator3 := fbJson.ArrayBegin(jsonProp3);
+							jsonIteratorEnd3 := fbJson.ArrayEnd(jsonProp3);							
+							WHILE (jsonIterator3 <> jsonIteratorEnd3) AND (NOT bBreak) DO
+								fbJson.CopyJson(jsonIterator3,data,SIZEOF(data));
+								
+								jsonProp4 := fbJson.FindMember(jsonIterator3, 'bloqueiaTerc');										
+								IF jsonProp4 <> 0 THEN
+									arrInsumos[i].bBloqueiaTerc := fbJson.GetBool(jsonProp4);
+								END_IF
+								
+								jsonProp4 := fbJson.FindMember(jsonIterator3, 'centroCusto');										
+								IF jsonProp4 <> 0 THEN
+									arrInsumos[i].sCentroCusto := fbJson.GetString(jsonProp4);
+								END_IF								
+								
+								jsonProp4 := fbJson.FindMember(jsonIterator3, 'classificacao');										
+								IF jsonProp4 <> 0 THEN
+									arrInsumos[i].sClassificacao := fbJson.GetString(jsonProp4);
+								END_IF
+								
+								jsonProp4 := fbJson.FindMember(jsonIterator3, 'classificacaoOrigem');										
+								IF jsonProp4 <> 0 THEN
+									arrInsumos[i].sClassificacaoOrigem := fbJson.GetString(jsonProp4);
+								END_IF
+								
+								jsonProp4 := fbJson.FindMember(jsonIterator3, 'engenharia');										
+								IF jsonProp4 <> 0 THEN
+									arrInsumos[i].sEngenharia := fbJson.GetString(jsonProp4);
+								END_IF
+								
+								jsonProp4 := fbJson.FindMember(jsonIterator3, 'insumo');										
+								IF jsonProp4 <> 0 THEN
+									arrInsumos[i].sInsumo := fbJson.GetString(jsonProp4);
+								END_IF
+								
+								jsonProp4 := fbJson.FindMember(jsonIterator3, 'kanban');										
+								IF jsonProp4 <> 0 THEN
+									arrInsumos[i].bKanban := fbJson.GetBool(jsonProp4);
+								END_IF
+								
+								jsonProp4 := fbJson.FindMember(jsonIterator3, 'natureza');										
+								IF jsonProp4 <> 0 THEN
+									arrInsumos[i].sNatureza := fbJson.GetString(jsonProp4);
+								END_IF
+								
+								jsonProp4 := fbJson.FindMember(jsonIterator3, 'possuiAlternativos');										
+								IF jsonProp4 <> 0 THEN
+									arrInsumos[i].bPossuiAlternativos := fbJson.GetBool(jsonProp4);
+								END_IF
+								
+								jsonProp4 := fbJson.FindMember(jsonIterator3, 'quantidadeTotal');										
+								IF jsonProp4 <> 0 THEN
+									arrInsumos[i].sQuantidadeTotal := fbJson.GetString(jsonProp4);
+								END_IF
+								
+								jsonProp4 := fbJson.FindMember(jsonIterator3, 'seqConsumo');										
+								IF jsonProp4 <> 0 THEN
+									arrInsumos[i].iSeqConsumo := fbJson.GetInt(jsonProp4);
+								END_IF
+								
+								jsonProp4 := fbJson.FindMember(jsonIterator3, 'seqOperacao');										
+								IF jsonProp4 <> 0 THEN
+									arrInsumos[i].iSeqOperacao := fbJson.GetInt(jsonProp4);
+								END_IF
+								
+								jsonProp4 := fbJson.FindMember(jsonIterator3, 'tipoInsumo');										
+								IF jsonProp4 <> 0 THEN
+									arrInsumos[i].sTipoInsumo := fbJson.GetString(jsonProp4);
+								END_IF
+								
+								jsonProp4 := fbJson.FindMember(jsonIterator3, 'transacaoBaixaEstoque');										
+								IF jsonProp4 <> 0 THEN
+									arrInsumos[i].iTransacaoBaixaEstoque := fbJson.GetInt(jsonProp4);
+								END_IF								
+								
+								
+								
+								jsonIterator3 := fbJson.NextArray(jsonIterator3);
+								i := i + 1;
+							END_WHILE
+						END_IF
+						
+						jsonIterator2 := fbJson.NextArray(jsonIterator2);
+				END_WHILE	
+			END_IF
+			
+			jsonIterator := fbJson.NextArray(jsonIterator);
+		  END_WHILE
+	  i := 0;
+	END_IF	
+	
+	
+	bConvertBack:=FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="36" Count="1" />
+      <LineId Id="39" Count="4" />
+      <LineId Id="47" Count="3" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="53" Count="1" />
+      <LineId Id="80" Count="0" />
+      <LineId Id="153" Count="0" />
+      <LineId Id="166" Count="0" />
+      <LineId Id="154" Count="2" />
+      <LineId Id="281" Count="1" />
+      <LineId Id="196" Count="0" />
+      <LineId Id="290" Count="0" />
+      <LineId Id="174" Count="0" />
+      <LineId Id="401" Count="1" />
+      <LineId Id="212" Count="1" />
+      <LineId Id="215" Count="0" />
+      <LineId Id="217" Count="0" />
+      <LineId Id="224" Count="0" />
+      <LineId Id="230" Count="0" />
+      <LineId Id="403" Count="0" />
+      <LineId Id="225" Count="0" />
+      <LineId Id="366" Count="0" />
+      <LineId Id="404" Count="0" />
+      <LineId Id="239" Count="0" />
+      <LineId Id="242" Count="2" />
+      <LineId Id="493" Count="0" />
+      <LineId Id="501" Count="0" />
+      <LineId Id="494" Count="2" />
+      <LineId Id="439" Count="0" />
+      <LineId Id="502" Count="0" />
+      <LineId Id="504" Count="2" />
+      <LineId Id="503" Count="0" />
+      <LineId Id="498" Count="0" />
+      <LineId Id="474" Count="2" />
+      <LineId Id="332" Count="0" />
+      <LineId Id="507" Count="0" />
+      <LineId Id="509" Count="2" />
+      <LineId Id="508" Count="0" />
+      <LineId Id="512" Count="0" />
+      <LineId Id="514" Count="2" />
+      <LineId Id="513" Count="0" />
+      <LineId Id="517" Count="0" />
+      <LineId Id="519" Count="2" />
+      <LineId Id="518" Count="0" />
+      <LineId Id="522" Count="0" />
+      <LineId Id="524" Count="2" />
+      <LineId Id="523" Count="0" />
+      <LineId Id="527" Count="0" />
+      <LineId Id="529" Count="2" />
+      <LineId Id="528" Count="0" />
+      <LineId Id="532" Count="0" />
+      <LineId Id="534" Count="2" />
+      <LineId Id="533" Count="0" />
+      <LineId Id="537" Count="0" />
+      <LineId Id="539" Count="2" />
+      <LineId Id="538" Count="0" />
+      <LineId Id="542" Count="0" />
+      <LineId Id="544" Count="2" />
+      <LineId Id="543" Count="0" />
+      <LineId Id="548" Count="0" />
+      <LineId Id="550" Count="2" />
+      <LineId Id="549" Count="0" />
+      <LineId Id="547" Count="0" />
+      <LineId Id="553" Count="2" />
+      <LineId Id="488" Count="0" />
+      <LineId Id="567" Count="0" />
+      <LineId Id="564" Count="2" />
+      <LineId Id="560" Count="0" />
+      <LineId Id="557" Count="1" />
+      <LineId Id="556" Count="0" />
+      <LineId Id="247" Count="0" />
+      <LineId Id="479" Count="0" />
+      <LineId Id="241" Count="0" />
+      <LineId Id="227" Count="0" />
+      <LineId Id="485" Count="0" />
+      <LineId Id="220" Count="0" />
+      <LineId Id="216" Count="0" />
+      <LineId Id="214" Count="0" />
+      <LineId Id="209" Count="0" />
+      <LineId Id="161" Count="0" />
+      <LineId Id="163" Count="1" />
+      <LineId Id="125" Count="0" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="77" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="67" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

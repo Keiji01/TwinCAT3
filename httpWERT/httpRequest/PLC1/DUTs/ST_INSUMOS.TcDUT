@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_INSUMOS" Id="{dca47756-27fc-4fef-927f-6c4f0e6e2b6e}">
+    <Declaration><![CDATA[TYPE ST_INSUMOS :
+STRUCT
+	bBloqueiaTerc 				: BOOL;
+	sCentroCusto				: STRING;
+	sClassificacao				: STRING;
+	sClassificacaoOrigem 		: STRING;
+	sEngenharia					: STRING;
+	sInsumo						: STRING;
+	bKanban						: BOOL;
+	sNatureza 					: STRING;
+	bPossuiAlternativos			: BOOL;
+	sQuantidadeTotal 			: STRING;
+	iSeqConsumo 				: DINT;
+	iSeqOperacao 				: DINT;
+	sTipoInsumo					: STRING;
+	iTransacaoBaixaEstoque 		: DINT;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
