@@ -1,0 +1,19 @@
+{
+  "function": {
+    "name": "LoadJson",
+    "namespace": "TcHmi.Functions.tchmi_demo",
+    "displayName": "LoadJson",
+    "description": "",
+    "waitMode": "Synchronous",
+    "category": "",
+    "returnValue": {
+      "type": "tchmi:general#/definitions/Null"
+    },
+    "visible": true,
+    "injectContextObject": false,
+    "arguments": []
+  },
+  "$schema": "../.hmiframework/Schema/FunctionDescription.Schema.json",
+  "apiVersion": 1,
+  "dependencyFiles": []
+}

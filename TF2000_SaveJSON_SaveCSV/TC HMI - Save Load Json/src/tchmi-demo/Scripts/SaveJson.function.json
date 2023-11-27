@@ -1,0 +1,17 @@
+{
+  "function": {
+    "name": "SaveJson",
+    "namespace": "TcHmi.Functions.tchmi_demo",
+    "displayName": "SaveJson",
+    "description": "",
+    "waitMode": "Synchronous",
+    "category": "",
+    "returnValue": {
+      "type": "tchmi:general#/definitions/Null"
+    },
+    "visible": true,
+    "injectContextObject": false,
+    "arguments": []
+  },
+  "$schema": "../.hmiframework/Schema/FunctionDescription.Schema.json"
+}
