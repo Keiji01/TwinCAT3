@@ -30,7 +30,7 @@
     <HmiCommunicationRouterPort>10100</HmiCommunicationRouterPort>
     <HmiCommunicationServerAuthPort>13000</HmiCommunicationServerAuthPort>
     <HmiInitial>1.12.760.48</HmiInitial>
-    <HmiRecent>1.12.760.48</HmiRecent>
+    <HmiRecent>1.12.760.59</HmiRecent>
     <HmiServerNodeAdvancedView>False</HmiServerNodeAdvancedView>
   </PropertyGroup>
   <PropertyGroup>
@@ -128,6 +128,13 @@
     <Folder Include="Properties" />
     <Content Include=".eslintrc.json">
       <Visible>false</Visible>
+    </Content>
+    <Content Include="FunctionDetectKb.function.json">
+      <SubType>Content</SubType>
+      <DependentUpon>FunctionDetectKb.js</DependentUpon>
+    </Content>
+    <Content Include="FunctionDetectKb.js">
+      <SubType>Content</SubType>
     </Content>
     <Content Include="Server\TcHmiLua\TcHmiLua.Config.default.json">
       <SubType>Content</SubType>

@@ -1,5 +1,5 @@
 {
-  "$schema": "./../../Packages/Beckhoff.TwinCAT.HMI.Framework.12.760.48/runtimes/native1.12-tchmi/Schema/TchmiConfig.Schema.json",
+  "$schema": "./../../Packages/Beckhoff.TwinCAT.HMI.Framework.12.760.59/runtimes/native1.12-tchmi/Schema/TchmiConfig.Schema.json",
   "basePath": "./framework",
   "scaleMode": "None",
   "startupView": "Desktop.view",
@@ -50,6 +50,11 @@
       "name": "Fonts/Fonts.css",
       "description": "",
       "type": "Stylesheet"
+    },
+    {
+      "name": "FunctionDetectKb.js",
+      "description": "",
+      "type": "JavaScript"
     }
   ],
   "userControls": [],
@@ -62,9 +67,20 @@
       "preloadBindings": false
     }
   ],
-  "userFunctions": [],
+  "userFunctions": [
+    {
+      "url": "FunctionDetectKb.js"
+    }
+  ],
   "symbols": {
-    "internal": {},
+    "internal": {
+      "JSTrigger": {
+        "value": true,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": false,
+        "readonly": true
+      }
+    },
     "themedResources": {}
   },
   "trigger": [],

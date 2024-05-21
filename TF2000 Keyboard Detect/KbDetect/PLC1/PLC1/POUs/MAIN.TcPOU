@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{b0810b71-a987-4dc5-8dba-9775a6550344}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	fbClk: FB_Clock;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbClk(TIME_ON:= T#10MS, TIME_OFF:= T#200MS, OUT_CLK=> GVL.bClock);]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

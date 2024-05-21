@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL" Id="{b094c6ad-9e18-43b0-bf1f-79afed9a92eb}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	strKeyPressedFromTF2000 : STRING;
+	strKeyCodePressedFromTF2000 : STRING;
+	bKeyPressedTF2000 : BOOL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
