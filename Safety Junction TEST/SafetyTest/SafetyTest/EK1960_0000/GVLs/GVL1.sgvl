@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GlobalVariables Crc="113117920" Id="e540c216-f839-474b-a414-8f0f6b4ee37e" FileFormatVersion="1.0">
+  <Variable Id="da44e344-998e-4a72-bbe8-a21cbe3b048c">
+    <Name>bResetAll</Name>
+    <SourceUsages>
+      <AliasDeviceIoUsage Id="3393fc29-3fb2-4840-a7c5-3fdc957304c5">
+        <SdsId>2</SdsId>
+        <ChannelId>8</ChannelId>
+        <FunctionId>1618018561</FunctionId>
+      </AliasDeviceIoUsage>
+    </SourceUsages>
+    <TargetUsages>
+      <FbPortUsage Id="764d8ff4-9d4b-48e5-b58f-d1f17ab7b3a7">
+        <ModelElementId>f434153e-d126-4533-954c-3674fabcee87</ModelElementId>
+      </FbPortUsage>
+      <FbPortUsage Id="d7fa718d-7d37-4203-88b3-be3d398c049e">
+        <ModelElementId>f3ecdc1b-a052-48cc-bd22-e62e76946c9d</ModelElementId>
+      </FbPortUsage>
+    </TargetUsages>
+  </Variable>
+  <Variable Id="d1fbba5c-f84c-4446-9da2-f8364e594d2c">
+    <Name>commVar1</Name>
+    <SourceUsages>
+      <FbPortUsage Id="4245f995-4bae-40b0-b59b-13df7e100d5a">
+        <ModelElementId>3964d60c-9bfc-4e73-b928-a62085e78ac5</ModelElementId>
+      </FbPortUsage>
+    </SourceUsages>
+    <TargetUsages>
+      <AliasDeviceIoUsage Id="03a64223-433a-44c2-a7ab-2a7c8e695e28">
+        <SdsId>9</SdsId>
+        <ChannelId>1</ChannelId>
+        <FunctionId>1327546135</FunctionId>
+      </AliasDeviceIoUsage>
+    </TargetUsages>
+  </Variable>
+</GlobalVariables>

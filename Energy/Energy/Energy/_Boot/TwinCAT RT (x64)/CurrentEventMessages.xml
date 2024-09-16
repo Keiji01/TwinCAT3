@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<TcEventSources Version="2">
+	<Source>
+		<GUID>{28111931-0002-0000-5230-C70E00001200}</GUID>
+		<Name LcId="1031">EL3783 3 K. Netzmonitoring, Oversample</Name>
+		<Name LcId="1033">EL3783 3 Ch. Power Monitoring, Oversample</Name>
+		<Event>
+			<Id>1</Id>
+			<Message LcId="1031">kein Fehler</Message>
+			<Message LcId="1033">No error</Message>
+		</Event>
+		<Event>
+			<Id>2</Id>
+			<Message LcId="1031">Kommunikation aufgebaut</Message>
+			<Message LcId="1033">Communication established</Message>
+		</Event>
+		<Event>
+			<Id>3</Id>
+			<Message LcId="1031">Initialisierung: 0x{0,X}</Message>
+			<Message LcId="1033">Initialization: 0x{0,X}</Message>
+		</Event>
+		<Event>
+			<Id>4096</Id>
+			<Message LcId="1031">Information: 0x{0,X}</Message>
+			<Message LcId="1033">Information: 0x{0,X}</Message>
+		</Event>
+		<Event>
+			<Id>4405</Id>
+			<Message LcId="1031">Angeforderter Status OP erreicht</Message>
+			<Message LcId="1033">Requested state OP successfull</Message>
+		</Event>
+		<Event>
+			<Id>16384</Id>
+			<Message LcId="1031">Warnung: 0x{0,X}</Message>
+			<Message LcId="1033">Warning: 0x{0,X}</Message>
+		</Event>
+		<Event>
+			<Id>32769</Id>
+			<Message LcId="1031">Fehler: 0x{0,X}</Message>
+			<Message LcId="1033">Error: 0x{0,X}</Message>
+		</Event>
+		<Event>
+			<Id>32770</Id>
+			<Message LcId="1031">Kommunikation abgebrochen</Message>
+			<Message LcId="1033">Communication aborted</Message>
+		</Event>
+		<Event>
+			<Id>32771</Id>
+			<Message LcId="1031">Konfigurationsfehler: 0x{0,X}</Message>
+			<Message LcId="1033">Configuration error: 0x{0,X}</Message>
+		</Event>
+		<Event>
+			<Id>33078</Id>
+			<Message LcId="1031">Konfigurationsfehler: Ungültige Samplingrate</Message>
+			<Message LcId="1033">Configuration error: invalid samplingrate</Message>
+		</Event>
+		<Event>
+			<Id>33088</Id>
+			<Message LcId="1031">Synchronisierungsfehler</Message>
+			<Message LcId="1033">Sync Error</Message>
+		</Event>
+		<Event>
+			<Id>33089</Id>
+			<Message LcId="1031">Sync{0,X} Interrupt fehlt</Message>
+			<Message LcId="1033">Sync{0,X} Interrupt lost</Message>
+		</Event>
+		<Event>
+			<Id>33090</Id>
+			<Message LcId="1031">Asynchron</Message>
+			<Message LcId="1033">Asynchronous</Message>
+		</Event>
+		<Event>
+			<Id>33091</Id>
+			<Message LcId="1031"><![CDATA[Jitter zu groß ( >> {0} µs)]]></Message>
+			<Message LcId="1033"><![CDATA[Jitter too big ( >> {0} µs)]]></Message>
+		</Event>
+		<Property>
+			<Name>DisplayTxtId</Name>
+			<Value>true</Value>
+		</Property>
+	</Source>
+</TcEventSources>

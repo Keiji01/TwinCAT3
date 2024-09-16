@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GlobalVariables Crc="3255641570" Id="e55ef834-df65-4611-85cc-3f583893e106" FileFormatVersion="1.0">
+  <Variable Id="a83a53b3-d245-44b0-aabf-6dd9ff768e31">
+    <Name>bResetAll</Name>
+    <SourceUsages>
+      <AliasDeviceIoUsage Id="dff30537-b47f-4081-b882-976e9ba36a0c">
+        <SdsId>2</SdsId>
+        <ChannelId>8</ChannelId>
+        <FunctionId>1618018561</FunctionId>
+      </AliasDeviceIoUsage>
+    </SourceUsages>
+    <TargetUsages>
+      <FbPortUsage Id="e12484c3-edf5-4913-a0a1-446ac8d8e43a">
+        <ModelElementId>1200be50-2a84-427f-8201-fe4152724115</ModelElementId>
+      </FbPortUsage>
+      <FbPortUsage Id="764156ae-520a-4d72-a6ba-d0b7c0f990bd">
+        <ModelElementId>add12e0c-ee50-4bac-b08f-210013f4fcdc</ModelElementId>
+      </FbPortUsage>
+    </TargetUsages>
+  </Variable>
+  <Variable Id="9dad9460-13a6-4565-afef-9376e29f7421">
+    <Name>SlaveCommVar1</Name>
+    <SourceUsages>
+      <AliasDeviceIoUsage Id="17056976-abb9-432f-b4c0-36ec9d673ac0">
+        <SdsId>6</SdsId>
+        <ChannelId>1</ChannelId>
+        <FunctionId>1327546135</FunctionId>
+      </AliasDeviceIoUsage>
+    </SourceUsages>
+    <TargetUsages>
+      <FbPortUsage Id="8ea93bc5-9394-448c-b334-1b8de4f18a5b">
+        <ModelElementId>5705827f-d98e-40b4-8037-cb36b8430011</ModelElementId>
+      </FbPortUsage>
+    </TargetUsages>
+  </Variable>
+  <Variable Id="d693f955-afff-429b-ad98-58b612d5e763">
+    <Name>Always_True</Name>
+    <SourceUsages>
+      <FbPortUsage Id="4bba2256-980f-4345-a907-37c5966d5a39">
+        <ModelElementId>cf87df31-cc46-43de-abcf-fde9022064f8</ModelElementId>
+      </FbPortUsage>
+    </SourceUsages>
+    <TargetUsages>
+      <FbPortUsage Id="5b2763f1-4b93-4dad-a527-0de8f638cfb9">
+        <ModelElementId>b3b8261f-3bd4-4000-a38d-6c9827f33775</ModelElementId>
+      </FbPortUsage>
+    </TargetUsages>
+  </Variable>
+</GlobalVariables>

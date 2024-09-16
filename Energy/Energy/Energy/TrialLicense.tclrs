@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<TcLicenseInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2011/11/TcLicenseInfo">
+	<LicenseInfo>
+		<SystemId>{B2245923-7C56-088E-BE99-32C51A28A604}</SystemId>
+		<IssueTime>2024-07-31T17:51:00</IssueTime>
+		<ExpireTime>2024-08-08T00:00:00</ExpireTime>
+		<LicenseKey>730f149d6bfb1f23d57ce4f158c1cfcc82dd99ffc2912809832a8a089044b1aa4b740be0345fa0a22e705480f22b737ad792bb7e7ab5cdf1c2da7236245b8a1a2e11046a1e461e0ab32b55eb1192c18af6a87c5cf49615afae8ec1b953d1586a9670b4923169ef15bebc2861afbef4a1e0c8daa69378ec3bd2e859b2e8b0e1fdc9bf1ea17ca0ea682397b689b248b0391057aecb5505b697e33ba753596f66d1f81b6202f96e9124b1de1061521e1853c4044760297c9fc91bdfeeaf219cfb915c2776b713b9445e060e0c9f3eb328534384751fce9a106b1cd32fb787c6442b40b55728b1724462614c6d79c0cbbaddfa3f4ce9d7a03b2daed979f7791f7029</LicenseKey>
+		<License>
+			<LicenseId>{D21C0A22-8F22-4CBD-B5A3-0DC7936E4726}</LicenseId>
+			<Name>TC3 Condition Monitoring Base Frequency Analysis</Name>
+		</License>
+		<License>
+			<LicenseId>{2BA61DF3-1410-4F2F-B2D7-9A6297EA65F1}</LicenseId>
+			<Name>TC3 Condition Monitoring Base Statistics</Name>
+		</License>
+		<License>
+			<LicenseId>{7371CC89-F21A-4584-994B-8B112F6EB1A0}</LicenseId>
+			<Name>TC3 Filter</Name>
+			<OrderNo>TF3680</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{66CC3150-21F4-46E1-BF43-E3917CA57246}</LicenseId>
+			<Name>TC3 Filter Res</Name>
+		</License>
+		<License>
+			<LicenseId>{D06E108C-0E3C-48D7-A589-8961B3FC9AC0}</LicenseId>
+			<Name>TC3 Power Monitoring</Name>
+			<OrderNo>TF3650</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{4C256767-E6E6-4AF5-BD68-9F7ABAD0C200}</LicenseId>
+			<Name>TC3 ADS</Name>
+			<OrderNo>TC1000</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{66689887-CCBD-452C-AC9A-039D997C6E66}</LicenseId>
+			<Name>TC3 PLC</Name>
+			<OrderNo>TC1200</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{3FF18E97-7754-401B-93FB-70544DE28A13}</LicenseId>
+			<Name>TC3 IO</Name>
+			<OrderNo>TC1100</OrderNo>
+		</License>
+	</LicenseInfo>
+</TcLicenseInfo>

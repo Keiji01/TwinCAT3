@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SafetyDeviceDesc Crc="2304226350" FileFormatVersion="1.8">
+  <AliasDeviceType>
+    <Type>16</Type>
+    <SubType>0</SubType>
+    <VendorId>0</VendorId>
+  </AliasDeviceType>
+  <SDSID>9</SDSID>
+  <SafetyAliasDevice>
+    <ObjectId>0</ObjectId>
+    <LinkingMode>Manual</LinkingMode>
+    <ConnectionId>9</ConnectionId>
+    <ConnectionMode>master</ConnectionMode>
+    <ConnectionType>FSoE</ConnectionType>
+    <MapDiag>true</MapDiag>
+    <MapInputs>true</MapInputs>
+    <MapOutputs>true</MapOutputs>
+    <MapState>true</MapState>
+    <ModuleFaultIsComErr>false</ModuleFaultIsComErr>
+    <SafeAddress>10</SafeAddress>
+    <Watchdog>100</Watchdog>
+    <ComErrAck Type="Unset" />
+    <Messages InputMessageSize="6" OutputMessageSize="6" Tc2ConnectionType="128450560">
+      <IO>
+        <Name>FSoE Cmd</Name>
+        <DataType>USINT</DataType>
+        <Direction>In</Direction>
+        <SafetyType>ProtocolData</SafetyType>
+        <BitSize>8</BitSize>
+        <BitOffsMessage>0</BitOffsMessage>
+        <BitOffsData>-1</BitOffsData>
+      </IO>
+      <IO>
+        <Name>Safe Data Byte 0[0]</Name>
+        <DataType>BIT</DataType>
+        <Direction>In</Direction>
+        <SafetyType>SafetySil3</SafetyType>
+        <BitSize>1</BitSize>
+        <BitOffsMessage>8</BitOffsMessage>
+        <BitOffsData>0</BitOffsData>
+      </IO>
+      <IO>
+        <Name>Safe Data Byte 0[1]</Name>
+        <DataType>BIT</DataType>
+        <Direction>In</Direction>
+        <SafetyType>SafetySil3</SafetyType>
+        <BitSize>1</BitSize>
+        <BitOffsMessage>9</BitOffsMessage>
+        <BitOffsData>1</BitOffsData>
+      </IO>
+      <IO>
+        <Name>Safe Data Byte 0[2]</Name>
+        <DataType>BIT</DataType>
+        <Direction>In</Direction>
+        <SafetyType>SafetySil3</SafetyType>
+        <BitSize>1</BitSize>
+        <BitOffsMessage>10</BitOffsMessage>
+        <BitOffsData>2</BitOffsData>
+      </IO>
+      <IO>
+        <Name>Safe Data Byte 0[3]</Name>
+        <DataType>BIT</DataType>
+        <Direction>In</Direction>
+        <SafetyType>SafetySil3</SafetyType>
+        <BitSize>1</BitSize>
+        <BitOffsMessage>11</BitOffsMessage>
+        <BitOffsData>3</BitOffsData>
+      </IO>
+      <IO>
+        <Name>Safe Data Byte 0[4]</Name>
+        <DataType>BIT</DataType>
+        <Direction>In</Direction>
+        <SafetyType>SafetySil3</SafetyType>
+        <BitSize>1</BitSize>
+        <BitOffsMessage>12</BitOffsMessage>
+        <BitOffsData>4</BitOffsData>
+      </IO>
+      <IO>
+        <Name>Safe Data Byte 0[5]</Name>
+        <DataType>BIT</DataType>
+        <Direction>In</Direction>
+        <SafetyType>SafetySil3</SafetyType>
+        <BitSize>1</BitSize>
+        <BitOffsMessage>13</BitOffsMessage>
+        <BitOffsData>5</BitOffsData>
+      </IO>
+      <IO>
+        <Name>Safe Data Byte 0[6]</Name>
+        <DataType>BIT</DataType>
+        <Direction>In</Direction>
+        <SafetyType>SafetySil3</SafetyType>
+        <BitSize>1</BitSize>
+        <BitOffsMessage>14</BitOffsMessage>
+        <BitOffsData>6</BitOffsData>
+      </IO>
+      <IO>
+        <Name>Safe Data Byte 0[7]</Name>
+        <DataType>BIT</DataType>
+        <Direction>In</Direction>
+        <SafetyType>SafetySil3</SafetyType>
+        <BitSize>1</BitSize>
+        <BitOffsMessage>15</BitOffsMessage>
+        <BitOffsData>7</BitOffsData>
+      </IO>
+      <IO>
+        <Name>FSoE CRC_0</Name>
+        <DataType>UINT</DataType>
+        <Direction>In</Direction>
+        <SafetyType>ProtocolData</SafetyType>
+        <BitSize>16</BitSize>
+        <BitOffsMessage>16</BitOffsMessage>
+        <BitOffsData>-1</BitOffsData>
+      </IO>
+      <IO>
+        <Name>FSoE ConnID</Name>
+        <DataType>UINT</DataType>
+        <Direction>In</Direction>
+        <SafetyType>ProtocolData</SafetyType>
+        <BitSize>16</BitSize>
+        <BitOffsMessage>32</BitOffsMessage>
+        <BitOffsData>-1</BitOffsData>
+      </IO>
+      <IO>
+        <Name>FSoE Cmd</Name>
+        <DataType>USINT</DataType>
+        <Direction>Out</Direction>
+        <SafetyType>ProtocolData</SafetyType>
+        <BitSize>8</BitSize>
+        <BitOffsMessage>0</BitOffsMessage>
+        <BitOffsData>-1</BitOffsData>
+      </IO>
+      <IO>
+        <Name>Safe Data Byte 0[0]</Name>
+        <DataType>BIT</DataType>
+        <Direction>Out</Direction>
+        <SafetyType>SafetySil3</SafetyType>
+        <BitSize>1</BitSize>
+        <BitOffsMessage>8</BitOffsMessage>
+        <BitOffsData>0</BitOffsData>
+      </IO>
+      <IO>
+        <Name>Safe Data Byte 0[1]</Name>
+        <DataType>BIT</DataType>
+        <Direction>Out</Direction>
+        <SafetyType>SafetySil3</SafetyType>
+        <BitSize>1</BitSize>
+        <BitOffsMessage>9</BitOffsMessage>
+        <BitOffsData>1</BitOffsData>
+      </IO>
+      <IO>
+        <Name>Safe Data Byte 0[2]</Name>
+        <DataType>BIT</DataType>
+        <Direction>Out</Direction>
+        <SafetyType>SafetySil3</SafetyType>
+        <BitSize>1</BitSize>
+        <BitOffsMessage>10</BitOffsMessage>
+        <BitOffsData>2</BitOffsData>
+      </IO>
+      <IO>
+        <Name>Safe Data Byte 0[3]</Name>
+        <DataType>BIT</DataType>
+        <Direction>Out</Direction>
+        <SafetyType>SafetySil3</SafetyType>
+        <BitSize>1</BitSize>
+        <BitOffsMessage>11</BitOffsMessage>
+        <BitOffsData>3</BitOffsData>
+      </IO>
+      <IO>
+        <Name>Safe Data Byte 0[4]</Name>
+        <DataType>BIT</DataType>
+        <Direction>Out</Direction>
+        <SafetyType>SafetySil3</SafetyType>
+        <BitSize>1</BitSize>
+        <BitOffsMessage>12</BitOffsMessage>
+        <BitOffsData>4</BitOffsData>
+      </IO>
+      <IO>
+        <Name>Safe Data Byte 0[5]</Name>
+        <DataType>BIT</DataType>
+        <Direction>Out</Direction>
+        <SafetyType>SafetySil3</SafetyType>
+        <BitSize>1</BitSize>
+        <BitOffsMessage>13</BitOffsMessage>
+        <BitOffsData>5</BitOffsData>
+      </IO>
+      <IO>
+        <Name>Safe Data Byte 0[6]</Name>
+        <DataType>BIT</DataType>
+        <Direction>Out</Direction>
+        <SafetyType>SafetySil3</SafetyType>
+        <BitSize>1</BitSize>
+        <BitOffsMessage>14</BitOffsMessage>
+        <BitOffsData>6</BitOffsData>
+      </IO>
+      <IO>
+        <Name>Safe Data Byte 0[7]</Name>
+        <DataType>BIT</DataType>
+        <Direction>Out</Direction>
+        <SafetyType>SafetySil3</SafetyType>
+        <BitSize>1</BitSize>
+        <BitOffsMessage>15</BitOffsMessage>
+        <BitOffsData>7</BitOffsData>
+      </IO>
+      <IO>
+        <Name>FSoE CRC_0</Name>
+        <DataType>UINT</DataType>
+        <Direction>Out</Direction>
+        <SafetyType>ProtocolData</SafetyType>
+        <BitSize>16</BitSize>
+        <BitOffsMessage>16</BitOffsMessage>
+        <BitOffsData>-1</BitOffsData>
+      </IO>
+      <IO>
+        <Name>FSoE ConnID</Name>
+        <DataType>UINT</DataType>
+        <Direction>Out</Direction>
+        <SafetyType>ProtocolData</SafetyType>
+        <BitSize>16</BitSize>
+        <BitOffsMessage>32</BitOffsMessage>
+        <BitOffsData>-1</BitOffsData>
+      </IO>
+    </Messages>
+  </SafetyAliasDevice>
+</SafetyDeviceDesc>

@@ -1,0 +1,1219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SafetyDeviceDesc Crc="156468720" FileFormatVersion="1.8">
+  <AliasDeviceType>
+    <Type>4</Type>
+    <SubType>17303464</SubType>
+    <VendorId>2</VendorId>
+  </AliasDeviceType>
+  <SDSID>2</SDSID>
+  <SafetyAliasDevice>
+    <ObjectId>0</ObjectId>
+    <LinkingMode>Local</LinkingMode>
+    <ConnectionId>2</ConnectionId>
+    <ConnectionMode>slave</ConnectionMode>
+    <ConnectionType>FSoE</ConnectionType>
+    <MapDiag>false</MapDiag>
+    <MapInputs>false</MapInputs>
+    <MapOutputs>false</MapOutputs>
+    <MapState>false</MapState>
+    <ModuleFaultIsComErr>false</ModuleFaultIsComErr>
+    <SafeAddress>1</SafeAddress>
+    <Watchdog>100</Watchdog>
+    <ComErrAck Type="Unset" />
+    <Params>
+      <Param Index="4120" SubIndex="1">02000000</Param>
+      <Param Index="4320" SubIndex="1">0000</Param>
+      <Param Index="4320" SubIndex="2">0000</Param>
+      <Param Index="32768" SubIndex="1">00</Param>
+      <Param Index="32768" SubIndex="2">02</Param>
+      <Param Index="32768" SubIndex="3">00</Param>
+      <Param Index="32768" SubIndex="4">01</Param>
+      <Param Index="32768" SubIndex="5">00</Param>
+      <Param Index="32768" SubIndex="7">01</Param>
+      <Param Index="32784" SubIndex="1">00</Param>
+      <Param Index="32784" SubIndex="2">02</Param>
+      <Param Index="32784" SubIndex="3">00</Param>
+      <Param Index="32784" SubIndex="4">01</Param>
+      <Param Index="32784" SubIndex="5">00</Param>
+      <Param Index="32784" SubIndex="7">01</Param>
+      <Param Index="32800" SubIndex="1">00</Param>
+      <Param Index="32800" SubIndex="2">02</Param>
+      <Param Index="32800" SubIndex="3">00</Param>
+      <Param Index="32800" SubIndex="4">01</Param>
+      <Param Index="32800" SubIndex="5">00</Param>
+      <Param Index="32800" SubIndex="7">01</Param>
+      <Param Index="32816" SubIndex="1">00</Param>
+      <Param Index="32816" SubIndex="2">02</Param>
+      <Param Index="32816" SubIndex="3">00</Param>
+      <Param Index="32816" SubIndex="4">01</Param>
+      <Param Index="32816" SubIndex="5">00</Param>
+      <Param Index="32816" SubIndex="7">01</Param>
+      <Param Index="32832" SubIndex="1">00</Param>
+      <Param Index="32832" SubIndex="2">02</Param>
+      <Param Index="32832" SubIndex="3">00</Param>
+      <Param Index="32832" SubIndex="4">01</Param>
+      <Param Index="32832" SubIndex="5">00</Param>
+      <Param Index="32832" SubIndex="7">01</Param>
+      <Param Index="32848" SubIndex="1">00</Param>
+      <Param Index="32848" SubIndex="2">02</Param>
+      <Param Index="32848" SubIndex="3">00</Param>
+      <Param Index="32848" SubIndex="4">01</Param>
+      <Param Index="32848" SubIndex="5">00</Param>
+      <Param Index="32848" SubIndex="7">01</Param>
+      <Param Index="32880" SubIndex="5">01</Param>
+      <Param Index="32881" SubIndex="1">0A00</Param>
+      <Param Index="32881" SubIndex="2">0200</Param>
+      <Param Index="32881" SubIndex="3">0000</Param>
+      <Param Index="32881" SubIndex="4">0A00</Param>
+      <Param Index="32881" SubIndex="5">0200</Param>
+      <Param Index="32881" SubIndex="6">0000</Param>
+      <Param Index="32896" SubIndex="5">01</Param>
+      <Param Index="32897" SubIndex="1">0A00</Param>
+      <Param Index="32897" SubIndex="2">0200</Param>
+      <Param Index="32897" SubIndex="3">0000</Param>
+      <Param Index="32897" SubIndex="4">0A00</Param>
+      <Param Index="32897" SubIndex="5">0200</Param>
+      <Param Index="32897" SubIndex="6">0000</Param>
+      <Param Index="32912" SubIndex="5">01</Param>
+      <Param Index="32913" SubIndex="1">0A00</Param>
+      <Param Index="32913" SubIndex="2">0200</Param>
+      <Param Index="32913" SubIndex="3">0000</Param>
+      <Param Index="32913" SubIndex="4">0A00</Param>
+      <Param Index="32913" SubIndex="5">0200</Param>
+      <Param Index="32913" SubIndex="6">0000</Param>
+      <Param Index="32928" SubIndex="5">01</Param>
+      <Param Index="32929" SubIndex="1">0A00</Param>
+      <Param Index="32929" SubIndex="2">0200</Param>
+      <Param Index="32929" SubIndex="3">0000</Param>
+      <Param Index="32929" SubIndex="4">0A00</Param>
+      <Param Index="32929" SubIndex="5">0200</Param>
+      <Param Index="32929" SubIndex="6">0000</Param>
+      <Param Index="32944" SubIndex="5">01</Param>
+      <Param Index="32945" SubIndex="1">0A00</Param>
+      <Param Index="32945" SubIndex="2">0200</Param>
+      <Param Index="32945" SubIndex="3">0000</Param>
+      <Param Index="32945" SubIndex="4">0A00</Param>
+      <Param Index="32945" SubIndex="5">0200</Param>
+      <Param Index="32945" SubIndex="6">0000</Param>
+      <Param Index="32960" SubIndex="5">01</Param>
+      <Param Index="32961" SubIndex="1">0A00</Param>
+      <Param Index="32961" SubIndex="2">0200</Param>
+      <Param Index="32961" SubIndex="3">0000</Param>
+      <Param Index="32961" SubIndex="4">0A00</Param>
+      <Param Index="32961" SubIndex="5">0200</Param>
+      <Param Index="32961" SubIndex="6">0000</Param>
+      <Param Index="32976" SubIndex="5">01</Param>
+      <Param Index="32977" SubIndex="1">0A00</Param>
+      <Param Index="32977" SubIndex="2">0200</Param>
+      <Param Index="32977" SubIndex="3">0000</Param>
+      <Param Index="32977" SubIndex="4">0A00</Param>
+      <Param Index="32977" SubIndex="5">0200</Param>
+      <Param Index="32977" SubIndex="6">0000</Param>
+      <Param Index="32992" SubIndex="5">01</Param>
+      <Param Index="32993" SubIndex="1">0A00</Param>
+      <Param Index="32993" SubIndex="2">0200</Param>
+      <Param Index="32993" SubIndex="3">0000</Param>
+      <Param Index="32993" SubIndex="4">0A00</Param>
+      <Param Index="32993" SubIndex="5">0200</Param>
+      <Param Index="32993" SubIndex="6">0000</Param>
+      <Param Index="33008" SubIndex="3">00</Param>
+      <Param Index="33008" SubIndex="5">01</Param>
+      <Param Index="33009" SubIndex="1">0A00</Param>
+      <Param Index="33009" SubIndex="2">0200</Param>
+      <Param Index="33009" SubIndex="3">0000</Param>
+      <Param Index="33009" SubIndex="4">0A00</Param>
+      <Param Index="33009" SubIndex="5">0200</Param>
+      <Param Index="33009" SubIndex="6">0000</Param>
+      <Param Index="33024" SubIndex="3">00</Param>
+      <Param Index="33024" SubIndex="5">01</Param>
+      <Param Index="33025" SubIndex="1">0A00</Param>
+      <Param Index="33025" SubIndex="2">0200</Param>
+      <Param Index="33025" SubIndex="3">0000</Param>
+      <Param Index="33025" SubIndex="4">0A00</Param>
+      <Param Index="33025" SubIndex="5">0200</Param>
+      <Param Index="33025" SubIndex="6">0000</Param>
+      <Param Index="61520" SubIndex="1">A8070801</Param>
+      <Messages>
+        <IO>
+          <Name>FSoE Command</Name>
+          <Index>28944</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>USINT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>ProtocolData</SafetyType>
+          <BitSize>8</BitSize>
+          <BitOffsMessage>0</BitOffsMessage>
+          <BitOffsData>-1</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 1.Channel 1.Output (X5.1)</Name>
+          <Index>28673</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>8</BitOffsMessage>
+          <BitOffsData>0</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 1.Channel 2.Output (X5.2)</Name>
+          <Index>28673</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>9</BitOffsMessage>
+          <BitOffsData>1</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 1.Channel 3.Output (X5.3)</Name>
+          <Index>28673</Index>
+          <SubIndex>3</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>10</BitOffsMessage>
+          <BitOffsData>2</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 1.Channel 4.Output (X5.4)</Name>
+          <Index>28673</Index>
+          <SubIndex>4</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>11</BitOffsMessage>
+          <BitOffsData>3</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 1.ErrAck</Name>
+          <Index>28674</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>12</BitOffsMessage>
+          <BitOffsData>4</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 2.Channel 1.Output (X5.5)</Name>
+          <Index>28689</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>13</BitOffsMessage>
+          <BitOffsData>5</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 2.Channel 2.Output (X5.6)</Name>
+          <Index>28689</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>14</BitOffsMessage>
+          <BitOffsData>6</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 2.Channel 3.Output (X5.7)</Name>
+          <Index>28689</Index>
+          <SubIndex>3</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>15</BitOffsMessage>
+          <BitOffsData>7</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 2.Channel 4.Output (X5.8)</Name>
+          <Index>28689</Index>
+          <SubIndex>4</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>16</BitOffsMessage>
+          <BitOffsData>8</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 2.ErrAck</Name>
+          <Index>28690</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>17</BitOffsMessage>
+          <BitOffsData>9</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 3.Channel 1.Output (X7.1)</Name>
+          <Index>28705</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>18</BitOffsMessage>
+          <BitOffsData>10</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 3.Channel 2.Output (X7.2)</Name>
+          <Index>28705</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>19</BitOffsMessage>
+          <BitOffsData>11</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 3.Channel 3.Output (X7.3)</Name>
+          <Index>28705</Index>
+          <SubIndex>3</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>20</BitOffsMessage>
+          <BitOffsData>12</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 3.Channel 4.Output (X7.4)</Name>
+          <Index>28705</Index>
+          <SubIndex>4</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>21</BitOffsMessage>
+          <BitOffsData>13</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 3.ErrAck</Name>
+          <Index>28706</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>22</BitOffsMessage>
+          <BitOffsData>14</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 4.Channel 1.Output (X7.5)</Name>
+          <Index>28721</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>23</BitOffsMessage>
+          <BitOffsData>15</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSoE CRC 000</Name>
+          <Index>28944</Index>
+          <SubIndex>3</SubIndex>
+          <DataType>UINT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>ProtocolData</SafetyType>
+          <BitSize>16</BitSize>
+          <BitOffsMessage>24</BitOffsMessage>
+          <BitOffsData>-1</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 4.Channel 2.Output (X7.6)</Name>
+          <Index>28721</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>40</BitOffsMessage>
+          <BitOffsData>16</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 4.Channel 3.Output (X7.7)</Name>
+          <Index>28721</Index>
+          <SubIndex>3</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>41</BitOffsMessage>
+          <BitOffsData>17</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 4.Channel 4.Output (X7.8)</Name>
+          <Index>28721</Index>
+          <SubIndex>4</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>42</BitOffsMessage>
+          <BitOffsData>18</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 4.ErrAck</Name>
+          <Index>28722</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>43</BitOffsMessage>
+          <BitOffsData>19</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 5.Channel 1.Output (X9.1)</Name>
+          <Index>28737</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>44</BitOffsMessage>
+          <BitOffsData>20</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 5.Channel 2.Output (X9.2)</Name>
+          <Index>28737</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>45</BitOffsMessage>
+          <BitOffsData>21</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 5.Channel 3.Output (X9.3)</Name>
+          <Index>28737</Index>
+          <SubIndex>3</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>46</BitOffsMessage>
+          <BitOffsData>22</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 5.Channel 4.Output (X9.4)</Name>
+          <Index>28737</Index>
+          <SubIndex>4</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>47</BitOffsMessage>
+          <BitOffsData>23</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 5.ErrAck</Name>
+          <Index>28738</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>48</BitOffsMessage>
+          <BitOffsData>24</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 6.Channel 1.Output (X9.5)</Name>
+          <Index>28753</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>49</BitOffsMessage>
+          <BitOffsData>25</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 6.Channel 2.Output (X9.6)</Name>
+          <Index>28753</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>50</BitOffsMessage>
+          <BitOffsData>26</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 6.Channel 3.Output (X9.7)</Name>
+          <Index>28753</Index>
+          <SubIndex>3</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>51</BitOffsMessage>
+          <BitOffsData>27</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 6.Channel 4.Output (X9.8)</Name>
+          <Index>28753</Index>
+          <SubIndex>4</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>52</BitOffsMessage>
+          <BitOffsData>28</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 6.ErrAck</Name>
+          <Index>28754</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>53</BitOffsMessage>
+          <BitOffsData>29</BitOffsData>
+        </IO>
+        <IO>
+          <Name />
+          <Index>0</Index>
+          <SubIndex>0</SubIndex>
+          <DataType />
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>54</BitOffsMessage>
+          <BitOffsData>30</BitOffsData>
+        </IO>
+        <IO>
+          <Name />
+          <Index>0</Index>
+          <SubIndex>0</SubIndex>
+          <DataType />
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>55</BitOffsMessage>
+          <BitOffsData>31</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSoE CRC 001</Name>
+          <Index>28944</Index>
+          <SubIndex>4</SubIndex>
+          <DataType>UINT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>ProtocolData</SafetyType>
+          <BitSize>16</BitSize>
+          <BitOffsMessage>56</BitOffsMessage>
+          <BitOffsData>-1</BitOffsData>
+        </IO>
+        <IO>
+          <Name />
+          <Index>0</Index>
+          <SubIndex>0</SubIndex>
+          <DataType />
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>72</BitOffsMessage>
+          <BitOffsData>32</BitOffsData>
+        </IO>
+        <IO>
+          <Name />
+          <Index>0</Index>
+          <SubIndex>0</SubIndex>
+          <DataType />
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>73</BitOffsMessage>
+          <BitOffsData>33</BitOffsData>
+        </IO>
+        <IO>
+          <Name />
+          <Index>0</Index>
+          <SubIndex>0</SubIndex>
+          <DataType />
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>74</BitOffsMessage>
+          <BitOffsData>34</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 1.ErrAck</Name>
+          <Index>28786</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>75</BitOffsMessage>
+          <BitOffsData>35</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 2.ErrAck</Name>
+          <Index>28802</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>76</BitOffsMessage>
+          <BitOffsData>36</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 3.ErrAck</Name>
+          <Index>28818</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>77</BitOffsMessage>
+          <BitOffsData>37</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 4.ErrAck</Name>
+          <Index>28834</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>78</BitOffsMessage>
+          <BitOffsData>38</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 5.ErrAck</Name>
+          <Index>28850</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>79</BitOffsMessage>
+          <BitOffsData>39</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 6.ErrAck</Name>
+          <Index>28866</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>80</BitOffsMessage>
+          <BitOffsData>40</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 7.ErrAck</Name>
+          <Index>28882</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>81</BitOffsMessage>
+          <BitOffsData>41</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 8.ErrAck</Name>
+          <Index>28898</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>82</BitOffsMessage>
+          <BitOffsData>42</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 9.Err Ack 1</Name>
+          <Index>28914</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>83</BitOffsMessage>
+          <BitOffsData>43</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 9.Err Ack 2</Name>
+          <Index>28914</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>84</BitOffsMessage>
+          <BitOffsData>44</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 10.Err Ack 1</Name>
+          <Index>28930</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>85</BitOffsMessage>
+          <BitOffsData>45</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 10.Err Ack 2</Name>
+          <Index>28930</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>86</BitOffsMessage>
+          <BitOffsData>46</BitOffsData>
+        </IO>
+        <IO>
+          <Name />
+          <Index>0</Index>
+          <SubIndex>0</SubIndex>
+          <DataType />
+          <Direction>Out</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>87</BitOffsMessage>
+          <BitOffsData>47</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSoE CRC 002</Name>
+          <Index>28944</Index>
+          <SubIndex>5</SubIndex>
+          <DataType>UINT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>ProtocolData</SafetyType>
+          <BitSize>16</BitSize>
+          <BitOffsMessage>88</BitOffsMessage>
+          <BitOffsData>-1</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSoE Connection ID</Name>
+          <Index>28944</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>UINT</DataType>
+          <Direction>Out</Direction>
+          <SafetyType>ProtocolData</SafetyType>
+          <BitSize>16</BitSize>
+          <BitOffsMessage>104</BitOffsMessage>
+          <BitOffsData>-1</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSoE Command</Name>
+          <Index>24848</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>USINT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>ProtocolData</SafetyType>
+          <BitSize>8</BitSize>
+          <BitOffsMessage>0</BitOffsMessage>
+          <BitOffsData>-1</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 1.Module Fault</Name>
+          <Index>24578</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>8</BitOffsMessage>
+          <BitOffsData>0</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 2.Module Fault</Name>
+          <Index>24594</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>9</BitOffsMessage>
+          <BitOffsData>1</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 3.Module Fault</Name>
+          <Index>24610</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>10</BitOffsMessage>
+          <BitOffsData>2</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 4.Module Fault</Name>
+          <Index>24626</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>11</BitOffsMessage>
+          <BitOffsData>3</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 5.Module Fault</Name>
+          <Index>24642</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>12</BitOffsMessage>
+          <BitOffsData>4</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSOUT Module 6.Module Fault</Name>
+          <Index>24658</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>13</BitOffsMessage>
+          <BitOffsData>5</BitOffsData>
+        </IO>
+        <IO>
+          <Name />
+          <Index>0</Index>
+          <SubIndex>0</SubIndex>
+          <DataType />
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>14</BitOffsMessage>
+          <BitOffsData>6</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 1.Channel 1.Input (X6.1)</Name>
+          <Index>24689</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>15</BitOffsMessage>
+          <BitOffsData>7</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 1.Channel 2.Input (X6.2)</Name>
+          <Index>24689</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>16</BitOffsMessage>
+          <BitOffsData>8</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 1.Module Fault</Name>
+          <Index>24690</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>17</BitOffsMessage>
+          <BitOffsData>9</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 2.Channel 1.Input (X6.3)</Name>
+          <Index>24705</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>18</BitOffsMessage>
+          <BitOffsData>10</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 2.Channel 2.Input (X6.4)</Name>
+          <Index>24705</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>19</BitOffsMessage>
+          <BitOffsData>11</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 2.Module Fault</Name>
+          <Index>24706</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>20</BitOffsMessage>
+          <BitOffsData>12</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 3.Channel 1.Input (X6.5)</Name>
+          <Index>24721</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>21</BitOffsMessage>
+          <BitOffsData>13</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 3.Channel 2.Input (X6.6)</Name>
+          <Index>24721</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>22</BitOffsMessage>
+          <BitOffsData>14</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 3.Module Fault</Name>
+          <Index>24722</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>23</BitOffsMessage>
+          <BitOffsData>15</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSoE CRC 000</Name>
+          <Index>24848</Index>
+          <SubIndex>3</SubIndex>
+          <DataType>UINT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>ProtocolData</SafetyType>
+          <BitSize>16</BitSize>
+          <BitOffsMessage>24</BitOffsMessage>
+          <BitOffsData>-1</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 4.Channel 1.Input (X6.7)</Name>
+          <Index>24737</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>40</BitOffsMessage>
+          <BitOffsData>16</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 4.Channel 2.Input (X6.8)</Name>
+          <Index>24737</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>41</BitOffsMessage>
+          <BitOffsData>17</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 4.Module Fault</Name>
+          <Index>24738</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>42</BitOffsMessage>
+          <BitOffsData>18</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 5.Channel 1.Input (X6.9)</Name>
+          <Index>24753</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>43</BitOffsMessage>
+          <BitOffsData>19</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 5.Channel 2.Input (X6.10)</Name>
+          <Index>24753</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>44</BitOffsMessage>
+          <BitOffsData>20</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 5.Module Fault</Name>
+          <Index>24754</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>45</BitOffsMessage>
+          <BitOffsData>21</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 6.Channel 1.Input (X8.1)</Name>
+          <Index>24769</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>46</BitOffsMessage>
+          <BitOffsData>22</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 6.Channel 2.Input (X8.2)</Name>
+          <Index>24769</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>47</BitOffsMessage>
+          <BitOffsData>23</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 6.Module Fault</Name>
+          <Index>24770</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>48</BitOffsMessage>
+          <BitOffsData>24</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 7.Channel 1.Input (X8.3)</Name>
+          <Index>24785</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>49</BitOffsMessage>
+          <BitOffsData>25</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 7.Channel 2.Input (X8.4)</Name>
+          <Index>24785</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>50</BitOffsMessage>
+          <BitOffsData>26</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 7.Module Fault</Name>
+          <Index>24786</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>51</BitOffsMessage>
+          <BitOffsData>27</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 8.Channel 1.Input (X8.5)</Name>
+          <Index>24801</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>52</BitOffsMessage>
+          <BitOffsData>28</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 8.Channel 2.Input (X8.6)</Name>
+          <Index>24801</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>53</BitOffsMessage>
+          <BitOffsData>29</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 8.Module Fault</Name>
+          <Index>24802</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>54</BitOffsMessage>
+          <BitOffsData>30</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 9.Channel 1.Input (X8.7)</Name>
+          <Index>24817</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>55</BitOffsMessage>
+          <BitOffsData>31</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSoE CRC 001</Name>
+          <Index>24848</Index>
+          <SubIndex>4</SubIndex>
+          <DataType>UINT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>ProtocolData</SafetyType>
+          <BitSize>16</BitSize>
+          <BitOffsMessage>56</BitOffsMessage>
+          <BitOffsData>-1</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 9.Channel 2.Input (X8.8)</Name>
+          <Index>24817</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>72</BitOffsMessage>
+          <BitOffsData>32</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 9.Module Fault 1</Name>
+          <Index>24818</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>73</BitOffsMessage>
+          <BitOffsData>33</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 9.Module Fault 2</Name>
+          <Index>24818</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>74</BitOffsMessage>
+          <BitOffsData>34</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 10.Channel 1.Input (X8.9)</Name>
+          <Index>24833</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>75</BitOffsMessage>
+          <BitOffsData>35</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 10.Channel 2.Input (X8.10)</Name>
+          <Index>24833</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>76</BitOffsMessage>
+          <BitOffsData>36</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 10.Module Fault 1</Name>
+          <Index>24834</Index>
+          <SubIndex>1</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>77</BitOffsMessage>
+          <BitOffsData>37</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSIN Module 10.Module Fault 2</Name>
+          <Index>24834</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>BIT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>1</BitSize>
+          <BitOffsMessage>78</BitOffsMessage>
+          <BitOffsData>38</BitOffsData>
+        </IO>
+        <IO>
+          <Name />
+          <Index>0</Index>
+          <SubIndex>0</SubIndex>
+          <DataType />
+          <Direction>In</Direction>
+          <SafetyType>SafetySil3</SafetyType>
+          <BitSize>9</BitSize>
+          <BitOffsMessage>79</BitOffsMessage>
+          <BitOffsData>39</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSoE CRC 002</Name>
+          <Index>24848</Index>
+          <SubIndex>5</SubIndex>
+          <DataType>UINT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>ProtocolData</SafetyType>
+          <BitSize>16</BitSize>
+          <BitOffsMessage>88</BitOffsMessage>
+          <BitOffsData>-1</BitOffsData>
+        </IO>
+        <IO>
+          <Name>FSoE Connection ID</Name>
+          <Index>24848</Index>
+          <SubIndex>2</SubIndex>
+          <DataType>UINT</DataType>
+          <Direction>In</Direction>
+          <SafetyType>ProtocolData</SafetyType>
+          <BitSize>16</BitSize>
+          <BitOffsMessage>104</BitOffsMessage>
+          <BitOffsData>-1</BitOffsData>
+        </IO>
+      </Messages>
+      <InternalDirectMappings />
+    </Params>
+  </SafetyAliasDevice>
+</SafetyDeviceDesc>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL_IO" Id="{af224f5e-337e-4472-b106-bb3b9d90df0f}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	arrVoltage_L1 AT%I* : ARRAY[0..49] OF INT;
+	underRange AT%I* : BOOL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

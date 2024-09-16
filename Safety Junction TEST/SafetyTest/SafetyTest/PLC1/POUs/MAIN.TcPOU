@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{e5c69cbb-34de-40e6-8a02-cc6996ffd740}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	infoData AT%I* : UINT;
+	fbClock1: FB_Clock;
+	fbClock2: FB_Clock;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbClock1(TIME_ON:= T#1S, TIME_OFF:= T#1S, OUT_CLK=>);
+fbClock2(TIME_ON:= T#300MS, TIME_OFF:= T#300MS, OUT_CLK=>);
+GVL_safety.bEnableClockEK1960_0000 := fbClock1.OUT_CLK;
+GVL_safety.bEnableClockEK1960_2600 := fbClock2.OUT_CLK;]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="2" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
