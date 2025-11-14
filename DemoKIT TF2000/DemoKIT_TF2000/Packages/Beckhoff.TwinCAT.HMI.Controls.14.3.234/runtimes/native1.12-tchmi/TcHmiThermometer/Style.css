@@ -1,0 +1,84 @@
+.TcHmi_Controls_Beckhoff_TcHmiThermometer {
+}
+
+/*General*/
+.TcHmi_Controls_Beckhoff_TcHmiThermometer .tchmi-linear-gauge-template-track::before {
+    content: '';
+    width: var(--bulb-radius);
+    height: var(--bulb-radius);
+    position: absolute;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiThermometer .tchmi-linear-gauge-template-track::after {
+    content: '';
+    width: calc(2 * var(--bulb-radius));
+    height: calc(2 * var(--bulb-radius));
+    position: absolute;
+    border-radius: 100%;
+}
+
+/*Vertical*/
+.TcHmi_Controls_Beckhoff_TcHmiThermometer .tchmi-linear-gauge-template.vertical {
+    padding-bottom: calc(2.5 * var(--bulb-radius));
+}
+.TcHmi_Controls_Beckhoff_TcHmiThermometer
+    .tchmi-linear-gauge-template.vertical
+    .tchmi-linear-gauge-template-track::before {
+    left: 0px;
+    top: 100%;
+}
+.TcHmi_Controls_Beckhoff_TcHmiThermometer
+    .tchmi-linear-gauge-template.vertical
+    .tchmi-linear-gauge-template-track::after {
+    left: calc(-0.5 * var(--bulb-radius));
+    top: calc(100% + 0.5 * var(--bulb-radius));
+}
+
+/*VertivalInverted*/
+.TcHmi_Controls_Beckhoff_TcHmiThermometer .tchmi-linear-gauge-template.vertical-inverted {
+    padding-top: calc(2.5 * var(--bulb-radius));
+}
+.TcHmi_Controls_Beckhoff_TcHmiThermometer
+    .tchmi-linear-gauge-template.vertical-inverted
+    .tchmi-linear-gauge-template-track::before {
+    left: 0px;
+    bottom: 100%;
+}
+.TcHmi_Controls_Beckhoff_TcHmiThermometer
+    .tchmi-linear-gauge-template.vertical-inverted
+    .tchmi-linear-gauge-template-track::after {
+    left: calc(-0.5 * var(--bulb-radius));
+    bottom: calc(100% + 0.5 * var(--bulb-radius));
+}
+
+/*Horizontal*/
+.TcHmi_Controls_Beckhoff_TcHmiThermometer .tchmi-linear-gauge-template.horizontal {
+    padding-left: calc(2.5 * var(--bulb-radius));
+}
+.TcHmi_Controls_Beckhoff_TcHmiThermometer
+    .tchmi-linear-gauge-template.horizontal
+    .tchmi-linear-gauge-template-track::before {
+    left: calc(-1 * var(--bulb-radius));
+}
+.TcHmi_Controls_Beckhoff_TcHmiThermometer
+    .tchmi-linear-gauge-template.horizontal
+    .tchmi-linear-gauge-template-track::after {
+    top: calc(-0.5 * var(--bulb-radius));
+    right: calc(100% + 0.5 * var(--bulb-radius));
+}
+
+/*HorizontalInverted*/
+.TcHmi_Controls_Beckhoff_TcHmiThermometer .tchmi-linear-gauge-template.horizontal-inverted {
+    padding-right: calc(2.5 * var(--bulb-radius));
+}
+.TcHmi_Controls_Beckhoff_TcHmiThermometer
+    .tchmi-linear-gauge-template.horizontal-inverted
+    .tchmi-linear-gauge-template-track::before {
+    left: 100%;
+}
+.TcHmi_Controls_Beckhoff_TcHmiThermometer
+    .tchmi-linear-gauge-template.horizontal-inverted
+    .tchmi-linear-gauge-template-track::after {
+    top: calc(-0.5 * var(--bulb-radius));
+    left: calc(100% + 0.5 * var(--bulb-radius));
+}

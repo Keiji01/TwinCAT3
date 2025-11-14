@@ -1,0 +1,205 @@
+/** Styles for all themes */
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer {
+    overflow: hidden;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-template {
+    position: relative;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    display: grid;
+    grid-template:
+        'menu menu'
+        'tree browsing' minmax(0, 1fr) / auto 1fr;
+    gap: 5px;
+    margin: 5px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-menu-bar {
+    grid-area: menu;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    --height: 30px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-menu-bar .TcHmi_Controls_System_TcHmiControl {
+    position: relative;
+    height: var(--height);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-menu-bar .TcHmi_Controls_Beckhoff_TcHmiButton {
+    width: var(--height);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-menu-bar .sorting {
+    width: 150px;
+    margin-left: auto;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-menu-bar .sorting span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+    padding: 0 3px;
+    line-height: calc(var(--height) - 2px);
+    box-sizing: border-box;
+    border-width: 1px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-menu-bar .sorting div.open-button {
+    width: 26px;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-menu-bar .input-search {
+    margin-right: -5px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-menu-bar .input-search + .clear-search {
+    width: var(--height);
+    height: var(--height);
+    margin: 0;
+    margin-left: calc(var(--height) * -1);
+    position: relative;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-directory-tree {
+    grid-area: tree;
+    width: 200px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-browsing-area {
+    grid-area: browsing;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-path-box {
+    flex-shrink: 0;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-browsing-box {
+    flex-grow: 1;
+    --tchmi-file-upload-progress: 0;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-browsing-box li.file[data-metadata-upload-status='InProgress']::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: var(--tchmi-file-upload-progress);
+    transition: width 400ms;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-popup.TcHmi_Controls_Helpers_Popup-FileConflictPrompt
+    .TcHmi_Controls_Helpers_Popup-scroll-container {
+    margin-top: 10px;
+    padding: 5px;
+    max-height: 270px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-popup.TcHmi_Controls_Helpers_Popup-FileConflictPrompt
+    .TcHmi_Controls_Helpers_Popup-content
+    > .TcHmi_Controls_Helpers_Popup-radio-row {
+    margin-top: 10px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-popup.TcHmi_Controls_Helpers_Popup-FileConflictPrompt
+    .TcHmi_Controls_Helpers_Popup-radio-row {
+    display: flex;
+    gap: 15px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-popup.TcHmi_Controls_Helpers_Popup-FileConflictPrompt
+    .TcHmi_Controls_Helpers_Popup-radio-row
+    > span {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-sort-configurator {
+    position: absolute;
+    padding: 5px;
+    display: grid;
+    grid-template:
+        'list list'
+        'reset ok';
+    gap: 10px 5px;
+    overflow: auto;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-sort-configurator ul {
+    --li-height: 30px;
+    --li-gap: 5px;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    grid-area: list;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-sort-configurator li {
+    --nth-child: 0;
+    --position: 0;
+    position: relative;
+    top: calc(var(--nth-child) * (var(--li-height) + var(--li-gap)) * -1);
+    transform: translateY(calc((var(--li-height) + var(--li-gap)) * var(--position)));
+    height: var(--li-height);
+    box-sizing: border-box;
+    display: flex;
+    margin-bottom: 5px;
+    padding-left: 30px;
+    align-items: center;
+    transition: transform 0.25s ease-in-out;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-sort-configurator li:last-child {
+    margin: 0;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-sort-configurator li.dragging {
+    transition: none;
+    z-index: 1;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-sort-configurator li.divider {
+    padding: 0;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-sort-configurator li.divider::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-sort-configurator li span {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    padding-right: 3px;
+    white-space: nowrap;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-sort-configurator li div.drag-handle {
+    height: 100%;
+    aspect-ratio: 22/30;
+    touch-action: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiFileExplorer-sort-configurator .TcHmi_Controls_Beckhoff_TcHmiButton {
+    position: unset;
+}

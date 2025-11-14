@@ -1,0 +1,42 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+        "TcHmi.Controls.Beckhoff.TcHmiNumericInput": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "type": "object",
+            "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+            "frameworkControlType": "TcHmiNumericInput",
+            "frameworkControlNamespace": "TcHmi.Controls.Beckhoff"
+        },
+        "TcHmiNumericInput": {
+            "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiNumericInput"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiNumericInput.Value": {
+            "anyOf": [
+                {
+                    "$ref": "tchmi:general#/definitions/Number"
+                },
+                {
+                    "$ref": "tchmi:general#/definitions/BigInt64"
+                },
+                {
+                    "$ref": "tchmi:general#/definitions/UnsignedBigInt64"
+                }
+            ]
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiNumericInput.ValueType": {
+            "type": "string",
+            "enum": ["Number", "BigInt64", "UnsignedBigInt64"]
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiNumericInput.UnitPosition": {
+            "title": "Numeric Input Unit Position",
+            "type": "string",
+            "enum": ["Left", "Right"],
+            "default": "Right"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiNumericInput.DecimalPrecisionMode": {
+            "type": "string",
+            "enum": ["Truncate", "Round"]
+        }
+    }
+}

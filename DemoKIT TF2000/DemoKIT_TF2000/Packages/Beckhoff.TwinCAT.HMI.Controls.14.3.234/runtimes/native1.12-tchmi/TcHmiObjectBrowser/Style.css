@@ -1,0 +1,27 @@
+.TcHmi_Controls_Beckhoff_TcHmiObjectBrowser.TcHmi_Controls_Beckhoff_TcHmiTreeView.hidden {
+    display: none;
+}
+.TcHmi_Controls_Beckhoff_TcHmiObjectBrowser .TcHmi_Controls_Beckhoff_TcHmiObjectBrowser-editor-template {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiObjectBrowser .TcHmi_Controls_Beckhoff_TcHmiObjectBrowser-editor-button {
+    height: 100%;
+    width: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.TcHmi_Controls_Beckhoff_TcHmiObjectBrowser
+    .TcHmi_Controls_Beckhoff_TcHmiTreeView-cell-disabled
+    .TcHmi_Controls_Beckhoff_TcHmiObjectBrowser-editor-button {
+    display: none;
+}

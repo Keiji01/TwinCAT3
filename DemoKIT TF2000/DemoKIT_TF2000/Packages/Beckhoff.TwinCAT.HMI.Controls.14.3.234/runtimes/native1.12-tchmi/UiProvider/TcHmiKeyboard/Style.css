@@ -1,0 +1,5 @@
+/* Generic */
+.TcHmi_Controls_UiProvider_TcHmiKeyboard-container > a {
+    position: absolute;
+    right: 0;
+}

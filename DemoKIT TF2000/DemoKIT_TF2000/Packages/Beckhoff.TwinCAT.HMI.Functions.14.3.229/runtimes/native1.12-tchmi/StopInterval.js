@@ -1,0 +1,1 @@
+"use strict";var TcHmi;!function(TcHmi){!function(Functions){!function(Beckhoff){Beckhoff.StopInterval=function(name){TcHmi.Interval.stop(name)}}(Functions.Beckhoff||(Functions.Beckhoff={}))}(TcHmi.Functions||(TcHmi.Functions={}))}(TcHmi||(TcHmi={})),TcHmi.Functions.registerFunctionEx("StopInterval","TcHmi.Functions.Beckhoff",TcHmi.Functions.Beckhoff.StopInterval);

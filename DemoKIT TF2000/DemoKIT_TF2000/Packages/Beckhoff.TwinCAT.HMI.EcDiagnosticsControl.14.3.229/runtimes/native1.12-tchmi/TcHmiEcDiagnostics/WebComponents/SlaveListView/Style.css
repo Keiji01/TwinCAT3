@@ -1,0 +1,30 @@
+beckhoff-ec-diagnostics-slave-list-view {
+    white-space: break-spaces;
+}
+beckhoff-ec-diagnostics-slave-list-view .release-all-wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    max-width: 350px;
+    grid-column-gap: 10px;
+}
+beckhoff-ec-diagnostics-slave-list-view .release-all-wrapper .force-state-info {
+    display: flex;
+    align-items: center;
+}
+
+beckhoff-ec-diagnostics-slave-list-view .release-all-wrapper .release-all-not-available-info {
+    grid-column: 1 / 3;
+}
+
+beckhoff-ec-diagnostics-slave-list-view .list-view-wrapper {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(8, max-content);
+    justify-content: center;
+}
+
+beckhoff-ec-diagnostics-slave-list-view .entry-cell {
+    display: flex;
+    height: 30px;
+    align-items: center;
+}

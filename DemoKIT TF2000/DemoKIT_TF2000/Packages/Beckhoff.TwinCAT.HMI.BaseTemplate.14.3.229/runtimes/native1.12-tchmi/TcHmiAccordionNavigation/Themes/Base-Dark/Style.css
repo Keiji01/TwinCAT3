@@ -1,0 +1,148 @@
+/** Theme dependent style for TcHmiAccordionNavigation: Base-Dark */
+.TcHmi_Controls_BaseTemplate_TcHmiAccordionNavigation {
+    --tchmi-background: var(--tchmi-background-color-1);
+    --tchmi-item-background: var(--tchmi-background-color-1);
+    --tchmi-active-item-background: var(--tchmi-background-color-3);
+    --tchmi-active-top-item-background: var(--tchmi-highlight-color-1);
+    --tchmi-active-top-item-color: var(--tchmi-foreground-color-1);
+    --tchmi-border-color: var(--tchmi-foreground-color-2);
+    --tchmi-indentation-color: var(--tchmi-background-color-2);
+    --tchmi-item-header-color: var(--tchmi-foreground-color-1);
+    --tchmi-item-header-hover-color: var(--tchmi-foreground-color-1);
+    --tchmi-item-header-pressed-color: var(--tchmi-foreground-color-3);
+    --tchmi-item-header-background: var(--tchmi-background-color-2);
+    --tchmi-item-header-hover-background: var(--tchmi-background-color-3);
+    --tchmi-item-header-pressed-background: var(--tchmi-background-color-3);
+    background: var(--tchmi-background);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiAccordionNavigation-Template
+    tchmi-accordion
+    > tchmi-accordion-item
+    > tchmi-accordion-content {
+    background: var(--tchmi-indentation-color);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiAccordionNavigation-Template
+    tchmi-accordion
+    tchmi-accordion
+    > tchmi-accordion-item
+    > tchmi-accordion-content {
+    border: none;
+    border-left: 2px solid var(--tchmi-item-background);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiAccordionNavigation-Template
+    tchmi-accordion-content
+    > tchmi-accordion
+    > tchmi-accordion-item
+    > tchmi-accordion-header {
+    border: none;
+    border-bottom: 1px solid #4343434a;
+    font-weight: normal;
+    background: var(--tchmi-item-background);
+}
+
+/* Hover element */
+.TcHmi_Controls_BaseTemplate_TcHmiAccordionNavigation-Template
+    tchmi-accordion
+    tchmi-accordion
+    > tchmi-accordion-item:not(.disabled)
+    > tchmi-accordion-header:hover {
+    background: var(--tchmi-active-item-background);
+}
+
+/* Active element */
+.TcHmi_Controls_BaseTemplate_TcHmiAccordionNavigation-Template
+    tchmi-accordion
+    tchmi-accordion
+    > tchmi-accordion-item[active]
+    > tchmi-accordion-header {
+    background: var(--tchmi-active-item-background);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiAccordionNavigation-Template
+    tchmi-accordion
+    tchmi-accordion
+    > tchmi-accordion-item[active]
+    > tchmi-accordion-header::before {
+    background: var(--tchmi-active-top-item-background);
+}
+
+/* Active Element first level */
+.TcHmi_Controls_BaseTemplate_TcHmiAccordionNavigation-Template
+    > tchmi-accordion
+    > tchmi-accordion-item[active]
+    > tchmi-accordion-header {
+    background: var(--tchmi-active-top-item-background);
+    color: var(--tchmi-active-top-item-color);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiAccordionNavigation-Template
+    > tchmi-accordion
+    > tchmi-accordion-item[active]
+    > tchmi-accordion-header::before {
+    background: var(--tchmi-active-top-item-background);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiAccordionNavigation-Template
+    > tchmi-accordion
+    > tchmi-accordion-item[active]:not(.disabled)
+    > tchmi-accordion-header
+    > tchmi-accordion-expander::after {
+    border-color: var(--tchmi-active-top-item-color);
+}
+
+/* Back button */
+.TcHmi_Controls_BaseTemplate_TcHmiAccordionNavigation-Back-Button {
+    display: flex;
+    position: relative;
+    padding: 16px 16px 16px 64px;
+    background: var(--tchmi-item-header-background);
+    color: var(--tchmi-item-header-color);
+    font-weight: bold;
+    font-size: 15px;
+    align-items: center;
+    border: 1px solid var(--tchmi-border-color);
+    transition: box-shadow 0.2s ease;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiAccordionNavigation-Back-Button:hover {
+    background: var(--tchmi-item-header-hover-background);
+    color: var(--tchmi-item-header-hover-color);
+    text-decoration: underline;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiAccordionNavigation-Back-Button.down {
+    box-shadow: var(--tchmi-button-shadow-pressed);
+    color: var(--tchmi-item-header-pressed-color);
+    background: var(--tchmi-item-header-pressed-background);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiAccordionNavigation hr {
+    border: none;
+    border-top: 1px solid;
+    border-color: var(--tchmi-border-color);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiAccordionNavigation-Back-Button::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    left: 28px;
+    top: 22px;
+    transform: rotate(45deg);
+    border-left: 1px solid var(--tchmi-item-header-color);
+    border-bottom: 1px solid var(--tchmi-item-header-color);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiAccordionNavigation-Back-Button:hover::after {
+    border-left: 1px solid var(--tchmi-item-header-hover-color);
+    border-bottom: 1px solid var(--tchmi-item-header-hover-color);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiAccordionNavigation-Back-Button.down::after {
+    border-left: 1px solid var(--tchmi-item-header-pressed-color);
+    border-bottom: 1px solid var(--tchmi-item-header-pressed-color);
+}

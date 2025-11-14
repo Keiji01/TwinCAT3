@@ -1,0 +1,4 @@
+/** Styles for the theme: Base-Dark */
+.TcHmi_Controls_Beckhoff_TcHmiTabNavigation {
+    box-shadow: var(--tchmi-card-shadow);
+}

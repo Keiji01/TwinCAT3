@@ -1,0 +1,23 @@
+{
+  "locale": "de",
+  "localizedText": {
+    "HTML_ERRORS": "Zeige Fehler in HTML-Ausgabe",
+    "DESC_HTML_ERRORS": "Aus Sicherheitsgründen sollte diese Fehlerausgabe unterdrückt werden.",
+    "SCRIPT_TIMEOUT": "Script-Timeout",
+    "DESC_SCRIPT_TIMEOUT": "Timeout, nach dem die Ausführung eines Lua-Scripts abgebrochen wird.",
+    "LUA_ERROR": "Lua-Fehler: {0}",
+    "ERROR_CONFIG_STRING": "{0} fehlgeschlagen: {1}",
+    "ERROR_CONFIG_STRING_NO_DETAIL": "{0} fehlgeschlagen",
+    "CONFIG_ACTION_SUCCESS_STRING": "{0} erfolgreich",
+    "CONFIG_ACTION_ADD": "Hinzufügen",
+    "CONFIG_ACTION_DELETE": "Entfernen",
+    "CONFIG_ACTION_UPDATE": "Aktualisieren",
+    "CONFIG_ACTION_RENAME": "Umbenennen",
+    "CONFIG_ACTION_IMPORT": "Importieren",
+    "SCRIPT_ERROR": "Ein Script-Fehler ist aufgetreten",
+    "LOG_PAGE_MAX_ENTRIES": "Maximale Anzahl an Einträgen auf der Log-Seite",
+    "DESC_LOG_PAGE_MAX_ENTRIES": "Wenn dieser Wert erreicht wird, werden die Ereignisse auf mehreren Seiten angezeigt",
+    "CONFIG_PAGE_ARRAY_LIMIT": "Maximale Anzahl an Array-Einträgen in der Konfiguration",
+    "DESC_CONFIG_PAGE_ARRAY_LIMIT": "Maximale Anzahl an Array-Einträgen, die auf der Konfigurationsseite angezeigt werden"
+  }
+}

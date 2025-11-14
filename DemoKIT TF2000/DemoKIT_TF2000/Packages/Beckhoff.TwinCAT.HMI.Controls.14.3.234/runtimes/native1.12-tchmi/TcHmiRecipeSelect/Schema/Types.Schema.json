@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+        "TcHmi.Controls.Beckhoff.TcHmiRecipeSelect": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "type": "object",
+            "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+            "frameworkControlType": "TcHmiRecipeSelect",
+            "frameworkControlNamespace": "TcHmi.Controls.Beckhoff"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiRecipeSelect.NameArray": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "minLength": 1
+            }
+        },
+        "TcHmiRecipeSelect": {
+            "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiRecipeSelect"
+        }
+    }
+}

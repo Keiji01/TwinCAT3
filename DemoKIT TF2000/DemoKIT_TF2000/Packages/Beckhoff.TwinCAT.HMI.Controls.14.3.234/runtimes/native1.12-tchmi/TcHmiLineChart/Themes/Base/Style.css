@@ -1,0 +1,175 @@
+/** Styles for the theme: Base */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiLineChart,
+.tchmi-line-chart,
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-menu-bar-dropdown,
+.tchmi-line-chart-template-menu-bar-dropdown {
+    --tchmi-background: var(--tchmi-background-color-1);
+    --tchmi-background-part: var(--tchmi-background-color-1);
+    --tchmi-color: var(--tchmi-foreground-color-1);
+    --tchmi-tooltip-background: var(--tchmi-background-color-1);
+    --tchmi-tooltip-color: var(--tchmi-highlight-color-1);
+    --tchmi-border-color: var(--tchmi-background-color-2);
+    --tchmi-checkbox-background: var(--tchmi-background-color-4);
+    --tchmi-checkbox-background-active: var(--tchmi-highlight-color-1);
+    --tchmi-dropdown-background: var(--tchmi-background-color-4);
+    background: var(--tchmi-background);
+    box-shadow: var(--tchmi-card-shadow);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-chart,
+.tchmi-line-chart-template-chart {
+    background: var(--tchmi-background-part);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-legend {
+    background: var(--tchmi-background-part);
+    color: var(--tchmi-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-legend-checkbox {
+    appearance: none;
+    background: var(--tchmi-checkbox-background);
+    border: 1px solid var(--tchmi-border-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-legend-checkbox:checked {
+    background:
+        url(Images/checkbox.svg) 13px 13px,
+        var(--tchmi-checkbox-background-active);
+    background-size: 15px 15px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-tooltip .TcHmi_Controls_Beckhoff_TcHmiLineChart-template-tooltip-text,
+.tchmi-line-chart-template-tooltip .tchmi-line-chart-template-tooltip-text {
+    background: var(--tchmi-tooltip-background);
+    color: var(--tchmi-tooltip-color);
+    box-shadow: var(--tchmi-popup-shadow);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-tooltip-arrow,
+.tchmi-line-chart-template-tooltip-arrow {
+    background: var(--tchmi-tooltip-background);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-menu-bar,
+.tchmi-line-chart-template-menu-bar {
+    background: var(--tchmi-background-part);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-menu-bar-dropdown,
+.tchmi-line-chart-template-menu-bar-dropdown {
+    box-shadow: var(--tchmi-popup-shadow);
+    background: var(--tchmi-dropdown-background);
+}
+.TcHmi_Controls_Beckhoff_TcHmiButton.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-options,
+.tchmi-button.tchmi-line-chart-template-options {
+    box-shadow: none;
+    background: var(--tchmi-options-background);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-pause > div,
+.tchmi-line-chart-template-pause > div {
+    background-image: url('Images/pause_normal.svg');
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-pause.down > div,
+.tchmi-line-chart-template-pause.down > div {
+    background-image: url('Images/pause_pressed.svg');
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-panx > div,
+.tchmi-line-chart-template-panx > div {
+    background-image: url('Images/panx_normal.svg');
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-panx.down > div,
+.tchmi-line-chart-template-panx.down > div {
+    background-image: url('Images/panx_pressed.svg');
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-panxy > div,
+.tchmi-line-chart-template-panxy > div {
+    background-image: url('Images/panxy_normal.svg');
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-panxy.down > div,
+.tchmi-line-chart-template-panxy.down > div {
+    background-image: url('Images/panxy_pressed.svg');
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-zoomx > div,
+.tchmi-line-chart-template-zoomx > div {
+    background-image: url('Images/zoomx_normal.svg');
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-zoomx.down > div,
+.tchmi-line-chart-template-zoomx.down > div {
+    background-image: url('Images/zoomx_pressed.svg');
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-zoomxy > div,
+.tchmi-line-chart-template-zoomxy > div {
+    background-image: url('Images/zoomxy_normal.svg');
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-zoomxy.down > div,
+.tchmi-line-chart-template-zoomxy.down > div {
+    background-image: url('Images/zoomxy_pressed.svg');
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-reset-zoom > div,
+.tchmi-line-chart-template-reset-zoom > div {
+    background-image: url('Images/zoomdel_normal.svg');
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-reset-zoom.down > div,
+.tchmi-line-chart-template-reset-zoom.down > div {
+    background-image: url('Images/zoomdel_pressed.svg');
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-play > div,
+.tchmi-line-chart-template-play > div {
+    background-image: url('Images/play_normal.svg');
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiLineChart-template-play.down > div,
+.tchmi-line-chart-template-play.down > div {
+    background-image: url('Images/play_pressed.svg');
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+}

@@ -1,0 +1,43 @@
+/** Styles for the theme: Base */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiInput {
+    --tchmi-background: var(--tchmi-background-color-4);
+    --tchmi-color: var(--tchmi-foreground-color-1);
+    --tchmi-border-color: var(--tchmi-background-color-2);
+    background-color: var(--tchmi-background);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiInput-template-input {
+    -webkit-appearance: none; /* Important to have visible box-shadow on input elements in iOS/Safari.  */
+    appearance: none;
+    color: var(--tchmi-color);
+    border: 1px solid var(--tchmi-border-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiInput-template-input:is(:focus, .tchmi-focus, .tchmi-keyboard-user-input) {
+    background: rgba(76, 99, 116, 0.05);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiInput.read-only {
+    background: var(--tchmi-read-only-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiInput-template-input-invalid-notification {
+    color: red;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiInput-template-input:invalid {
+    background-color: var(
+        --tchmi-background-invalid
+    ) !important; /*set as important because it would be overwritten by the onInput selector during an input*/
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiInput-template-input-invalid-notification,
+.tchmi-template-input-invalid-notification {
+    color: red;
+    font-weight: bold;
+    font-size: 15px;
+}

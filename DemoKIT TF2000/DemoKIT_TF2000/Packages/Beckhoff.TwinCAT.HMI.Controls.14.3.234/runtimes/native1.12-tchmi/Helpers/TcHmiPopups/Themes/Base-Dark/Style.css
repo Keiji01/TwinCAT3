@@ -1,0 +1,121 @@
+.TcHmi_Controls_Helpers_Popup {
+    --tchmi-background: var(--tchmi-background-color-1);
+    --tchmi-text-color: var(--tchmi-foreground-color-1);
+    --tchmi-header-background: var(--tchmi-background-color-1);
+    --tchmi-header-text-color: var(--tchmi-foreground-color-1);
+    --tchmi-background-invalid: var(--tchmi-invalid-color);
+    --tchmi-popup-filter-border: var(--tchmi-foreground-color-2);
+    --tchmi-popup-filter-table-header-background: var(--tchmi-highlight-color-1);
+    --tchmi-popup-filter-table-header-color: var(--tchmi-foreground-color-1);
+    --tchmi-popup-filter-table-cell-background: var(--tchmi-background-color-3);
+    --tchmi-popup-filter-table-cell-color: var(--tchmi-foreground-color-1);
+    --tchmi-popup-filter-table-indentation: var(--tchmi-foreground-color-2);
+    background: var(--tchmi-background);
+    box-shadow: var(--tchmi-popup-shadow);
+    font-size: 12px;
+}
+
+.TcHmi_Controls_Helpers_Popup-header-container {
+    background: var(--tchmi-header-background);
+}
+
+.TcHmi_Controls_Helpers_Popup-header-container > h1 {
+    font-size: 18px;
+    font-weight: normal;
+    color: var(--tchmi-header-text-color);
+}
+
+.TcHmi_Controls_Helpers_Popup-header-container > h1:not(:empty) {
+    margin-right: 10px;
+}
+
+.TcHmi_Controls_Helpers_Popup-header-container > a {
+    width: 26px;
+    height: 26px;
+    background-image: url('Images/close.svg');
+}
+
+.TcHmi_Controls_Helpers_Popup-header-container > a:active:hover {
+    background-image: url('Images/close-active.svg');
+}
+
+.TcHmi_Controls_Helpers_Popup-content {
+    color: var(--tchmi-text-color);
+}
+
+.TcHmi_Controls_Helpers_Popup div.with-validation.invalid .TcHmi_Controls_Beckhoff_TcHmiInput-template-input {
+    box-shadow: var(--tchmi-background-invalid);
+}
+
+.TcHmi_Controls_Helpers_Popup-content h2 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+/**
+ * FilterPrompt
+ */
+.TcHmi_Controls_Helpers_FilterPrompt-table-header tr {
+    border-bottom: 1px solid var(--tchmi-popup-filter-border);
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-table-header th {
+    background: var(--tchmi-popup-filter-table-header-background);
+    color: var(--tchmi-popup-filter-table-header-color);
+    border-right: 1px solid var(--tchmi-popup-filter-border);
+    border-top: 0px;
+    border-left: 0px;
+    border-bottom: 0px;
+    font-weight: normal;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-table td {
+    background: var(--tchmi-popup-filter-table-cell-background);
+    color: var(--tchmi-popup-filter-table-cell-color);
+    border-color: var(--tchmi-popup-filter-border);
+}
+
+.tchmi-event-grid-table-header .tchmi-event-grid-selection-column {
+    border-right: none;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-table .TcHmi_Controls_Helpers_FilterPrompt-indentation-column {
+    border-bottom: none;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-table .TcHmi_Controls_Helpers_FilterPrompt-indentation-marker {
+    border-color: var(--tchmi-popup-filter-table-indentation);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiButton.TcHmi_Controls_Helpers_FilterPrompt-add-button {
+    background-image: url('Images/add.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiButton.TcHmi_Controls_Helpers_FilterPrompt-add-button.down {
+    background-image: url('Images/add-active.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiButton.TcHmi_Controls_Helpers_FilterPrompt-remove-button {
+    background-image: url('Images/remove.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiButton.TcHmi_Controls_Helpers_FilterPrompt-remove-button.down {
+    background-image: url('Images/remove-active.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiButton.TcHmi_Controls_Helpers_FilterPrompt-group-button {
+    background-image: url('Images/group.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiButton.TcHmi_Controls_Helpers_FilterPrompt-group-button.down {
+    background-image: url('Images/group-active.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiButton.TcHmi_Controls_Helpers_FilterPrompt-ungroup-button {
+    background-image: url('Images/ungroup.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiButton.TcHmi_Controls_Helpers_FilterPrompt-ungroup-button.down {
+    background-image: url('Images/ungroup-active.svg');
+}

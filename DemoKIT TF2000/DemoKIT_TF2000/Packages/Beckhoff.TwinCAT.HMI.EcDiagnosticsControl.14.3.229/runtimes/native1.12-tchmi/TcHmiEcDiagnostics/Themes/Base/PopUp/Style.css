@@ -1,0 +1,7 @@
+.beckhoff-ec-diagnostics beckhoff-ec-diagnostics-pop-up {
+    background: var(--tchmi-popup-dim-color);
+}
+.beckhoff-ec-diagnostics beckhoff-ec-diagnostics-pop-up > .inner-frame {
+    background: var(--main-background-color);
+    box-shadow: var(--tchmi-popup-shadow);
+}

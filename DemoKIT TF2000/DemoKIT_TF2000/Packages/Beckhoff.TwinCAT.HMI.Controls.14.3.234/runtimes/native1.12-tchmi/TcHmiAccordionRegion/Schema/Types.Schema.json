@@ -1,0 +1,201 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+        "TcHmi.Controls.Beckhoff.TcHmiAccordionRegion": {
+            "type": "object",
+            "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+            "frameworkControlType": "TcHmiAccordionRegion",
+            "frameworkControlNamespace": "TcHmi.Controls.Beckhoff"
+        },
+        "TcHmiAccordionRegion": {
+            "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiAccordionRegion"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiAccordionRegion.AccordionItemList": {
+            "type": "array",
+            "title": "Accordion Items",
+            "description": "A list of accordion items",
+            "items": {
+                "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiAccordionRegion.AccordionItem"
+            }
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiAccordionRegion.AccordionItem": {
+            "type": "object",
+            "title": "Accordion Item",
+            "description": "A single accordion item",
+            "engineeringColumns": ["name"],
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "targetFile": {
+                    "$ref": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile"
+                },
+                "targetFileHostPreload": {
+                    "type": "boolean"
+                },
+                "targetFileHostPreAttach": {
+                    "type": "boolean"
+                },
+                "targetFileHostKeepAlive": {
+                    "type": "boolean"
+                },
+                "maxContentHeight": {
+                    "$ref": "tchmi:framework#/definitions/MeasurementValue"
+                },
+                "accessRights": {
+                    "$ref": "tchmi:framework#/definitions/AccessConfig"
+                },
+                "icon": {
+                    "type": "object",
+                    "properties": {
+                        "iconPath": {
+                            "$ref": "tchmi:framework#/definitions/Path"
+                        },
+                        "iconWidth": {
+                            "$ref": "tchmi:framework#/definitions/MeasurementValue"
+                        },
+                        "iconWidthUnit": {
+                            "$ref": "tchmi:framework#/definitions/MeasurementUnit"
+                        },
+                        "iconHeight": {
+                            "$ref": "tchmi:framework#/definitions/MeasurementValue"
+                        },
+                        "iconHeightUnit": {
+                            "$ref": "tchmi:framework#/definitions/MeasurementUnit"
+                        }
+                    },
+                    "propertiesMeta": [
+                        {
+                            "name": "iconPath",
+                            "displayName": "Icon Path",
+                            "category": "General",
+                            "displayPriority": 10,
+                            "description": "The icon that will be displayed in the accordion header.",
+                            "defaultValue": null,
+                            "defaultValueInternal": null
+                        },
+                        {
+                            "name": "iconWidth",
+                            "displayName": "Icon Width",
+                            "category": "General",
+                            "displayPriority": 11,
+                            "description": "The preferred width of the icon.",
+                            "defaultValue": null,
+                            "defaultValueInternal": 32
+                        },
+                        {
+                            "name": "iconWidthUnit",
+                            "displayName": "Icon Width Unit",
+                            "category": "General",
+                            "displayPriority": 11,
+                            "description": "The unit of preferred width of the icon.",
+                            "defaultValue": null,
+                            "defaultValueInternal": "px",
+                            "refTo": "iconWidth"
+                        },
+                        {
+                            "name": "iconHeight",
+                            "displayName": "Icon Height",
+                            "category": "General",
+                            "displayPriority": 12,
+                            "description": "The preferred height of the icon.",
+                            "defaultValue": null,
+                            "defaultValueInternal": 32
+                        },
+                        {
+                            "name": "iconHeightUnit",
+                            "displayName": "Icon Height Unit",
+                            "category": "General",
+                            "displayPriority": 12,
+                            "description": "The unit of preferred height of the icon.",
+                            "defaultValue": null,
+                            "defaultValueInternal": "px",
+                            "refTo": "iconHeight"
+                        }
+                    ],
+                    "required": ["iconPath"],
+                    "additionalProperties": false
+                }
+            },
+            "propertiesMeta": [
+                {
+                    "name": "name",
+                    "displayName": "Name",
+                    "category": "General",
+                    "displayPriority": 10,
+                    "description": "Name of the accordion item.",
+                    "defaultValue": "newTab",
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "text",
+                    "displayName": "Text",
+                    "category": "General",
+                    "displayPriority": 11,
+                    "description": "The text that will be displayed in the accordion header.",
+                    "defaultValue": "Accordion Item",
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "targetFile",
+                    "displayName": "Target File",
+                    "category": "General",
+                    "displayPriority": 12,
+                    "description": "The content or usercontrol to show.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "targetFileHostPreload",
+                    "displayName": "Target File Host Preload",
+                    "category": "General",
+                    "displayPriority": 13,
+                    "description": "Defines whether the target file host is preloaded when the accordion region is initialized or loaded when the accordion item is selected.",
+                    "defaultValue": null,
+                    "defaultValueInternal": false
+                },
+                {
+                    "name": "targetFileHostPreAttach",
+                    "displayName": "Target File Host Pre Attach",
+                    "category": "General",
+                    "displayPriority": 14,
+                    "description": "Defines whether the target file host is pre attached to the DOM even if the accorion item is not yet opened. Does only have an effect if TargetFileHostPreload is true.",
+                    "defaultValue": null,
+                    "defaultValueInternal": false
+                },
+                {
+                    "name": "targetFileHostKeepAlive",
+                    "displayName": "Target File Host Keep Alive",
+                    "category": "General",
+                    "displayPriority": 15,
+                    "description": "Defines whether the target file host is kept alive when the accordion item is closed. Has no effect when TargetFileHostPreload is set to true.",
+                    "defaultValue": null,
+                    "defaultValueInternal": false
+                },
+                {
+                    "name": "maxContentHeight",
+                    "displayName": "Max Content Height",
+                    "category": "General",
+                    "displayPriority": 16,
+                    "description": "The maximal height of the accordion items content in 'px'.",
+                    "defaultValue": null,
+                    "defaultValueInternal": 240
+                },
+                {
+                    "name": "icon",
+                    "displayName": "Icon",
+                    "category": "General",
+                    "displayPriority": 30,
+                    "description": "The Icon displayed in the accordion header.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                }
+            ],
+            "additionalProperties": false,
+            "required": ["name"]
+        }
+    }
+}

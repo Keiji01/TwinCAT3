@@ -1,0 +1,104 @@
+/* General theme independent control css. */
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation {
+    overflow: hidden;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation {
+    position: relative;
+    display: flex;
+    flex-direction: inherit;
+    overflow: hidden;
+    width: 100%;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Static,
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Context {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: inherit;
+    position: relative;
+    width: 100%;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Static-Shadow,
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Context-Shadow {
+    position: absolute;
+    pointer-events: none;
+    background: transparent;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation div .TcHmi_Controls_Beckhoff_TcHmiButton div {
+    height: 100%;
+    overflow: hidden;
+}
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation div .TcHmi_Controls_Beckhoff_TcHmiButton div span {
+    white-space: normal;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Back {
+    position: relative;
+    width: 100%;
+}
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Back.hidden {
+    display: none;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Back-icon {
+    z-index: 1;
+    position: absolute;
+    pointer-events: none;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Back .TcHmi_Controls_Beckhoff_TcHmiButton {
+    position: absolute;
+}
+
+/* Not used */
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation div .TcHmi_Controls_Beckhoff_TcHmiButton svg {
+    position: absolute;
+    top: 0;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template.horizontal {
+    flex-direction: row;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template.horizontal
+    .TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation {
+    width: auto;
+    height: 100%;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template.horizontal
+    .TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation
+    > div {
+    width: auto;
+    height: 100%;
+}
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Context > .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb {
+    position: relative;
+}
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Context
+    > .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb
+    > .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-Template {
+    padding: 0;
+}
+@supports (scrollbar-width: none) {
+    .TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation.scrollbar-mode-none > div {
+        scrollbar-width: none;
+    }
+}
+
+@supports not (scrollbar-width: none) {
+    .TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation.scrollbar-mode-none > div::-webkit-scrollbar {
+        display: none;
+    }
+}

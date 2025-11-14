@@ -1,0 +1,206 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+        "TcHmi.Controls.BaseTemplate.TcHmiAccordionNavigation": {
+            "type": "object",
+            "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+            "frameworkControlType": "TcHmiAccordionNavigation",
+            "frameworkControlNamespace": "TcHmi.Controls.BaseTemplate"
+        },
+        "TcHmiAccordionNavigation": {
+            "$ref": "tchmi:framework#/definitions/TcHmi.Controls.BaseTemplate.TcHmiAccordionNavigation"
+        },
+        "TcHmi.Controls.BaseTemplate.TcHmiAccordionNavigation.NavigationItem": {
+            "title": "Navigation Item",
+            "description": "A Navigation item for the accordion navigation.",
+            "type": "object",
+            "engineeringColumns": ["name", "content"],
+            "required": ["name", "id"],
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "id": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "content": {
+                    "$ref": "tchmi:framework#/definitions/Path"
+                },
+                "function": {
+                    "$ref": "tchmi:framework#/definitions/Function"
+                },
+                "subItems": {
+                    "$ref": "tchmi:framework#/definitions/TcHmi.Controls.BaseTemplate.TcHmiAccordionNavigation.NavigationItemList"
+                },
+                "accessRights": {
+                    "$ref": "tchmi:framework#/definitions/AccessConfig"
+                },
+                "icon": {
+                    "$ref": "tchmi:framework#/definitions/Path"
+                },
+                "iconPressed": {
+                    "$ref": "tchmi:framework#/definitions/Path"
+                },
+                "iconActive": {
+                    "$ref": "tchmi:framework#/definitions/Path"
+                },
+                "iconWidth": {
+                    "$ref": "tchmi:framework#/definitions/MeasurementValue"
+                },
+                "iconWidthUnit": {
+                    "$ref": "tchmi:framework#/definitions/MeasurementUnit"
+                },
+                "iconHeight": {
+                    "$ref": "tchmi:framework#/definitions/MeasurementValue"
+                },
+                "iconHeightUnit": {
+                    "$ref": "tchmi:framework#/definitions/MeasurementUnit"
+                }
+            },
+            "propertiesMeta": [
+                {
+                    "name": "name",
+                    "displayName": "Name",
+                    "category": "General",
+                    "displayPriority": 10,
+                    "description": "Name of the item.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "id",
+                    "displayName": "Id",
+                    "category": "General",
+                    "displayPriority": 10,
+                    "description": "Id of the item. Make sure that each item has a unique Id!",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "content",
+                    "displayName": "Content",
+                    "category": "General",
+                    "displayPriority": 11,
+                    "description": "Path to the .content file the button click will switch to.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "function",
+                    "displayName": "Function",
+                    "category": "General",
+                    "displayPriority": 12,
+                    "description": "A function to be called when the entry is clicked.",
+                    "allowedFunctions": {
+                        "returnType": "tchmi:general#/definitions/Any",
+                        "requiredArguments": [],
+                        "requiredWaitMode": "Synchronous"
+                    },
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "subItems",
+                    "displayName": "Sub Items",
+                    "category": "General",
+                    "displayPriority": 13,
+                    "description": "A list of sub items that are displayed when under this item when its clicked.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "accessRights",
+                    "displayName": "Access Rights",
+                    "category": "General",
+                    "displayPriority": 14,
+                    "description": "Definition of user group access rights to this item.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "icon",
+                    "displayName": "Icon",
+                    "category": "Icon",
+                    "displayPriority": 10,
+                    "description": "The Icon displayed in the accordion item header.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "iconPressed",
+                    "displayName": "Icon Pressed",
+                    "category": "Icon",
+                    "displayPriority": 11,
+                    "description": "The Icon displayed in the accordion item header in pressed state. Defaults to 'Icon' if not defined.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "iconActive",
+                    "displayName": "Icon Active",
+                    "category": "Icon",
+                    "displayPriority": 12,
+                    "description": "The Icon displayed in the accordion item header in active state. Defaults to 'Icon' if not defined.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "iconWidth",
+                    "displayName": "Icon Width",
+                    "category": "Icon",
+                    "displayPriority": 13,
+                    "description": "The preferred width of the icon.",
+                    "defaultValue": null,
+                    "defaultValueInternal": 48
+                },
+                {
+                    "name": "iconWidthUnit",
+                    "displayName": "Icon Width Unit",
+                    "category": "Icon",
+                    "displayPriority": 13,
+                    "description": "The unit of preferred width of the icon.",
+                    "defaultValue": null,
+                    "defaultValueInternal": "px",
+                    "refTo": "iconWidth"
+                },
+                {
+                    "name": "iconHeight",
+                    "displayName": "Icon Height",
+                    "category": "Icon",
+                    "displayPriority": 14,
+                    "description": "The preferred height of the icon.",
+                    "defaultValue": null,
+                    "defaultValueInternal": 48
+                },
+                {
+                    "name": "iconHeightUnit",
+                    "displayName": "Icon Height Unit",
+                    "category": "Icon",
+                    "displayPriority": 14,
+                    "description": "The unit of preferred height of the icon.",
+                    "defaultValue": null,
+                    "defaultValueInternal": "px",
+                    "refTo": "iconHeight"
+                }
+            ]
+        },
+        "TcHmi.Controls.BaseTemplate.TcHmiAccordionNavigation.NavigationItemList": {
+            "title": "Navigation Item List",
+            "description": "A List of navigation items for the accordion navigation",
+            "type": "array",
+            "additionalItems": false,
+            "items": {
+                "$ref": "tchmi:framework#/definitions/TcHmi.Controls.BaseTemplate.TcHmiAccordionNavigation.NavigationItem"
+            }
+        },
+        "TcHmi.Controls.BaseTemplate.TcHmiAccordionNavigation.BreadcrumbPath": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    }
+}

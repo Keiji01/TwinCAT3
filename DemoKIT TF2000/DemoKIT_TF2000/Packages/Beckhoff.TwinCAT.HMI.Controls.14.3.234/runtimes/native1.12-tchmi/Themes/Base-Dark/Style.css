@@ -1,0 +1,41 @@
+/* Global Styles for theme: Base-Dark */
+:is(input, textarea):where(
+        :not(
+            [type='button'],
+            [type='checkbox'],
+            [type='file'],
+            [type='image'],
+            [type='radio'],
+            [type='reset'],
+            [type='submit']
+        )
+    ):is(:focus, .tchmi-focus, .tchmi-keyboard-user-input) {
+    outline-offset: -2px;
+    outline: 2px solid var(--tchmi-user-focus-color);
+}
+
+:root,
+::after,
+::before {
+    --tchmi-button-font-size: 12px;
+
+    --tchmi-button-background: var(--tchmi-background-color-2);
+    --tchmi-button-text-color: var(--tchmi-foreground-color-1);
+    --tchmi-button-border: 1px solid var(--tchmi-foreground-color-2);
+    --tchmi-button-shadow: none;
+
+    --tchmi-button-background-pressed: var(--tchmi-foreground-color-4);
+    --tchmi-button-text-color-pressed: #000000;
+    --tchmi-button-border-pressed: 1px solid var(--tchmi-foreground-color-2);
+    --tchmi-button-shadow-pressed: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+
+    --tchmi-highlight-button-background: var(--tchmi-highlight-color-1);
+    --tchmi-highlight-button-text-color: var(--tchmi-foreground-color-1);
+    --tchmi-highlight-button-border: none;
+    --tchmi-highlight-button-shadow: none;
+
+    --tchmi-highlight-button-background-pressed: var(--tchmi-highlight-color-2);
+    --tchmi-highlight-button-text-color-pressed: var(--tchmi-foreground-color-1);
+    --tchmi-highlight-button-border-pressed: none;
+    --tchmi-highlight-button-shadow-pressed: none;
+}

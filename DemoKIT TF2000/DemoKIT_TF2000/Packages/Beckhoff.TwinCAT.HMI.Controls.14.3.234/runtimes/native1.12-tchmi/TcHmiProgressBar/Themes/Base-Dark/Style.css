@@ -1,0 +1,12 @@
+/** Styles for the theme: Base-Dark */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiProgressBar {
+    --tchmi-background: var(--tchmi-background-color-1);
+    --tchmi-bar-color: var(--tchmi-highlight-color-1);
+    background-color: var(--tchmi-background);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiProgressBar-bar {
+    background: var(--tchmi-bar-color);
+}

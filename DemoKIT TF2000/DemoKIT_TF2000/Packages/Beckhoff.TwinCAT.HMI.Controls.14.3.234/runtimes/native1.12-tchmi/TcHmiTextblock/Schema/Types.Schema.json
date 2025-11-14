@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+        "TcHmi.Controls.Beckhoff.TcHmiTextblock": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "type": "object",
+            "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+            "frameworkControlType": "TcHmiTextblock",
+            "frameworkControlNamespace": "TcHmi.Controls.Beckhoff"
+        },
+        "TcHmiTextblock": {
+            "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiTextblock"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiTextblock.ScrollMode": {
+            "type": "string",
+            "enum": ["Never", "Always", "Auto"]
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "$schema": "../TcHmiFramework/Schema/FunctionDescription.Schema.json",
+    "apiVersion": 1,
+    "version": {
+        "full": "14.3.229.0",
+        "major": 14,
+        "minor": 3,
+        "build": 229,
+        "revision": 0
+    },
+    "dependencyFiles": [
+        {
+            "name": "BigIntToNumber.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "function": {
+        "name": "BigIntToNumber",
+        "namespace": "TcHmi.Functions.Beckhoff",
+        "displayName": "BigIntToNumber",
+        "visible": true,
+        "description": "Converts a bigint value to number",
+        "category": "Data Conversion",
+        "returnValue": {
+            "type": "tchmi:general#/definitions/Number"
+        },
+        "arguments": [
+            {
+                "name": "value",
+                "displayName": "Value",
+                "type": "tchmi:general#/definitions/BigInt",
+                "description": "Value to be converted",
+                "required": true,
+                "bindable": true
+            }
+        ]
+    }
+}

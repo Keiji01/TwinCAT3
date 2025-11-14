@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../../TcHmiFramework/Schema/ThemeDescription.Schema.json",
+    "controlTypeValues": {
+        "TcHmi.Controls.Beckhoff.TcHmiTrendSparkline": {
+            "attributes": {},
+            "themedResources": {
+                "DefaultGraphColor": {
+                    "color": "#2775be"
+                },
+                "DefaultYAxisColor": {
+                    "color": "#ffffff"
+                },
+                "ReferenceLineColor": {
+                    "color": "#ffffff"
+                },
+                "LabelColor": {
+                    "color": "#ffffff"
+                }
+            }
+        }
+    }
+}

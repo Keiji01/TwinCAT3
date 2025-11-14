@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.18" ClassName="CNestedPlcProjDef">
+	<Project Name="PLC1" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+		<Instance File="PLC1 Instance.xti"/>
+	</Project>
+</TcSmItem>

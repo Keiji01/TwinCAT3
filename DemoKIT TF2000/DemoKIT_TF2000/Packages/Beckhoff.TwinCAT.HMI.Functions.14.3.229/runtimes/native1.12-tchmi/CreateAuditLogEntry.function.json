@@ -1,0 +1,48 @@
+{
+    "$schema": "../TcHmiFramework/Schema/FunctionDescription.Schema.json",
+    "apiVersion": 1,
+    "version": {
+        "full": "14.3.229.0",
+        "major": 14,
+        "minor": 3,
+        "build": 229,
+        "revision": 0
+    },
+    "dependencyFiles": [
+        {
+            "name": "CreateAuditLogEntry.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "function": {
+        "name": "CreateAuditLogEntry",
+        "namespace": "TcHmi.Functions.Beckhoff",
+        "displayName": "CreateAuditLogEntry",
+        "visible": true,
+        "category": "Audit Trail",
+        "waitMode": "Asynchronous",
+        "injectContextObject": true,
+        "description": "Creates an audit log entry.",
+        "returnValue": null,
+        "arguments": [
+            {
+                "name": "ctx",
+                "displayName": "ctx",
+                "type": "tchmi:framework#/definitions/ContextReference",
+                "description": "Context Reference",
+                "required": true,
+                "bindable": false
+            },
+            {
+                "name": "entry",
+                "displayName": "Entry",
+                "type": "tchmi:framework#/definitions/TcHmi.Functions.Beckhoff.AuditTrail.CreateAuditLogEntry.AuditLogEntry",
+                "description": "Data written to the log entry",
+                "defaultValue": null,
+                "required": true,
+                "bindable": true
+            }
+        ]
+    }
+}

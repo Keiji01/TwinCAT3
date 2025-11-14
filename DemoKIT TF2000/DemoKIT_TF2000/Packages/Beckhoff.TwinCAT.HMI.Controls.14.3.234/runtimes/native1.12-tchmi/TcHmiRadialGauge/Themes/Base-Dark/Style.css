@@ -1,0 +1,85 @@
+/** Styles for the theme: Base-Dark */
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge,
+.tchmi-radial-gauge {
+    --tchmi-background: var(--tchmi-background-color-1);
+    --tchmi-tick-stroke: var(--tchmi-foreground-color-1);
+    --tchmi-label-fill: var(--tchmi-foreground-color-1);
+    --tchmi-label-legend: var(--tchmi-foreground-color-1);
+    --tchmi-track-color: var(--tchmi-background-color-4);
+    --tchmi-filler-color: var(--tchmi-highlight-color-1);
+    --tchmi-unit-color: var(--tchmi-foreground-color-1);
+    --tchmi-set-point: var(--tchmi-foreground-color-2);
+    overflow: visible;
+}
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-circle-outside,
+.tchmi-radial-gauge-template-circle-outside {
+    fill: var(--tchmi-background);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-main-tick,
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-sub-tick,
+.tchmi-radial-gauge-template-main-tick,
+.tchmi-radial-gauge-template-sub-tick {
+    stroke: var(--tchmi-tick-stroke);
+    stroke-width: 2;
+    pointer-events: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-label,
+.tchmi-radial-gauge-template-label {
+    font-size: 12px;
+    fill: var(--tchmi-label-fill);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-circle-under,
+.tchmi-radial-gauge-template-circle-under {
+    stroke-width: 9px;
+    stroke-dasharray: 741.5px;
+    stroke-dashoffset: 206px;
+    stroke: var(--tchmi-track-color);
+    fill: transparent;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-circle-over,
+.tchmi-radial-gauge-template-circle-over {
+    stroke-width: 9px;
+    stroke-dasharray: 741.5px;
+    stroke-dashoffset: 206px;
+    stroke: var(--tchmi-filler-color);
+    fill: transparent;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-display-value,
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-display-unit,
+.tchmi-radial-gauge-template-display-value,
+.tchmi-radial-gauge-template-display-unit {
+    fill: var(--tchmi-unit-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-set-point {
+    stroke: var(--tchmi-set-point);
+    stroke-width: 2;
+    pointer-events: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-marker {
+    stroke: var(--tchmi-set-point);
+    stroke-width: 2;
+    pointer-events: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-invalid-notification {
+    background-image: url('Images/invalid-notification.svg');
+    background-size: 200% 200%;
+    background-color: var(--tchmi-error-color);
+    background-position: 50% 50%;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge.TcHmi_Controls_System_TcHmiControl-disabled
+    .TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template::after {
+    background-color: var(--tchmi-disabled-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-legend-item-label {
+    color: var(--tchmi-label-legend);
+}

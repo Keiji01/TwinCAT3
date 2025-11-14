@@ -1,0 +1,528 @@
+{
+    "$schema": "../../TcHmiFramework/Schema/ControlDescription.Schema.json",
+    "apiVersion": 1,
+    "name": "TcHmiPieChart",
+    "namespace": "TcHmi.Controls.Beckhoff",
+    "displayName": "Pie Chart",
+    "version": {
+        "full": "14.3.234.0",
+        "major": 14,
+        "minor": 3,
+        "build": 234,
+        "revision": 0
+    },
+    "visible": true,
+    "themeable": "Standard",
+    "base": "TcHmi.Controls.System.TcHmiControl",
+    "description": "A Pie Chart.",
+    "defaultDesignerEvent": "",
+    "properties": {
+        "containerControl": false,
+        "geometry": {
+            "width": 600,
+            "height": 400
+        }
+    },
+    "icons": [
+        {
+            "name": "Icons/16x16.png",
+            "width": 16,
+            "height": 16
+        }
+    ],
+    "template": "Template.html",
+    "dependencyFiles": [
+        {
+            "name": "Style.css",
+            "type": "Stylesheet",
+            "description": ""
+        },
+        {
+            "name": "TcHmiPieChart.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "themes": {
+        "Base": {
+            "resources": [
+                {
+                    "name": "Themes/Base/Defaults.theme",
+                    "type": "ThemedValues",
+                    "description": ""
+                },
+                {
+                    "name": "Themes/Base/Style.css",
+                    "type": "Stylesheet",
+                    "description": ""
+                }
+            ]
+        },
+        "Base-Dark": {
+            "resources": [
+                {
+                    "name": "Themes/Base-Dark/Defaults.theme",
+                    "type": "ThemedValues",
+                    "description": ""
+                },
+                {
+                    "name": "Themes/Base-Dark/Style.css",
+                    "type": "Stylesheet",
+                    "description": ""
+                }
+            ]
+        }
+    },
+    "attributes": [
+        {
+            "name": "data-tchmi-sections-background-color",
+            "propertyName": "SectionsBackgroundColor",
+            "propertySetterName": "setSectionsBackgroundColor",
+            "propertyGetterName": "getSectionsBackgroundColor",
+            "displayName": "Sections Background Color",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 60,
+            "type": "tchmi:framework#/definitions/Color",
+            "category": "Colors",
+            "description": "The Background color of the graph and legend section.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "allowSymbolExpressionsInObject": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-pie-graph-data",
+            "propertyName": "PieGraphData",
+            "propertySetterName": "setPieGraphData",
+            "propertyGetterName": "getPieGraphData",
+            "displayName": "Pie Graph Data",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 10,
+            "type": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiPieChart.ChartPieGraphDataDefinitionList",
+            "category": "Common",
+            "description": "The data to be displayed in the pie chart.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "allowSymbolExpressionsInObject": true,
+            "defaultValue": [
+                50,
+                20,
+                20,
+                10
+            ],
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-pie-graph-descriptions",
+            "propertyName": "PieGraphDescriptions",
+            "propertySetterName": "setPieGraphDescriptions",
+            "propertyGetterName": "getPieGraphDescriptions",
+            "displayName": "Pie Graph Descriptions",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 10,
+            "type": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiPieChart.ChartPieGraphDescriptionDefinitionList",
+            "category": "Common",
+            "description": "Description of the pie graph data. Defines the presentation in the graph and the legend.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "allowSymbolExpressionsInObject": true,
+            "defaultValue": [
+                {
+                    "name": "data0",
+                    "pieColor": "%tr%Control::TcHmi.Controls.Beckhoff.TcHmiPieChart::DefaultPieColor1%/tr%",
+                    "labelColor": "%tr%Control::TcHmi.Controls.Beckhoff.TcHmiPieChart::DefaultPieLabelColor1%/tr%",
+                    "showName": true,
+                    "showUnit": false,
+                    "showValueLabel": true,
+                    "showPercentLabel": true
+                },
+                {
+                    "name": "data1",
+                    "pieColor": "%tr%Control::TcHmi.Controls.Beckhoff.TcHmiPieChart::DefaultPieColor2%/tr%",
+                    "labelColor": "%tr%Control::TcHmi.Controls.Beckhoff.TcHmiPieChart::DefaultPieLabelColor2%/tr%",
+                    "showName": true,
+                    "showUnit": false,
+                    "showValueLabel": false,
+                    "showPercentLabel": true
+                },
+                {
+                    "name": "data2",
+                    "pieColor": "%tr%Control::TcHmi.Controls.Beckhoff.TcHmiPieChart::DefaultPieColor3%/tr%",
+                    "labelColor": "%tr%Control::TcHmi.Controls.Beckhoff.TcHmiPieChart::DefaultPieLabelColor3%/tr%",
+                    "showName": false,
+                    "showUnit": false,
+                    "showValueLabel": false,
+                    "showPercentLabel": true
+                },
+                {
+                    "name": "data3",
+                    "pieColor": "%tr%Control::TcHmi.Controls.Beckhoff.TcHmiPieChart::DefaultPieColor4%/tr%",
+                    "labelColor": "%tr%Control::TcHmi.Controls.Beckhoff.TcHmiPieChart::DefaultPieLabelColor4%/tr%",
+                    "showName": false,
+                    "showUnit": false,
+                    "showValueLabel": false,
+                    "showPercentLabel": true
+                }
+            ],
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-show-legend",
+            "propertyName": "ShowLegend",
+            "propertySetterName": "setShowLegend",
+            "propertyGetterName": "getShowLegend",
+            "displayName": "Show Legend",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 10,
+            "type": "tchmi:general#/definitions/Boolean",
+            "category": "Common",
+            "description": "Defines whether the legend is displayed or not.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": false
+        },
+        {
+            "name": "data-tchmi-legend-font-family",
+            "propertyName": "LegendFontFamily",
+            "propertySetterName": "setLegendFontFamily",
+            "propertyGetterName": "getLegendFontFamily",
+            "displayName": "Legend Font Family",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 50,
+            "type": "tchmi:framework#/definitions/FontFamily",
+            "category": "Legend",
+            "description": "Defines the font family of the legend. Comma separated list of family name or keyword: 'serif', 'sans-serif', 'monospace'.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-legend-font-size",
+            "propertyName": "LegendFontSize",
+            "propertySetterName": "setLegendFontSize",
+            "propertyGetterName": "getLegendFontSize",
+            "displayName": "Legend Font Size",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 50,
+            "type": "tchmi:framework#/definitions/MeasurementValue",
+            "category": "Legend",
+            "description": "Defines the font size of the legend.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": 12
+        },
+        {
+            "name": "data-tchmi-legend-font-size-unit",
+            "propertyName": "LegendFontSizeUnit",
+            "propertyGetterName": "getLegendFontSizeUnit",
+            "refTo": "LegendFontSize",
+            "displayName": "Legend Font Size Unit",
+            "visible": true,
+            "displayPriority": 50,
+            "type": "tchmi:framework#/definitions/PixelUnit",
+            "category": "Legend",
+            "description": "Is 'px'.",
+            "readOnly": true,
+            "bindable": false,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValueInternal": "px"
+        },
+        {
+            "name": "data-tchmi-legend-font-style",
+            "propertyName": "LegendFontStyle",
+            "propertySetterName": "setLegendFontStyle",
+            "propertyGetterName": "getLegendFontStyle",
+            "displayName": "Legend Font Style",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 50,
+            "type": "tchmi:framework#/definitions/FontStyle",
+            "category": "Legend",
+            "description": "Defines the font style of the legend. 'Normal', 'Italic' (slanted with special glyphs), 'Oblique' (slanted normal glyphs) or 'Auto' for inherited.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "Auto"
+        },
+        {
+            "name": "data-tchmi-legend-font-weight",
+            "propertyName": "LegendFontWeight",
+            "propertySetterName": "setLegendFontWeight",
+            "propertyGetterName": "getLegendFontWeight",
+            "displayName": "Legend Font Weight",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 50,
+            "type": "tchmi:framework#/definitions/FontWeight",
+            "category": "Legend",
+            "description": "Defines the font weight of the legened. 'Normal', 'Bold' (glyphs with more weight) or 'Auto' for inherited.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "Auto"
+        },
+        {
+            "name": "data-tchmi-label-unit",
+            "propertyName": "LabelUnit",
+            "propertySetterName": "setLabelUnit",
+            "propertyGetterName": "getLabelUnit",
+            "displayName": "Label Unit",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 20,
+            "type": "tchmi:general#/definitions/String",
+            "category": "Label",
+            "description": "Sets the unit to be displayed on the unit label.\nThis is only used when PieGraphDescriptions has Value Label and Unit set.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-label-position",
+            "propertyName": "LabelPosition",
+            "propertySetterName": "setLabelPosition",
+            "propertyGetterName": "getLabelPosition",
+            "displayName": "Label Position",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 20,
+            "type": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiPieChart.LabelPosition",
+            "category": "Label",
+            "description": "The inside or outside position of labels.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "Inside"
+        },
+        {
+            "name": "data-tchmi-percent-label-decimal-places",
+            "propertyName": "PercentLabelDecimalPlaces",
+            "propertySetterName": "setPercentLabelDecimalPlaces",
+            "propertyGetterName": "getPercentLabelDecimalPlaces",
+            "displayName": "Percent Label Decimal Places",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 20,
+            "type": "tchmi:general#/definitions/Number",
+            "category": "Label",
+            "description": "Defines the decimal digits displayed for the percent labels.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": 2,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-value-label-decimal-places",
+            "propertyName": "ValueLabelDecimalPlaces",
+            "propertySetterName": "setValueLabelDecimalPlaces",
+            "propertyGetterName": "getValueLabelDecimalPlaces",
+            "displayName": "Value Label Decimal Places",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 20,
+            "type": "tchmi:general#/definitions/Number",
+            "category": "Label",
+            "description": "Defines the decimal digits displayed for the value labels.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-label-font-family",
+            "propertyName": "LabelFontFamily",
+            "propertySetterName": "setLabelFontFamily",
+            "propertyGetterName": "getLabelFontFamily",
+            "displayName": "Label Font Family",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 60,
+            "type": "tchmi:framework#/definitions/FontFamily",
+            "category": "Label",
+            "description": "Defines the font family of the pie labels. Comma separated list of family name or keyword: 'serif', 'sans-serif', 'monospace'.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-label-font-size",
+            "propertyName": "LabelFontSize",
+            "propertySetterName": "setLabelFontSize",
+            "propertyGetterName": "getLabelFontSize",
+            "displayName": "Label Font Size",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 60,
+            "type": "tchmi:framework#/definitions/MeasurementValue",
+            "category": "Label",
+            "description": "Defines the pie label font size.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": 12
+        },
+        {
+            "name": "data-tchmi-label-font-size-unit",
+            "propertyName": "LabelFontSizeUnit",
+            "propertyGetterName": "getLabelFontSizeUnit",
+            "refTo": "LabelFontSize",
+            "displayName": "Label Font Size Unit",
+            "visible": true,
+            "displayPriority": 60,
+            "type": "tchmi:framework#/definitions/PixelUnit",
+            "category": "Label",
+            "description": "Is 'px'.",
+            "readOnly": true,
+            "bindable": false,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValueInternal": "px"
+        },
+        {
+            "name": "data-tchmi-label-font-weight",
+            "propertyName": "LabelFontWeight",
+            "propertySetterName": "setLabelFontWeight",
+            "propertyGetterName": "getLabelFontWeight",
+            "displayName": "Label Font Weight",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 60,
+            "type": "tchmi:framework#/definitions/FontWeight",
+            "category": "Label",
+            "description": "Defines the font weight of the  pie label. 'Normal', 'Bold' (glyphs with more weight) or 'Auto' for inherited.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "Auto"
+        }
+    ],
+    "attributeCategories": [
+        {
+            "name": "Legend",
+            "displayPriority": 570,
+            "defaultCollapsed": true,
+            "description": "Attributes defining the legend of the chart."
+        },
+        {
+            "name": "Label",
+            "displayPriority": 570,
+            "defaultCollapsed": true,
+            "description": "Attributes defining the pie label of the chart."
+        }
+    ],
+    "themedResources": [
+        {
+            "name": "DefaultGraphColor",
+            "displayName": "Default Graph Color",
+            "description": "Default Color for Graphs",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "DefaultLabelColor",
+            "displayName": "Default Label Color",
+            "description": "Default Color for Labels",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "DefaultPieColor1",
+            "displayName": "Default Pie Color 1",
+            "description": "Default Color for piece of the pie",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "DefaultPieColor2",
+            "displayName": "Default Pie Color 2",
+            "description": "Default Color for piece of the pie",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "DefaultPieColor3",
+            "displayName": "Default Pie Color 3",
+            "description": "Default Color for piece of the pie",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "DefaultPieColor4",
+            "displayName": "Default Pie Color 4",
+            "description": "Default Color for piece of the pie",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "DefaultPieLabelColor1",
+            "displayName": "Default Pie Label Color 1",
+            "description": "Default Color for Labels",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "DefaultPieLabelColor2",
+            "displayName": "Default Pie Label Color 2",
+            "description": "Default Color for Labels",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "DefaultPieLabelColor3",
+            "displayName": "Default Pie Label Color 3",
+            "description": "Default Color for Labels",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "DefaultPieLabelColor4",
+            "displayName": "Default Pie Label Color 4",
+            "description": "Default Color for Labels",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        }
+    ],
+    "functions": [],
+    "events": [],
+    "dataTypes": [
+        {
+            "schema": "Schema/Types.Schema.json"
+        },
+        {
+            "schema": "../Schema/Types.Schema.json"
+        }
+    ]
+}

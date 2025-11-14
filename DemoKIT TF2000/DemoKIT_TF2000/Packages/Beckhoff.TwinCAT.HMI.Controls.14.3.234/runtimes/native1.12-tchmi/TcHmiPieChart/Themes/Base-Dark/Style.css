@@ -1,0 +1,35 @@
+/** Styles for the theme: Base-Dark */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiPieChart {
+    --tchmi-background: var(--tchmi-background-color-1);
+    --tchmi-background-part: var(--tchmi-background-color-3);
+    --tchmi-color: var(--tchmi-foreground-color-1);
+    --tchmi-border-color: var(--tchmi-background-color-2);
+    --tchmi-checkbox-background: var(--tchmi-background-color-4);
+    --tchmi-checkbox-background-active: var(--tchmi-highlight-color-1);
+    background: var(--tchmi-background);
+    box-shadow: var(--tchmi-card-shadow);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPieChart-template-chart {
+    background: var(--tchmi-background-part);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPieChart-template-legend {
+    background: var(--tchmi-background-part);
+    color: var(--tchmi-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPieChart-template-legend-checkbox {
+    appearance: none;
+    background: var(--tchmi-checkbox-background);
+    border: 1px solid var(--tchmi-border-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPieChart-template-legend-checkbox:checked {
+    background:
+        url(Images/checkbox.svg) 13px 13px,
+        var(--tchmi-checkbox-background-active);
+    background-size: 15px 15px;
+}

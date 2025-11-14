@@ -1,0 +1,132 @@
+/** Styles for the theme: Base-Dark */
+
+/*--------------------------------------------Button--------------------------------------------------------------*/
+.TcHmi_Controls_Beckhoff_TcHmiCombobox,
+.tchmi-combobox {
+    --tchmi-background: var(--tchmi-background-color-4);
+    --tchmi-background-active: var(--tchmi-background-color-3);
+    --tchmi-stroke: var(--tchmi-foreground-color-1);
+    --tchmi-color: var(--tchmi-foreground-color-1);
+    --tchmi-border-color: var(--tchmi-background-color-2);
+    --tchmi-button-width: 26px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCombobox-template-button,
+.tchmi-combobox-template-button {
+    font-size: var(--tchmi-button-font-size);
+    background: var(--tchmi-highlight-button-background);
+    color: var(--tchmi-highlight-button-text-color);
+    border: var(--tchmi-highlight-button-border);
+    box-shadow: var(--tchmi-highlight-button-shadow);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCombobox-template-button polyline,
+.tchmi-combobox-template-button polyline {
+    stroke: currentColor;
+    fill: none;
+}
+
+/* class active will be set/unset in the control */
+.TcHmi_Controls_Beckhoff_TcHmiCombobox-template.active .TcHmi_Controls_Beckhoff_TcHmiCombobox-template-button,
+.tchmi-combobox-template.active .tchmi-combobox-template-button {
+    background: var(--tchmi-highlight-button-background-pressed);
+    color: var(--tchmi-highlight-button-text-color-pressed);
+    border: var(--tchmi-highlight-button-border-pressed);
+    box-shadow: var(--tchmi-highlight-button-shadow-pressed);
+}
+
+/*--------------------------------------------select--------------------------------------------------*/
+.TcHmi_Controls_Beckhoff_TcHmiCombobox-template-select,
+.tchmi-combobox-template-select {
+    background: var(--tchmi-background);
+    border: 1px solid var(--tchmi-border-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCombobox-template.active .TcHmi_Controls_Beckhoff_TcHmiCombobox-template-select,
+.tchmi-combobox-template.active .tchmi-combobox-template-select {
+    background: var(--tchmi-background-active);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCombobox-template-select-content,
+.tchmi-combobox-template-select-content {
+    color: var(--tchmi-color);
+    font-family: inherit;
+}
+
+/* class active will be set/unset in the control */
+.TcHmi_Controls_Beckhoff_TcHmiCombobox-template.active .TcHmi_Controls_Beckhoff_TcHmiCombobox-template-select-content,
+.TcHmi_Controls_Beckhoff_TcHmiCombobox-template.active .TcHmi_Controls_Beckhoff_TcHmiCombobox-template-input,
+.tchmi-combobox-template.active .tchmi-combobox-template-select-content,
+.tchmi-combobox-template.active .tchmi-combobox-template-input {
+    color: var(--tchmi-color);
+}
+
+/*-----------------------table--------------------------------------*/
+
+.TcHmi_Controls_Beckhoff_TcHmiCombobox-template-dropdown,
+.tchmi-combobox-template-dropdown {
+    --tchmi-dropdown-background: var(--tchmi-background-color-3);
+    --tchmi-dropdown-element-background-selected: var(--tchmi-background-color-2);
+    --tchmi-dropdown-element-background-hover: var(--tchmi-highlight-color-1);
+    --tchmi-dropdown-color: var(--tchmi-foreground-color-1);
+    --tchmi-dropdown-color-hover: var(--tchmi-foreground-color-1);
+    --tchmi-dropdown-category-color: var(--tchmi-foreground-color-4);
+    box-shadow: var(--tchmi-dropdown-shadow);
+    background: var(--tchmi-dropdown-background);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCombobox-template-dropdown.above-control,
+.tchmi-combobox-template-dropdown.above-control {
+    box-shadow: var(--tchmi-dropdown-shadow-above);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCombobox-template-dropdown.drop-down-style-mobile,
+.tchmi-combobox-template-dropdown.drop-down-style-mobile {
+    box-shadow: var(--tchmi-popup-shadow);
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCombobox-template-dropdown-element,
+.tchmi-combobox-template-dropdown-element {
+    color: var(--tchmi-dropdown-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCombobox-template-dropdown-element.selected,
+.tchmi-combobox-template-dropdown-element.selected {
+    background: var(--tchmi-dropdown-element-background-selected);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCombobox-template-dropdown-element.hover,
+.tchmi-combobox-template-dropdown-element.hover {
+    background: var(--tchmi-dropdown-element-background-hover);
+    color: var(--tchmi-dropdown-color-hover);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCombobox-template-input,
+.tchmi-combobox-template-input {
+    color: var(--tchmi-color);
+    background-color: transparent;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCombobox-template-dropdown-element-in-category {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCombobox-template-dropdown-category {
+    color: var(--tchmi-dropdown-category-color);
+    font-weight: bold;
+    font-style: italic;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCombobox.read-only .TcHmi_Controls_Beckhoff_TcHmiCombobox-template-focus-border::after {
+    background-color: var(--tchmi-disabled-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCombobox.read-only .TcHmi_Controls_Beckhoff_TcHmiCombobox-template-select,
+.tchmi-combobox.read-only .tchmi-combobox-template-select {
+    background: var(--tchmi-read-only-color);
+}

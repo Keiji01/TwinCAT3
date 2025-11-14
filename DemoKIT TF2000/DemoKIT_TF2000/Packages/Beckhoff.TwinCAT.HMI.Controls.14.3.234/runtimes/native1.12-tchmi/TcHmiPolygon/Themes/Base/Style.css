@@ -1,0 +1,14 @@
+/** Styles for the theme: Base */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiPolygon,
+.tchmi-polygon {
+    --tchmi-stroke: var(--tchmi-foreground-color-4);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPolygon-template-svg-polygon,
+.tchmi-polygon-template-svg-polygon {
+    stroke: var(--tchmi-stroke);
+    /* The control has no StrokeThickness default since the beginning, so most hmi projects rely on this value */
+    stroke-width: 1px;
+}

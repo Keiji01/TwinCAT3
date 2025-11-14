@@ -1,0 +1,107 @@
+/** Styles for the theme: Base */
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance {
+    --tchmi-page-background: var(--tchmi-background-color-3);
+    --tchmi-message-background: var(--tchmi-background-color-1);
+    --tchmi-message-color: var(--tchmi-foreground-color-1);
+    --tchmi-page-line-color: var(--tchmi-highlight-color-1);
+    --tchmi-page-icon-done-color: var(--tchmi-ready-color);
+    --tchmi-page-number-background: var(--tchmi-background-color-3);
+    --tchmi-page-number-color: var(--tchmi-highlight-color-1);
+    --tchmi-page-number-border: var(--tchmi-highlight-color-1);
+    --tchmi-page-number-active-background: var(--tchmi-highlight-color-1);
+    --tchmi-page-number-active-color: var(--tchmi-foreground-color-2);
+    --tchmi-page-number-active-border: var(--tchmi-highlight-color-1);
+    --tchmi-page-number-approved-background: var(--tchmi-ready-color);
+    --tchmi-page-number-approved-color: var(--tchmi-foreground-color-2);
+    --tchmi-page-number-approved-border: var(--tchmi-ready-color);
+    --tchmi-page-number-done-background: var(--tchmi-ready-color);
+    --tchmi-page-number-done-color: var(--tchmi-foreground-color-2);
+    --tchmi-page-number-done-border: var(--tchmi-ready-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-template-svg line {
+    stroke: var(--tchmi-page-line-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-template-svg line.done {
+    stroke: var(--tchmi-page-icon-done-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance .page-icon {
+    background: var(--tchmi-page-number-background);
+    color: var(--tchmi-page-number-color);
+    border-color: var(--tchmi-page-number-border);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance tchmi-tab-link .page-icon.active {
+    background: radial-gradient(
+        var(--tchmi-page-number-active-background) 55%,
+        var(--tchmi-page-number-background) 60%
+    );
+    color: var(--tchmi-page-number-active-color);
+    border-color: var(--tchmi-page-number-active-border);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance tchmi-tab-link .page-icon.approved {
+    background: radial-gradient(
+        var(--tchmi-page-number-approved-background) 55%,
+        var(--tchmi-page-number-background) 60%
+    );
+    color: var(--tchmi-page-number-approved-color);
+    border-color: var(--tchmi-page-number-approved-border);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance tchmi-tab-link .page-icon.done {
+    background: var(--tchmi-page-number-done-background);
+    color: var(--tchmi-page-number-done-color);
+    border-color: var(--tchmi-page-number-done-border);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-message {
+    background: var(--tchmi-message-background);
+    color: var(--tchmi-message-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance tchmi-content-tabs > tchmi-tab-links > tchmi-tab-link {
+    background: var(--tchmi-page-background);
+}
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-Template-NextButton,
+.tchmi-button {
+    font-size: var(--tchmi-button-font-size);
+    background: var(--tchmi-button-background);
+    color: var(--tchmi-button-text-color);
+    border: var(--tchmi-button-border);
+    box-shadow: var(--tchmi-button-shadow);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-Template-NextButton,
+.tchmi-button.down {
+    background: var(--tchmi-button-background-pressed);
+    color: var(--tchmi-button-text-color-pressed);
+    border: var(--tchmi-button-border-pressed);
+    box-shadow: var(--tchmi-button-shadow-pressed);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-Template-BackButton,
+.tchmi-button {
+    font-size: var(--tchmi-button-font-size);
+    background: var(--tchmi-button-background);
+    color: var(--tchmi-button-text-color);
+    border: var(--tchmi-button-border);
+    box-shadow: var(--tchmi-button-shadow);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-Template-BackButton,
+.tchmi-button.down {
+    background: var(--tchmi-button-background-pressed);
+    color: var(--tchmi-button-text-color-pressed);
+    border: var(--tchmi-button-border-pressed);
+    box-shadow: var(--tchmi-button-shadow-pressed);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-template
+    > tchmi-content-tabs
+    > tchmi-tab-links
+    > tchmi-tab-link:not([disabled])[active] {
+    background: var(--tchmi-page-background);
+}

@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "MAXENTRIES": {
+      "configDescription": "DESC_MAXENTRIES",
+      "type": "integer",
+      "minimum": 1,
+      "default": 15000
+    },
+    "MAXENTRYLENGTH": {
+      "configDescription": "DESC_MAXENTRYLENGTH",
+      "type": "integer",
+      "minimum": 80,
+      "default": 1024,
+      "unit": "byte"
+    },
+    "DEFAULT_LIST_LIMIT": {
+      "configDescription": "DESC_DEFAULT_LIST_LIMIT",
+      "type": "integer",
+      "minimum": 1,
+      "default": 1000
+    },
+    "VACUUM_ON_STARTUP": {
+      "type": "boolean",
+      "default": false,
+      "configDescription": "DESC_VACUUM_ON_STARTUP"
+    },
+    "MODE": {
+      "visibility": "HideInEngineering",
+      "type": "integer",
+      "default": 1,
+      "configDescription": "DESC_MODE",
+      "enum": [ 0, 1, 3, 4 ],
+      "options": [
+        {
+          "label": "ENUM_SYNCHRONOUS_EXTRA_PERSIST",
+          "value": 0
+        },
+        {
+          "label": "ENUM_SYNCHRONOUS_FULL_PERSIST",
+          "value": 1
+        },
+        {
+          "label": "ENUM_SYNCHRONOUS_NORMAL_PERSIST",
+          "value": 3
+        },
+        {
+          "label": "ENUM_SYNCHRONOUS_OFF_PERSIST",
+          "value": 4
+        }
+      ]
+    },
+    "REDIRECT_DIAGNOSTICS_MESSAGES_TO_FILE": {
+      "type": "boolean",
+      "default": true,
+      "configDescription": "DESC_REDIRECT_DIAGNOSTICS_MESSAGES_TO_FILE"
+    },
+    "MAX_DIAGNOSTICS_MESSAGES_FILE_SIZE": {
+      "allOf": [
+        {
+          "$ref": "tchmi:general#/definitions/UINT32"
+        },
+        {
+          "unit": "byte",
+          "default": 52428800,
+          "minimum": 10000,
+          "visibility": "HideInEngineering",
+          "configDescription": "DESC_MAX_DIAGNOSTICS_MESSAGES_FILE_SIZE"
+        }
+      ]
+    },
+    "MAX_DIAGNOSTICS_ARCHIVE_FILE_COUNT": {
+      "allOf": [
+        {
+          "$ref": "tchmi:general#/definitions/UINT32"
+        },
+        {
+          "default": 2,
+          "minimum": 1,
+          "maximum": 16,
+          "visibility": "HideInEngineering",
+          "configDescription": "DESC_MAX_DIAGNOSTICS_ARCHIVE_FILE_COUNT"
+        }
+      ]
+    }
+  },
+  "required": [
+    "MAXENTRIES",
+    "MAXENTRYLENGTH",
+    "DEFAULT_LIST_LIMIT",
+    "VACUUM_ON_STARTUP",
+    "MODE",
+    "REDIRECT_DIAGNOSTICS_MESSAGES_TO_FILE",
+    "MAX_DIAGNOSTICS_MESSAGES_FILE_SIZE",
+    "MAX_DIAGNOSTICS_ARCHIVE_FILE_COUNT"
+  ],
+  "type": "object",
+  "additionalProperties": false
+}

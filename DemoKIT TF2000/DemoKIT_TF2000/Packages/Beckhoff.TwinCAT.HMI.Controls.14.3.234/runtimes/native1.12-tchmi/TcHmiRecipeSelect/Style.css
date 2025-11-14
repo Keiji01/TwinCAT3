@@ -1,0 +1,61 @@
+/** Styles for all themes */
+
+.TcHmi_Controls_Beckhoff_TcHmiRecipeSelect {
+    overflow: hidden;
+    container: control / size;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRecipeSelect .TcHmi_Controls_Beckhoff_TcHmiRecipeSelect-template {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRecipeSelect .TcHmi_Controls_Beckhoff_TcHmiRecipeSelect-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRecipeSelect
+    .TcHmi_Controls_Beckhoff_TcHmiRecipeSelect-buttons
+    .TcHmi_Controls_Beckhoff_TcHmiRecipeSelect-selected-recipe {
+    height: 35px;
+    flex-grow: 1;
+    padding: 0 3px;
+    box-sizing: border-box;
+    line-height: 35px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRecipeSelect
+    .TcHmi_Controls_Beckhoff_TcHmiRecipeSelect-buttons
+    .TcHmi_Controls_Beckhoff_TcHmiButton {
+    position: relative;
+    min-width: 75px;
+    height: 35px;
+}
+
+@container control (width < 300px) {
+    .TcHmi_Controls_Beckhoff_TcHmiRecipeSelect .TcHmi_Controls_Beckhoff_TcHmiRecipeSelect-buttons {
+        flex-wrap: wrap;
+    }
+
+    .TcHmi_Controls_Beckhoff_TcHmiRecipeSelect
+        .TcHmi_Controls_Beckhoff_TcHmiRecipeSelect-buttons
+        .TcHmi_Controls_Beckhoff_TcHmiRecipeSelect-selected-recipe {
+        width: 100%;
+    }
+
+    .TcHmi_Controls_Beckhoff_TcHmiRecipeSelect
+        .TcHmi_Controls_Beckhoff_TcHmiRecipeSelect-buttons
+        .TcHmi_Controls_Beckhoff_TcHmiButton {
+        flex-grow: 1;
+    }
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRecipeSelect .TcHmi_Controls_Beckhoff_TcHmiRecipeSelect-path-box {
+    margin-top: 10px;
+}

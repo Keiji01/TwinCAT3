@@ -1,0 +1,75 @@
+/** Styles for the theme: Base-Dark */
+.TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb {
+    --tchmi-background: var(--tchmi-background-color-1);
+    --tchmi-color: var(--tchmi-foreground-color-1);
+    --tchmi-color-pressed: var(--tchmi-foreground-color-2);
+    --tchmi-color-active: var(--tchmi-foreground-color-4);
+    --tchmi-color-disabled: var(--tchmi-foreground-color-2);
+    --tchmi-icon-size: 30px;
+    background-color: var(--tchmi-background);
+    box-shadow: var(--tchmi-card-shadow);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-Template .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-button {
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--tchmi-color);
+    background-repeat: no-repeat;
+    background-size: var(--tchmi-icon-size);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-Template
+    .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-button:not(
+        .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-button-disabled
+    ).down {
+    color: var(--tchmi-color-pressed);
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-Template .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-button.active {
+    color: var(--tchmi-color-active);
+    padding-right: 5px;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-Template .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-button.arrow {
+    padding-right: var(--tchmi-icon-size);
+    background-position: 100% 50%;
+    background-image: url(Icons/icons_next_normal.svg);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-Template
+    .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-button:not(
+        .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-button-disabled
+    ).down.arrow {
+    background-image: url('Icons/icons_next_pressed.svg');
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-Template
+    .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-button.arrow-backwards {
+    padding-left: var(--tchmi-icon-size);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-Template
+    .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-button.arrow-backwards::before {
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: var(--tchmi-icon-size);
+    left: 0;
+    background-position: 0% 50%;
+    background-image: url('Icons/icons_previous_normal.svg');
+    background-repeat: no-repeat;
+    background-size: var(--tchmi-icon-size);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-Template
+    .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-button:not(
+        .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-button-disabled
+    ).down.arrow-backwards::before {
+    background-image: url('Icons/icons_previous_pressed.svg');
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-Template
+    .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-button.TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-button-disabled {
+    color: var(--tchmi-color-disabled);
+}

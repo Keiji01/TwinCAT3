@@ -1,0 +1,42 @@
+/** Styles for the theme: Base-Dark */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiNumericInput {
+    --tchmi-background: var(--tchmi-background-color-4);
+    --tchmi-color: var(--tchmi-foreground-color-1);
+    --tchmi-background-invalid: var(--tchmi-invalid-color);
+    --tchmi-border-color: var(--tchmi-background-color-2);
+    --tchmi-unit-color: var(--tchmi-foreground-color-4);
+    background-color: var(--tchmi-background);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiNumericInput-template {
+    border: 1px solid var(--tchmi-border-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiNumericInput-template-input {
+    -webkit-appearance: none; /* Important to have visible box-shadow on input elements in iOS/Safari.  */
+    appearance: none;
+    color: var(--tchmi-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiNumericInput-template-input:is(:focus, .tchmi-focus, .tchmi-keyboard-user-input) {
+    background: rgba(76, 99, 116, 0.05);
+}
+.TcHmi_Controls_Beckhoff_TcHmiNumericInput-template-input:invalid {
+    background: var(--tchmi-background-invalid);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiNumericInput-template-input-invalid-notification {
+    color: red;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiNumericInput.read-only {
+    background: var(--tchmi-read-only-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiNumericInput-template-input-unit {
+    color: var(--tchmi-unit-color);
+}

@@ -1,0 +1,135 @@
+/** Styles for all themes */
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance {
+    overflow: hidden;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-template {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: var(--tchmi-background-color-3);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance tchmi-content-tabs {
+    width: 100%;
+    height: calc(100% - 60px);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100% - 60px);
+    font-size: 14px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance::before {
+    width: 100%;
+    height: 100%;
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    background: var(--tchmi-background-color-3);
+    z-index: 1;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-template-buttons {
+    display: flex;
+    height: 60px;
+    width: 100%;
+    align-items: center;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-template .TcHmi_Controls_Beckhoff_TcHmiButton {
+    position: relative;
+    width: 120px;
+    height: 40px;
+}
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-template
+    .TcHmi_Controls_Beckhoff_TcHmiButton.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-button-previous,
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-template
+    .TcHmi_Controls_Beckhoff_TcHmiButton.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-button-next {
+    margin-right: 10px;
+}
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-template
+    .TcHmi_Controls_Beckhoff_TcHmiButton.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-button-cancel {
+    margin-left: 10px;
+    margin-right: auto;
+}
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance > div > tchmi-content-tabs[tab-alignment='Left'] > tchmi-tab-contents,
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance > div > tchmi-content-tabs[tab-alignment='Right'] > tchmi-tab-contents {
+    width: 100%;
+    height: 100%;
+}
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance > div > tchmi-content-tabs[tab-alignment='Top'] > tchmi-tab-contents,
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance > div > tchmi-content-tabs[tab-alignment='Bottom'] > tchmi-tab-contents {
+    width: 100%;
+    height: calc(100% - 50px);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance-template-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance .page-icon {
+    position: relative;
+    display: flex;
+    height: 28px;
+    width: 28px;
+    min-width: 28px;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 100%;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance .page-icon span {
+    color: inherit;
+}
+
+.tchmi-user-guidance-tab-link {
+    display: flex;
+    width: 100%;
+    pointer-events: none;
+}
+
+.tchmi-user-guidance-tab-link .page-icon {
+    margin-right: 8px;
+}
+
+.tchmi-user-guidance-tab-link > .tab-name {
+    max-width: calc(100% - 40px);
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance
+    > div
+    > tchmi-content-tabs:not([tab-alignment='Left']):not([tab-alignment='Right'])
+    tchmi-tab-links
+    tchmi-tab-link:not([active]):not(:last-child)::after,
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance
+    > div
+    > tchmi-content-tabs:not([tab-alignment='Left']):not([tab-alignment='Right'])
+    tchmi-tab-links
+    tchmi-tab-links-overflow:not([active]):not(:last-child)::after {
+    border-right: 0px !important;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance > div > tchmi-content-tabs[tab-alignment='Left'] > tchmi-tab-links,
+.TcHmi_Controls_Beckhoff_TcHmiUserGuidance > div > tchmi-content-tabs[tab-alignment='Right'] > tchmi-tab-links {
+    min-width: min(200px, 30%) !important;
+}

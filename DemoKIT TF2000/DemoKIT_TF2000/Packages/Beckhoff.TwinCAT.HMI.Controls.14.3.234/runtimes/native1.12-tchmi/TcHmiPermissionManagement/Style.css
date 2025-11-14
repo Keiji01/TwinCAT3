@@ -1,0 +1,293 @@
+/** Styles for all themes */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement {
+    overflow: auto;
+    color: black;
+}
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement * {
+    box-sizing: border-box;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .table-container {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement table {
+    border: none;
+    border-spacing: 0;
+    white-space: nowrap;
+    table-layout: fixed;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement thead {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .first-header th,
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .second-header td {
+    border: none !important;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement tr > th {
+    left: 0;
+    z-index: 1;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement thead tr > th:first-child {
+    z-index: 3;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement th,
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td {
+    height: 30px;
+    border: 1px solid;
+    border-width: 0 0 1px 1px;
+    text-align: center;
+    font-family: sans-serif;
+    padding: 5px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement th:first-child {
+    border-right-width: 1px;
+    border-left: 0;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement th + td,
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement th:first-child + th {
+    border-left: 0;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement tbody tr:last-child > * {
+    border-bottom: 0;
+}
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .hide {
+    display: none !important;
+}
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement tr > *:last-child {
+    border-right: 0;
+}
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement th.xy-header {
+    z-index: 3 !important;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement [text-search='true'] .highlight {
+    padding: 5px 0;
+    border-radius: 1px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .symbol-search {
+    width: 100%;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    background: none;
+    padding: 5px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .header {
+    font-weight: bold;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .all-symbols {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement input[type='checkbox'] {
+    width: 20px;
+    height: 20px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement th:first-child,
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td:first-child {
+    border-right: 3px solid !important;
+    text-align: left;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement th {
+    max-width: 0;
+    overflow: hidden;
+}
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement thead tr:first-child {
+    height: 50px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement th:nth-child(2),
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td:nth-child(3) {
+    padding-right: 25px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement th:nth-child(3),
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td:nth-child(4) {
+    padding-left: 25px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement th:nth-child(n + 3),
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td:nth-child(3n + 4) {
+    border-left: 2px solid !important;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td:nth-child(3),
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td:nth-child(3n + 5),
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td:nth-child(3n + 6) {
+    border-left: 1px solid;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement tr:hover,
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement tr:hover td:first-child {
+    transition: background 0.4s ease;
+}
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .message-no-symbols-found {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-weight: bold;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .arrow {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    transition: transform 0.2s ease-in;
+    margin-right: 10px;
+    margin-left: -18px;
+    border-right: solid 1px;
+    border-bottom: solid 1px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .arrow-left {
+    transform: rotate(-225deg);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .arrow-right {
+    transform: rotate(-45deg);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .arrow-down {
+    transform: rotate(45deg);
+}
+
+tchmi-permission-checkbox {
+    display: block;
+    height: 25px;
+    width: 25px;
+}
+
+/* Style for container */
+tchmi-permission-checkbox .checkbox-container {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Create a custom checkbox */
+tchmi-permission-checkbox .checkbox-container .checkmark {
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    font-size: 16px;
+}
+
+/* Hide the default checkbox */
+tchmi-permission-checkbox .checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+tchmi-permission-checkbox .checkbox-container .checkmark,
+tchmi-permission-checkbox .checkbox-container .checkmark:before,
+tchmi-permission-checkbox .checkbox-container .checkmark:after {
+    display: block;
+    content: '';
+    position: absolute;
+}
+
+/* show tick when checked */
+tchmi-permission-checkbox .checkbox-container:not([readonly]):not([empty]) input:checked ~ .checkmark:after {
+    content: '';
+    width: 5px;
+    height: 13px;
+    border-width: 0 2px 2px 0;
+    border-style: solid;
+    left: 50%;
+    top: 50%;
+    transform: translate(-60%, -60%) rotate(45deg);
+}
+
+/* show cross when not checked */
+tchmi-permission-checkbox .checkbox-container:not([readonly]):not([empty]) input:not(:checked) ~ .checkmark:before,
+tchmi-permission-checkbox .checkbox-container:not([readonly]):not([empty]) input:not(:checked) ~ .checkmark:after {
+    left: 50%;
+    top: 50%;
+    height: 2px;
+    width: 15px;
+}
+
+tchmi-permission-checkbox .checkbox-container:not([readonly]):not([empty]) input:not(:checked) ~ .checkmark:after {
+    transform: translate(-50%, 0) rotate(45deg);
+}
+
+tchmi-permission-checkbox .checkbox-container:not([readonly]):not([empty]) input:not(:checked) ~ .checkmark:before {
+    transform: translate(-50%, 0) rotate(-45deg);
+}
+
+/* indicator R for read only */
+tchmi-permission-checkbox .checkbox-container[readonly]:not([empty]) .checkmark:after {
+    content: 'R';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+tchmi-permission-checkbox .loading {
+    border: 3px solid;
+    border-radius: 50%; /* Circle shape */
+    width: 25px;
+    height: 25px;
+    animation: spin 1s linear infinite; /* Animation */
+}
+
+@keyframes fillAndSlideOut {
+    0% {
+        left: -50%;
+    }
+
+    50% {
+        left: 50%;
+    }
+
+    100% {
+        left: -50%;
+    }
+}
+
+tchmi-permission-checkbox .spinner {
+    border: 5px solid;
+    border-radius: 50%; /* Circle shape */
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite; /* Animation */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,8 @@
+{
+  "locale": "en",
+  "localizedText": {
+    "COM_ERROR": "COM error {0} in method {1}",
+    "RUNTIME_NOT_LOADABLE": "Runtime not loadable",
+    "ERROR_FILE_WATCHER": "Unable to watch file changes for directory {0}. Error {1}"
+  }
+}

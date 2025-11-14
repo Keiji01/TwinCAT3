@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "properties": {
+      "type": "object",
+      "properties": {
+        "extensionHostReloadAutomatically": {
+          "type": "object"
+        },
+        "extensionHostCustomPythonEnvPath": {
+          "type": "object"
+        },
+        "extensionHostDebugPort": {
+          "type": "object"
+        },
+        "extensionHostFileSystemWatcherInterval": {
+          "type": "object"
+        },
+        "testSetting": {
+          "type": "object"
+        },
+        "extensionHostPythonEnvTimeout": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "additionalProperties": false
+  },
+  "additionalProperties": false
+}

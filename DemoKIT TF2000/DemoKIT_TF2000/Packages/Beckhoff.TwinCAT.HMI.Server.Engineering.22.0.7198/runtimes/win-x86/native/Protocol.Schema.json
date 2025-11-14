@@ -1,0 +1,253 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "commandOptions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Add",
+          "Config",
+          "Delete",
+          "Extension1",
+          "Extension2",
+          "Extension3",
+          "Extension4",
+          "Import",
+          "Offline",
+          "PagingHandled",
+          "Poll",
+          "ProcessTimingAsTimespan",
+          "Replace",
+          "SendErrorMessage",
+          "SendWriteValue",
+          "Transaction",
+          "UniqueHash",
+          "ValidateRead"
+        ]
+      }
+    }
+  },
+  "properties": {
+    "apiVersion": {
+      "type": "number"
+    },
+    "serverTiming": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "value"
+        ]
+      },
+      "description": "A list of websocket timing measurements in ms. Only available in diagnostics mode."
+    },
+    "requestType": {
+      "type": "string",
+      "enum": [
+        "ReadWrite",
+        "Subscription",
+        "Event"
+      ],
+      "default": "ReadWrite"
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "message": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "customerData": {
+      "type": "string"
+    },
+    "id": {
+      "type": "number",
+      "default": 0.0
+    },
+    "intervalTime": {
+      "type": "integer",
+      "minimum": 5
+    },
+    "sessionId": {
+      "type": "string"
+    },
+    "serverId": {
+      "type": "string"
+    },
+    "commands": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "number"
+          },
+          "symbol": {
+            "type": "string"
+          },
+          "customerData": {
+            "type": "string"
+          },
+          "extensionData": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "TcHmiSrv": {
+                  "type": "object",
+                  "properties": {
+                    "previousValue": {},
+                    "userBeforeReauthentication": {
+                      "type": "object",
+                      "additionalProperties": true,
+                      "properties": {
+                        "sessionId": {
+                          "type": "string"
+                        },
+                        "userName": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "reauthentication": {},
+                    "reviewer": {}
+                  }
+                }
+              }
+            }
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 0
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 0
+          },
+          "orderBy": {
+            "type": "string"
+          },
+          "filter": {
+            "$ref": "tchmi:server#/definitions/filter"
+          },
+          "filterMap": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "maxEntries": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 0,
+            "readOnly": true
+          },
+          "writeValue": {},
+          "readValue": {},
+          "symbolOptions": {},
+          "commandIndex": {
+            "type": "integer",
+            "minimum": 0,
+            "readOnly": true
+          },
+          "processedStart": {
+            "oneOf": [
+              {
+                "$ref": "tchmi:general#/definitions/DateTime"
+              },
+              {
+                "$ref": "tchmi:general#/definitions/TimeSpan"
+              }
+            ]
+          },
+          "processedEnd": {
+            "oneOf": [
+              {
+                "$ref": "tchmi:general#/definitions/DateTime"
+              },
+              {
+                "$ref": "tchmi:general#/definitions/TimeSpan"
+              }
+            ]
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "message": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "domain": {
+                "type": "string"
+              },
+              "errors": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "domain": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "maxSubSymbolDepth": {
+            "type": "number"
+          },
+          "commandOptions": {
+            "$ref": "#/definitions/commandOptions"
+          },
+          "disabledCommandOptions": {
+            "$ref": "#/definitions/commandOptions"
+          }
+        },
+        "required": [
+          "symbol"
+        ]
+      }
+    }
+  },
+  "required": [
+    "commands"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../TwinCAT-HMI-Common/JsonSchemas/Language.Schema.json",
+    "locale": "de",
+    "localizedText": {
+        "Button_Tooltip_Play": "Start",
+        "Button_Tooltip_Pause": "Pause",
+        "Button_Tooltip_PanX": "Ansicht nur horizontal verschieben",
+        "Button_Tooltip_PanXY": "Ansicht sowohl horizontal als auch vertikal verschieben",
+        "Button_Tooltip_ZoomX": "Nur die horizontale Achse zoomen",
+        "Button_Tooltip_ZoomXY": "Sowohl die horizontal als auch die vertikale Achse zoomen",
+        "Button_Tooltip_ResetZoomPan": "Ansicht und Zoom zurücksetzen"
+    }
+}

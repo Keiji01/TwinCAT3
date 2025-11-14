@@ -1,0 +1,7 @@
+.TcHmi_Controls_Beckhoff_TcHmiThermometer .tchmi-linear-gauge-template-track::before {
+    background-color: var(--bulb-color, var(--tchmi-filler-background));
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiThermometer .tchmi-linear-gauge-template-track::after {
+    background-color: var(--bulb-color, var(--tchmi-filler-background));
+}

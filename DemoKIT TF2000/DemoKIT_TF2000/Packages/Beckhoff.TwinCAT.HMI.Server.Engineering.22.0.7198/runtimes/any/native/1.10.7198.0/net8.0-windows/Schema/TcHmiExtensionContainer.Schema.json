@@ -1,0 +1,235 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "definitions": {
+    "session": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The identifier of the session."
+        },
+        "user": {
+          "type": "string",
+          "description": "The name of the user of the session."
+        },
+        "locale": {
+          "type": "string",
+          "description": "The locale of the session."
+        },
+        "endpointInfo": {
+          "type": "string",
+          "description": "The endpoint information of the session."
+        },
+        "socketId": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295,
+          "description":
+            "The numeric identifier of the WebSocket of the session."
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "user",
+        "locale",
+        "endpointInfo",
+        "socketId"
+      ],
+      "description": "Represents the session of a context."
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "session": {
+          "$ref": "#/definitions/session"
+        },
+        "requestType": {
+          "type": "string",
+          "description": "The type of the request."
+        },
+        "domain": {
+          "type": "string",
+          "description": "The domain of the context."
+        },
+        "hash": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295,
+          "description": "The hash value of the context."
+        },
+        "subscriptionId": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295,
+          "description": "The numeric identifier of the subscription."
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "session",
+        "requestType",
+        "domain",
+        "hash"
+      ],
+      "description": "Represents the context of a request."
+    },
+    "typedValue": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The full name of the type of the value."
+        },
+        "value": {
+          "type": "object",
+          "description": "The value."
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "value"
+      ],
+      "description":
+        "Represents a typed value which can be an argument or the return value of a method."
+    },
+    "command": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The name of the type to load."
+        },
+        "method": {
+          "type": "string",
+          "description": "The name of the method to invoke."
+        },
+        "domain": {
+          "type": "string",
+          "description": "The domain of the method to invoke."
+        },
+        "arguments": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/typedValue"
+          },
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "context"
+                ]
+              },
+              {
+                "required": [
+                  "host"
+                ]
+              }
+            ]
+          },
+          "description": "The arguments to pass to the method to invoke."
+        },
+        "returnValue": {
+          "$ref": "#/definitions/typedValue"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "method"
+      ],
+      "description": "Represents the command of a request."
+    },
+    "errorDetails": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The numeric code of the error."
+        },
+        "message": {
+          "type": "string",
+          "description": "A message that describes the error."
+        },
+        "reason": {
+          "type": "string",
+          "description": "A string that describes the reason of the error."
+        },
+        "domain": {
+          "type": "string",
+          "description": "The domain in which the error occurred."
+        },
+        "position": {
+          "type": "string",
+          "description": "The position where the error occurred."
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/errorDetails"
+          }
+        }
+      },
+      "required": ["code"],
+      "description": "Represents an error returned by a TwinCAT HMI client."
+    },
+    "request": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295,
+          "description": "The numeric identifier of the request."
+        },
+        "command": {
+          "$ref": "#/definitions/command"
+        },
+        "context": {
+          "$ref": "#/definitions/context"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "command"
+      ],
+      "description": "Represents a request of a TwinCAT HMI client."
+    },
+    "response": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295,
+          "description": "The numeric identifier of the response."
+        },
+        "context": {
+          "$ref": "#/definitions/context"
+        },
+        "command": {
+          "$ref": "#/definitions/command"
+        },
+        "error": {
+          "$ref": "#/definitions/error"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ],
+      "description": "Represents a response of a TwinCAT HMI client."
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/definitions/request"
+    },
+    {
+      "$ref": "#/definitions/response"
+    }
+  ]
+}

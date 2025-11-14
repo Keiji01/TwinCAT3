@@ -1,0 +1,52 @@
+/**
+ * InteractiveWritePrompt 
+ */
+
+.TcHmi_Controls_Helpers_Popup_InteractiveWritePrompt-Loading-Spinner {
+    --TcHmi_Controls_Helpers_Popup_InteractiveWritePrompt-Loading-Spinner-Color: var(--tchmi-foreground-color-2);
+}
+
+.TcHmi_Controls_Helpers_Popup-InteractiveWritePrompt .TcHmi_Controls_Helpers_Popup-content,
+.TcHmi_Controls_Helpers_Popup-InteractiveWritePrompt .TcHmi_Controls_Beckhoff_TcHmiTextblock {
+    --tchmi-color: var(--tchmi-foreground-color-1);
+    color: var(--tchmi-color);
+}
+
+.TcHmi_Controls_Helpers_Popup_InteractiveWritePrompt-Editor-Container {
+    --tchmi-control-background: var(--tchmi-background-color-1);
+    --tchmi-pane-background: var(--tchmi-background-color-4);
+    --tchmi-header-background: var(--tchmi-highlight-color-1);
+    --tchmi-seperator-background: var(--tchmi-foreground-color-1);
+    --tchmi-cell-background: var(--tchmi-background-color-4);
+    --tchmi-selected-background: var(--tchmi-background-color-2);
+    --tchmi-highlight-background: var(--tchmi-highlight-color-1);
+    --tchmi-highlight-background-pressed: var(--tchmi-highlight-color-2);
+    --tchmi-invalid-background: var(--tchmi-error-color);
+    --tchmi-invalid-background-pressed: var(--tchmi-invalid-color);
+    --tchmi-text-color: var(--tchmi-foreground-color-1);
+    --tchmi-contrasting-text-color: var(--tchmi-foreground-color-2);
+    --tchmi-disabled-text-color: var(--tchmi-foreground-color-3);
+    --tchmi-cell-border-color: var(--tchmi-background-color-3);
+    --tchmi-input-background-invalid: var(--tchmi-invalid-color);
+    --tchmi-border-color: var(--tchmi-background-color-2);
+}
+
+.TcHmi_Controls_Helpers_Popup_InteractiveWritePrompt-Textblock-PrevValue {
+    background-color: var(--tchmi-background-color-3);
+}
+
+.TcHmi_Controls_Helpers_Popup_InteractiveWritePrompt-Symbol-Progress-Success {
+    background-image: url(Images/success.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.TcHmi_Controls_Helpers_Popup_InteractiveWritePrompt-Symbol-Progress-Failure {
+    background-image: url(Images/failure.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.TcHmi_Controls_Helpers_Popup_InteractiveWritePrompt-Message-Error {
+    color: var(--tchmi-error-color) !important;
+}

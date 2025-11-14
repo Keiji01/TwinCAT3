@@ -1,0 +1,47 @@
+{
+    "$schema": "../TcHmiFramework/Schema/FunctionDescription.Schema.json",
+    "apiVersion": 1,
+    "version": {
+        "full": "14.3.229.0",
+        "major": 14,
+        "minor": 3,
+        "build": 229,
+        "revision": 0
+    },
+    "dependencyFiles": [
+        {
+            "name": "Wait.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "function": {
+        "name": "Wait",
+        "namespace": "TcHmi.Functions.Beckhoff",
+        "displayName": "Wait",
+        "visible": true,
+        "category": "Timer",
+        "waitMode": "Asynchronous",
+        "injectContextObject": true,
+        "description": "Starts a timer and signals success once the timer has expired.\nCan be used to delay subsequent actions.",
+        "returnValue": null,
+        "arguments": [
+            {
+                "name": "ctx",
+                "displayName": "ctx",
+                "type": "tchmi:framework#/definitions/ContextReference",
+                "description": "Context Reference",
+                "required": true,
+                "bindable": false
+            },
+            {
+                "name": "time",
+                "displayName": "Time",
+                "type": "tchmi:general#/definitions/Number",
+                "description": "Time in milliseconds.",
+                "required": false,
+                "bindable": true
+            }
+        ]
+    }
+}

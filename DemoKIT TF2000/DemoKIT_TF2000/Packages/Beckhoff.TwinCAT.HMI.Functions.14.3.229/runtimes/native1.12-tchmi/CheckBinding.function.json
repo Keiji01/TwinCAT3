@@ -1,0 +1,50 @@
+{
+    "$schema": "../TcHmiFramework/Schema/FunctionDescription.Schema.json",
+    "apiVersion": 1,
+    "version": {
+        "full": "14.3.229.0",
+        "major": 14,
+        "minor": 3,
+        "build": 229,
+        "revision": 0
+    },
+    "dependencyFiles": [
+        {
+            "name": "CheckBinding.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "function": {
+        "name": "CheckBinding",
+        "namespace": "TcHmi.Functions.Beckhoff",
+        "displayName": "CheckBinding",
+        "description": "Checks if any symbol is bound to a control attribute.",
+        "category": "Binding",
+        "returnValue": {
+            "type": "tchmi:general#/definitions/Boolean",
+            "description": "Result of the Access."
+        },
+        "arguments": [
+            {
+                "name": "control",
+                "displayName": "Control",
+                "type": "tchmi:framework#/definitions/Control",
+                "description": "Control",
+                "required": true,
+                "bindable": false,
+                "restParameter": false
+            },
+            {
+                "name": "propertyName",
+                "displayName": "PropertyName",
+                "type": "tchmi:framework#/definitions/ControlPropertyName",
+                "description": "The target attribute property name of control.",
+                "required": true,
+                "bindable": true,
+                "restParameter": false,
+                "refTo": "control"
+            }
+        ]
+    }
+}

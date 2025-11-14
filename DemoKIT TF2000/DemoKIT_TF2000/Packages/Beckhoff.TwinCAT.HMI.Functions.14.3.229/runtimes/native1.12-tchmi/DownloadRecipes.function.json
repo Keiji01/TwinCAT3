@@ -1,0 +1,57 @@
+{
+    "$schema": "../TcHmiFramework/Schema/FunctionDescription.Schema.json",
+    "apiVersion": 1,
+    "version": {
+        "full": "14.3.229.0",
+        "major": 14,
+        "minor": 3,
+        "build": 229,
+        "revision": 0
+    },
+    "dependencyFiles": [
+        {
+            "name": "DownloadRecipes.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "function": {
+        "name": "DownloadRecipes",
+        "namespace": "TcHmi.Functions.Beckhoff",
+        "displayName": "DownloadRecipes",
+        "visible": true,
+        "category": "Recipe",
+        "waitMode": "Asynchronous",
+        "injectContextObject": true,
+        "description": "Downloads one, many or all recipes of a server. \nThis needs to be triggered by a user interaction (not on load or symbol change).",
+        "returnValue": null,
+        "arguments": [
+            {
+                "name": "ctx",
+                "displayName": "ctx",
+                "type": "tchmi:framework#/definitions/ContextReference",
+                "description": "Context Reference",
+                "required": true,
+                "bindable": false
+            },
+            {
+                "name": "filter",
+                "displayName": "Filter",
+                "type": "tchmi:framework#/definitions/MultipleRecipeReferences",
+                "description": "Filter/reduce download list to some multiple recipes. \nIf this is null/unset this downloads all recipes.",
+                "defaultValue": null,
+                "required": true,
+                "bindable": true
+            },
+            {
+                "name": "referencedRecipeTypes",
+                "displayName": "ReferencedRecipeTypes",
+                "type": "tchmi:general#/definitions/Boolean",
+                "description": "The export should contain referenced recipe types, too.",
+                "defaultValue": false,
+                "required": true,
+                "bindable": true
+            }
+        ]
+    }
+}

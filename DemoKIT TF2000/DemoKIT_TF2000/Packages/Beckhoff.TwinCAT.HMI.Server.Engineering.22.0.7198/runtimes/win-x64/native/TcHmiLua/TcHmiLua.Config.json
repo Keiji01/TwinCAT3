@@ -1,0 +1,25 @@
+{
+  "$schema": "../../TcHmiSrv/schema/ExtensionSettings.Schema.json",
+  "version": "14.4.124.0",
+  "configVersion": "1.0.1.1",
+  "guid": "EBCC019A-41B4-4ADA-9163-F9F34357B0B6",
+  "visibility": "HideInEngineering",
+  "policies": [
+    "StrictPropertyValidation",
+    "StrictConfigListenerFilter"
+  ],
+  "fileExtensions": [
+    {
+      "fileExtension": "lp",
+      "fileDescription": "LPUPLOADDESCRIPTION"
+    },
+    {
+      "fileExtension": "lua",
+      "fileDescription": "LUAUPLOADDESCRIPTION"
+    }
+  ],
+  "symbols": {},
+  "packageVersion": "14.4.124.0",
+  "productVersion": "14.4.124.0",
+  "signature": "TV6Ct2mqoPGSIigCrWosgeLHa598KdAZXg72cOWpx8WhfkDfUwiOOG6hrkgu6ErMnscqEypfxFg0HHnmXsQ5Nel9r8+2qR5QuEZxByNU5bCA4jKbfGJnOcePL86qQVBNZGjDKTezFuPuf35lvRY84z/B6Nt03vCRTb5deSVyUXu2gD+Ir+arvxXtVc+zBCIrYYb6Hqwc8iTVD7keicrLpwEOwFpWOvGY43INzHvQSGSg5dgL/KSGBURjLUEY7tWeiN07X8OUW/rjRtnX1XxHHbvbdWjIFRkzlta48jhaevSJMn6xPXV1ydmvfUCz5J5fBbABDnDeJ0Fl1mVSpUYLsQ=="
+}

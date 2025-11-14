@@ -1,0 +1,151 @@
+<div class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-template tchmi-trend-line-chart-template tchmi-box">
+    <div class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-template-chart tchmi-trend-line-chart-template-chart">
+        <div
+            class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-template-loading tchmi-trend-line-chart-template-loading"
+            style="z-index: 100"
+        ></div>
+    </div>
+    <div
+        class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-template-menu-bar tchmi-trend-line-chart-template-menu-bar TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-template-menu-bar-bottom tchmi-trend-line-chart-template-menu-bar-bottom"
+        style="display: none"
+    ></div>
+    <div
+        class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-template-legend TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-template-legend-top"
+    ></div>
+    <div class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-template-statistical-data">
+        <div
+            id="{Id}.statisticalData"
+            class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-statistical-data"
+            data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiDatagrid"
+            data-tchmi-show-row-numbers="false"
+            data-tchmi-width="100"
+            data-tchmi-width-unit="%"
+            data-tchmi-height="120"
+            data-tchmi-top="0"
+            data-tchmi-left="0"
+            data-tchmi-height-unit="px"
+        >
+            <script data-tchmi-target-attribute="data-tchmi-src-column" type="application/json">
+                [
+                    {
+                        "name": "symbol",
+                        "label": "%l%Control::TcHmi.Controls.Beckhoff.TcHmiTrendLineChart::Column_Header_Symbol%/l%",
+                        "control": "TextBlock",
+                        "width": 25.5,
+                        "widthUnit": "%",
+                        "resize": true,
+                        "minWidth": 10,
+                        "minWidthUnit": "px",
+                        "editable": false,
+                        "horizontalAlignment": "Center",
+                        "verticalAlignment": "Center"
+                    },
+                    {
+                        "name": "min",
+                        "label": "%l%Control::TcHmi.Controls.Beckhoff.TcHmiTrendLineChart::Column_Header_Min%/l%",
+                        "control": "TextBlock",
+                        "width": 25.5,
+                        "widthUnit": "%",
+                        "resize": true,
+                        "minWidth": 10,
+                        "minWidthUnit": "px",
+                        "editable": false,
+                        "horizontalAlignment": "Center",
+                        "verticalAlignment": "Center"
+                    },
+                    {
+                        "name": "max",
+                        "label": "%l%Control::TcHmi.Controls.Beckhoff.TcHmiTrendLineChart::Column_Header_Max%/l%",
+                        "control": "TextBlock",
+                        "width": 25.5,
+                        "widthUnit": "%",
+                        "resize": true,
+                        "minWidth": 10,
+                        "minWidthUnit": "px",
+                        "editable": false,
+                        "horizontalAlignment": "Center",
+                        "verticalAlignment": "Center"
+                    },
+                    {
+                        "name": "average",
+                        "label": "%l%Control::TcHmi.Controls.Beckhoff.TcHmiTrendLineChart::Column_Header_Average%/l%",
+                        "control": "TextBlock",
+                        "width": 25.5,
+                        "widthUnit": "%",
+                        "resize": true,
+                        "minWidth": 10,
+                        "minWidthUnit": "px",
+                        "editable": false,
+                        "horizontalAlignment": "Center",
+                        "verticalAlignment": "Center"
+                    }
+                ]
+            </script>
+        </div>
+    </div>
+    <div
+        class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-template-tooltip tchmi-trend-line-chart-template-tooltip tchmi-no-pointer-events"
+    >
+        <div
+            class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-template-tooltip-arrow tchmi-trend-line-chart-template-tooltip-arrow"
+        ></div>
+        <div
+            class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-template-tooltip-text tchmi-trend-line-chart-template-tooltip-text"
+        ></div>
+    </div>
+    <div class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-settings-dialog">
+        <div class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-settings-dialog-content">
+            <tchmi-content-tabs class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-dialog">
+                <tchmi-tab-links>
+                    <tchmi-tab-link
+                        ref="lineGraphDescriptions"
+                        data-tchmi-localized-content-key="Settings_Tab_LineGraphDescriptions"
+                        >Settings_Tab_LineGraphDescriptions</tchmi-tab-link
+                    >
+                </tchmi-tab-links>
+                <tchmi-tab-contents class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-tab-contents">
+                    <tchmi-tab-content
+                        class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-tab-content"
+                        name="lineGraphDescriptions"
+                    >
+                        <h1 data-tchmi-localized-content-key="Settings_Headline_LineGraphDescriptions"></h1>
+                        <div
+                            class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-settings-dialog-lineGraphDescription-editor"
+                        ></div>
+                    </tchmi-tab-content>
+                </tchmi-tab-contents>
+            </tchmi-content-tabs>
+        </div>
+        <div class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-settings-dialog-footer">
+            <div
+                id="{Id}.okButton"
+                class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-settings-dialog-ok-button"
+                data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton"
+                data-tchmi-width="70"
+                data-tchmi-height="30"
+                data-tchmi-text="%l%Control::TcHmi.Controls.Beckhoff.TcHmiTrendLineChart::Settings_Button_Text_Ok%/l%"
+                data-tchmi-tooltip="%l%Control::TcHmi.Controls.Beckhoff.TcHmiTrendLineChart::Settings_Tooltip_Text_Ok%/l%"
+            ></div>
+
+            <div
+                id="{Id}.cancelButton"
+                class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-settings-dialog-cancel-button"
+                data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton"
+                data-tchmi-width="70"
+                data-tchmi-height="30"
+                data-tchmi-text="%l%Control::TcHmi.Controls.Beckhoff.TcHmiTrendLineChart::Settings_Button_Text_Cancel%/l%"
+                data-tchmi-tooltip="%l%Control::TcHmi.Controls.Beckhoff.TcHmiTrendLineChart::Settings_Tooltip_Text_Cancel%/l%"
+            ></div>
+
+            <div
+                id="{Id}.resetSettingsButton"
+                class="TcHmi_Controls_Beckhoff_TcHmiTrendLineChart-settings-dialog-reset-settings-button"
+                data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton"
+                data-tchmi-width="70"
+                data-tchmi-height="30"
+                data-tchmi-text="%l%Control::TcHmi.Controls.Beckhoff.TcHmiTrendLineChart::Settings_Button_Text_Reset_Settings%/l%"
+                data-tchmi-tooltip="%l%Control::TcHmi.Controls.Beckhoff.TcHmiTrendLineChart::Settings_Tooltip_Text_Reset_Settings%/l%"
+            ></div>
+        </div>
+    </div>
+</div>

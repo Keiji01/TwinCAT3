@@ -1,0 +1,32 @@
+/** Styles for all themes */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiSparkline {
+    /* Prevent overflow if the border radius is huge */
+    overflow: hidden;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiSparkline-template {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiSparkline-template-chart {
+    box-sizing: border-box;
+    position: relative;
+    top: 0px;
+    width: 100%;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiSparkline-chart {
+    position: relative;
+    width: 100%;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiSparkline-chart-label {
+    position: relative;
+    width: 100%;
+    top: 0px;
+}

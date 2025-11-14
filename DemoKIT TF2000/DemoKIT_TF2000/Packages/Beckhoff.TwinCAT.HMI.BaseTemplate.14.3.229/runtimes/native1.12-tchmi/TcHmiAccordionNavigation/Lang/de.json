@@ -1,0 +1,7 @@
+{
+    "$schema": "../../../TwinCAT-HMI-Common/JsonSchemas/Language.Schema.json",
+    "locale": "de",
+    "localizedText": {
+        "Button_Back": "Zurück"
+    }
+}

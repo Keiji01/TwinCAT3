@@ -1,0 +1,47 @@
+{
+    "$schema": "../TcHmiFramework/Schema/FunctionDescription.Schema.json",
+    "apiVersion": 1,
+    "version": {
+        "full": "14.3.229.0",
+        "major": 14,
+        "minor": 3,
+        "build": 229,
+        "revision": 0
+    },
+    "dependencyFiles": [
+        {
+            "name": "SetAttributeToThemeValue.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "function": {
+        "name": "SetAttributeToThemeValue",
+        "namespace": "TcHmi.Functions.Beckhoff",
+        "displayName": "SetAttributeToThemeValue",
+        "description": "Sets the default value of a property and change it (if needed) on theme change.",
+        "category": "Theme",
+        "returnValue": null,
+        "arguments": [
+            {
+                "name": "control",
+                "displayName": "Control",
+                "type": "tchmi:framework#/definitions/Control",
+                "description": "Control to set the default value on it.",
+                "required": true,
+                "bindable": false,
+                "restParameter": false
+            },
+            {
+                "name": "propertyName",
+                "displayName": "PropertyName",
+                "type": "tchmi:framework#/definitions/ControlPropertyName",
+                "description": "Name of the property to set default.",
+                "required": true,
+                "bindable": true,
+                "restParameter": false,
+                "refTo": "control"
+            }
+        ]
+    }
+}

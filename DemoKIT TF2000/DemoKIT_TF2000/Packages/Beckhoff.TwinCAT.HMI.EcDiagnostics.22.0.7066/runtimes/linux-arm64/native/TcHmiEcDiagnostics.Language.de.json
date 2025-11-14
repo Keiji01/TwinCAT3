@@ -1,0 +1,30 @@
+{
+  "locale": "de",
+  "localizedText": {
+    "enabled": "Aktiviert",
+    "netId": "AmsNetId",
+    "target": "Target",
+    "targetNetId": "Target NetId",
+    "targetAvailable": "Target verfügbar",
+    "connectionState": "Verbindungsstatus",
+    "targetAdsVersion": "Target ADS Version",
+    "targetAdsState": "Target ADS Status",
+    "master": "Master",
+    "masterNetId": "Master NetId",
+    "masterState": "Master Status",
+    "vendorsOverwrite": "Hersteller-Überschreibung",
+    "descVendorsOverwrite": "Hersteller-ID hinzufügen",
+    "devices": "EtherCAT-Geräte",
+    "masters": "Masters",
+    "longName": "Name",
+    "shortName": "Abkürzung",
+    "pattern": "Muster",
+    "descSlave": "EtherCAT-Slave",
+    "descEcDiagnosticsProcessDataInOutValues": "Prozessdaten (IN-OUT-Werte)",
+    "descEcDiagnosticsProcessDataObjectEntryValue": "Prozessdaten (Wert)",
+    "descEcDiagnosticsProcessDataObjectEntryID": "Prozessdaten (ID)",
+    "updateIntervals": "Aktualisierungsintervalle",
+    "runtimeStateCheckTimeout": "Maximales Timeout bei der Laufzeitstatus-Ermittlung",
+    "descRuntimeStateCheckTimeout": "Eine konfigurierte Laufzeit wird als nicht erreichbar angesehen, wenn eine Anfrage länger als diese Zeitspanne dauert."
+  }
+}

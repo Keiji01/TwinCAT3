@@ -1,0 +1,124 @@
+/** Styles for all themes */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge,
+.tchmi-radial-gauge {
+    /* Prevent overflow if the border radius is huge */
+    overflow: hidden;
+    --square-size: 300px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template,
+.tchmi-radial-gauge-template {
+    position: relative;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-main-tick,
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-sub-tick,
+.tchmi-radial-gauge-template-main-tick,
+.tchmi-radial-gauge-template-sub-tick {
+    pointer-events: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-label,
+.tchmi-radial-gauge-template-label {
+    text-anchor: middle;
+    dominant-baseline: central;
+    pointer-events: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-range-container path,
+.tchmi-radial-gauge-template-range-container path {
+    fill: none;
+    pointer-events: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-circle-under,
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-circle-over,
+.tchmi-radial-gauge-template-circle-under,
+.tchmi-radial-gauge-template-circle-over {
+    pointer-events: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-display-value,
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-display-unit,
+.tchmi-radial-gauge-template-display-value,
+.tchmi-radial-gauge-template-display-unit {
+    text-anchor: middle;
+    pointer-events: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-knob,
+.tchmi-radial-gauge-template-knob {
+    cursor: move;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge.TcHmi_Controls_System_TcHmiControl-operate-disallowed
+    .TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-knob,
+.tchmi-radial-gauge.tchmi-control-operate-disallowed .tchmi-radial-gauge-template-knob {
+    cursor: not-allowed;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-svg,
+.tchmi-radial-gauge-template-svg {
+    position: relative;
+    height: var(--square-size);
+    width: var(--square-size);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-invalid-notification {
+    position: absolute;
+    width: 30px; /* is used for internal calc*/
+    height: 30px; /* is used for internal calc*/
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge.TcHmi_Controls_System_TcHmiControl-disabled::after,
+.tchmi-radial-gauge.tchmi-control-disabled::after {
+    /* hide generic highlighter which is at the wrong position */
+    display: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge.TcHmi_Controls_System_TcHmiControl-disabled
+    .TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template::after {
+    content: '';
+    position: absolute;
+    top: auto;
+    left: auto;
+    z-index: 100;
+    height: calc(var(--square-size));
+    width: calc(var(--square-size));
+    border-radius: calc(var(--square-size) / 2);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-legend {
+    display: flex;
+    flex-wrap: wrap; /* ensures automatic wrapping */
+    gap: 10px; /* spacing between items */
+    overflow: hidden;
+    justify-self: center;
+    align-self: start;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    justify-content: center;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-legend-item {
+    flex: 0 1 auto; /* allows the items to shrink but not grow */
+    padding: 2px;
+    white-space: nowrap; /* prevents line breaks in the content */
+    display: flex;
+    flex-direction: row;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRadialGauge-template-legend-item-color {
+    height: 2px;
+    width: 10px;
+    align-self: center;
+    margin-right: 5px;
+}

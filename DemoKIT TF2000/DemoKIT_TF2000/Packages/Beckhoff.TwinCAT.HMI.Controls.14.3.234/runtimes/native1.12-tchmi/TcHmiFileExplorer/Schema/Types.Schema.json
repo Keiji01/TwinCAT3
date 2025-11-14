@@ -1,0 +1,69 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+        "TcHmi.Controls.Beckhoff.TcHmiFileExplorer": {
+            "type": "object",
+            "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+            "frameworkControlType": "TcHmiFileExplorer",
+            "frameworkControlNamespace": "TcHmi.Controls.Beckhoff"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiFileExplorer.MenuBarPosition": {
+            "type": "string",
+            "enum": ["Top", "Bottom"],
+            "default": "Top"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiFileExplorer.NameArray": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "minLength": 1
+            }
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiFileExplorer.Sorting": {
+            "title": "File sorting",
+            "type": "array",
+            "items": {
+                "title": "Sorting criterion",
+                "type": "object",
+                "engineeringColumns": ["name", "order"],
+                "propertiesMeta": [
+                    {
+                        "name": "name",
+                        "displayName": "Name",
+                        "category": "General",
+                        "displayPriority": 10,
+                        "description": "Name of the property to sort by",
+                        "defaultValue": "name",
+                        "defaultValueInternal": null
+                    },
+                    {
+                        "name": "order",
+                        "displayName": "Order",
+                        "category": "General",
+                        "displayPriority": 10,
+                        "description": "Sort definition",
+                        "defaultValue": "Ascending",
+                        "defaultValueInternal": null
+                    }
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "enum": ["name", "type", "fileSize", "modificationTime"],
+                        "default": "name"
+                    },
+                    "order": {
+                        "type": "string",
+                        "enum": ["Ascending", "Descending"],
+                        "default": "Ascending"
+                    }
+                },
+                "required": ["name", "order"],
+                "additionalProperties": false
+            }
+        },
+        "TcHmiFileExplorer": {
+            "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiFileExplorer"
+        }
+    }
+}

@@ -1,0 +1,36 @@
+.beckhoff-ec-diagnostics .status-button-state .spin-it {
+    animation: status-button-icon-spin 1.5s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes status-button-icon-spin {
+    0% {
+        transform: rotate(-360deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+
+.beckhoff-ec-diagnostics .status-button-state {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 5px;
+    animation: status-button-click 0.4s ease;
+}
+
+.beckhoff-ec-diagnostics .status-button-padding {
+    padding: 5px 40px 5px 10px !important;
+}
+
+@keyframes status-button-click {
+    0% {
+        margin-right: -10px;
+    }
+    100% {
+        margin-right: 0px;
+    }
+}

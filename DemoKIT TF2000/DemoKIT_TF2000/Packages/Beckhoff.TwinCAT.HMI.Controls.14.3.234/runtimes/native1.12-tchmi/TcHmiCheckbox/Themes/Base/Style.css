@@ -1,0 +1,49 @@
+/** Styles for the theme: Base */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiCheckbox,
+.tchmi-checkbox {
+    --tchmi-background: var(--tchmi-background-color-4);
+    --tchmi-stroke-active: var(--tchmi-highlight-color-1);
+    --tchmi-color: var(--tchmi-foreground-color-4);
+    --tchmi-border-color: var(--tchmi-background-color-2);
+    color: var(--tchmi-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCheckbox-template,
+.tchmi-checkbox-template {
+    background-color: var(--tchmi-background);
+    border: 1px solid var(--tchmi-border-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCheckbox-toggle-state-icon,
+.tchmi-checkbox-toggle-state-icon {
+    stroke: transparent;
+}
+
+/* class TcHmi_Controls_Beckhoff_TcHmiCheckbox-active will be set/unset in the control */
+.TcHmi_Controls_Beckhoff_TcHmiCheckbox.TcHmi_Controls_Beckhoff_TcHmiCheckbox-active
+    .TcHmi_Controls_Beckhoff_TcHmiCheckbox-toggle-state-icon,
+.tchmi-checkbox.tchmi-checkbox-active .tchmi-checkbox-toggle-state-icon {
+    stroke: var(--tchmi-stroke-active);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCheckbox.read-only .TcHmi_Controls_Beckhoff_TcHmiCheckbox-template,
+.tchmi-checkbox.read-only .tchmi-checkbox-template {
+    background: var(--tchmi-read-only-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCheckbox.TcHmi_Controls_System_TcHmiControl-operate-disallowed::after,
+.tchmi-checkbox.tchmi-control-operate-disallowed::after {
+    background-color: var(--tchmi-disabled-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCheckbox.TcHmi_Controls_System_TcHmiControl-operate-disallowed,
+.tchmi-checkbox.tchmi-control-operate-disallowed {
+    color: var(--tchmi-disallowed-BeckhoffControl-textcolor);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiCheckbox.TcHmi_Controls_System_TcHmiControl-disabled,
+.tchmi-checkbox.tchmi-control-disabled {
+    color: var(--tchmi-disabled-BeckhoffControl-textcolor);
+}

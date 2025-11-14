@@ -1,0 +1,165 @@
+.TcHmi_Controls_Helpers_Editor {
+    --tchmi-selected-background: var(--tchmi-background-color-2);
+    --tchmi-invalid-background: var(--tchmi-error-color);
+    --tchmi-invalid-background-pressed: var(--tchmi-invalid-color);
+    --tchmi-invalid-text-color: var(--tchmi-error-color);
+    --tchmi-disabled-text-color: var(--tchmi-foreground-color-3);
+    --tchmi-table-header-background: var(--tchmi-highlight-color-1);
+    --tchmi-cell-background: var(--tchmi-background-color-4);
+    --tchmi-text-color: var(--tchmi-foreground-color-1);
+    --tchmi-contrasting-text-color: var(--tchmi-foreground-color-1);
+    --tchmi-cell-border-color: var(--tchmi-background-color-3);
+    --tchmi-border-color: var(--tchmi-background-color-2);
+    --tchmi-focused-cell-background: rgba(76, 99, 116, 0.25); /*#4c6374 + opacity*/
+}
+
+.TcHmi_Controls_Helpers_Editor .compound-control-container .TcHmi_Controls_Beckhoff_TcHmiButton,
+.TcHmi_Controls_Helpers_Editor.compound-control-container .TcHmi_Controls_Beckhoff_TcHmiButton {
+    --tchmi-button-background: var(--tchmi-highlight-button-background);
+    --tchmi-button-background-pressed: var(--tchmi-highlight-button-background-pressed);
+    --tchmi-button-text-color: var(--tchmi-highlight-button-text-color);
+    --tchmi-button-text-color-pressed: var(--tchmi-highlight-button-text-color);
+    --tchmi-button-border: var(--tchmi-highlight-button-border);
+    --tchmi-button-border-pressed: var(--tchmi-highlight-button-border-pressed);
+    --tchmi-button-box-shadow: var(--tchmi-highlight-button-box-shadow);
+    --tchmi-button-box-shadow-pressed: var(--tchmi-highlight-button-box-shadow-pressed);
+}
+
+.TcHmi_Controls_Helpers_Editor .compound-control-container .TcHmi_Controls_Beckhoff_TcHmiButton.down,
+.TcHmi_Controls_Helpers_Editor.compound-control-container .TcHmi_Controls_Beckhoff_TcHmiButton.down {
+    box-shadow: var(--tchmi-inset-shadow);
+}
+
+.TcHmi_Controls_Helpers_Editor.disabled .value-description {
+    color: var(--tchmi-disabled-text-color);
+}
+
+.TcHmi_Controls_Helpers_Editor.disabled .TcHmi_Controls_Helpers_DirectoryBrowser-path-display::after {
+    background: var(--tchmi-control-background);
+}
+
+.TcHmi_Controls_Helpers_Editor-editor-table tr.selected td {
+    background: var(--tchmi-selected-background);
+}
+
+.TcHmi_Controls_Helpers_Editor-button-icon-datetimepicker .TcHmi_Controls_Beckhoff_TcHmiButton-template {
+    background-image: url('Images/datetimepicker.svg');
+    background-position: center;
+    background-size: contain;
+}
+
+.TcHmi_Controls_Helpers_Editor-button-icon-timespanpicker .TcHmi_Controls_Beckhoff_TcHmiButton-template {
+    background-image: url('Images/timespanpicker.svg');
+    background-position: center;
+    background-size: contain;
+}
+
+.TcHmi_Controls_Helpers_Editor-button-icon-add .TcHmi_Controls_Beckhoff_TcHmiButton-template {
+    background-image: url('Images/add.svg');
+    background-position: center;
+    background-size: contain;
+}
+
+.TcHmi_Controls_Helpers_Editor-button-icon-add.down .TcHmi_Controls_Beckhoff_TcHmiButton-template {
+    background-image: url('Images/add_active.svg');
+    background-position: center;
+    background-size: contain;
+}
+
+.TcHmi_Controls_Helpers_Editor-button-icon-remove .TcHmi_Controls_Beckhoff_TcHmiButton-template {
+    background-image: url('Images/remove.svg');
+    background-position: center;
+    background-size: contain;
+}
+
+.TcHmi_Controls_Helpers_Editor-button-icon-remove.down .TcHmi_Controls_Beckhoff_TcHmiButton-template {
+    background-image: url('Images/remove_active.svg');
+    background-position: center;
+    background-size: contain;
+}
+
+.TcHmi_Controls_Helpers_Editor-button-icon-up .TcHmi_Controls_Beckhoff_TcHmiButton-template {
+    background-image: url('Images/move-up.svg');
+    background-position: center;
+    background-size: contain;
+}
+
+.TcHmi_Controls_Helpers_Editor-button-icon-up.down .TcHmi_Controls_Beckhoff_TcHmiButton-template {
+    background-image: url('Images/move-up_active.svg');
+    background-position: center;
+    background-size: contain;
+}
+
+.TcHmi_Controls_Helpers_Editor-button-icon-down .TcHmi_Controls_Beckhoff_TcHmiButton-template {
+    background-image: url('Images/move-down.svg');
+    background-position: center;
+    background-size: contain;
+}
+
+.TcHmi_Controls_Helpers_Editor-button-icon-down.down .TcHmi_Controls_Beckhoff_TcHmiButton-template {
+    background-image: url('Images/move-down_active.svg');
+    background-position: center;
+    background-size: contain;
+}
+
+.TcHmi_Controls_Helpers_Editor .validation-errors {
+    color: var(--tchmi-invalid-text-color);
+}
+
+.TcHmi_Controls_Helpers_Editor
+    div.with-validation.invalid
+    :is(.TcHmi_Controls_Beckhoff_TcHmiButton, .TcHmi_Controls_Beckhoff_TcHmiCombobox-template-button) {
+    --tchmi-highlight-button-background: var(--tchmi-invalid-background);
+    --tchmi-highlight-button-background-pressed: var(--tchmi-invalid-background-pressed);
+}
+
+.TcHmi_Controls_Helpers_Editor
+    .disabled
+    div.with-validation.invalid
+    :is(.TcHmi_Controls_Beckhoff_TcHmiButton, .TcHmi_Controls_Beckhoff_TcHmiCombobox-template-button) {
+    --tchmi-highlight-button-background: unset;
+    --tchmi-highlight-button-background-pressed: unset;
+}
+
+.TcHmi_Controls_Helpers_Editor-InvalidEditor .with-validation.invalid {
+    color: var(--tchmi-invalid-text-color);
+}
+
+.TcHmi_Controls_Helpers_Editor-HistorizedSymbolEditorPane th {
+    background: var(--tchmi-table-header-background);
+    color: var(--tchmi-contrasting-text-color);
+    border-right: 1px solid var(--tchmi-cell-border-color);
+    font-weight: normal;
+}
+
+.TcHmi_Controls_Helpers_Editor-HistorizedSymbolEditorPane th:last-child {
+    border-right: none;
+}
+
+.TcHmi_Controls_Helpers_Editor-HistorizedSymbolEditorPane td {
+    background: var(--tchmi-cell-background);
+    color: var(--tchmi-text-color);
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    border-color: var(--tchmi-cell-border-color);
+}
+
+.TcHmi_Controls_Helpers_Editor-HistorizedSymbolEditorPane td:first-child {
+    border-left: 1px solid var(--tchmi-border-color);
+}
+
+.TcHmi_Controls_Helpers_Editor-HistorizedSymbolEditorPane td:last-child {
+    border-right-color: var(--tchmi-border-color);
+}
+
+.TcHmi_Controls_Helpers_Editor-HistorizedSymbolEditorPane tr:first-child td {
+    border-top: 1px solid var(--tchmi-cell-border-color);
+}
+
+.TcHmi_Controls_Helpers_Editor-HistorizedSymbolEditorPane tr:last-child td {
+    border-bottom-color: var(--tchmi-border-color);
+}
+
+.TcHmi_Controls_Helpers_Editor-HistorizedSymbolEditorPane:not(.read-only) tr:is(:hover, .selected) td {
+    background: var(--tchmi-focused-cell-background);
+}

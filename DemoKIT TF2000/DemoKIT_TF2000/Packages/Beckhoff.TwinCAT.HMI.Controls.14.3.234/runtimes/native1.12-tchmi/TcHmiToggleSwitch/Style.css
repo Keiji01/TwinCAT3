@@ -1,0 +1,32 @@
+/** Styles for all themes */
+.TcHmi_Controls_Beckhoff_TcHmiToggleSwitch {
+    grid-template-columns: calc(var(--square-size) * 2) minmax(0, 1fr);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiToggleSwitch.text-left {
+    /* 2 columns: [ column1 (text): min 0, max all available space ] [ column2 (radiobutton): min square-size, max square-size + 5px ] */
+    grid-template-columns: minmax(0, 1fr) minmax(var(--square-size) * 2, calc(var(--square-size) * 2 + 5px));
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiToggleSwitch
+    .TcHmi_Controls_Beckhoff_TcHmiCheckbox-template
+    .TcHmi_Controls_Beckhoff_TcHmiToggleSwitch-toggle-state-indicator {
+    position: relative;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiToggleSwitch.TcHmi_Controls_System_TcHmiControl-operate-disallowed::after {
+    content: '';
+    position: absolute;
+    top: auto;
+    left: 0;
+    height: var(--square-size);
+    width: calc(var(--square-size) * 2);
+    border-radius: calc(var(--square-size) / 2);
+    z-index: 100;
+}
+/* Adjust size of overlay only */
+.TcHmi_Controls_Beckhoff_TcHmiToggleSwitch.TcHmi_Controls_System_TcHmiControl-disabled::after {
+    height: var(--square-size);
+    width: calc(var(--square-size) * 2);
+    border-radius: calc(var(--square-size) / 2);
+}

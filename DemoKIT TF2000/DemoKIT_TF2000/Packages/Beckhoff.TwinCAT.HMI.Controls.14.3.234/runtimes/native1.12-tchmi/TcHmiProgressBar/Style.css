@@ -1,0 +1,14 @@
+/** Styles for all themes */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiProgressBar {
+    /* Prevent overflow if the border radius is huge */
+    overflow: hidden;
+}
+.TcHmi_Controls_Beckhoff_TcHmiProgressBar-template {
+    height: 100%;
+    width: 100%;
+}
+.TcHmi_Controls_Beckhoff_TcHmiProgressBar-bar {
+    height: 100%;
+}

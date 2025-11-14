@@ -1,0 +1,14 @@
+/* Base */
+.TcHmi_Controls_UiProvider_TcHmiKeyboard-container {
+    /* When keyboard on top */
+    border-top: 1px solid var(--tchmi-foreground-color-1);
+    /* When keyboard on bottom */
+    border-bottom: 1px solid var(--tchmi-foreground-color-1);
+    background-color: var(--tchmi-background);
+}
+
+.TcHmi_Controls_UiProvider_TcHmiKeyboard-container > a {
+    width: 26px;
+    height: 26px;
+    background-image: url('close.svg');
+}

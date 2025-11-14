@@ -1,0 +1,693 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+        "TcHmi.Controls.Beckhoff.TcHmiTreeView": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "type": "object",
+            "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+            "frameworkControlType": "TcHmiTreeView",
+            "frameworkControlNamespace": "TcHmi.Controls.Beckhoff"
+        },
+        "TcHmiTreeView": {
+            "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiTreeView"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiTreeView.Index": {
+            "type": "array",
+            "title": "The hierarchical index of treeview data.",
+            "items": {
+                "type": "number"
+            }
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiTreeView.DataSymbol": {
+            "allOf": [
+                {
+                    "$ref": "tchmi:framework#/definitions/Symbol"
+                },
+                {
+                    "frameworkSymbolSubType": {
+                        "$ref": "tchmi:general#/definitions/Array"
+                    }
+                }
+            ]
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiTreeView.ColumnDefinitionList": {
+            "title": "ColumnDefinitionList",
+            "anyOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "engineeringColumns": ["name", "label", "control", "width", "widthUnit"],
+                        "propertiesMeta": [
+                            {
+                                "name": "cellBackground",
+                                "displayName": "Cell Background",
+                                "category": "Colors",
+                                "displayPriority": 10,
+                                "description": "Background color of the cells in this column",
+                                "defaultValue": null,
+                                "defaultValueInternal": null
+                            },
+                            {
+                                "name": "textColor",
+                                "displayName": "Text Color",
+                                "category": "Colors",
+                                "displayPriority": 11,
+                                "description": "Text color of the cells in this column",
+                                "defaultValue": null,
+                                "defaultValueInternal": null
+                            },
+                            {
+                                "name": "name",
+                                "displayName": "Name",
+                                "category": "General",
+                                "displayPriority": 10,
+                                "description": "Name of the property in the data object. If not defined the column adresses the full object (usefull if the data is an array containing simple datatypes).",
+                                "defaultValue": null,
+                                "defaultValueInternal": null
+                            },
+                            {
+                                "name": "label",
+                                "displayName": "Label",
+                                "category": "General",
+                                "displayPriority": 11,
+                                "description": "Name of the label for this column",
+                                "defaultValue": "",
+                                "defaultValueInternal": null
+                            },
+                            {
+                                "name": "control",
+                                "displayName": "Control",
+                                "category": "General",
+                                "displayPriority": 12,
+                                "description": "Type of the input elements for this column",
+                                "defaultValue": "TextBox",
+                                "defaultValueInternal": null
+                            },
+                            {
+                                "name": "width",
+                                "displayName": "Width",
+                                "category": "General",
+                                "displayPriority": 13,
+                                "description": "Width for this column",
+                                "defaultValue": 100,
+                                "defaultValueInternal": null
+                            },
+                            {
+                                "name": "widthUnit",
+                                "refTo": "width",
+                                "displayName": "Width Unit",
+                                "category": "General",
+                                "displayPriority": 13,
+                                "description": "Width unit for this column. px defines an absolute width, % is relative to the control width and factor can be used to divide the available space into fractions.",
+                                "defaultValue": "px",
+                                "defaultValueInternal": "px"
+                            },
+                            {
+                                "name": "editable",
+                                "displayName": "Editable",
+                                "category": "General",
+                                "displayPriority": 14,
+                                "description": "Can this column be edited (text, number) or operated (button, checkbox)?",
+                                "defaultValue": false,
+                                "defaultValueInternal": false
+                            },
+                            {
+                                "name": "minWidth",
+                                "displayName": "Min Width",
+                                "category": "General",
+                                "displayPriority": 15,
+                                "description": "Minimum width for this column",
+                                "defaultValue": 100,
+                                "defaultValueInternal": null
+                            },
+                            {
+                                "name": "minWidthUnit",
+                                "refTo": "minWidth",
+                                "displayName": "Min Width Unit",
+                                "category": "General",
+                                "displayPriority": 15,
+                                "description": "Minimum width unit for this column",
+                                "defaultValue": "px",
+                                "defaultValueInternal": "px"
+                            },
+                            {
+                                "name": "resize",
+                                "displayName": "Resize",
+                                "category": "General",
+                                "displayPriority": 16,
+                                "description": "Can this column be resized? Columns that have factor as their widthUnit can never be resizeable.",
+                                "defaultValue": false,
+                                "defaultValueInternal": false
+                            },
+                            {
+                                "name": "sortable",
+                                "displayName": "Sortable",
+                                "category": "General",
+                                "displayPriority": 17,
+                                "description": "Can this column be sortedby user interaction?",
+                                "defaultValue": true,
+                                "defaultValueInternal": true
+                            },
+                            {
+                                "name": "horizontalAlignment",
+                                "displayName": "Horizontal Alignment",
+                                "category": "General",
+                                "displayPriority": 18,
+                                "description": "Horizontal alignment of this column",
+                                "defaultValue": "Left",
+                                "defaultValueInternal": "Left"
+                            },
+                            {
+                                "name": "verticalAlignment",
+                                "displayName": "Vertical Alignment",
+                                "category": "General",
+                                "displayPriority": 19,
+                                "description": "Vertical alignment of this column",
+                                "defaultValue": "Center",
+                                "defaultValueInternal": "Center"
+                            },
+                            {
+                                "name": "headerHorizontalAlignment",
+                                "displayName": "Header Horizontal Alignment",
+                                "category": "General",
+                                "displayPriority": 20,
+                                "description": "Horizontal alignment of the header of this column",
+                                "defaultValue": "Center",
+                                "defaultValueInternal": "Center"
+                            },
+                            {
+                                "name": "headerVerticalAlignment",
+                                "displayName": "Header Vertical Alignment",
+                                "category": "General",
+                                "displayPriority": 21,
+                                "description": "Vertical alignment of the header of this column",
+                                "defaultValue": "Center",
+                                "defaultValueInternal": "Center"
+                            },
+                            {
+                                "name": "format",
+                                "displayName": "Format",
+                                "category": "General",
+                                "displayPriority": 22,
+                                "description": "A reference of function which is called with each entry",
+                                "allowedFunctions": {
+                                    "returnType": "tchmi:general#/definitions/String",
+                                    "requiredArguments": [
+                                        {
+                                            "type": "tchmi:general#/definitions/Any",
+                                            "description": "The value to format."
+                                        },
+                                        {
+                                            "type": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TchmiTreeView.ValueMetaData",
+                                            "description": "Meta data of the value. Includes the json schema."
+                                        }
+                                    ],
+                                    "requiredWaitMode": "Synchronous"
+                                },
+                                "defaultValue": null,
+                                "defaultValueInternal": null
+                            },
+                            {
+                                "name": "dataDefinitions",
+                                "displayName": "Data Definitions",
+                                "category": "General",
+                                "displayPriority": 23,
+                                "description": "Mapping from the srcData to a combobox or image selection. \nText to show on Buttons. \nRestrictions for number inputs.",
+                                "defaultValue": null,
+                                "defaultValueInternal": null
+                            },
+                            {
+                                "name": "ignoreEscapeSequences",
+                                "displayName": "Ignore Escape Sequences",
+                                "category": "General",
+                                "displayPriority": 24,
+                                "description": "When set to true a backslash in a text will be shown verbatim in the HMI",
+                                "defaultValue": false,
+                                "defaultValueInternal": false
+                            },
+                            {
+                                "name": "autoFocusOut",
+                                "displayName": "Auto Focus Out",
+                                "category": "General",
+                                "displayPriority": 25,
+                                "description": "When set to true the control will automatically lose focus when the user presses the enter or escape key",
+                                "defaultValue": true,
+                                "defaultValueInternal": true
+                            },
+                            {
+                                "name": "autoSelectText",
+                                "displayName": "Auto Select Text",
+                                "category": "General",
+                                "displayPriority": 26,
+                                "description": "When set to true all text within the control will be selected when the control gains focus",
+                                "defaultValue": false,
+                                "defaultValueInternal": false
+                            },
+                            {
+                                "name": "maxTextLength",
+                                "displayName": "Max Text Length",
+                                "category": "General",
+                                "displayPriority": 27,
+                                "description": "Maximum number of characters that can be entered in the TextBox",
+                                "defaultValue": null,
+                                "defaultValueInternal": null
+                            }
+                        ],
+                        "properties": {
+                            "cellBackground": {
+                                "$ref": "tchmi:framework#/definitions/Color"
+                            },
+                            "textColor": {
+                                "$ref": "tchmi:framework#/definitions/SolidColor"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "label": {
+                                "type": "string"
+                            },
+                            "control": {
+                                "type": "string",
+                                "enum": [
+                                    "TextBox",
+                                    "TextBlock",
+                                    "CheckBox",
+                                    "Image",
+                                    "ComboBox",
+                                    "NumericInput",
+                                    "SpinboxInput",
+                                    "PasswordInput",
+                                    "Button",
+                                    "ToggleButton",
+                                    "ToggleSwitch",
+                                    "RadioButton",
+                                    "DateTimeInput",
+                                    "TimespanInput",
+                                    "AutoDetectControl"
+                                ]
+                            },
+                            "width": {
+                                "type": "number",
+                                "minimum": 0
+                            },
+                            "widthUnit": {
+                                "$ref": "tchmi:framework#/definitions/MeasurementUnitOrFactor"
+                            },
+                            "editable": {
+                                "type": "boolean"
+                            },
+                            "minWidth": {
+                                "type": "number",
+                                "minimum": 0
+                            },
+                            "minWidthUnit": {
+                                "$ref": "tchmi:framework#/definitions/MeasurementUnit"
+                            },
+                            "resize": {
+                                "type": "boolean"
+                            },
+                            "sortable": {
+                                "type": "boolean"
+                            },
+                            "horizontalAlignment": {
+                                "$ref": "tchmi:framework#/definitions/HorizontalAlignment"
+                            },
+                            "verticalAlignment": {
+                                "$ref": "tchmi:framework#/definitions/VerticalAlignment"
+                            },
+                            "headerHorizontalAlignment": {
+                                "$ref": "tchmi:framework#/definitions/HorizontalAlignment"
+                            },
+                            "headerVerticalAlignment": {
+                                "$ref": "tchmi:framework#/definitions/VerticalAlignment"
+                            },
+                            "format": {
+                                "$ref": "tchmi:framework#/definitions/Function"
+                            },
+                            "dataDefinitions": {
+                                "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiDatagrid.DataDefinitionList"
+                            },
+                            "ignoreEscapeSequences": {
+                                "type": "boolean"
+                            },
+                            "autoFocusOut": {
+                                "type": "boolean"
+                            },
+                            "autoSelectText": {
+                                "type": "boolean"
+                            },
+                            "maxTextLength": {
+                                "type": "integer",
+                                "minimum": 0
+                            }
+                        },
+                        "required": [
+                            "label",
+                            "control",
+                            "width",
+                            "widthUnit",
+                            "resize",
+                            "minWidth",
+                            "minWidthUnit",
+                            "editable",
+                            "horizontalAlignment",
+                            "verticalAlignment"
+                        ],
+                        "additionalProperties": false
+                    }
+                },
+                {
+                    "type": "object",
+                    "propertiesMeta": [
+                        {
+                            "name": "cellBackground",
+                            "displayName": "Cell Background",
+                            "category": "Colors",
+                            "displayPriority": 10,
+                            "description": "Background color of the cells in this column",
+                            "defaultValue": null,
+                            "defaultValueInternal": null
+                        },
+                        {
+                            "name": "textColor",
+                            "displayName": "Text Color",
+                            "category": "Colors",
+                            "displayPriority": 11,
+                            "description": "Text color of the cells in this column",
+                            "defaultValue": null,
+                            "defaultValueInternal": null
+                        },
+                        {
+                            "name": "label",
+                            "displayName": "Label",
+                            "category": "General",
+                            "displayPriority": 11,
+                            "description": "Name of the label for this column",
+                            "defaultValue": "",
+                            "defaultValueInternal": null
+                        },
+                        {
+                            "name": "control",
+                            "displayName": "Control",
+                            "category": "General",
+                            "displayPriority": 12,
+                            "description": "Type of the input elements for this column",
+                            "defaultValue": "TextBox",
+                            "defaultValueInternal": null
+                        },
+                        {
+                            "name": "width",
+                            "displayName": "Width",
+                            "category": "General",
+                            "displayPriority": 13,
+                            "description": "Width for this column",
+                            "defaultValue": 100,
+                            "defaultValueInternal": null
+                        },
+                        {
+                            "name": "widthUnit",
+                            "refTo": "width",
+                            "displayName": "Width Unit",
+                            "category": "General",
+                            "displayPriority": 13,
+                            "description": "Width unit for this column. px defines an absolute width, % is relative to the control width and factor can be used to divide the available space into fractions.",
+                            "defaultValue": "px",
+                            "defaultValueInternal": "px"
+                        },
+                        {
+                            "name": "editable",
+                            "displayName": "Editable",
+                            "category": "General",
+                            "displayPriority": 14,
+                            "description": "Can this column be edited (text, number) or operated (button, checkbox)?",
+                            "defaultValue": false,
+                            "defaultValueInternal": false
+                        },
+                        {
+                            "name": "minWidth",
+                            "displayName": "Min Width",
+                            "category": "General",
+                            "displayPriority": 15,
+                            "description": "Minimum width for this column",
+                            "defaultValue": 100,
+                            "defaultValueInternal": null
+                        },
+                        {
+                            "name": "minWidthUnit",
+                            "refTo": "minWidth",
+                            "displayName": "Min Width Unit",
+                            "category": "General",
+                            "displayPriority": 15,
+                            "description": "Minimum width unit for this column",
+                            "defaultValue": "px",
+                            "defaultValueInternal": "px"
+                        },
+                        {
+                            "name": "resize",
+                            "displayName": "Resize",
+                            "category": "General",
+                            "displayPriority": 16,
+                            "description": "Can this column be resized? Columns that have factor as their widthUnit can never be resizeable.",
+                            "defaultValue": false,
+                            "defaultValueInternal": false
+                        },
+                        {
+                            "name": "sortable",
+                            "displayName": "Sortable",
+                            "category": "General",
+                            "displayPriority": 17,
+                            "description": "Can this column be sortedby user interaction?",
+                            "defaultValue": true,
+                            "defaultValueInternal": true
+                        },
+                        {
+                            "name": "horizontalAlignment",
+                            "displayName": "Horizontal Alignment",
+                            "category": "General",
+                            "displayPriority": 18,
+                            "description": "Horizontal alignment of this column",
+                            "defaultValue": "Left",
+                            "defaultValueInternal": "Left"
+                        },
+                        {
+                            "name": "verticalAlignment",
+                            "displayName": "Vertical Alignment",
+                            "category": "General",
+                            "displayPriority": 19,
+                            "description": "Vertical alignment of this column",
+                            "defaultValue": "Center",
+                            "defaultValueInternal": "Center"
+                        },
+                        {
+                            "name": "headerHorizontalAlignment",
+                            "displayName": "Header Horizontal Alignment",
+                            "category": "General",
+                            "displayPriority": 20,
+                            "description": "Horizontal alignment of the header of this column",
+                            "defaultValue": "Center",
+                            "defaultValueInternal": "Center"
+                        },
+                        {
+                            "name": "headerVerticalAlignment",
+                            "displayName": "Header Vertical Alignment",
+                            "category": "General",
+                            "displayPriority": 21,
+                            "description": "Vertical alignment of the header of this column",
+                            "defaultValue": "Center",
+                            "defaultValueInternal": "Center"
+                        },
+                        {
+                            "name": "format",
+                            "displayName": "Format",
+                            "category": "General",
+                            "displayPriority": 22,
+                            "description": "A reference of function which is called with each entry",
+                            "allowedFunctions": {
+                                "returnType": "tchmi:general#/definitions/String",
+                                "requiredArguments": [
+                                    {
+                                        "type": "tchmi:general#/definitions/Any",
+                                        "description": "The value to format."
+                                    },
+                                    {
+                                        "type": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TchmiTreeView.ValueMetaData",
+                                        "description": "Meta data of the value. Includes the json schema."
+                                    }
+                                ],
+                                "requiredWaitMode": "Synchronous"
+                            },
+                            "defaultValue": null,
+                            "defaultValueInternal": null
+                        },
+                        {
+                            "name": "dataDefinitions",
+                            "displayName": "Data Definitions",
+                            "category": "General",
+                            "displayPriority": 23,
+                            "description": "Mapping from the srcData to a combobox or image selection. \nText to show on Buttons. \nRestrictions for number inputs.",
+                            "defaultValue": null,
+                            "defaultValueInternal": null
+                        },
+                        {
+                            "name": "ignoreEscapeSequences",
+                            "displayName": "Ignore Escape Sequences",
+                            "category": "General",
+                            "displayPriority": 24,
+                            "description": "When set to true a backslash in a text will be shown verbatim in the HMI",
+                            "defaultValue": false,
+                            "defaultValueInternal": false
+                        },
+                        {
+                            "name": "autoFocusOut",
+                            "displayName": "Auto Focus Out",
+                            "category": "General",
+                            "displayPriority": 25,
+                            "description": "When set to true the control will automatically lose focus when the user presses the enter or escape key",
+                            "defaultValue": true,
+                            "defaultValueInternal": true
+                        },
+                        {
+                            "name": "autoSelectText",
+                            "displayName": "Auto Select Text",
+                            "category": "General",
+                            "displayPriority": 26,
+                            "description": "When set to true all text within the control will be selected when the control gains focus",
+                            "defaultValue": false,
+                            "defaultValueInternal": false
+                        },
+                        {
+                            "name": "maxTextLength",
+                            "displayName": "Max Text Length",
+                            "category": "General",
+                            "displayPriority": 27,
+                            "description": "Maximum number of characters that can be entered in the TextBox",
+                            "defaultValue": null,
+                            "defaultValueInternal": null
+                        }
+                    ],
+                    "properties": {
+                        "cellBackground": {
+                            "$ref": "tchmi:framework#/definitions/Color"
+                        },
+                        "textColor": {
+                            "$ref": "tchmi:framework#/definitions/SolidColor"
+                        },
+                        "label": {
+                            "type": "string"
+                        },
+                        "control": {
+                            "type": "string",
+                            "enum": [
+                                "TextBox",
+                                "TextBlock",
+                                "CheckBox",
+                                "Image",
+                                "ComboBox",
+                                "NumericInput",
+                                "SpinboxInput",
+                                "PasswordInput",
+                                "Button",
+                                "ToggleButton",
+                                "ToggleSwitch",
+                                "RadioButton",
+                                "DateTimeInput",
+                                "TimespanInput",
+                                "AutoDetectControl"
+                            ]
+                        },
+                        "width": {
+                            "type": "number",
+                            "minimum": 0
+                        },
+                        "widthUnit": {
+                            "$ref": "tchmi:framework#/definitions/MeasurementUnitOrFactor"
+                        },
+                        "editable": {
+                            "type": "boolean"
+                        },
+                        "minWidth": {
+                            "type": "number",
+                            "minimum": 0
+                        },
+                        "minWidthUnit": {
+                            "$ref": "tchmi:framework#/definitions/MeasurementUnit"
+                        },
+                        "resize": {
+                            "type": "boolean"
+                        },
+                        "sortable": {
+                            "type": "boolean"
+                        },
+                        "horizontalAlignment": {
+                            "$ref": "tchmi:framework#/definitions/HorizontalAlignment"
+                        },
+                        "verticalAlignment": {
+                            "$ref": "tchmi:framework#/definitions/VerticalAlignment"
+                        },
+                        "headerHorizontalAlignment": {
+                            "$ref": "tchmi:framework#/definitions/HorizontalAlignment"
+                        },
+                        "headerVerticalAlignment": {
+                            "$ref": "tchmi:framework#/definitions/VerticalAlignment"
+                        },
+                        "format": {
+                            "$ref": "tchmi:framework#/definitions/Function"
+                        },
+                        "dataDefinitions": {
+                            "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiDatagrid.DataDefinitionList"
+                        },
+                        "ignoreEscapeSequences": {
+                            "type": "boolean"
+                        },
+                        "autoFocusOut": {
+                            "type": "boolean"
+                        },
+                        "autoSelectText": {
+                            "type": "boolean"
+                        },
+                        "maxTextLength": {
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    },
+                    "required": [
+                        "label",
+                        "control",
+                        "width",
+                        "widthUnit",
+                        "resize",
+                        "minWidth",
+                        "minWidthUnit",
+                        "editable",
+                        "horizontalAlignment",
+                        "verticalAlignment"
+                    ],
+                    "additionalProperties": false
+                }
+            ]
+        },
+        "TcHmi.Controls.Beckhoff.TchmiTreeView.ValueMetaData": {
+            "title": "ValueMetaData",
+            "description": "Meta data of a value.",
+            "additionalProperties": false,
+            "properties": {
+                "schema": {
+                    "type": "object"
+                }
+            },
+            "propertiesMeta": [
+                {
+                    "name": "schema",
+                    "displayName": "Schema",
+                    "category": "General",
+                    "displayPriority": 10,
+                    "description": "The json schema of the value.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                }
+            ],
+            "required": ["schema"]
+        }
+    }
+}

@@ -1,0 +1,37 @@
+/* General theme independent control css. */
+
+.TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb {
+    overflow: hidden;
+    font-size: 18px;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-Template {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    padding-left: 8px;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-Template .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-button {
+    box-shadow: 0 0 0 0;
+    width: auto;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    background: none;
+    padding-left: 5px;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+.TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-Template .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-button span {
+    pointer-events: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-Template .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb-button.down {
+    box-shadow: 0 0 0 0;
+}

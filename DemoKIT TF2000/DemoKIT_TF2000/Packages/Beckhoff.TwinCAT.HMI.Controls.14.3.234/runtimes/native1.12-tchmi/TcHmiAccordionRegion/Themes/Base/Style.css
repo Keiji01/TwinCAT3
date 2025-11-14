@@ -1,0 +1,12 @@
+/* TcHmiAccordionRegion styles for theme: Base*/
+
+.TcHmi_Controls_Beckhoff_TcHmiAccordionRegion {
+    --tchmi-content-background: var(--tchmi-background-color-1);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiAccordionRegion-Template
+    > tchmi-accordion
+    > tchmi-accordion-item
+    > tchmi-accordion-content {
+    background: var(--tchmi-content-background);
+}

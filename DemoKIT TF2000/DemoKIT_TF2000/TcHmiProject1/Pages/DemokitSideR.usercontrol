@@ -87,8 +87,7 @@
 
 
 
-<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
   {
     "event": "%pp%SD1%/pp%",
     "actions": [
@@ -117,7 +116,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnSD1::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -134,7 +133,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnSD1::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -151,8 +150,7 @@
       }
     ]
   }
-]
-</script>
+]</script>
 
 
 </div>
@@ -160,8 +158,7 @@
 
 
 
-<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
   {
     "event": "%pp%SD2%/pp%",
     "actions": [
@@ -190,7 +187,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnSD2::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -207,7 +204,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnSD2::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -224,15 +221,13 @@
       }
     ]
   }
-]
-</script>
+]</script>
 </div>
 <div id="btnSD3" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="13" data-tchmi-height-unit="%" data-tchmi-left-unit="px" data-tchmi-top-unit="px" data-tchmi-width="10" data-tchmi-width-unit="%" data-tchmi-right-unit="%" data-tchmi-bottom-unit="%" data-tchmi-right="45" data-tchmi-bottom="50" data-tchmi-zindex="1">
 
 
 
-<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
   {
     "event": "%pp%SD3%/pp%",
     "actions": [
@@ -261,7 +256,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnSD3::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -278,7 +273,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnSD3::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -295,15 +290,13 @@
       }
     ]
   }
-]
-</script>
+]</script>
 </div>
 <div id="btnSD4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="13" data-tchmi-height-unit="%" data-tchmi-left-unit="px" data-tchmi-top-unit="px" data-tchmi-width="10" data-tchmi-width-unit="%" data-tchmi-right-unit="%" data-tchmi-bottom-unit="%" data-tchmi-right="30" data-tchmi-bottom="50" data-tchmi-zindex="1">
 
 
 
-<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
   {
     "event": "%pp%SD3%/pp%",
     "actions": [
@@ -332,7 +325,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnSD4::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -349,7 +342,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnSD4::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -366,8 +359,7 @@
       }
     ]
   }
-]
-</script>
+]</script>
 </div>
 <div id="txtbxEA1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextbox" data-tchmi-height="12.5" data-tchmi-height-unit="%" data-tchmi-left="15" data-tchmi-left-unit="%" data-tchmi-text="%pp%EA1%/pp%" data-tchmi-top="12.5" data-tchmi-top-unit="%" data-tchmi-width="25" data-tchmi-width-unit="%" data-tchmi-zindex="1">
 <script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
@@ -395,8 +387,7 @@
 
 
 
-<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
   {
     "event": "%pp%ED1%/pp%",
     "actions": [
@@ -425,7 +416,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnED1::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -442,7 +433,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnED1::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -459,13 +450,11 @@
       }
     ]
   }
-]
-</script>
+]</script>
 </div>
 <div id="btnED2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="13" data-tchmi-height-unit="%" data-tchmi-left-unit="px" data-tchmi-top-unit="px" data-tchmi-width="10" data-tchmi-width-unit="%" data-tchmi-right-unit="%" data-tchmi-bottom-unit="%" data-tchmi-right="60" data-tchmi-bottom="25" data-tchmi-zindex="1">
 
-<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
   {
     "event": "%pp%ED2%/pp%",
     "actions": [
@@ -494,7 +483,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnED2::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -511,7 +500,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnED2::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -528,13 +517,11 @@
       }
     ]
   }
-]
-</script>
+]</script>
 </div>
 <div id="btnED3" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="13" data-tchmi-height-unit="%" data-tchmi-left-unit="px" data-tchmi-top-unit="px" data-tchmi-width="10" data-tchmi-width-unit="%" data-tchmi-right-unit="%" data-tchmi-bottom-unit="%" data-tchmi-right="45" data-tchmi-bottom="25" data-tchmi-zindex="1">
 
-<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
   {
     "event": "%pp%ED3%/pp%",
     "actions": [
@@ -563,7 +550,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnED3::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -580,7 +567,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnED3::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -597,13 +584,11 @@
       }
     ]
   }
-]
-</script>
+]</script>
 </div>
 <div id="btnED4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="13" data-tchmi-height-unit="%" data-tchmi-left-unit="px" data-tchmi-top-unit="px" data-tchmi-width="10" data-tchmi-width-unit="%" data-tchmi-right-unit="%" data-tchmi-bottom-unit="%" data-tchmi-right="30" data-tchmi-bottom="25" data-tchmi-zindex="1">
 
-<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
   {
     "event": "%pp%ED4%/pp%",
     "actions": [
@@ -632,7 +617,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnED4::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -649,7 +634,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnED4::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -666,13 +651,11 @@
       }
     ]
   }
-]
-</script>
+]</script>
 </div>
 <div id="btnED5" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="13" data-tchmi-height-unit="%" data-tchmi-left-unit="px" data-tchmi-top-unit="px" data-tchmi-width="10" data-tchmi-width-unit="%" data-tchmi-right-unit="%" data-tchmi-bottom-unit="%" data-tchmi-right="75" data-tchmi-bottom="0" data-tchmi-zindex="1">
 
-<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
   {
     "event": "%pp%ED5%/pp%",
     "actions": [
@@ -701,7 +684,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnED5::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -718,7 +701,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnED5::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -735,13 +718,11 @@
       }
     ]
   }
-]
-</script>
+]</script>
 </div>
 <div id="btnED6" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="13" data-tchmi-height-unit="%" data-tchmi-left-unit="px" data-tchmi-top-unit="px" data-tchmi-width="10" data-tchmi-width-unit="%" data-tchmi-right-unit="%" data-tchmi-bottom-unit="%" data-tchmi-right="60" data-tchmi-bottom="0" data-tchmi-zindex="1">
 
-<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
   {
     "event": "%pp%ED6%/pp%",
     "actions": [
@@ -770,7 +751,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnED6::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -787,7 +768,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnED6::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -804,13 +785,11 @@
       }
     ]
   }
-]
-</script>
+]</script>
 </div>
 <div id="btnED7" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="13" data-tchmi-height-unit="%" data-tchmi-left-unit="px" data-tchmi-top-unit="px" data-tchmi-width="10" data-tchmi-width-unit="%" data-tchmi-right-unit="%" data-tchmi-bottom-unit="%" data-tchmi-right="45" data-tchmi-bottom="0" data-tchmi-zindex="1">
 
-<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
   {
     "event": "%pp%ED7%/pp%",
     "actions": [
@@ -839,7 +818,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnED7::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -856,7 +835,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnED7::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -873,13 +852,11 @@
       }
     ]
   }
-]
-</script>
+]</script>
 </div>
 <div id="btnED8" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="13" data-tchmi-height-unit="%" data-tchmi-left-unit="px" data-tchmi-top-unit="px" data-tchmi-width="10" data-tchmi-width-unit="%" data-tchmi-right-unit="%" data-tchmi-bottom-unit="%" data-tchmi-right="30" data-tchmi-bottom="0" data-tchmi-zindex="1">
 
-<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
   {
     "event": "%pp%ED8%/pp%",
     "actions": [
@@ -908,7 +885,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnED8::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -925,7 +902,7 @@
               {
                 "objectType": "WriteToSymbol",
                 "active": true,
-                "symbolExpression": "%ctrl%btnED8::FillColor%/ctrl%",
+                "symbolExpression": "%ctx%owner::FillColor%/ctx%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
@@ -942,8 +919,7 @@
       }
     ]
   }
-]
-</script>
+]</script>
 </div>
 <div id="TcHmiTextblock" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="8" data-tchmi-height-unit="%" data-tchmi-left="21.5" data-tchmi-left-unit="%" data-tchmi-text="EA1" data-tchmi-top="2.5" data-tchmi-top-unit="%" data-tchmi-width="12.5" data-tchmi-width-unit="%" data-tchmi-word-wrap="true" data-tchmi-background-image-vertical-alignment="Center" data-tchmi-background-image-horizontal-alignment="Left" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="1">
 </div>

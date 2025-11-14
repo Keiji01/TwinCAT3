@@ -1,0 +1,163 @@
+/** Styles for the theme: Base-Dark */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_PermissionManagement {
+    --tchmi-background: #2a3845;
+    --tchmi-color: #ffffff;
+    background-color: var(--tchmi-background);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement table {
+    color: white;
+    background: #333;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement thead td:first-child,
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement thead {
+    background: #555; /* Darker shade for thead */
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement.scroll-vertical thead {
+    box-shadow: 1px 1px 10px 1px #333; /* Darker shadow */
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .first-header,
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .second-header,
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .first-header th:first-child,
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .second-header td:first-child {
+    background: #306080; /* Adjusted darker blue */
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement th,
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td {
+    border-color: #666; /* Darker border */
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement [text-search='true'] .highlight {
+    background: #b9a07a; /* Darker highlight color */
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .symbol-search {
+    border-color: rgba(255, 255, 255, 0.7);
+    color: white;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .symbol-search::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .all-symbols {
+    border-top-color: #888;
+    border-bottom-color: #888;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement th:first-child,
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td:first-child {
+    border-right-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement th:nth-child(n + 3),
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td:nth-child(3n + 4) {
+    border-left-color: #888 !important;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td:nth-child(3),
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td:nth-child(3n + 5),
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td:nth-child(3n + 6) {
+    border-left-color: #666;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement tbody tr:not(.hide):nth-child(2n + 2),
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement tbody tr:not(.hide):nth-child(2n + 2) td:first-child {
+    background: #444; /* Darker stripe */
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement tbody tr:nth-child(2n + 1) td:first-child {
+    background: #333; /* Darker background */
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement tr:not(.no-hover):hover,
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement tr:not(.no-hover):hover td:first-child {
+    background: #555 !important; /* Darker hover */
+}
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement {
+    --tchmi-background: #2e2e2e; /* Dark background */
+    --tchmi-color: #acb2b8; /* Lighter text color */
+    background-color: var(--tchmi-background);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement * {
+    box-sizing: border-box;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .message-no-symbols-found {
+    background: #444; /* Darker message background */
+    border-color: #666; /* Darker border color */
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .arrow {
+    border-right-color: #888; /* Lighter for visibility against dark backgrounds */
+    border-bottom-color: #888; /* Same as above */
+}
+
+tchmi-permission-checkbox
+    .checkbox-container:not([color-coded]):not([disabled]):not([empty])
+    input:checked
+    ~ .checkmark {
+    background: #00aeef !important; /* Keep distinct color for checked state */
+}
+
+tchmi-permission-checkbox
+    .checkbox-container:not([color-coded]):not([disabled]):not([empty])
+    input:not(:checked)
+    ~ .checkmark {
+    background: #555 !important; /* Darker unchecked state */
+}
+
+/* Color coded: When the checkbox is checked, add a green background */
+tchmi-permission-checkbox .checkbox-container[color-coded]:not([disabled]):not([empty]) input:checked ~ .checkmark {
+    background: #74d59f !important; /* Keep for positive indication */
+}
+
+/* Color coded: When the checkbox is unchecked, use a dark red background for contrast */
+tchmi-permission-checkbox
+    .checkbox-container[color-coded]:not([disabled]):not([empty])
+    input:not(:checked)
+    ~ .checkmark {
+    background: #d17373 !important; /* Darker shade for negative indication */
+}
+
+/* Show tick when checked */
+tchmi-permission-checkbox .checkbox-container:not([readonly]):not([empty]) input:checked ~ .checkmark:after {
+    border-color: white; /* Visible against dark backgrounds */
+}
+
+/* Show cross when not checked */
+tchmi-permission-checkbox .checkbox-container:not([readonly]):not([empty]) input:not(:checked) ~ .checkmark:before,
+tchmi-permission-checkbox .checkbox-container:not([readonly]):not([empty]) input:not(:checked) ~ .checkmark:after {
+    background: white; /* Contrast against darker backgrounds */
+}
+
+/* Indicator R for read-only */
+tchmi-permission-checkbox .checkbox-container[readonly]:not([empty]) .checkmark:after {
+    color: white; /* Visibility against dark backgrounds */
+}
+
+tchmi-permission-checkbox .checkbox-container[disabled] .checkmark,
+tchmi-permission-checkbox .checkbox-container[empty] .checkmark {
+    background: #444; /* Darker for disabled state */
+}
+
+tchmi-permission-checkbox .loading {
+    border-color: transparent;
+    border-radius: 50%; /* Circle shape */
+    border-top-color: white; /* Visible against dark backgrounds */
+}
+
+tchmi-permission-checkbox .spinner {
+    border-color: rgba(255, 255, 255, 0.3);
+    border-top-color: #fff; /* Ensure spinner is visible in dark theme */
+}

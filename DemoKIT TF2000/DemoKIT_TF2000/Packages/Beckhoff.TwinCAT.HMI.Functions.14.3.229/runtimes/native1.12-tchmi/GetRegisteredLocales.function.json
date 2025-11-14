@@ -1,0 +1,30 @@
+{
+    "$schema": "../TcHmiFramework/Schema/FunctionDescription.Schema.json",
+    "apiVersion": 1,
+    "version": {
+        "full": "14.3.229.0",
+        "major": 14,
+        "minor": 3,
+        "build": 229,
+        "revision": 0
+    },
+    "dependencyFiles": [
+        {
+            "name": "GetRegisteredLocales.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "function": {
+        "name": "GetRegisteredLocales",
+        "namespace": "TcHmi.Functions.Beckhoff",
+        "displayName": "GetRegisteredLocales",
+        "visible": true,
+        "category": "Locale",
+        "description": "Returns the list of registered locales as array of string.",
+        "returnValue": {
+            "type": "tchmi:general#/definitions/Array"
+        },
+        "arguments": []
+    }
+}

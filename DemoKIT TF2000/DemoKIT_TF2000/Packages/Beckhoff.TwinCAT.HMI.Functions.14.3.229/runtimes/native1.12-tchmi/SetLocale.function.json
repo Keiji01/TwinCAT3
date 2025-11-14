@@ -1,0 +1,37 @@
+{
+    "$schema": "../TcHmiFramework/Schema/FunctionDescription.Schema.json",
+    "apiVersion": 1,
+    "version": {
+        "full": "14.3.229.0",
+        "major": 14,
+        "minor": 3,
+        "build": 229,
+        "revision": 0
+    },
+    "dependencyFiles": [
+        {
+            "name": "SetLocale.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "function": {
+        "name": "SetLocale",
+        "namespace": "TcHmi.Functions.Beckhoff",
+        "displayName": "SetLocale",
+        "visible": true,
+        "category": "Locale",
+        "description": "Sets the application locale.\nThis function is deprecated. Its recommended to use SetLocaleEx which waits for loading of the language files.",
+        "returnValue": null,
+        "arguments": [
+            {
+                "name": "locale",
+                "displayName": "Locale",
+                "type": "tchmi:general#/definitions/ProjectLocale",
+                "description": "Locale",
+                "required": true,
+                "bindable": true
+            }
+        ]
+    }
+}

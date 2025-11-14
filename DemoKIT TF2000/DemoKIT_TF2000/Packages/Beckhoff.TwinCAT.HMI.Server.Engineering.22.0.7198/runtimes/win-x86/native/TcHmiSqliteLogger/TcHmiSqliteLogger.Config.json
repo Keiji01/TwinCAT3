@@ -1,0 +1,189 @@
+{
+  "$schema": "../../TcHmiSrv/schema/ExtensionSettings.Schema.json",
+  "version": "14.4.124.0",
+  "configVersion": "1.0.1.2",
+  "guid": "CD0B1D03-27D7-4904-BEFF-3882D751757A",
+  "visibility": "HideInEngineering",
+  "policies": [
+    "StrictPropertyValidation",
+    "StrictConfigListenerFilter"
+  ],
+  "symbols": {
+    "ListEvents": {
+      "readValue": {
+        "function": true
+      }
+    },
+    "Diagnostics": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "properties": {
+          "allDomains": {
+            "type": "object",
+            "properties": {
+              "databaseSize": {
+                "allOf": [
+                  {
+                    "$ref": "tchmi:general#/definitions/INT64"
+                  },
+                  {
+                    "propertyOrder": 1,
+                    "unit": "byte"
+                  }
+                ]
+              },
+              "persistentDatabaseSize": {
+                "allOf": [
+                  {
+                    "$ref": "tchmi:general#/definitions/INT64"
+                  },
+                  {
+                    "propertyOrder": 2,
+                    "unit": "byte"
+                  }
+                ]
+              },
+              "numEvents": {
+                "type": "integer",
+                "propertyOrder": 3
+              },
+              "numPersistentEvents": {
+                "type": "integer",
+                "propertyOrder": 4,
+                "visibility": "HideInEngineering"
+              },
+              "numEventsWithMessagePayload": {
+                "type": "integer",
+                "propertyOrder": 5
+              },
+              "numPersistentEventsWithMessagePayload": {
+                "type": "integer",
+                "propertyOrder": 6,
+                "visibility": "HideInEngineering"
+              },
+              "numEventsWithAlarmPayload": {
+                "type": "integer",
+                "propertyOrder": 7
+              },
+              "numPersistentEventsWithAlarmPayload": {
+                "type": "integer",
+                "propertyOrder": 8,
+                "visibility": "HideInEngineering"
+              }
+            },
+            "required": [
+              "databaseSize",
+              "persistentDatabaseSize",
+              "numEvents",
+              "numPersistentEvents",
+              "numEventsWithMessagePayload",
+              "numPersistentEventsWithMessagePayload",
+              "numEventsWithAlarmPayload",
+              "numPersistentEventsWithAlarmPayload"
+            ]
+          },
+          "perDomain": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "numEvents": {
+                  "type": "integer",
+                  "propertyOrder": 1
+                },
+                "numPersistentEvents": {
+                  "type": "integer",
+                  "propertyOrder": 2,
+                  "visibility": "HideInEngineering"
+                },
+                "numEventsWithMessagePayload": {
+                  "type": "integer",
+                  "propertyOrder": 3
+                },
+                "numPersistentEventsWithMessagePayload": {
+                  "type": "integer",
+                  "propertyOrder": 4,
+                  "visibility": "HideInEngineering"
+                },
+                "numEventsWithAlarmPayload": {
+                  "type": "integer",
+                  "propertyOrder": 5
+                },
+                "numPersistentEventsWithAlarmPayload": {
+                  "type": "integer",
+                  "propertyOrder": 6,
+                  "visibility": "HideInEngineering"
+                }
+              },
+              "required": [
+                "numEvents",
+                "numPersistentEvents",
+                "numEventsWithMessagePayload",
+                "numPersistentEventsWithMessagePayload",
+                "numEventsWithAlarmPayload",
+                "numPersistentEventsWithAlarmPayload"
+              ]
+            }
+          }
+        },
+        "required": [
+          "allDomains",
+          "perDomain"
+        ]
+      }
+    },
+    "Clear": {
+      "readValue": {
+        "function": true
+      },
+      "writeValue": {
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "match": {
+                "$ref": "tchmi:server#/definitions/eventFilter"
+              }
+            },
+            "required": [
+              "match"
+            ]
+          },
+          {
+            "$ref": "tchmi:general#/definitions/VOID"
+          }
+        ]
+      }
+    },
+    "ClearLocalizations": {
+      "readValue": {
+        "function": true
+      },
+      "writeValue": {
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "match": {
+                "$ref": "tchmi:server#/definitions/eventFilter"
+              }
+            },
+            "required": [
+              "match"
+            ]
+          },
+          {
+            "$ref": "tchmi:general#/definitions/VOID"
+          }
+        ]
+      }
+    }
+  },
+  "packageVersion": "14.4.124.0",
+  "productVersion": "14.4.124.0",
+  "signature": "Vze1hyGrVRIUE32w/JsJIq5B2mVmwdna3DwFIa3bgDkxl+9OBCZ/KZV3GTjx4v4Q6YzWU9x3uDfwC5HbvLkdcyrqRz3S/kkMsCI2nfDi87j6xzuL4sI/DWGQyPwOvJRLqkKqM3YrcYWlXLW9Bb8+kmx/S6ejK8vnWQdlB70NQaolBRIsr/BFr8nn57yq1RQWPqi6oFU2txjigZB3jtTHYOmGA+TYOBN3oxBfq5XecEz3arWzkKBN85Nva6oFn5QJ9n0/YcdolL2bkWFNANfnRDDAk8wfZBYultnVlqqz46toI6YhnJmZNGrDU776a1GnNOEluWkgWtLwjA+J3PL1Rw=="
+}

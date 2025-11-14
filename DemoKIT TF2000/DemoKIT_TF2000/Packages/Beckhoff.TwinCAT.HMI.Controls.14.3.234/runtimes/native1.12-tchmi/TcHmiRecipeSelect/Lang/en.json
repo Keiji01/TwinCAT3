@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../TwinCAT-HMI-Common/JsonSchemas/Language.Schema.json",
+    "locale": "en",
+    "localizedText": {
+        "Label_Text_Select": "Select",
+        "Header_Recipes": "Recipes",
+        "Button_Text_Activate": "Activate",
+        "Button_Tooltip_Activate": "Activate recipe",
+        "Button_Tooltip_Activate_MissingSymbolAccess": "Activate recipe. You need write access to the 'ActivateRecipe' symbol of the recipe management domain for this",
+        "Button_Text_Teach": "Teach",
+        "Button_Tooltip_Teach": "Teach recipe",
+        "Button_Tooltip_Teach_MissingSymbolAccess": "Teach recipe. You need write access to the 'Config', 'ReadFromTarget' and 'UpdateRecipe' symbols of the recipe management domain for this",
+        "Button_Text_Ok": "OK",
+        "Button_Text_Cancel": "Cancel"
+    }
+}

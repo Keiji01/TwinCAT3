@@ -1,0 +1,37 @@
+/** Theme independent style for Accordion helper */
+
+tchmi-accordion {
+    position: relative;
+}
+
+tchmi-accordion > tchmi-accordion-item {
+    display: block;
+}
+
+tchmi-accordion > tchmi-accordion-item > tchmi-accordion-content {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+}
+
+tchmi-accordion > tchmi-accordion-item > tchmi-accordion-header {
+    display: flex;
+    position: relative;
+    padding: 0 16px;
+    height: 56px;
+    align-items: center;
+}
+
+tchmi-accordion > tchmi-accordion-item.has-content > tchmi-accordion-header {
+    padding: 0 64px 0 16px;
+}
+
+tchmi-accordion > tchmi-accordion-item > tchmi-accordion-header > tchmi-accordion-expander {
+    position: absolute;
+    height: 100%;
+    width: 56px;
+    right: 0;
+    top: 0;
+}

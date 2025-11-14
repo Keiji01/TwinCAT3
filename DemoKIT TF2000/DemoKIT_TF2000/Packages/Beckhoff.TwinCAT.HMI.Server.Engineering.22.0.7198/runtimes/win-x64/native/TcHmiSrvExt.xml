@@ -1,0 +1,2003 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        "TcHmiSrvExt"
+    </assembly>
+    <members>
+        <member name="M:TcHmiSrv.ITcHmiSrvExt.error_string(System.UInt32)">
+            <summary>Allows clients to get string representations for error codes to improve readability.
+</summary>
+            <param name="error_code">The requested error code.</param>
+            <returns>The text representation of the error code.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExt.init(TcHmiSrv.Context,TcHmiSrv.Value!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Called on server startup.
+</summary>
+            <param name="ctx">The initialization <see cref="T:TcHmiSrv.Context" /> of the extension.</param>
+            <param name="settings">Additional information about the current extension.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if initializing the extension succeeded; otherwise, any
+<see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="T:TcHmiSrv.ITcHmiSrvExt">
+Allows extensions to be loaded by the server.
+Extensions have to implement this interface and contain the following method to be loaded by the server.
+After the ext_interface call the server will create the extension configuration and call the init method.
+</member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.set_friendly_name(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>
+Changes the friendly name of a TwinCAT HMI server extension.
+</summary>
+            <param name="ctx">A <see cref="T:TcHmiSrv.Context" /> containing information about the domain of the
+TwinCAT HMI server extension whose friendly name should be changed.
+</param>
+            <param name="friendly_name">The new friendly name.</param>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.reset_temporary_events(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>
+Triggers a refresh of the list of events provided by an extension that implements the
+<see cref="T:TcHmiSrv.ITcHmiSrvAlarmProviderListener" />.
+</summary>
+            <param name="context">A <see cref="T:TcHmiSrv.Context" /> containing information about the user who tries to refresh it and
+the domain of the extension that should be refreshed.</param>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.get_config_value(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Gets the configuration <see cref="T:TcHmiSrv.Value" /> at the specified path from the server.
+</summary>
+            <param name="ctx">A <see cref="T:TcHmiSrv.Context" /> containing information about the user who tries to get a
+configuration <see cref="T:TcHmiSrv.Value" />.</param>
+            <param name="path">The path of the requested <see cref="T:TcHmiSrv.Value" />.</param>
+            <returns>The <see cref="T:TcHmiSrv.Value" /> at the specified path or a <see cref="T:TcHmiSrv.Value" /> containing
+<see cref="F:Null" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.set_config_value(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*,TcHmiSrv.Value*)">
+            <summary>Tries to add an entry to a map or vector in the extension configuration or update an existing
+configuration <see cref="T:TcHmiSrv.Value" />. Since the config <see cref="T:TcHmiSrv.Value" /> is set
+asynchronously, you cannot rely on the <see cref="T:TcHmiSrv.Value" /> really being set after this method
+returned. Therefore, you must verify this by using <see cref="M:TcHmiSrv.ITcHmiSrvConfigListener.on_change(TcHmiSrv.Context,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)" /> or
+calling <see cref="M:TcHmiSrv.ITcHmiSrvExtHost.get_config_value(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)" />.
+</summary>
+            <param name="ctx">A <see cref="T:TcHmiSrv.Context" /> containing information about the user who tries to set a
+configuration <see cref="T:TcHmiSrv.Value" />.</param>
+            <param name="path">The path of the <see cref="T:TcHmiSrv.Value" /> to be set.</param>
+            <param name="value">The <see cref="T:TcHmiSrv.Value" /> to be set or nullptr to delete the configuration
+<see cref="T:TcHmiSrv.Value" /> at specified path.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if starting an asynchronous operation to set the
+configuration <see cref="T:TcHmiSrv.Value" /> succeeded; otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that
+best describes which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.remove_temporary_event(TcHmiSrv.Context*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,TcHmiSrv.Event!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Sends a notification if an <see cref="T:TcHmiSrv.Event" /> should be removed.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> under which the <see cref="T:TcHmiSrv.Alarm" />
+changed.</param>
+            <param name="evt">The <see cref="T:TcHmiSrv.Event" /> that should be removed.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if sending the notification succeeded; otherwise, any
+<see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.notify_listener(TcHmiSrv.Context*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,&lt;unknown type&gt;,TcHmiSrv.Alarm!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Sends a notification if an <see cref="T:TcHmiSrv.Alarm" /> type changed.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> under which the <see cref="T:TcHmiSrv.Alarm" />
+changed.</param>
+            <param name="type">Contains the type of the change.</param>
+            <param name="alm">The <see cref="T:TcHmiSrv.Alarm" /> that has changed.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if the listener was notified
+successfully.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.unregister_listener(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,TcHmiSrv.ITcHmiSrvListener!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Unregisters an <see cref="T:TcHmiSrv.ITcHmiSrvListener" /> at the server.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> under which the <see cref="T:TcHmiSrv.ITcHmiSrvListener" />
+should be unregistered.</param>
+            <param name="handler">The <see cref="T:TcHmiSrv.ITcHmiSrvListener" /> that should be unregistered. Listeners for
+the extension domain are unregistered automatically during shutdown. Listeners for other domains must be
+unregistered manually using the <see cref="T:TcHmiSrv.ITcHmiSrvShutdownListener" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.register_listener(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*,TcHmiSrv.ITcHmiSrvListener*,TcHmiSrv.Value!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Registers an <see cref="T:TcHmiSrv.ITcHmiSrvListener" /> for a different domain at the server. This is
+only supported for  <see cref="T:TcHmiSrv.ITcHmiSrvConfigListener" /></summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> under which the <see cref="T:TcHmiSrv.ITcHmiSrvListener" />
+should be registered.</param>
+            <param name="domain">The domain for which the listener that should be registered.</param>
+            <param name="handler">The <see cref="T:TcHmiSrv.ITcHmiSrvListener" /> that should be registered.</param>
+            <param name="settings">A <see cref="T:TcHmiSrv.Value" /> containing the settings that should be used at the
+registration.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if the listener was registered successfully.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.register_listener(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,TcHmiSrv.ITcHmiSrvListener*,TcHmiSrv.Value!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Registers an <see cref="T:TcHmiSrv.ITcHmiSrvListener" /> at the server using the specified settings.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> under which the <see cref="T:TcHmiSrv.ITcHmiSrvListener" />
+should be registered.</param>
+            <param name="handler">The <see cref="T:TcHmiSrv.ITcHmiSrvListener" /> that should be registered.</param>
+            <param name="settings">A <see cref="T:TcHmiSrv.Value" /> containing the settings that should be used at the
+registration.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if the listener was registered successfully.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.register_listener(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*,TcHmiSrv.ITcHmiSrvListener*)">
+            <summary>Registers an <see cref="T:TcHmiSrv.ITcHmiSrvListener" /> for a different domain at the server. This is
+only supported for <see cref="T:TcHmiSrv.ITcHmiSrvConfigListener" /></summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> under which the <see cref="T:TcHmiSrv.ITcHmiSrvListener" />
+should be registered.</param>
+            <param name="domain">The domain for which the listener that should be registered.</param>
+            <param name="handler">The <see cref="T:TcHmiSrv.ITcHmiSrvListener" /> that should be registered.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if the listener was registered successfully.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.register_listener(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,TcHmiSrv.ITcHmiSrvListener*)">
+            <summary>Registers an <see cref="T:TcHmiSrv.ITcHmiSrvListener" /> at the server.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> under which the <see cref="T:TcHmiSrv.ITcHmiSrvListener" />
+should be registered.</param>
+            <param name="handler">The <see cref="T:TcHmiSrv.ITcHmiSrvListener" /> that should be registered.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if the listener was registered successfully.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.localize(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,TcHmiSrv.ILocalizable*)">
+            <summary>Localizes an <see cref="T:TcHmiSrv.ILocalizable" />.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> under which the <see cref="T:TcHmiSrv.ILocalizable" />
+should be localized.</param>
+            <param name="obj">The <see cref="T:TcHmiSrv.ILocalizable" /> to be localized.</param>
+            <returns>A string containing the localized text or the event name.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.try_localize(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,TcHmiSrv.ILocalizable*)">
+            <summary>Localizes an <see cref="T:TcHmiSrv.ILocalizable" />.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> under which the <see cref="T:TcHmiSrv.ILocalizable" />
+should be localized.</param>
+            <param name="obj">The <see cref="T:TcHmiSrv.ILocalizable" /> to be localized.</param>
+            <returns>A string containing the localized text or the event name. An empty string if the localization is
+currently unavailable.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.exec(TcHmiSrv.Context*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,TcHmiSrv.Command*)">
+            <summary>Executes a single <see cref="T:TcHmiSrv.Command" /> in the domain of the specified
+<see cref="T:TcHmiSrv.Context" />.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> under which the <see cref="T:TcHmiSrv.Command" /> should be
+executed.</param>
+            <param name="cmd">The <see cref="T:TcHmiSrv.Command" /> to be executed.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if executing the <see cref="T:TcHmiSrv.Command" />
+succeeded; otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has
+occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.exec(TcHmiSrv.Context*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,TcHmiSrv.CommandGroup*)">
+            <summary>Executes <see cref="T:TcHmiSrv.Command" />s inside any domain.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> under which the commands should be executed.</param>
+            <param name="commands">A <see cref="T:TcHmiSrv.CommandGroup" /> containing a list of
+<see cref="T:TcHmiSrv.Command" />s.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if executing the commands succeeded; otherwise, any
+<see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.send(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,TcHmiSrv.Event*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,&lt;unknown type&gt;)">
+            <summary>Adds or updates an <see cref="T:TcHmiSrv.Event" />.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> under which the <see cref="T:TcHmiSrv.Event" /> should be
+sent.</param>
+            <param name="evt">The <see cref="T:TcHmiSrv.Event" /> that will be sent to the server and all current event
+listeners.</param>
+            <param name="lifetime">Specifies whether the <see cref="T:TcHmiSrv.Event" /> is stored persistently.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if sending the <see cref="T:TcHmiSrv.Event" /> succeeded;
+otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.send(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,TcHmiSrv.Message*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,&lt;unknown type&gt;)">
+            <summary>Adds a <see cref="T:TcHmiSrv.Message" />.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> under which the <see cref="T:TcHmiSrv.Message" /> should be
+sent.</param>
+            <param name="msg">The <see cref="T:TcHmiSrv.Message" /> that will be sent to the server and all current event
+listeners.</param>
+            <param name="lifetime">Specifies whether the <see cref="T:TcHmiSrv.Event" /> is stored persistently.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if sending the <see cref="T:TcHmiSrv.Message" />
+succeeded; otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has
+occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.send(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,TcHmiSrv.Event*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Adds or updates an <see cref="T:TcHmiSrv.Event" />.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> under which the <see cref="T:TcHmiSrv.Event" /> should be
+sent.</param>
+            <param name="evt">The <see cref="T:TcHmiSrv.Event" /> that will be sent to the server and all current event
+listeners.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if sending the <see cref="T:TcHmiSrv.Event" /> succeeded;
+otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExtHost.send(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,TcHmiSrv.Message*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Adds a <see cref="T:TcHmiSrv.Message" />.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> under which the <see cref="T:TcHmiSrv.Message" /> should be
+sent.</param>
+            <param name="msg">The <see cref="T:TcHmiSrv.Message" /> that will be sent to the server and all current event
+listeners.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if sending the <see cref="T:TcHmiSrv.Message" />
+succeeded; otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has
+occurred.</returns>
+        </member>
+        <member name="T:TcHmiSrv.ITcHmiSrvExtHost">
+This interface is used to communicate with the server.
+</member>
+        <member name="M:TcHmiSrv.ITcHmiSrvAuthListener.type">
+            <summary>Gets the type of the listener.
+</summary>
+            <returns>The type of the listener.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvAuthListener.on_logout(TcHmiSrv.Context)">
+            <summary>Called when a user is being logged out.
+</summary>
+            <param name="ctx">A <see cref="T:TcHmiSrv.Context" /> containing the currently logged in user.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if logout succeeded; otherwise, any
+<see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvAuthListener.on_login(TcHmiSrv.Context,TcHmiSrv.Value*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Called when a user tries to log in.
+</summary>
+            <param name="ctx">A <see cref="T:TcHmiSrv.Context" /> containing information about the user who tries to log
+in.</param>
+            <param name="value">A struct that describes the Json schema "Login" in TcHmiSrv.Config.json. Set a
+'replaceUserGroups' vector of strings with user group names to change group assignments of the logged in
+user. Set a 'replaceUserName' string to create the new session with a different user. Add boolean
+'forcePasswordChange' to force the current user to change the password after logging in</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if login succeeded; otherwise, any
+<see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred. Set replaceUserGroups Vector of
+String with user group names in "value" to change group assignments of the logged in user.</returns>
+        </member>
+        <member name="T:TcHmiSrv.ITcHmiSrvAuthListener">
+Allows to implement own authorization extensions.
+</member>
+        <member name="M:TcHmiSrv.ITcHmiSrvSubscriptionListener.type">
+            <summary>Gets the type of the listener.
+</summary>
+            <returns>The type of the listener.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvSubscriptionListener.on_unsubscribe(TcHmiSrv.Context)">
+            <summary>Called when a client closes a subscription.
+</summary>
+            <param name="ctx">A <see cref="T:TcHmiSrv.Context" /> containing information about the user who closed the
+subscription.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if unregistering the subscription succeeded; otherwise,
+any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvSubscriptionListener.on_subscribe(TcHmiSrv.Context)">
+            <summary>Called once when a client opens a new subscription.
+The subscription will call the on_request method of <see cref="T:TcHmiSrv.ITcHmiSrvRequestListener" /> once per
+interval.
+</summary>
+            <param name="ctx">A <see cref="T:TcHmiSrv.Context" /> containing information about the user who opened the
+subscription.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if registering the subscription succeeded; otherwise,
+any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="T:TcHmiSrv.ITcHmiSrvSubscriptionListener">
+Allows to take full control over the subscription loops.
+If this interface is not implemented, subscriptions will just call the
+<see cref="M:TcHmiSrv.ITcHmiSrvRequestListener.on_request(TcHmiSrv.Context,TcHmiSrv.CommandGroup*)" /> method.
+</member>
+        <member name="M:TcHmiSrv.ITcHmiSrvRequestListener.type">
+            <summary>Gets the type of the listener.
+</summary>
+            <returns>The type of the listener.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvRequestListener.on_request(TcHmiSrv.Context,TcHmiSrv.CommandGroup*)">
+            <summary>Called when a client requests a symbol from the extension domain.
+If the request is a subscription, this method will be called multiple times.
+Inside a subscription the data will only be sent to clients if either the read value or the return codes
+changed.
+This will be detected automatically, so do not use set the result or read value unless the data has changed.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> of the request.</param>
+            <param name="commands">A <see cref="T:TcHmiSrv.CommandGroup" /> containing a list of
+<see cref="T:TcHmiSrv.Command" />s.</param>
+        </member>
+        <member name="T:TcHmiSrv.ITcHmiSrvRequestListener">
+Performs read write requests and subscriptions.
+</member>
+        <member name="M:TcHmiSrv.ITcHmiSrvShutdownListener.type">
+            <summary>Gets the type of the listener.
+</summary>
+            <returns>The type of the listener.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvShutdownListener.on_shutdown(TcHmiSrv.Context)">
+            <summary>Called when the server is shutting down. After exiting this function the extension will be unloaded.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> of the shutdown.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if shutting down the extension succeeded; otherwise,
+any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="T:TcHmiSrv.ITcHmiSrvShutdownListener">
+Allows to get notified when the server is shutting down.
+</member>
+        <member name="M:TcHmiSrv.ITcHmiSrvSessionListener.type">
+            <summary>Gets the type of the listener.
+</summary>
+            <returns>The type of the listener.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvSessionListener.on_close_session(TcHmiSrv.Context)">
+            <summary>Triggered session is removed.
+</summary>
+            <param name="ctx">Contains the clients session information.</param>
+            <returns>
+                <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvSessionListener.on_create_session(TcHmiSrv.Context)">
+            <summary>Triggered when a new session is created.
+</summary>
+            <param name="ctx">Contains the clients session information.</param>
+            <returns>
+                <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvSessionListener.on_close_websocket(TcHmiSrv.Context)">
+            <summary>Triggered when a websocket connection is closed.
+</summary>
+            <param name="ctx">Contains the clients session information including the id of the socket.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if closing the websocket succeeded; otherwise, any
+<see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvSessionListener.on_create_websocket(TcHmiSrv.Context)">
+            <summary>Triggered when a new websocket connection is opened.
+</summary>
+            <param name="ctx">Contains the clients session information including the id of the socket.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if creating the websocket succeeded; otherwise, any
+<see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvSessionListener.on_logout(TcHmiSrv.Context)">
+            <summary>Triggered when a user is logged out.
+</summary>
+            <param name="ctx">Contains the clients session information.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if logout succeeded; otherwise, any
+<see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvSessionListener.on_login(TcHmiSrv.Context)">
+            <summary>Triggered when a user is logged in.
+</summary>
+            <param name="ctx">Contains the clients session information.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if login succeeded; otherwise, any
+<see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="T:TcHmiSrv.ITcHmiSrvSessionListener">
+Allows to observe the servers connection state.
+</member>
+        <member name="M:TcHmiSrv.ITcHmiSrvConfigListener.type">
+            <summary>Gets the type of the listener.
+</summary>
+            <returns>The type of the listener.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvConfigListener.on_rename(TcHmiSrv.Context,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Called after a configuration <see cref="T:TcHmiSrv.Value" /> has been renamed.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> of the renaming.</param>
+            <param name="old_path">The old path of the configuration <see cref="T:TcHmiSrv.Value" />.</param>
+            <param name="new_path">The new path of the configuration <see cref="T:TcHmiSrv.Value" />.</param>
+            <param name="reference">The name of the JSON schema reference of the changed object.</param>
+            <returns>A <see cref="T:TcHmiSrv.ResultPair" /> containing <see cref="F:HMI_SUCCESS" /> if
+renaming the configuration
+<see cref="T:TcHmiSrv.Value" /> succeeded; otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes
+which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvConfigListener.on_delete(TcHmiSrv.Context,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*,TcHmiSrv.Value!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Called after a configuration <see cref="T:TcHmiSrv.Value" /> has been deleted.
+This method is also called for all parent elements in the path of the deleted configuration
+<see cref="T:TcHmiSrv.Value" />.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> of the deletion.</param>
+            <param name="path">The path of the configuration <see cref="T:TcHmiSrv.Value" />.</param>
+            <param name="value">A copy of the deleted <see cref="T:TcHmiSrv.Value" />.</param>
+            <param name="reference">The name of the JSON schema reference of the changed object.</param>
+            <returns>A <see cref="T:TcHmiSrv.ResultPair" /> containing <see cref="F:HMI_SUCCESS" /> if
+deleting the configuration
+<see cref="T:TcHmiSrv.Value" />succeeded; otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes
+which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvConfigListener.on_change(TcHmiSrv.Context,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Called after a configuration <see cref="T:TcHmiSrv.Value" /> has been successfully changed.
+This method is also called for all parent elements in the path of the changed configuration
+<see cref="T:TcHmiSrv.Value" />.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> of the change.</param>
+            <param name="path">The path of the configuration <see cref="T:TcHmiSrv.Value" />.</param>
+            <param name="reference">The name of the JSON schema reference of the changed object.</param>
+            <returns>A <see cref="T:TcHmiSrv.ResultPair" /> containing <see cref="F:HMI_SUCCESS" /> if
+changing the configuration
+<see cref="T:TcHmiSrv.Value" />succeeded; otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes
+which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvConfigListener.before_rename(TcHmiSrv.Context,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Called before a configuration <see cref="T:TcHmiSrv.Value" /> is renamed.
+If the call is not answered with <see cref="F:HMI_SUCCESS" />, renaming will be aborted.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> of the renaming.</param>
+            <param name="old_path">The old path of the configuration <see cref="T:TcHmiSrv.Value" />.</param>
+            <param name="new_path">The new path of the configuration <see cref="T:TcHmiSrv.Value" />.</param>
+            <param name="reference">The name of the JSON schema reference of the changed object.</param>
+            <returns>A <see cref="T:TcHmiSrv.ResultPair" /> containing <see cref="F:HMI_SUCCESS" /> if the
+<see cref="T:TcHmiSrv.Value" /> should be renamed;
+otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvConfigListener.before_delete(TcHmiSrv.Context,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*,TcHmiSrv.Value!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Called before a configuration <see cref="T:TcHmiSrv.Value" /> is deleted.
+If the call is not answered with <see cref="F:HMI_SUCCESS" />, deletion will be aborted.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> of the deletion.</param>
+            <param name="path">The path of the configuration <see cref="T:TcHmiSrv.Value" />.</param>
+            <param name="value">The <see cref="T:TcHmiSrv.Value" /> that is about to be deleted.</param>
+            <param name="reference">The name of the JSON schema reference of the changed object.</param>
+            <returns>A <see cref="T:TcHmiSrv.ResultPair" /> containing <see cref="F:HMI_SUCCESS" /> if the
+value should be deleted; otherwise, any
+<see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvConfigListener.before_change(TcHmiSrv.Context,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*,TcHmiSrv.Value*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Called before a configuration <see cref="T:TcHmiSrv.Value" /> is changed.
+If the call is not answered with <see cref="F:HMI_SUCCESS" />, the write will be aborted.
+This method is also called for all parent elements in the path of the changed configuration
+<see cref="T:TcHmiSrv.Value" />.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> of the change.</param>
+            <param name="path">The path of the configuration <see cref="T:TcHmiSrv.Value" />.</param>
+            <param name="value">The <see cref="T:TcHmiSrv.Value" /> that is about to be changed.</param>
+            <param name="reference">The name of the JSON schema reference of the changed object.</param>
+            <returns>A <see cref="T:TcHmiSrv.ResultPair" /> containing <see cref="F:HMI_SUCCESS" /> if the
+<see cref="T:TcHmiSrv.Value" /> should be changed;
+otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="T:TcHmiSrv.ITcHmiSrvConfigListener">
+Allows to interact with the extension configuration.
+</member>
+        <member name="M:TcHmiSrv.ITcHmiSrvGlobalRequestListener.type">
+            <summary>Gets the type of the listener.
+</summary>
+            <returns>The type of the listener.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvGlobalRequestListener.after_command_group(TcHmiSrv.Context*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,System.UInt32,TcHmiSrv.CommandGroup*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Called after a command group was executed.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> of the request.</param>
+            <param name="id">The id of the request.</param>
+            <param name="group">The <see cref="T:TcHmiSrv.CommandGroup" /> of the request.</param>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvGlobalRequestListener.before_command_group(TcHmiSrv.Context*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,System.UInt32,TcHmiSrv.CommandGroup*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Called before a command group is executed.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> of the request.</param>
+            <param name="id">The id of the request.</param>
+            <param name="group">The <see cref="T:TcHmiSrv.CommandGroup" /> of the request.</param>
+        </member>
+        <member name="T:TcHmiSrv.ITcHmiSrvGlobalRequestListener">
+Allows to react on global websocket requests.
+</member>
+        <member name="M:TcHmiSrv.ITcHmiSrvHttpListener.type">
+            <summary>Gets the type of the listener.
+</summary>
+            <returns>The type of the listener.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvHttpListener.on_http_request(TcHmiSrv.Context,TcHmiSrv.Value!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,TcHmiSrv.Value*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Called on an HTTP request.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> of the HTTP request.</param>
+            <param name="http_request">A <see cref="T:TcHmiSrv.Value" /> representing the HTTP request.</param>
+            <param name="http_response">A <see cref="T:TcHmiSrv.Value" /> representing the HTTP response.</param>
+            <returns>A <see cref="T:TcHmiSrv.ResultPair" /> containing <see cref="F:HMI_SUCCESS" /> if the
+HTTP request succeeded; otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has
+occurred.</returns>
+        </member>
+        <member name="T:TcHmiSrv.ITcHmiSrvHttpListener">
+Allows to react on HTTP requests.
+</member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExportListener.type">
+            <summary>Gets the type of the listener.
+</summary>
+            <returns>The type of the listener.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExportListener.before_import(TcHmiSrv.Context,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*,TcHmiSrv.Value*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,TcHmiSrv.Value!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Called before an import is done.
+If the call is not answered with <see cref="F:HMI_SUCCESS" />, the write will be aborted.
+With complex data, this method is called for every path.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> of the export.</param>
+            <param name="path">The path of the configuration <see cref="T:TcHmiSrv.Value" />.</param>
+            <param name="value">The <see cref="T:TcHmiSrv.Value" /> that is about to be exported.</param>
+            <param name="root">The root <see cref="T:TcHmiSrv.Value" /> containing the whole data that is going to be
+imported.</param>
+            <param name="reference">The name of the JSON schema reference of the changed object.</param>
+            <returns>A <see cref="T:TcHmiSrv.ResultPair" /> containing <see cref="F:HMI_SUCCESS" /> if the
+<see cref="T:TcHmiSrv.Value" /> should be exported; otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best
+describes which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvExportListener.before_export(TcHmiSrv.Context,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*,TcHmiSrv.Value*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,TcHmiSrv.Value!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Called before an export is done.
+If the call is not answered with <see cref="F:HMI_SUCCESS" />, the write will be aborted.
+With complex data, this method is called for every path.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> of the export.</param>
+            <param name="path">The path of the configuration <see cref="T:TcHmiSrv.Value" />.</param>
+            <param name="value">The <see cref="T:TcHmiSrv.Value" /> that is about to be exported.</param>
+            <param name="root">The root <see cref="T:TcHmiSrv.Value" /> containing the whole data that is going to be
+exported.</param>
+            <param name="reference">The name of the JSON schema reference of the changed object.</param>
+            <returns>A <see cref="T:TcHmiSrv.ResultPair" /> containing <see cref="F:HMI_SUCCESS" /> if the
+<see cref="T:TcHmiSrv.Value" /> should be exported; otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best
+describes which error has occurred.</returns>
+        </member>
+        <member name="T:TcHmiSrv.ITcHmiSrvExportListener">
+Allows to react on configuration export calls.
+</member>
+        <member name="M:TcHmiSrv.ITcHmiSrvEventListener.type">
+            <summary>Gets the type of the listener.
+</summary>
+            <returns>The type of the listener.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvEventListener.on_list_events(TcHmiSrv.Context,TcHmiSrv.Command*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Called when the <see cref="T:TcHmiSrv.Event" />s are listed.
+</summary>
+            <param name="ctx">
+  The <see cref="T:TcHmiSrv.Context" /> under which the <see cref="T:TcHmiSrv.Event" />s are listed.
+</param>
+            <param name="command">
+  A <see cref="T:TcHmiSrv.Command" /> that contains the <see cref="T:TcHmiSrv.Event" />s in its read-value.
+</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if listing the <see cref="T:TcHmiSrv.Event" />s
+  succeeded; otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which
+  error has occurred.
+</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvEventListener.on_receive(TcHmiSrv.Context,TcHmiSrv.String,TcHmiSrv.Value!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Called when an extension is loaded and it's initial list of <see cref="T:TcHmiSrv.Event" />s is fetched.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> of the change.</param>
+            <param name="extension_session_id">Unique identifier of an extension that changes when the extension is
+reloaded.</param>
+            <param name="evts">The <see cref="T:TcHmiSrv.Value" /> vector of <see cref="T:TcHmiSrv.Event" />s
+received from the other extension.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if changing the <see cref="T:TcHmiSrv.Event" />
+succeeded; otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.
+</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvEventListener.on_remove_event(TcHmiSrv.Context,TcHmiSrv.Event,TcHmiSrv.String)">
+            <summary>Called when an <see cref="T:TcHmiSrv.Event" /> is removed.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> of the removal.</param>
+            <param name="evt">The <see cref="T:TcHmiSrv.Event" /> that should be removed.</param>
+            <param name="extension_session_id">Unique identifier of an extension that changes when the extension is
+reloaded. Empty if the extension that changed the event doesn't implement
+<see cref="T:TcHmiSrv.ITcHmiSrvAlarmProviderListener" />.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if removing the <see cref="T:TcHmiSrv.Event" />
+succeeded; otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has
+occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvEventListener.on_change(TcHmiSrv.Context,TcHmiSrv.Event,TcHmiSrv.String)">
+            <summary>Called when an <see cref="T:TcHmiSrv.Event" /> is changed.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> of the change.</param>
+            <param name="evt">The <see cref="T:TcHmiSrv.Event" /> that has changed.</param>
+            <param name="extension_session_id">Unique identifier of an extension that changes when the extension is
+reloaded. Empty if the extension that changed the event doesn't implement
+<see cref="T:TcHmiSrv.ITcHmiSrvAlarmProviderListener" />.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if changing the <see cref="T:TcHmiSrv.Event" />
+succeeded; otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has
+occurred.</returns>
+        </member>
+        <member name="T:TcHmiSrv.ITcHmiSrvEventListener">
+Allows to interact with the eventing system of the server.
+</member>
+        <member name="M:TcHmiSrv.ITcHmiSrvAlarmProviderListener.type">
+            <summary>Gets the type of the listener.
+</summary>
+            <returns>The type of the listener.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvAlarmProviderListener.on_initial_list_events(TcHmiSrv.Context,TcHmiSrv.Value*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Called when the <see cref="T:TcHmiSrv.Event" />s are listed once upon successful initialization.
+</summary>
+            <param name="ctx">
+  The <see cref="T:TcHmiSrv.Context" /> under which the <see cref="T:TcHmiSrv.Event" />s are listed.
+</param>
+            <param name="evts">
+  A <see cref="T:TcHmiSrv.Value" /> that contains the <see cref="T:TcHmiSrv.Event" />s.
+</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if listing the <see cref="T:TcHmiSrv.Event" />s
+  succeeded; otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which
+  error has occurred.
+</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvAlarmProviderListener.on_confirm(TcHmiSrv.Context,TcHmiSrv.Alarm*)">
+            <summary>Called when an <see cref="T:TcHmiSrv.Alarm" /> is confirmed.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> of the confirmation.</param>
+            <param name="alm">The <see cref="T:TcHmiSrv.Alarm" /> that is confirmed.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if the confirmation succeeded; otherwise, any
+<see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="T:TcHmiSrv.ITcHmiSrvAlarmProviderListener">
+Allows to listen on provided <see cref="T:TcHmiSrv.Alarm" />s.
+</member>
+        <member name="M:TcHmiSrv.ITcHmiSrvEventLocalizationListener.type">
+            <summary>Gets the type of the listener.
+</summary>
+            <returns>The type of the listener.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ITcHmiSrvEventLocalizationListener.on_request(TcHmiSrv.Context,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*,TcHmiSrv.ILocalizable*,TcHmiSrv.String*)">
+            <summary>Called when a event cannot be localized using the language file of the extension.
+This event can be used to implement dynamic localization.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> of the localization.</param>
+            <param name="locale">A locale in BCP 47 representation.</param>
+            <param name="obj">The <see cref="T:TcHmiSrv.ILocalizable" /> that needs to be localized.</param>
+            <param name="localized"> The resulting localized string.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if localizing the <see cref="T:TcHmiSrv.ILocalizable" />
+succeeded; otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has
+occurred.</returns>
+        </member>
+        <member name="T:TcHmiSrv.ITcHmiSrvEventLocalizationListener">
+Allows to interact with the eventing system of the server.
+</member>
+        <member name="M:TcHmiSrv.ITcHmiSrvListener.type">
+            <summary>Gets the type of the listener.
+</summary>
+            <returns>The type of the listener.</returns>
+        </member>
+        <member name="T:TcHmiSrv.ITcHmiSrvListener">
+Listeners are called whenever the corresponding event in the server occurs.
+</member>
+        <member name="M:TcHmiSrv.Alarm.type">
+            <summary>Gets the type of the <see cref="T:TcHmiSrv.Alarm" />.
+(<see cref="F:Alarm" />)
+</summary>
+            <returns>The type of the <see cref="T:TcHmiSrv.Alarm" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.domain">
+            <summary>Gets the domain that triggered the <see cref="T:TcHmiSrv.Alarm" />.
+</summary>
+            <returns>The domain that triggered the <see cref="T:TcHmiSrv.Alarm" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.set_domain(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Sets the domain that triggered the <see cref="T:TcHmiSrv.Alarm" />.
+</summary>
+            <param name="domain">The domain that triggered the <see cref="T:TcHmiSrv.Alarm" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.name">
+            <summary>Get the name of the <see cref="T:TcHmiSrv.Alarm" />.
+</summary>
+            <returns>The name of the <see cref="T:TcHmiSrv.Alarm" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.set_name(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Sets the name of the <see cref="T:TcHmiSrv.Alarm" />.
+</summary>
+            <param name="name">The name of the <see cref="T:TcHmiSrv.Alarm" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.parameters">
+            <summary>Gets the parameters of the <see cref="T:TcHmiSrv.Alarm" />.
+</summary>
+            <returns>A <see cref="T:TcHmiSrv.Value" /> that contains the parameters of the
+<see cref="T:TcHmiSrv.Alarm" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.confirmation_state">
+            <summary>Gets the confirmation state of the <see cref="T:TcHmiSrv.Alarm" />.
+</summary>
+            <returns>The confirmation state of the <see cref="T:TcHmiSrv.Alarm" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.set_confirmation_state(&lt;unknown type&gt;)">
+            <summary>Sets the confirmation state of the <see cref="T:TcHmiSrv.Alarm" />.
+</summary>
+            <param name="state">The confirmation state of the <see cref="T:TcHmiSrv.Alarm" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.is_active">
+            <summary>Gets the active state of the <see cref="T:TcHmiSrv.Alarm" />.
+</summary>
+            <returns>The active state of the <see cref="T:TcHmiSrv.Alarm" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.set_active(System.Boolean)">
+            <summary>
+Sets the alarm's active state. The active state is automatically generated from the alarm state and the
+confirmation state values. You should only use this if you explicitly want to set a different value. The value
+you have set will be overwritten as soon as the alarm state or the confirmation state are changed.
+</summary>
+            <param name="state">The state to use as an override.</param>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.alarm_state">
+            <summary>Gets the state of the <see cref="T:TcHmiSrv.Alarm" />.
+</summary>
+            <returns>The state of the <see cref="T:TcHmiSrv.Alarm" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.set_alarm_state(&lt;unknown type&gt;)">
+            <summary>
+Sets the alarm state. The alarm state is automatically generated from the time_cleared and time_confirmed
+values. You should only use this if you explicitly want to set a different value. The value you have set will
+be overwritten as soon as time_cleared or time_confirmed are changed.
+</summary>
+            <param name="state">The state to use as an override.</param>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.time_confirmed">
+            <summary>Gets the time the <see cref="T:TcHmiSrv.Alarm" /> was confirmed.
+</summary>
+            <returns>A <see cref="T:TcHmiSrv.Timestamp" /> that represents the time the <see cref="T:TcHmiSrv.Alarm" /> was
+confirmed.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.set_time_confirmed(TcHmiSrv.Timestamp!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Sets the time the <see cref="T:TcHmiSrv.Alarm" /> was confirmed.
+</summary>
+            <param name="time">A <see cref="T:TcHmiSrv.Timestamp" /> that represents the time the
+<see cref="T:TcHmiSrv.Alarm" /> was confirmed.</param>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.time_cleared">
+            <summary>Gets the time the <see cref="T:TcHmiSrv.Alarm" /> was cleared.
+</summary>
+            <returns>A <see cref="T:TcHmiSrv.Timestamp" /> that represents the time the <see cref="T:TcHmiSrv.Alarm" /> was
+cleared.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.set_time_cleared(TcHmiSrv.Timestamp!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Sets the time the <see cref="T:TcHmiSrv.Alarm" /> was cleared.
+</summary>
+            <param name="time">A <see cref="T:TcHmiSrv.Timestamp" /> that represents the time the
+<see cref="T:TcHmiSrv.Alarm" /> was cleared.</param>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.time_raised">
+            <summary>Gets the time the <see cref="T:TcHmiSrv.Alarm" /> was raised.
+</summary>
+            <returns>A <see cref="T:TcHmiSrv.Timestamp" /> that represents the time the <see cref="T:TcHmiSrv.Alarm" /> was
+raised.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.set_time_raised(TcHmiSrv.Timestamp!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Sets the time the <see cref="T:TcHmiSrv.Alarm" /> was raised.
+</summary>
+            <param name="time">A <see cref="T:TcHmiSrv.Timestamp" /> that represents the time the
+<see cref="T:TcHmiSrv.Alarm" /> was raised.</param>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.severity">
+            <summary>Gets the <see cref="T:TcHmiSrv.Severity" /> of the <see cref="T:TcHmiSrv.Alarm" />.
+</summary>
+            <returns>The <see cref="T:TcHmiSrv.Severity" /> of the <see cref="T:TcHmiSrv.Alarm" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.set_severity(TcHmiSrv.Severity)">
+            <summary>Sets the <see cref="T:TcHmiSrv.Severity" /> of the <see cref="T:TcHmiSrv.Alarm" />.
+</summary>
+            <param name="severity">The <see cref="T:TcHmiSrv.Severity" /> of the <see cref="T:TcHmiSrv.Alarm" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.id">
+            <summary>Gets the unique id of the <see cref="T:TcHmiSrv.Alarm" />.
+</summary>
+            <returns>The unique id of the <see cref="T:TcHmiSrv.Alarm" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.set_id(System.Int32)">
+            <summary>Sets the unique id of the <see cref="T:TcHmiSrv.Alarm" />.
+</summary>
+            <param name="id">The unique id of the <see cref="T:TcHmiSrv.Alarm" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.isset">
+            <summary>Gets a value that indicates whether the <see cref="T:TcHmiSrv.Alarm" /> is set.
+</summary>
+            <returns>true if the <see cref="T:TcHmiSrv.Alarm" /> is set; otherwise, false.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.#ctor(TcHmiSrv.Alarm!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Alarm" /> class based on another
+<see cref="T:TcHmiSrv.Alarm" />.
+</summary>
+            <param name="other">The other <see cref="T:TcHmiSrv.Alarm" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.#ctor(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Alarm" /> class with the specified
+<see cref="T:TcHmiSrv.Context" /> and name.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> to be set.</param>
+            <param name="name">The name to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Alarm.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Alarm" /> class.
+</summary>
+        </member>
+        <member name="T:TcHmiSrv.Alarm">
+This class can be used as payload for the <see cref="T:TcHmiSrv.Event" /> class.
+</member>
+        <member name="M:TcHmiSrv.Message.type">
+            <summary>Gets the type of the <see cref="T:TcHmiSrv.Message" />.
+(<see cref="F:Message" />)
+</summary>
+            <returns>The type of the <see cref="T:TcHmiSrv.Message" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Message.domain">
+            <summary>Gets the domain that triggered the <see cref="T:TcHmiSrv.Message" />.
+</summary>
+            <returns>The domain that triggered the <see cref="T:TcHmiSrv.Message" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Message.set_domain(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Sets the domain that triggered the <see cref="T:TcHmiSrv.Message" />.
+</summary>
+            <param name="domain">The domain that triggered the <see cref="T:TcHmiSrv.Message" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Message.name">
+            <summary>Gets the name of the <see cref="T:TcHmiSrv.Message" />.
+</summary>
+            <returns>The name of the <see cref="T:TcHmiSrv.Message" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Message.set_name(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Sets the name of the <see cref="T:TcHmiSrv.Message" />.
+</summary>
+            <param name="name">The name of the <see cref="T:TcHmiSrv.Message" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Message.parameters">
+            <summary>Gets the parameters of the <see cref="T:TcHmiSrv.Message" />.
+</summary>
+            <returns>A map that contains the parameters of the <see cref="T:TcHmiSrv.Message" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Message.severity">
+            <summary>Gets the <see cref="T:TcHmiSrv.Severity" /> of the <see cref="T:TcHmiSrv.Message" />.
+</summary>
+            <returns>The <see cref="T:TcHmiSrv.Severity" /> of the <see cref="T:TcHmiSrv.Message" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Message.set_severity(TcHmiSrv.Severity)">
+            <summary>Sets the <see cref="T:TcHmiSrv.Severity" /> of the <see cref="T:TcHmiSrv.Message" />.
+</summary>
+            <param name="severity">The <see cref="T:TcHmiSrv.Severity" /> of the <see cref="T:TcHmiSrv.Message" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Message.set_time_raised(TcHmiSrv.Timestamp!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Sets the time the <see cref="T:TcHmiSrv.Message" /> was raised.
+</summary>
+            <param name="time">A <see cref="T:TcHmiSrv.Timestamp" /> that represents the time the
+<see cref="T:TcHmiSrv.Message" /> was raised.</param>
+        </member>
+        <member name="M:TcHmiSrv.Message.time_raised">
+            <summary>Gets the time the <see cref="T:TcHmiSrv.Message" /> was raised.
+</summary>
+            <returns>A <see cref="T:TcHmiSrv.Timestamp" /> that represents the time the <see cref="T:TcHmiSrv.Message" /> was
+raised.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Message.isset">
+            <summary>Gets a value that indicates whether the <see cref="T:TcHmiSrv.Message" /> is set.
+</summary>
+            <returns>true if the <see cref="T:TcHmiSrv.Message" /> is set; otherwise, false.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Message.#ctor(TcHmiSrv.Message!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Message" /> class based on another
+<see cref="T:TcHmiSrv.Message" />.
+</summary>
+            <param name="other">The other <see cref="T:TcHmiSrv.Message" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Message.#ctor(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,TcHmiSrv.Severity,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Message" /> class with the specified
+<see cref="T:TcHmiSrv.Context" />, <see cref="T:TcHmiSrv.Severity" /> and name.
+</summary>
+            <param name="ctx">The <see cref="T:TcHmiSrv.Context" /> to be set.</param>
+            <param name="severity">The <see cref="T:TcHmiSrv.Severity" /> to be set.</param>
+            <param name="name">The name to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Message.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Message" /> class.
+</summary>
+        </member>
+        <member name="T:TcHmiSrv.Message">
+Holds data for a message.
+</member>
+        <member name="M:TcHmiSrv.Event.domain">
+            <summary>Gets the domain of the <see cref="T:TcHmiSrv.Event" />.
+</summary>
+            <returns>The domain of the <see cref="T:TcHmiSrv.Event" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Event.set_domain(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Sets the domain of the <see cref="T:TcHmiSrv.Event" />.
+</summary>
+            <param name="domain">The domain of the <see cref="T:TcHmiSrv.Event" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Event.name">
+            <summary>Gets the name of the <see cref="T:TcHmiSrv.Event" />.
+</summary>
+            <returns>The name of the <see cref="T:TcHmiSrv.Event" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Event.set_name(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Sets the name of the <see cref="T:TcHmiSrv.Event" />.
+</summary>
+            <param name="name">The name of the <see cref="T:TcHmiSrv.Event" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Event.payload">
+            <summary>Gets the payload of the <see cref="T:TcHmiSrv.Event" />.
+</summary>
+            <returns>The payload of the <see cref="T:TcHmiSrv.Event" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Event.set_payload(TcHmiSrv.Value!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Sets the payload of the <see cref="T:TcHmiSrv.Event" />.
+</summary>
+            <param name="payload">The payload of the <see cref="T:TcHmiSrv.Event" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Event.session">
+            <summary>Gets the <see cref="T:TcHmiSrv.Session" /> of the <see cref="T:TcHmiSrv.Event" />.
+</summary>
+            <returns>The <see cref="T:TcHmiSrv.Session" /> of the <see cref="T:TcHmiSrv.Event" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Event.set_session(TcHmiSrv.Session!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Sets the <see cref="T:TcHmiSrv.Session" /> of the <see cref="T:TcHmiSrv.Event" />.
+</summary>
+            <param name="session">The <see cref="T:TcHmiSrv.Session" /> of the <see cref="T:TcHmiSrv.Event" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Event.time_received">
+            <summary>Gets the time the event was received by the server.
+</summary>
+            <returns>A <see cref="T:TcHmiSrv.Timestamp" /> that represents the time the event was received by the
+server.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Event.set_time_received(TcHmiSrv.Timestamp!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Sets the time the event was received by the server.
+</summary>
+            <param name="receive_time">A <see cref="T:TcHmiSrv.Timestamp" /> that represents the time the event was received
+by the server.</param>
+        </member>
+        <member name="M:TcHmiSrv.Event.isset">
+            <summary>Gets a value that indicates whether the <see cref="T:TcHmiSrv.Event" /> is set.
+</summary>
+            <returns>true if the <see cref="T:TcHmiSrv.Event" /> is set; otherwise, false.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Event.#ctor(TcHmiSrv.Event!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Event" /> class based on another
+<see cref="T:TcHmiSrv.Event" />.
+</summary>
+            <param name="other">The other <see cref="T:TcHmiSrv.Event" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Event.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Event" /> class.
+</summary>
+        </member>
+        <member name="T:TcHmiSrv.Event">
+Holds data for an event.
+</member>
+        <member name="M:TcHmiSrv.Context.subscription_id">
+            <summary>Gets an identifier for subscriptions.
+</summary>
+            <returns>An identifier for subscriptions. If the context does not belong to a subscription, zero is
+used.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Context.set_subscription_id(System.UInt32)">
+            <summary>Sets an identifier for subscriptions.
+</summary>
+            <param name="id">An identifier for subscriptions. Use zero if the context does not belong to a
+subscription.</param>
+        </member>
+        <member name="M:TcHmiSrv.Context.hash">
+            <summary>Gets a hash value to identify identical <see cref="T:TcHmiSrv.Command" /> sets.
+</summary>
+            <returns>A hash value to identify identical <see cref="T:TcHmiSrv.Command" /> sets.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Context.set_hash(System.UInt32)">
+            <summary>Sets a hash value to identify identical <see cref="T:TcHmiSrv.Command" /> sets.
+</summary>
+            <param name="hash">A hash value to identify identical <see cref="T:TcHmiSrv.Command" /> sets.</param>
+        </member>
+        <member name="M:TcHmiSrv.Context.domain">
+            <summary>Gets the currently active domain.
+</summary>
+            <returns>The currently active domain.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Context.set_domain(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Sets the currently active domain.
+</summary>
+            <param name="domain">The currently active domain.</param>
+        </member>
+        <member name="M:TcHmiSrv.Context.request_type">
+            <summary>Gets the type of the request that is currently being executed.
+</summary>
+            <returns>The type of the request that is currently being executed.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Context.set_request_type(&lt;unknown type&gt;)">
+            <summary>Sets the type of the request that is currently being executed.
+</summary>
+            <param name="type">The type of the request that is currently being executed.</param>
+        </member>
+        <member name="M:TcHmiSrv.Context.session">
+            <summary>Gets the <see cref="T:TcHmiSrv.Session" /> of the currently active user.
+</summary>
+            <returns>The <see cref="T:TcHmiSrv.Session" /> of the currently active user.</returns>
+            <summary>Gets the constant <see cref="T:TcHmiSrv.Session" /> of the currently active user.
+</summary>
+            <returns>The constant <see cref="T:TcHmiSrv.Session" /> of the currently active user.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Context.set_session(TcHmiSrv.Session!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Sets the <see cref="T:TcHmiSrv.Session" /> of the currently active user.
+</summary>
+            <param name="session">The <see cref="T:TcHmiSrv.Session" /> of the currently active user.</param>
+        </member>
+        <member name="M:TcHmiSrv.Context.#ctor(TcHmiSrv.Context!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Context" /> class based on another
+<see cref="T:TcHmiSrv.Context" />.
+</summary>
+            <param name="other">The other <see cref="T:TcHmiSrv.Context" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Context.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Context" /> class.
+</summary>
+        </member>
+        <member name="T:TcHmiSrv.Context">
+Holds information about the current application context.
+</member>
+        <member name="M:TcHmiSrv.Session.endpoint_info">
+            <summary>Gets the endpoint information.
+</summary>
+            <returns>The endpoint information.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Session.set_endpoint_info(&lt;unknown type&gt;)">
+            <summary>Sets the endpoint information.
+</summary>
+            <param name="info">The endpoint information.</param>
+        </member>
+        <member name="M:TcHmiSrv.Session.socket_id">
+            <summary>Gets the socket id of the <see cref="T:TcHmiSrv.Session" />.
+</summary>
+            <returns>The socket id of the <see cref="T:TcHmiSrv.Session" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Session.set_socket_id(System.UInt32)">
+            <summary>Sets the socket id of the <see cref="T:TcHmiSrv.Session" />.
+</summary>
+            <param name="id">The socket id of the <see cref="T:TcHmiSrv.Session" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Session.locale">
+            <summary>Gets the locale of the user in BCP 47 representation.
+</summary>
+            <returns>The locale of the user in BCP 47 representation.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Session.set_locale(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Sets the locale of the user in BCP 47 representation.
+</summary>
+            <param name="locale">The locale of the user in BCP 47 representation.</param>
+        </member>
+        <member name="M:TcHmiSrv.Session.user">
+            <summary>Gets the user name.
+</summary>
+            <returns>The user name prefixed with the domain of the TwinCAT HMI authentication server extension.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Session.set_user(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Sets the user name.
+</summary>
+            <param name="name">The user name.</param>
+        </member>
+        <member name="M:TcHmiSrv.Session.id">
+            <summary>Gets the id of the session.
+</summary>
+            <returns>The id of the session.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Session.set_id(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Sets the id of the <see cref="T:TcHmiSrv.Session" />.
+</summary>
+            <param name="id">The id of the <see cref="T:TcHmiSrv.Session" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Session.#ctor(TcHmiSrv.Session!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Session" /> class based on another
+<see cref="T:TcHmiSrv.Session" />.
+</summary>
+            <param name="other">The other <see cref="T:TcHmiSrv.Session" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Session.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Session" /> class.
+</summary>
+        </member>
+        <member name="T:TcHmiSrv.Session">
+Holds session information for the active user.
+</member>
+        <member name="M:TcHmiSrv.CommandGroup.isset">
+            <summary>Gets a value that indicates whether the <see cref="T:TcHmiSrv.CommandGroup" /> is set.
+</summary>
+            <returns>true if the <see cref="T:TcHmiSrv.CommandGroup" /> is set; otherwise, false.</returns>
+        </member>
+        <member name="M:TcHmiSrv.CommandGroup.clear">
+            <summary>Removes all <see cref="T:TcHmiSrv.Command" />s from the <see cref="T:TcHmiSrv.CommandGroup" />.
+</summary>
+        </member>
+        <member name="M:TcHmiSrv.CommandGroup.reserve(System.UInt64)">
+            <summary>Reserves memory for a number of <see cref="T:TcHmiSrv.Command" />s to reduce memory allocations.
+</summary>
+            <param name="size">The number of <see cref="T:TcHmiSrv.Command" />s for which memory should be reserved.</param>
+        </member>
+        <member name="M:TcHmiSrv.CommandGroup.empty">
+            <summary>Gets a value that indicates whether the <see cref="T:TcHmiSrv.CommandGroup" /> is empty.
+</summary>
+            <returns>true if the <see cref="T:TcHmiSrv.CommandGroup" /> is empty; otherwise, false.</returns>
+        </member>
+        <member name="M:TcHmiSrv.CommandGroup.size">
+            <summary>Gets the number of <see cref="T:TcHmiSrv.Command" />s in the <see cref="T:TcHmiSrv.CommandGroup" />.
+</summary>
+            <returns>The number of <see cref="T:TcHmiSrv.Command" />s in the <see cref="T:TcHmiSrv.CommandGroup" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.CommandGroup.op_Subscript(System.UInt64)">
+            <summary>Accesses a <see cref="T:TcHmiSrv.Command" /> in the <see cref="T:TcHmiSrv.CommandGroup" /> at the specified
+index.
+</summary>
+            <param name="index">The index of the <see cref="T:TcHmiSrv.Command" /> to get.</param>
+            <returns>The <see cref="T:TcHmiSrv.Command" /> at the specified index or a null <see cref="T:TcHmiSrv.Command" /> if
+the <see cref="T:TcHmiSrv.Command" /> does not exist.</returns>
+        </member>
+        <member name="M:TcHmiSrv.CommandGroup.result">
+            <summary>Gets the group result.
+</summary>
+            <returns>The group result.</returns>
+        </member>
+        <member name="M:TcHmiSrv.CommandGroup.set_result(System.UInt32)">
+            <summary>Sets the group result.
+</summary>
+            <param name="result">The group result.</param>
+        </member>
+        <member name="M:TcHmiSrv.CommandGroup.domain">
+            <summary>Gets the name of the domain.
+</summary>
+            <returns>The name of the domain.</returns>
+        </member>
+        <member name="M:TcHmiSrv.CommandGroup.set_domain(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Sets the name of the domain.
+</summary>
+            <param name="name">The name of the domain.</param>
+        </member>
+        <member name="M:TcHmiSrv.CommandGroup.#ctor(TcHmiSrv.CommandGroup!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.CommandGroup" /> class based on another
+<see cref="T:TcHmiSrv.CommandGroup" />.
+</summary>
+            <param name="other">The other <see cref="T:TcHmiSrv.CommandGroup" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.CommandGroup.#ctor(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.CommandGroup" /> class with the specified domain.
+</summary>
+            <param name="name">The name of the domain.</param>
+        </member>
+        <member name="M:TcHmiSrv.CommandGroup.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.CommandGroup" /> class.
+</summary>
+        </member>
+        <member name="T:TcHmiSrv.CommandGroup">
+Holds a group of commands to server symbols or extension symbols.
+</member>
+        <member name="M:TcHmiSrv.Command.processed_end">
+            <summary>Time when the data has been processed.
+</summary>
+            <returns>Returns the time when the data in this command finished processing.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.set_processed_end(TcHmiSrv.Timestamp!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Set this after obtaining the data from the data source. The value is used for validation in the client.
+If the exact time of the data change is known processed_start and processed_end can be equal.
+</summary>
+            <param name="time">Optional. Time the contained finished processing. Timespan::steady_now() should be used to
+avoid timing issues. If time is omitted the API will set the correct time.</param>
+        </member>
+        <member name="M:TcHmiSrv.Command.processed_start">
+            <summary>Time when the data started being processed.
+</summary>
+            <returns>Returns the time when the data in this command started being processed.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.set_processed_start(TcHmiSrv.Timestamp!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Set this before obtaining the data from the data source. The value is used for validation in the
+client. If the exact time of the data change is known processed_start and processed_end can be equal.
+</summary>
+            <param name="time">Optional. Time the contained data started being processed, Timespan::steady_now() should be
+used to avoid timing issues. If time is omitted the API will set the correct time.</param>
+        </member>
+        <member name="M:TcHmiSrv.Command.isset">
+            <summary>Gets a value that indicates whether the <see cref="T:TcHmiSrv.Command" /> is set.
+</summary>
+            <returns>true if the <see cref="T:TcHmiSrv.Command" /> is set; otherwise, false.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.swap(TcHmiSrv.Command*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Exchanges the values of two instances of the <see cref="T:TcHmiSrv.Command" /> class.
+</summary>
+            <param name="other">The other <see cref="T:TcHmiSrv.Command" />.</param>
+            <returns>true if the swap was successful; otherwise, false.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.set_version(System.Double)">
+            <summary>Sets the version of the symbol to be executed. Defaults to the latest version.
+</summary>
+            <param name="version">The symbol version to use. 0.0 for the latest version.</param>
+        </member>
+        <member name="M:TcHmiSrv.Command.version">
+            <summary>The version of the symbol to be executed.
+</summary>
+            <returns>The symbol version to use. 0.0 for the latest version.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.set_changed(System.Boolean)">
+            <summary>Sets a value that indicates whether the <see cref="T:TcHmiSrv.Command" /> has changed.
+</summary>
+            <param name="changed">true if the <see cref="T:TcHmiSrv.Command" /> has changed; otherwise, false.</param>
+        </member>
+        <member name="M:TcHmiSrv.Command.changed">
+            <summary>Gets a value that indicates whether the <see cref="T:TcHmiSrv.Command" /> has changed.
+</summary>
+            <returns>true if the <see cref="T:TcHmiSrv.Command" /> has changed; otherwise, false.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.path">
+            <summary>Gets the path of the mapping.
+</summary>
+            <example>PLC1::MAIN::test</example>
+            <returns>The path of the mapping.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.extension_data">
+            <summary>Gets optional extension data associated with this <see cref="T:TcHmiSrv.Command" />. This can be used to
+get additional information of this command.
+</summary>
+            <returns>The extension data associated with this <see cref="T:TcHmiSrv.Command" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.set_extension_data(TcHmiSrv.Value!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Sets optional extension data associated with this <see cref="T:TcHmiSrv.Command" />. This can be used to
+add additional information to the command.
+</summary>
+            <param name="data">The extension data associated with this <see cref="T:TcHmiSrv.Command" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Command.customer_data">
+            <summary>Gets the customer data associated with this <see cref="T:TcHmiSrv.Command" />. This can be used to
+identify multiple calls to the same method in one request.
+</summary>
+            <returns>The customer data associated with this <see cref="T:TcHmiSrv.Command" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.set_customer_data(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Sets the customer data associated with this <see cref="T:TcHmiSrv.Command" />. This can be used to
+identify multiple calls to the same method in one request.
+</summary>
+            <param name="data">The customer data associated with this <see cref="T:TcHmiSrv.Command" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Command.paging">
+            <summary>Gets the filter of the symbol used by this <see cref="T:TcHmiSrv.Command" />. Filters can be used to set
+rules for reducing the size of returned arrays or maps.
+If your extensions handles the filtering or paging itself set CommandOption PagingHandled.
+</summary>
+            <returns>The filter of the symbol used by this <see cref="T:TcHmiSrv.Command" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.has_paging">
+            <summary>Returns whether the result will be filtered.
+</summary>
+            <returns>True if the result will be filtered, otherwise false.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.symbol_options">
+            <summary>Gets the options of the symbol used by this <see cref="T:TcHmiSrv.Command" />.
+</summary>
+            <returns>The options of the symbol used by this <see cref="T:TcHmiSrv.Command" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.has_symbol_options">
+            <summary>Returns whether the command has specific symbol options.
+</summary>
+            <returns>True if the result has symbol options, otherwise false.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.write_value">
+            <summary>Gets the write value of the <see cref="T:TcHmiSrv.Command" />. If write value is set, the symbol should
+be written first and read afterwards.
+</summary>
+            <returns>The write value of the <see cref="T:TcHmiSrv.Command" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.set_write_value(TcHmiSrv.Value!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Sets the write value of the <see cref="T:TcHmiSrv.Command" />.
+</summary>
+            <param name="value">The write value of the <see cref="T:TcHmiSrv.Command" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Command.read_value">
+            <summary>Gets the read value of the <see cref="T:TcHmiSrv.Command" />.
+</summary>
+            <returns>The read value of the <see cref="T:TcHmiSrv.Command" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.set_read_value(TcHmiSrv.Value!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Sets the read value of the <see cref="T:TcHmiSrv.Command" />.
+</summary>
+            <param name="value">The read value of the <see cref="T:TcHmiSrv.Command" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Command.set_server_result(TcHmiSrv.ErrorValue)">
+            <summary>Sets the server result of the <see cref="T:TcHmiSrv.Command" />.
+</summary>
+            <param name="result">The server result of the <see cref="T:TcHmiSrv.Command" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Command.server_result">
+            <summary>Gets the server result of the <see cref="T:TcHmiSrv.Command" />.
+</summary>
+            <returns>The server result of the <see cref="T:TcHmiSrv.Command" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.result_string">
+            <summary>Gets the result string.
+</summary>
+            <returns>The result string.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.set_result_string(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Sets the result string of the <see cref="T:TcHmiSrv.Command" />.
+</summary>
+            <param name="result_string">The result string of the <see cref="T:TcHmiSrv.Command" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Command.extension_result">
+            <summary>Gets the extension result.
+</summary>
+            <returns>The extension result.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.set_extension_result(System.UInt32)">
+            <summary>Sets the extension result of the <see cref="T:TcHmiSrv.Command" />.
+</summary>
+            <param name="result">The extension result of the <see cref="T:TcHmiSrv.Command" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Command.result">
+            <summary>Gets the result of the symbol.
+</summary>
+            <returns>The result of the symbol.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.options">
+            <summary>Gets the command options of the symbol.
+</summary>
+            <returns>The command options of the symbol.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.set_options(&lt;unknown type&gt;)">
+            <summary>Sets the command options of the symbol.
+</summary>
+            <param name="options">The command options of the symbol.</param>
+        </member>
+        <member name="M:TcHmiSrv.Command.domain">
+            <summary>Gets the domain of the symbol.
+</summary>
+            <returns>The domain of the symbol.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.mapping">
+            <summary>Gets the mapping of the symbol.
+</summary>
+            <returns>The mapping of the symbol.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.name">
+            <summary>Gets the name of the symbol.
+</summary>
+            <returns>The name of the symbol.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Command.set_name(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Sets the name of the symbol.
+</summary>
+            <param name="name">The name of the symbol.</param>
+        </member>
+        <member name="M:TcHmiSrv.Command.#ctor(TcHmiSrv.Command!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Command" /> class based on another
+<see cref="T:TcHmiSrv.Command" />.
+</summary>
+            <param name="other">The other <see cref="T:TcHmiSrv.Command" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Command.#ctor(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Command" /> class with the specified name.
+</summary>
+            <param name="name">The name to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Command.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Command" /> class.
+</summary>
+        </member>
+        <member name="T:TcHmiSrv.Command">
+Holds a single command to server symbols or extension symbols.
+</member>
+        <member name="M:TcHmiSrv.Value.convert(&lt;unknown type&gt;)">
+            <summary>Tries to convert the <see cref="T:TcHmiSrv.Value" /> to another <see cref="T:TcHmiSrv.ValueType" />. If
+conversion fails, the <see cref="T:TcHmiSrv.Value" /> will remain unchanged.
+Available conversions are:
+- int to double
+- int64 to double if the integer can be represented exactly
+- uint64 to double if the integer can be represented exactly
+- double to int if there are no fractional digits
+- string containing number to double or int
+- string containing "true" or "false" to boolean
+- string in ISO-8601 to timestamp
+- string in base64 to binary
+- string in base64 containing 64 bit integer to int64
+- string in base64 containing 64 bit unsigned integer to uint64
+- struct to alarm
+- struct to message
+- struct to event
+- map to vector
+- struct to vector
+</summary>
+            <param name="type">The <see cref="T:TcHmiSrv.ValueType" /> to convert to.</param>
+            <returns>The converted <see cref="T:TcHmiSrv.Value" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Value.set(TcHmiSrv.Alarm!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Sets the <see cref="T:TcHmiSrv.Value" /> to the specified instance of the <see cref="T:TcHmiSrv.Alarm" />
+class.
+</summary>
+            <param name="value">The <see cref="T:TcHmiSrv.Alarm" /> to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.set(TcHmiSrv.Event!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Sets the <see cref="T:TcHmiSrv.Value" /> to the specified instance of the <see cref="T:TcHmiSrv.Event" />
+class.
+</summary>
+            <param name="value">The <see cref="T:TcHmiSrv.Event" /> to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.set(TcHmiSrv.Message!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Sets the <see cref="T:TcHmiSrv.Value" /> to the specified instance of the <see cref="T:TcHmiSrv.Message" />
+class.
+</summary>
+            <param name="value">The <see cref="T:TcHmiSrv.Message" /> to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.set(TcHmiSrv.Timespan)">
+            <summary>Sets the <see cref="T:TcHmiSrv.Value" /> to the specified instance of the
+<see cref="T:TcHmiSrv.Timespan" /> class.
+</summary>
+            <param name="value">The <see cref="T:TcHmiSrv.Timespan" /> to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.set(TcHmiSrv.Timestamp)">
+            <summary>Sets the <see cref="T:TcHmiSrv.Value" /> to the specified instance of the
+<see cref="T:TcHmiSrv.Timestamp" /> class.
+</summary>
+            <param name="value">The <see cref="T:TcHmiSrv.Timestamp" /> to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.set(TcHmiSrv.Binary)">
+            <summary>Sets the <see cref="T:TcHmiSrv.Value" /> to the specified instance of the <see cref="T:TcHmiSrv.Binary" />
+class.
+</summary>
+            <param name="value">The <see cref="T:TcHmiSrv.Binary" /> to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.set(System.UInt64)">
+            <summary>Sets the <see cref="T:TcHmiSrv.Value" /> to the specified uint64.
+</summary>
+            <param name="value">The uint64 to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.set(System.Int64)">
+            <summary>Sets the <see cref="T:TcHmiSrv.Value" /> to the specified int64.
+</summary>
+            <param name="value">The int64 integer to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.set(System.Int32)">
+            <summary>Sets the <see cref="T:TcHmiSrv.Value" /> to the specified integer.
+</summary>
+            <param name="value">The integer to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.set(System.Double)">
+            <summary>Sets the <see cref="T:TcHmiSrv.Value" /> to the specified double-precision floating-point number.
+</summary>
+            <param name="value">The double-precision floating-point number to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.set(System.Boolean)">
+            <summary>Sets the <see cref="T:TcHmiSrv.Value" /> to the specified boolean value.
+</summary>
+            <param name="value">The boolean value to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.set(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Sets the <see cref="T:TcHmiSrv.Value" /> to the specified string.
+</summary>
+            <param name="value">The string to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.type">
+            <summary>Gets the type of the <see cref="T:TcHmiSrv.Value" />.
+</summary>
+            <returns>The type of the <see cref="T:TcHmiSrv.Value" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Value.set_type(&lt;unknown type&gt;)">
+            <summary>Sets the type of the <see cref="T:TcHmiSrv.Value" />. If the <see cref="T:TcHmiSrv.ValueType" /> is
+different from the old <see cref="T:TcHmiSrv.ValueType" /> all data will be cleared.
+</summary>
+            <param name="type">The type of the <see cref="T:TcHmiSrv.Value" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.isset">
+            <summary>Gets a value that indicates whether the <see cref="T:TcHmiSrv.Value" /> is set.
+</summary>
+            <returns>true if the <see cref="T:TcHmiSrv.Value" /> is set; otherwise, false.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Value.swap(TcHmiSrv.Value*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Exchanges the values of two instances of the <see cref="T:TcHmiSrv.Value" /> class.
+</summary>
+            <param name="other">The other <see cref="T:TcHmiSrv.Value" />.</param>
+            <returns>true if the swap was successful; otherwise, false.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Value.reserve(System.UInt64)">
+            <summary>Reserves memory for a number of <see cref="T:TcHmiSrv.Value" />s to reduce memory allocations.
+</summary>
+            <param name="size">The number of <see cref="T:TcHmiSrv.Value" />s for which memory should be reserved.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.empty">
+            <summary>Gets a value that indicates whether the <see cref="T:TcHmiSrv.Value" /> is empty.
+</summary>
+            <returns>true if the <see cref="T:TcHmiSrv.Value" /> is empty; otherwise, false.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Value.size">
+            <summary>Gets the number of <see cref="T:TcHmiSrv.Value" />s in the map or vector.
+</summary>
+            <returns>The number of <see cref="T:TcHmiSrv.Value" />s in the map or vector.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Value.resize(System.UInt64,TcHmiSrv.Value!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Changes the number of elements in a vector.
+</summary>
+            <param name="n">New container size, expressed in number of elements.</param>
+            <param name="v">
+                <see cref="T:TcHmiSrv.Value" /> that is copied to the added elements in case that n is greater
+than the current container size.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.clear">
+            <summary>Removes all <see cref="T:TcHmiSrv.Value" />s from the map or vector.
+</summary>
+        </member>
+        <member name="M:TcHmiSrv.Value.remove(System.UInt64,System.UInt64)">
+            <summary>Removes a range of <see cref="T:TcHmiSrv.Value" />s from the vector.
+</summary>
+            <param name="first">The index of the first <see cref="T:TcHmiSrv.Value" /> that should be removed.</param>
+            <param name="last">The index of the last <see cref="T:TcHmiSrv.Value" /> that should be removed.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if the <see cref="T:TcHmiSrv.Value" />s have been
+removed;
+otherwise, any <see cref="T:TcHmiSrv.ErrorValue" /> that best describes which error has occurred.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Value.remove(System.UInt64)">
+            <summary>Removes a <see cref="T:TcHmiSrv.Value" /> at the specified index from the vector.
+</summary>
+            <param name="index">The index of the <see cref="T:TcHmiSrv.Value" /> that should be removed.</param>
+            <returns>
+                <see cref="F:HMI_SUCCESS" /> if the <see cref="T:TcHmiSrv.Value" /> has been removed
+or <see cref="F:HMI_E_ENTRY_NOT_FOUND" /> if the <see cref="T:TcHmiSrv.Value" /> does not
+exist.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Value.op_LeftShift(TcHmiSrv.Value!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Adds a <see cref="T:TcHmiSrv.Value" /> to the end of the vector.
+</summary>
+            <param name="value">The <see cref="T:TcHmiSrv.Value" /> of the <see cref="T:TcHmiSrv.Value" /> to add.</param>
+            <returns>The <see cref="T:TcHmiSrv.Value" /> that has been added.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Value.op_Subscript(std.basic_string&lt;System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte,std.char_traits{System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte},std.allocator&lt;System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte&gt;&gt;!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Accesses a <see cref="T:TcHmiSrv.Value" /> in the map specified by the name.
+</summary>
+            <param name="name">The name of the <see cref="T:TcHmiSrv.Value" /> to get.</param>
+            <returns>The <see cref="T:TcHmiSrv.Value" /> specified by the name or a null <see cref="T:TcHmiSrv.Value" />
+if the <see cref="T:TcHmiSrv.Value" /> does not exist.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Value.op_Subscript(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Accesses a <see cref="T:TcHmiSrv.Value" /> in the map specified by the name.
+</summary>
+            <param name="name">The name of the <see cref="T:TcHmiSrv.Value" /> to get.</param>
+            <returns>The <see cref="T:TcHmiSrv.Value" /> specified by the name or a null <see cref="T:TcHmiSrv.Value" />
+if the <see cref="T:TcHmiSrv.Value" /> does not exist.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Value.op_Subscript(System.Int32)">
+            <summary>Accesses a <see cref="T:TcHmiSrv.Value" /> in the vector at the specified index.
+</summary>
+            <param name="index">The index of the <see cref="T:TcHmiSrv.Value" /> to get.</param>
+            <returns>The <see cref="T:TcHmiSrv.Value" /> at the specified index or a null <see cref="T:TcHmiSrv.Value" /> if the
+<see cref="T:TcHmiSrv.Value" /> does not exist.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Value.#ctor(TcHmiSrv.Alarm!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Value" /> class with the specified instance of
+the <see cref="T:TcHmiSrv.Alarm" /> class.
+</summary>
+            <param name="value">The <see cref="T:TcHmiSrv.Alarm" /> to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.#ctor(TcHmiSrv.Event!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Value" /> class with the specified instance of
+the <see cref="T:TcHmiSrv.Event" /> class.
+</summary>
+            <param name="value">The <see cref="T:TcHmiSrv.Event" /> to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.#ctor(TcHmiSrv.Message!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Value" /> class with the specified instance of
+the <see cref="T:TcHmiSrv.Message" /> class.
+</summary>
+            <param name="value">The <see cref="T:TcHmiSrv.Message" /> to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.#ctor(TcHmiSrv.Timespan)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Value" /> class with the specified instance of
+the <see cref="T:TcHmiSrv.Timespan" /> class.
+</summary>
+            <param name="value">The <see cref="T:TcHmiSrv.Timespan" /> to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.#ctor(TcHmiSrv.Timestamp)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Value" /> class with the specified instance of
+the <see cref="T:TcHmiSrv.Timestamp" /> class.
+</summary>
+            <param name="value">The <see cref="T:TcHmiSrv.Timestamp" /> to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.#ctor(TcHmiSrv.Binary)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Value" /> class with the specified instance of
+the <see cref="T:TcHmiSrv.Binary" /> class.
+</summary>
+            <param name="value">The <see cref="T:TcHmiSrv.Binary" /> to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.#ctor(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Value" /> class with the specified string.
+</summary>
+            <param name="value">The string to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.#ctor(System.UInt64)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Value" /> class with the specified uint64.
+</summary>
+            <param name="value">The uint64 to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.#ctor(System.Int64)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Value" /> class with the specified int64.
+</summary>
+            <param name="value">The int64 to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.#ctor(System.Int32)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Value" /> class with the specified integer.
+</summary>
+            <param name="value">The integer to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.#ctor(TcHmiSrv.ConfigChangeType)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Value" /> class with the specified
+ConfigChangeType.
+</summary>
+            <param name="value">ConfigChangeType to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.#ctor(System.Double)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Value" /> class with the specified
+double-precision floating-point number.
+</summary>
+            <param name="value">The double-precision floating-point number to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.#ctor(System.Boolean)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Value" /> class with the specified boolean value.
+</summary>
+            <param name="value">The boolean value to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.#ctor(TcHmiSrv.Value!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Value" /> class based on another
+<see cref="T:TcHmiSrv.Value" />.
+</summary>
+            <param name="other">The other <see cref="T:TcHmiSrv.Value" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Value.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Value" /> class.
+</summary>
+        </member>
+        <member name="T:TcHmiSrv.Value">
+Represents an object to hold values of any <see cref="T:TcHmiSrv.ValueType" /> including maps and vectors.
+</member>
+        <member name="M:TcHmiSrv.String.isset">
+            <summary>Gets a value that indicates whether the <see cref="T:TcHmiSrv.String" /> is set.
+</summary>
+            <returns>true if the <see cref="T:TcHmiSrv.String" /> is set; otherwise, false.</returns>
+        </member>
+        <member name="M:TcHmiSrv.String.name">
+            <summary>Gets the name of the <see cref="T:TcHmiSrv.String" />.
+</summary>
+            <returns>The name of the <see cref="T:TcHmiSrv.String" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.String.set_name(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Sets the name of the <see cref="T:TcHmiSrv.String" />.
+</summary>
+            <param name="name">The name of the <see cref="T:TcHmiSrv.String" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.String.#ctor(TcHmiSrv.String!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.String" /> class based on another
+<see cref="T:TcHmiSrv.String" />.
+</summary>
+            <param name="other">The other <see cref="T:TcHmiSrv.String" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.String.#ctor(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.String" /> class with the specified name.
+</summary>
+            <param name="name">The name to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.String.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.String" /> class.
+</summary>
+        </member>
+        <member name="T:TcHmiSrv.String">
+Represents an object to hold string variables.
+</member>
+        <member name="M:TcHmiSrv.ILocalizable.severity">
+            <summary>Gets the <see cref="T:TcHmiSrv.Severity" /> of the <see cref="T:TcHmiSrv.ILocalizable" />.
+</summary>
+            <returns>The <see cref="T:TcHmiSrv.Severity" /> of the <see cref="T:TcHmiSrv.ILocalizable" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ILocalizable.type">
+            <summary>Gets the <see cref="T:TcHmiSrv.ValueType" /> of the <see cref="T:TcHmiSrv.ILocalizable" /> that will be
+usually <see cref="F:Message" /> or
+<see cref="F:Alarm" />.
+</summary>
+            <returns>The <see cref="T:TcHmiSrv.ValueType" /> of the <see cref="T:TcHmiSrv.ILocalizable" />.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ILocalizable.parameters">
+            <summary>Gets the parameters of the <see cref="T:TcHmiSrv.ILocalizable" />. The parameter names have to match the
+placeholders in the localization string.
+</summary>
+            <returns>A map of parameters.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ILocalizable.domain">
+            <summary>Gets the domain of the language variable. The language file of this domain will be used for
+localization.
+</summary>
+            <returns>The domain of the language variable.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ILocalizable.name">
+            <summary>Gets the name of the language variable.
+</summary>
+            <returns>The name of the language variable.</returns>
+        </member>
+        <member name="M:TcHmiSrv.ILocalizable.set_name(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Sets the name of the language variable.
+</summary>
+            <param name="name">The name of the language variable.</param>
+        </member>
+        <member name="T:TcHmiSrv.ILocalizable">
+Declares an interface for a localizable object that holds a language variable and parameters.
+</member>
+        <member name="M:TcHmiSrv.Timespan.nanoseconds">
+            <summary>Gets the number of nanoseconds from the current <see cref="T:TcHmiSrv.Timespan" />.
+</summary>
+            <returns>The number of nanoseconds that the current <see cref="T:TcHmiSrv.Timespan" /> holds.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Timespan.milliseconds">
+            <summary>Gets the number of milliseconds from the current <see cref="T:TcHmiSrv.Timespan" />.
+</summary>
+            <returns>The number of milliseconds that the current <see cref="T:TcHmiSrv.Timespan" /> holds.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Timespan.seconds">
+            <summary>Gets the number of seconds from the current <see cref="T:TcHmiSrv.Timespan" />.
+</summary>
+            <returns>The number of seconds that the current <see cref="T:TcHmiSrv.Timespan" /> holds.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Timespan.#ctor(TcHmiSrv.Timespan!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Timespan" /> class based on another
+<see cref="T:TcHmiSrv.Timespan" />.
+</summary>
+            <param name="other">The other <see cref="T:TcHmiSrv.Timespan" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Timespan.#ctor(System.Int64)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Timespan" /> class with the specified number of
+nanoseconds.
+</summary>
+            <param name="nanoseconds">The nanoseconds to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Timespan.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Timespan" /> class.
+</summary>
+        </member>
+        <member name="T:TcHmiSrv.Timespan">
+Holds a period of time in nanoseconds.
+</member>
+        <member name="M:TcHmiSrv.Timestamp.nanoseconds">
+            <summary>Gets the number of nanoseconds from the current <see cref="T:TcHmiSrv.Timestamp" />.
+</summary>
+            <returns>The number of nanoseconds that the current <see cref="T:TcHmiSrv.Timestamp" /> holds.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Timestamp.milliseconds">
+            <summary>Gets the number of milliseconds from the current <see cref="T:TcHmiSrv.Timestamp" />.
+</summary>
+            <returns>The number of milliseconds that the current <see cref="T:TcHmiSrv.Timestamp" /> holds.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Timestamp.seconds">
+            <summary>Gets the number of seconds from the current <see cref="T:TcHmiSrv.Timestamp" />.
+</summary>
+            <returns>The number of seconds that the current <see cref="T:TcHmiSrv.Timestamp" /> holds.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Timestamp.steady_now">
+            <summary>Gets the current <see cref="T:TcHmiSrv.Timestamp" /> from a steady clock.
+</summary>
+        </member>
+        <member name="M:TcHmiSrv.Timestamp.now">
+            <summary>Gets the current <see cref="T:TcHmiSrv.Timestamp" />.
+</summary>
+        </member>
+        <member name="M:TcHmiSrv.Timestamp.from_milliseconds(System.Int64)">
+            <summary>Creates a <see cref="T:TcHmiSrv.Timestamp" /> from a number of milliseconds since 1 January 1970.
+</summary>
+            <param name="milliseconds">The number of milliseconds since 1 January 1970.</param>
+            <returns>A <see cref="T:TcHmiSrv.Timestamp" /> that represents the given number of milliseconds since 1 January
+1970.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Timestamp.from_file_time(System.Int64)">
+            <summary>Creates a <see cref="T:TcHmiSrv.Timestamp" /> from a Windows file time.
+</summary>
+            <param name="filetime">The Windows file time.</param>
+            <returns>A <see cref="T:TcHmiSrv.Timestamp" /> that represents the given Windows file time.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Timestamp.from_unix_time(System.Int32)">
+            <summary>Creates a <see cref="T:TcHmiSrv.Timestamp" /> from an unix timestamp.
+</summary>
+            <param name="timestamp">The unix timestamp.</param>
+            <returns>A <see cref="T:TcHmiSrv.Timestamp" /> that represents the given unix timestamp.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Timestamp.#ctor(TcHmiSrv.Timestamp!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Timestamp" /> class based on another
+<see cref="T:TcHmiSrv.Timestamp" />.
+</summary>
+            <param name="other">The other <see cref="T:TcHmiSrv.Timestamp" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.Timestamp.#ctor(System.Int64)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Timestamp" /> class with the specified number of
+nanoseconds.
+</summary>
+            <param name="nanoseconds">The nanoseconds to be set.</param>
+        </member>
+        <member name="M:TcHmiSrv.Timestamp.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.Timestamp" /> class.
+</summary>
+        </member>
+        <member name="T:TcHmiSrv.Timestamp">
+Holds a time in nanoseconds since '21 September 1677 00:12:43.145224192' (UTC) until '11 April 2262
+23:47:16.854775807' (UTC). The zero (default) value is '01 January 1970 00:00:00.00000000' (UTC).
+</member>
+        <member name="M:TcHmiSrv.ResultPair.result">
+            <summary>Gets the <see cref="T:TcHmiSrv.ErrorValue" />.
+</summary>
+        </member>
+        <member name="M:TcHmiSrv.ResultPair.set_result(TcHmiSrv.ErrorValue)">
+            <summary>Sets the <see cref="T:TcHmiSrv.ErrorValue" />.
+</summary>
+        </member>
+        <member name="M:TcHmiSrv.ResultPair.text">
+            <summary>Gets the textual representation or further description of the result code.
+</summary>
+        </member>
+        <member name="M:TcHmiSrv.ResultPair.set_text(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Sets the textual representation or further description of the result code.
+</summary>
+        </member>
+        <member name="M:TcHmiSrv.ResultPair.#ctor(TcHmiSrv.ResultPair!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.ResultPair" /> class based on another
+<see cref="T:TcHmiSrv.ResultPair" />.
+</summary>
+            <param name="other">The other <see cref="T:TcHmiSrv.ResultPair" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.ResultPair.#ctor(TcHmiSrv.ErrorValue,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.ResultPair" /> class.</summary>
+            <param name="result">The result code, see <see cref="T:TcHmiSrv.ErrorValue" />.</param>
+            <param name="text">The textual representation or further description of the result code.</param>
+        </member>
+        <member name="M:TcHmiSrv.ResultPair.#ctor(TcHmiSrv.ErrorValue)">
+            <summary>Initializes a new instance of the <see cref="T:TcHmiSrv.ResultPair" /> class.
+</summary>
+            <param name="result">The result code, see <see cref="T:TcHmiSrv.ErrorValue" />.</param>
+        </member>
+        <member name="M:TcHmiSrv.ResultPair.#ctor">
+            <summary>Initializes a new empty instance of the <see cref="T:TcHmiSrv.ResultPair" /> class.
+</summary>
+        </member>
+        <member name="T:TcHmiSrv.ResultPair">
+Holds results of API calls.
+</member>
+        <member name="M:TcHmiSrv.Binary.valid">
+            <summary>Gets a value that indicates whether the <see cref="T:TcHmiSrv.Binary" /> is valid.
+</summary>
+            <returns>true if the <see cref="T:TcHmiSrv.Binary" /> is valid; otherwise, false.</returns>
+        </member>
+        <member name="M:TcHmiSrv.Binary.empty">
+            <summary>Gets a value that indicates whether the <see cref="T:TcHmiSrv.Binary" /> is empty.
+</summary>
+            <returns>true if the <see cref="T:TcHmiSrv.Binary" /> is empty; otherwise, false.</returns>
+        </member>
+        <member name="F:TcHmiSrv.Binary.data">
+            <summary>Contains the data of the binary string.
+</summary>
+        </member>
+        <member name="F:TcHmiSrv.Binary.size">
+            <summary>Represents the size of the binary string.
+</summary>
+        </member>
+        <member name="T:TcHmiSrv.Binary">
+Holds a binary string.
+</member>
+        <member name="T:TcHmiSrv.CommandOption">
+Options that clients can set only in configuration requests:
+- Add
+- Replace
+- Check
+- Delete
+- Transaction
+- Import
+
+Options that clients can set in all requests
+- SendWriteValue
+- SendErrorMessage
+- Poll
+- Offline
+- UniqueHash
+- ValidateRead
+- ProcessTimingAsTimespan
+
+Options set by the server or extension:
+- PagingHandled
+</member>
+        <member name="F:Import">
+            <summary>before_change handlers of the ITcHmiSrvConfigListener are sent to the before_import handler of the
+ITcHmiSrvExportListener and the whole config is sent for easier validation.
+</summary>
+        </member>
+        <member name="F:ProcessTimingAsTimespan">
+            <summary>Use TimeSpan instead of Timestamp for the processedStart and processedEnd fields.
+</summary>
+        </member>
+        <member name="F:Transaction">
+            <summary>If one of the commands in the request fails all changes will be rolled back.
+</summary>
+        </member>
+        <member name="F:PagingHandled">
+            <summary>Paging for this symbol has been done, if this option is not set, the server will do the paging.
+</summary>
+        </member>
+        <member name="F:Delete">
+            <summary>Deletes the given vector or map entry.
+</summary>
+        </member>
+        <member name="F:ValidateRead">
+            <summary>Validate the readValue against the symbol's JSON schema before
+sending it to the client.
+</summary>
+        </member>
+        <member name="F:Replace">
+            <summary>Replace the whole data structure instead of partially updating it.
+</summary>
+        </member>
+        <member name="F:Add">
+            <summary>When using vectors, add the entry at the end instead of replacing it.
+</summary>
+        </member>
+        <member name="F:UniqueHash">
+            <summary>Do not merge subscriptions.
+</summary>
+        </member>
+        <member name="F:Offline">
+            <summary>Do not pass the symbol to the extension, simulate it instead.
+</summary>
+        </member>
+        <member name="F:Poll">
+            <summary>For subscriptions only: Send a response for each subscription tick, even if the data has not changed.
+</summary>
+        </member>
+        <member name="F:SendErrorMessage">
+            <summary>Add error message and reason to the response. By default, only the error code is returned.
+</summary>
+        </member>
+        <member name="F:SendWriteValue">
+            <summary>Send the writeValue for requests back to the client.
+</summary>
+        </member>
+        <member name="T:TcHmiSrv.AlarmChangeType">
+Represents how an <see cref="T:TcHmiSrv.Alarm" /> can change.
+</member>
+        <member name="F:Persistent">
+            <summary>Connected endpoint is permanently logged in.
+</summary>
+        </member>
+        <member name="F:Internal">
+            <summary>Internal call.
+</summary>
+        </member>
+        <member name="F:Remote">
+            <summary>Connected endpoint is a remote machine.
+</summary>
+        </member>
+        <member name="F:Local">
+            <summary>Connected endpoint is the local machine.
+</summary>
+        </member>
+        <member name="T:TcHmiSrv.Severity">
+See: https://msdn.microsoft.com/en-us/library/office/ff604025(v=office.14).aspx
+</member>
+        <member name="F:Critical">
+            <summary>Critical
+</summary>
+        </member>
+        <member name="F:Error">
+            <summary>Error
+</summary>
+        </member>
+        <member name="F:Warning">
+            <summary>Warning
+</summary>
+        </member>
+        <member name="F:Info">
+            <summary>Info
+</summary>
+        </member>
+        <member name="F:Verbose">
+            <summary>Verbose
+</summary>
+        </member>
+        <member name="F:Diagnostics">
+            <summary>Diagnostics
+</summary>
+        </member>
+        <member name="F:EventLifetime_Temporary">
+            <summary>Temporary
+</summary>
+        </member>
+        <member name="F:EventLifetime_Persistent">
+            <summary>Persistent
+</summary>
+        </member>
+    </members>
+</doc>

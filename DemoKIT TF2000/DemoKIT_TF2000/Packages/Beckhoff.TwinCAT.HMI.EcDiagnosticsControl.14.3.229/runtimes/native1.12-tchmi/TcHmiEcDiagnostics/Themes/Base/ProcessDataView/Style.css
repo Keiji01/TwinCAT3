@@ -1,0 +1,11 @@
+.beckhoff-ec-diagnostics .process-data-chart-wrapper .current-value {
+    background: rgb(255, 255, 255, 0.9);
+}
+
+.beckhoff-ec-diagnostics .process-data-chart-wrapper .min-value {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.beckhoff-ec-diagnostics .process-data-chart-wrapper .max-value {
+    background: rgba(255, 255, 255, 0.9);
+}

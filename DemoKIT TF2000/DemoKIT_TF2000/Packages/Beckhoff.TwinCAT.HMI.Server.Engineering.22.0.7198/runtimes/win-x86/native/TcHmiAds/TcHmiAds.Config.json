@@ -1,0 +1,517 @@
+{
+  "$schema": "../../TcHmiSrv/schema/ExtensionSettings.Schema.json",
+  "version": "14.4.124.0",
+  "configVersion": "1.0.1.4",
+  "guid": "5AE90DB9-B895-45AD-9B79-27A19FADCD86",
+  "visibility": "AlwaysShow",
+  "policies": [
+    "StrictPropertyValidation",
+    "StrictConfigListenerFilter"
+  ],
+  "symbolCategories": [
+    {
+      "name": "native",
+      "localization": "CATEGORY_NATIVE"
+    },
+    {
+      "name": "wrapperFunctions",
+      "localization": "CATEGORY_WRAPPER_FUNCTIONS"
+    }
+  ],
+  "symbols": {
+    "AdsSyncWriteControlReq": {
+      "category": "native",
+      "readValue": {
+        "function": true
+      },
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "Runtime": {
+            "type": "string"
+          },
+          "AdsState": {
+            "$ref": "#/definitions/adsState"
+          },
+          "DeviceState": {
+            "$ref": "tchmi:general#/definitions/UINT32"
+          },
+          "WriteData": {
+            "type": "string",
+            "format": "base64"
+          }
+        },
+        "required": [
+          "Runtime",
+          "AdsState",
+          "DeviceState",
+          "WriteData"
+        ]
+      }
+    },
+    "AdsSyncReadDeviceInfoReq": {
+      "category": "native",
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "readValue": {
+        "function": true
+      },
+      "writeValue": {
+        "type": "string",
+        "description": "Ads runtime."
+      }
+    },
+    "AdsSyncReadReq": {
+      "category": "native",
+      "readValue": {
+        "function": true
+      },
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "Runtime": {
+            "type": "string"
+          },
+          "IndexGroup": {
+            "$ref": "tchmi:general#/definitions/UINT32"
+          },
+          "IndexOffset": {
+            "$ref": "tchmi:general#/definitions/UINT32"
+          },
+          "ReadLen": {
+            "$ref": "tchmi:general#/definitions/UINT32"
+          }
+        },
+        "required": [
+          "Runtime",
+          "IndexGroup",
+          "ReadLen"
+        ]
+      }
+    },
+    "AdsSyncReadStateReq": {
+      "category": "native",
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "properties": {
+          "AdsState": {
+            "$ref": "#/definitions/adsState"
+          },
+          "DeviceState": {
+            "type": "integer"
+          }
+        }
+      },
+      "writeValue": {
+        "oneOf": [
+          {
+            "type": "string",
+            "description": "Ads runtime."
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Runtime": {
+                "type": "string",
+                "description": "Ads runtime."
+              },
+              "Port": {
+                "allOf": [
+                  {
+                    "$ref": "tchmi:general#/definitions/UINT32"
+                  },
+                  {
+                    "const": 10000,
+                    "description": "Execute the request for a different ADS port"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "Runtime"
+            ]
+          }
+        ]
+      }
+    },
+    "AdsSyncWriteReq": {
+      "category": "native",
+      "readValue": {
+        "function": true
+      },
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "Runtime": {
+            "type": "string"
+          },
+          "IndexGroup": {
+            "$ref": "tchmi:general#/definitions/UINT32"
+          },
+          "IndexOffset": {
+            "$ref": "tchmi:general#/definitions/UINT32"
+          },
+          "WriteData": {
+            "type": "string",
+            "format": "base64"
+          }
+        },
+        "required": [
+          "Runtime",
+          "IndexGroup",
+          "IndexOffset",
+          "WriteData"
+        ]
+      }
+    },
+    "AdsSyncReadWriteReq": {
+      "category": "native",
+      "readValue": {
+        "function": true
+      },
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "Runtime": {
+            "type": "string"
+          },
+          "IndexGroup": {
+            "$ref": "tchmi:general#/definitions/UINT32"
+          },
+          "IndexOffset": {
+            "$ref": "tchmi:general#/definitions/UINT32"
+          },
+          "ReadLen": {
+            "$ref": "tchmi:general#/definitions/UINT32"
+          },
+          "WriteData": {
+            "type": "string",
+            "format": "base64"
+          }
+        },
+        "required": [
+          "Runtime",
+          "IndexGroup",
+          "IndexOffset",
+          "ReadLen",
+          "WriteData"
+        ]
+      }
+    },
+    "CheckLicense": {
+      "category": "wrapperFunctions",
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "properties": {
+          "expireTimeUTC": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "result": {
+            "$ref": "tchmi:general#/definitions/UINT32"
+          },
+          "count": {
+            "$ref": "tchmi:general#/definitions/UINT32"
+          }
+        }
+      },
+      "writeValue": {
+        "type": "string"
+      }
+    },
+    "ListSymbols": {
+      "readValue": {
+        "function": true
+      }
+    },
+    "ListCommonTypes": {
+      "readValue": {
+        "function": true,
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "label",
+            "value"
+          ]
+        }
+      }
+    },
+    "RuntimePorts": {
+      "category": "wrapperFunctions",
+      "readValue": {
+        "function": true,
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "value": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "label",
+            "value"
+          ]
+        }
+      },
+      "writeValue": {
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "NETID": {
+                "type": "string",
+                "format": "amsnetid"
+              },
+              "all": {
+                "type": "boolean",
+                "default": false
+              }
+            }
+          },
+          {
+            "$ref": "tchmi:general#/definitions/VOID"
+          }
+        ]
+      }
+    },
+    "GetSystemId": {
+      "category": "wrapperFunctions",
+      "readValue": {
+        "function": true,
+        "type": "string"
+      }
+    },
+    "ListRoutes": {
+      "category": "wrapperFunctions",
+      "readValue": {
+        "function": true,
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string",
+              "format": "amsnetid"
+            }
+          },
+          "required": [
+            "label",
+            "name",
+            "value"
+          ]
+        }
+      }
+    },
+    "GetSchema": {
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true
+      }
+    },
+    "Diagnostics": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "readValue": {
+        "allOf": [
+          {
+            "function": true
+          },
+          {
+            "oneOf": [
+              {
+                "versions": [
+                  1.0
+                ],
+                "type": "object",
+                "properties": {
+                  "runtimes": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object",
+                      "properties": {
+                        "connectionState": {
+                          "propertyOrder": 1,
+                          "type": "string"
+                        },
+                        "systemServiceAdsState": {
+                          "propertyOrder": 2,
+                          "type": "string"
+                        },
+                        "adsState": {
+                          "propertyOrder": 3,
+                          "type": "string"
+                        },
+                        "deviceName": {
+                          "propertyOrder": 4,
+                          "type": "string"
+                        },
+                        "adsApplicationName": {
+                          "propertyOrder": 5,
+                          "type": "string",
+                          "visibility": "HideInEngineering"
+                        },
+                        "adsProjectName": {
+                          "propertyOrder": 6,
+                          "type": "string"
+                        },
+                        "adsProjectCompiledAt": {
+                          "propertyOrder": 7,
+                          "type": "string",
+                          "format": "date-time",
+                          "visibility": "HideInEngineering"
+                        },
+                        "adsVersion": {
+                          "propertyOrder": 8,
+                          "type": "string"
+                        },
+                        "adsVersionBuild": {
+                          "propertyOrder": 9,
+                          "type": "integer",
+                          "minimum": 0,
+                          "visibility": "HideInEngineering"
+                        },
+                        "isUserModeRuntime": {
+                          "propertyOrder": 10,
+                          "type": "boolean",
+                          "visibility": "HideInEngineering"
+                        }
+                      },
+                      "required": [
+                        "deviceName",
+                        "adsVersion",
+                        "adsState",
+                        "connectionState"
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "versions": [
+                  2.0
+                ],
+                "type": "object",
+                "properties": {
+                  "domainState": {
+                    "propertyOrder": 2,
+                    "type": "string",
+                    "enum": [
+                      "Good",
+                      "Bad"
+                    ]
+                  },
+                  "domainError": {
+                    "propertyOrder": 3,
+                    "type": "string",
+                    "format": "multiline"
+                  },
+                  "runtimes": {
+                    "propertyOrder": 1,
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object",
+                      "properties": {
+                        "connectionState": {
+                          "propertyOrder": 1,
+                          "type": "string"
+                        },
+                        "systemServiceAdsState": {
+                          "propertyOrder": 2,
+                          "type": "string"
+                        },
+                        "adsState": {
+                          "propertyOrder": 3,
+                          "type": "string"
+                        },
+                        "deviceName": {
+                          "propertyOrder": 4,
+                          "type": "string"
+                        },
+                        "adsApplicationName": {
+                          "propertyOrder": 5,
+                          "type": "string",
+                          "visibility": "HideInEngineering"
+                        },
+                        "adsProjectName": {
+                          "propertyOrder": 6,
+                          "type": "string"
+                        },
+                        "adsProjectCompiledAt": {
+                          "propertyOrder": 7,
+                          "type": "string",
+                          "format": "date-time",
+                          "visibility": "HideInEngineering"
+                        },
+                        "adsVersion": {
+                          "propertyOrder": 8,
+                          "type": "string"
+                        },
+                        "adsVersionBuild": {
+                          "propertyOrder": 9,
+                          "type": "integer",
+                          "minimum": 0,
+                          "visibility": "HideInEngineering"
+                        },
+                        "isUserModeRuntime": {
+                          "propertyOrder": 10,
+                          "type": "boolean",
+                          "visibility": "HideInEngineering"
+                        }
+                      },
+                      "required": [
+                        "deviceName",
+                        "adsVersion",
+                        "adsState",
+                        "connectionState"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "domainState"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "packageVersion": "14.4.124.0",
+  "productVersion": "14.4.124.0",
+  "signature": "BtnMRqLcEClvlhExcecNncyD/OB+GfmL9RHF2xYuNaDww2mMjvBN4vZrOEyC9AyKgGfDZNb53f889zZ8K9rbGJ0aELqTlsAdtscITA7x9tePeoUfCPdR8V+1dHexCMKc2RU3LznZbR0YQYlJCj/dRelkZxuWAQmL56djlXsvjuMzTpOc8SD3aRteLk62EjuAyJ15qA6CbZPUYhyXk9PE8/x1XRVIYkoL/lTUmBqy/su70jXnglbJBy089yYgwlP59j4YbWi/6rZthSbdwJXw5vXcSldQuoB6G95a7mel0h2wy2+j0JJmKgZZ0QFzLLCRpYeAvdnPmG2I1MekOqZmtg=="
+}

@@ -1,0 +1,148 @@
+/** Styles for the theme: Base */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement {
+    --tchmi-background: #ffffff;
+    --tchmi-color: #4c6374;
+    background-color: var(--tchmi-background);
+}
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement thead td:first-child {
+    background: #eee;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement thead {
+    background: #eee;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement.scroll-vertical thead {
+    box-shadow: 1px 1px 10px 1px #aaa;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .first-header,
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .second-header,
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .first-header th:first-child,
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .second-header td:first-child {
+    background: #4787cf;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement th,
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td {
+    border-color: #ccc;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement [text-search='true'] .highlight {
+    background: #fff296;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .symbol-search {
+    border-color: rgba(255, 255, 255, 0.7);
+    color: white;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .symbol-search::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .all-symbols {
+    border-top-color: black;
+    border-bottom-color: black;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement th:first-child,
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td:first-child {
+    border-right-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement th:nth-child(n + 3),
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td:nth-child(3n + 4) {
+    border-left-color: #555 !important;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td:nth-child(3),
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td:nth-child(3n + 5),
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement td:nth-child(3n + 6) {
+    border-left-color: #bbb;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement tbody tr:not(.hide):nth-child(2n + 2),
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement tbody tr:not(.hide):nth-child(2n + 2) td:first-child {
+    background: #eee;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement tbody tr:nth-child(2n + 1) td:first-child {
+    background: #fff;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement tr:not(.no-hover):hover,
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement tr:not(.no-hover):hover td:first-child {
+    background: #ccc !important;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .message-no-symbols-found {
+    background: #eee;
+    border-color: #ccc;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiPermissionManagement .arrow {
+    border-right-color: black;
+    border-bottom-color: black;
+}
+
+tchmi-permission-checkbox
+    .checkbox-container:not([color-coded]):not([disabled]):not([empty])
+    input:checked
+    ~ .checkmark {
+    background: #00aeef !important;
+}
+
+tchmi-permission-checkbox
+    .checkbox-container:not([color-coded]):not([disabled]):not([empty])
+    input:not(:checked)
+    ~ .checkmark {
+    background: #aaa !important;
+}
+
+/* Color coded: When the checkbox is checked, add a green background */
+tchmi-permission-checkbox .checkbox-container[color-coded]:not([disabled]):not([empty]) input:checked ~ .checkmark {
+    background: #74d59f !important;
+}
+/* Color coded: When the checkbox is checked, add a red background */
+tchmi-permission-checkbox
+    .checkbox-container[color-coded]:not([disabled]):not([empty])
+    input:not(:checked)
+    ~ .checkmark {
+    background: #d17373 !important;
+}
+
+/* show tick when checked */
+tchmi-permission-checkbox .checkbox-container:not([readonly]):not([empty]) input:checked ~ .checkmark:after {
+    border-color: white;
+}
+
+/* show cross when not checked */
+tchmi-permission-checkbox .checkbox-container:not([readonly]):not([empty]) input:not(:checked) ~ .checkmark:before,
+tchmi-permission-checkbox .checkbox-container:not([readonly]):not([empty]) input:not(:checked) ~ .checkmark:after {
+    background: white;
+}
+
+/* indicator R for read only */
+tchmi-permission-checkbox .checkbox-container[readonly]:not([empty]) .checkmark:after {
+    color: white;
+}
+
+tchmi-permission-checkbox .checkbox-container[disabled] .checkmark,
+tchmi-permission-checkbox .checkbox-container[empty] .checkmark {
+    background: #aaa;
+}
+
+tchmi-permission-checkbox .loading {
+    border-color: transparent;
+    border-radius: 50%; /* Circle shape */
+    border-top-color: white;
+}
+
+tchmi-permission-checkbox .spinner {
+    border-color: rgba(255, 255, 255, 0.3);
+    border-top-color: #000;
+}

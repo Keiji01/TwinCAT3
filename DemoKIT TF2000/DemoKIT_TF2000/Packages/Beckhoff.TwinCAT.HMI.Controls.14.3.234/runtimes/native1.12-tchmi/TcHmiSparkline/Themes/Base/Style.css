@@ -1,0 +1,21 @@
+/** Styles for the theme: Base */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiSparkline {
+    --tchmi-background: var(--tchmi-background-color-1);
+    --tchmi-background-part: var(--tchmi-background-color-1);
+    --tchmi-checkbox-background: var(--tchmi-background-color-4);
+    --tchmi-checkbox-background-checked: var(--tchmi-highlight-color-1);
+    --tchmi-color: var(--tchmi-highlight-color-1);
+    --tchmi-border-color: var(--tchmi-background-color-2);
+    background: var(--tchmi-background);
+    box-shadow: var(--tchmi-card-shadow);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiSparkline-template-chart {
+    border-bottom: 1px solid #c0c0c5;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiSparkline-template-chart:last-child {
+    border-bottom: none;
+}

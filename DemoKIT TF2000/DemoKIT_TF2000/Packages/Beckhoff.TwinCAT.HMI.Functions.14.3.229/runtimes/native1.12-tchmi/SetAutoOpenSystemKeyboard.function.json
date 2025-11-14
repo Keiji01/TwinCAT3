@@ -1,0 +1,37 @@
+{
+    "$schema": "../TcHmiFramework/Schema/FunctionDescription.Schema.json",
+    "apiVersion": 1,
+    "version": {
+        "full": "14.3.229.0",
+        "major": 14,
+        "minor": 3,
+        "build": 229,
+        "revision": 0
+    },
+    "dependencyFiles": [
+        {
+            "name": "SetAutoOpenSystemKeyboard.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "function": {
+        "name": "SetAutoOpenSystemKeyboard",
+        "namespace": "TcHmi.Functions.Beckhoff",
+        "displayName": "SetAutoOpenSystemKeyboard",
+        "description": "Sets if the system keyboard should open on focus of a textarea or input element.",
+        "category": "Keyboard",
+        "returnValue": null,
+        "arguments": [
+            {
+                "name": "autoOpenSystemKeyboard",
+                "displayName": "AutoOpenSystemKeyboard",
+                "type": "tchmi:general#/definitions/Boolean",
+                "description": "AutoOpenSystemKeyboard",
+                "required": true,
+                "bindable": true,
+                "restParameter": false
+            }
+        ]
+    }
+}

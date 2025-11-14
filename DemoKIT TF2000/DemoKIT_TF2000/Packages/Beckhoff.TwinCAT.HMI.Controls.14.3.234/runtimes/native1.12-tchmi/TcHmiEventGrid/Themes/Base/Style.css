@@ -1,0 +1,367 @@
+/** Styles for the theme: Base */
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid,
+.tchmi-event-grid {
+    --tchmi-background: var(--tchmi-background-color-1);
+    background-color: var(--tchmi-background);
+    box-shadow: var(--tchmi-card-shadow);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid,
+.tchmi-event-grid,
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-popup,
+.tchmi-event-grid-template-popup {
+    --tchmi-alarm-raised-color: var(--tchmi-error-color);
+    --tchmi-alarm-confirmed-color: var(--tchmi-warning-color);
+    --tchmi-alarm-cleared-color: var(--tchmi-confirmed-color);
+    --tchmi-alarm-cleared-and-confirmed-color: var(--tchmi-ready-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-popup .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template .tchmi-button-template,
+.tchmi-event-grid-template-popup .tchmi-button-template {
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-filter-button .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-filter-button .tchmi-button-template {
+    background-image: url('Images/filter.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-filter-button.down .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-filter-button.down .TcHmi_Controls_Beckhoff_TcHmiButton-template {
+    background-image: url('Images/filter-active.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-button .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-columns-button .tchmi-button-template {
+    background-image: url('Images/columns.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-button.down .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-columns-button.down .tchmi-button-template {
+    background-image: url('Images/columns-active.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-export-button .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-export-button .tchmi-button-template {
+    background-image: url('Images/download_normal.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-export-button.down .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-export-button.down .TcHmi_Controls_Beckhoff_TcHmiButton-template {
+    background-image: url('Images/download_pressed.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-confirm-button .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-confirm-button .tchmi-button-template {
+    background-image: url('Images/confirm.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-confirm-button.down .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-confirm-button.down .tchmi-button-template {
+    background-image: url('Images/confirm-active.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-confirmall-button .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-confirmall-button .tchmi-button-template {
+    background-image: url('Images/confirmall.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-confirmall-button.down .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-confirmall-button.down .tchmi-button-template {
+    background-image: url('Images/confirmall-active.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-move-up-button .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-move-up-button .tchmi-button-template {
+    background-image: url('Images/move-up.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-move-up-button.down .TcHmi_Controls_Beckhoff_TcHmiButton-templatem,
+.tchmi-event-grid-template-move-up-button.down .tchmi-button-template {
+    background-image: url('Images/move-up-active.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-move-down-button .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-move-down-button .tchmi-button-template {
+    background-image: url('Images/move-down.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-move-down-button.down .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-move-down-button.down .tchmi-button-template {
+    background-image: url('Images/move-down-active.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template .TcHmi_Controls_Beckhoff_TcHmiDatagrid,
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-popup .TcHmi_Controls_Beckhoff_TcHmiDatagrid,
+.tchmi-event-grid-template .tchmi-datagrid,
+.tchmi-event-grid-template-popup .tchmi-datagrid {
+    --tchmi-background-focused-row: var(--tchmi-background-focused-cell);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-popup,
+.tchmi-event-grid-template-popup {
+    --tchmi-popup-background: var(--tchmi-background-color-4);
+    --tchmi-popup-color: var(--tchmi-foreground-color-1);
+    --tchmi-popup-details-background: var(--tchmi-foreground-color-1);
+    --tchmi-popup-details-color: var(--tchmi-foreground-color-2);
+    --tchmi-popup-details-content-background: var(--tchmi-background-color-3);
+    --tchmi-popup-details-content-color: var(--tchmi-foreground-color-1);
+    --tchmi-popup-config-background: var(--tchmi-background-color-1);
+    --tchmi-popup-config-background-hover: var(--tchmi-background-color-3);
+    --tchmi-popup-config-background-active: var(--tchmi-highlight-color-1);
+    --tchmi-popup-config-color: var(--tchmi-foreground-color-1);
+    --tchmi-popup-config-color-hover: var(--tchmi-foreground-color-1);
+    --tchmi-popup-config-color-active: var(--tchmi-background-color-4);
+    background: var(--tchmi-popup-background);
+    box-shadow: var(--tchmi-popup-shadow);
+    padding: 10px;
+    font-size: 12px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-popup > h1,
+.tchmi-event-grid-template-popup > h1 {
+    font-size: 18px;
+    font-weight: normal;
+    color: var(--tchmi-popup-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-column-property-label {
+    color: var(--tchmi-popup-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-details-popup dt,
+.tchmi-event-grid-template-details-popup dt {
+    background-color: var(--tchmi-popup-details-background);
+    color: var(--tchmi-popup-details-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-details-popup dd,
+.tchmi-event-grid-template-details-popup dd {
+    background-color: var(--tchmi-popup-details-content-background);
+    color: var(--tchmi-popup-details-content-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-details-popup dd dt,
+.tchmi-event-grid-template-details-popup dd dt {
+    background-color: transparent;
+    font-weight: bold;
+    color: var(--tchmi-popup-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-details-popup dd dt::after,
+.tchmi-event-grid-template-details-popup dd dt::after {
+    content: ':';
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-details-popup dd dd,
+.tchmi-event-grid-template-details-popup dd dd {
+    background-color: transparent;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-column,
+.tchmi-event-grid-template-columns-config-column {
+    background: var(--tchmi-popup-config-background);
+    color: var(--tchmi-popup-config-color);
+    border-bottom: 1px solid var(--tchmi-popup-background);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-selected-columns
+    .TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-column:not(.active):hover,
+.tchmi-event-grid-template-columns-config-selected-columns
+    .tchmi-event-grid-template-columns-config-column:not(.active):hover {
+    background: var(--tchmi-popup-config-background-hover);
+    color: var(--tchmi-popup-config-color-hover);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-column.active,
+.tchmi-event-grid-template-columns-config-column.active {
+    background: var(--tchmi-popup-config-background-active);
+    color: var(--tchmi-popup-config-color-active);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-available-columns
+    .TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-column-selection-toggle,
+.tchmi-event-grid-template-columns-config-available-columns
+    .tchmi-event-grid-template-columns-config-column-selection-toggle {
+    background-image: url('Images/select.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-available-columns
+    .TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-column-selection-toggle:active,
+.tchmi-event-grid-template-columns-config-available-columns
+    .tchmi-event-grid-template-columns-config-column-selection-toggle:active {
+    background-image: url('Images/select-active.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-selected-columns
+    .TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-column-selection-toggle,
+.tchmi-event-grid-template-columns-config-selected-columns
+    .tchmi-event-grid-template-columns-config-column-selection-toggle {
+    background-image: url('Images/deselect.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-selected-columns
+    .TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-column-selection-toggle:active,
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-selected-columns
+    .TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-column.active
+    .TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-column-selection-toggle:active,
+.tchmi-event-grid-template-columns-config-selected-columns
+    .tchmi-event-grid-template-columns-config-column-selection-toggle:active,
+.tchmi-event-grid-template-columns-config-selected-columns
+    .tchmi-event-grid-template-columns-config-column.active
+    .tchmi-event-grid-template-columns-config-column-selection-toggle:active {
+    background-image: url('Images/deselect-active.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-selected-columns
+    .TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-column.active
+    .TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-column-selection-toggle
+    .TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-selected-columns
+    .TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-column.active
+    .TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-columns-config-column-selection-toggle,
+.tchmi-event-grid-template-columns-config-selected-columns
+    .tchmi-event-grid-template-columns-config-column.active
+    .tchmi-event-grid-template-columns-config-column-selection-toggle
+    .tchmi-event-grid-template-columns-config-selected-columns
+    .tchmi-event-grid-template-columns-config-column.active
+    .tchmi-event-grid-template-columns-config-column-selection-toggle {
+    background-image: url('Images/deselect-selected.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template
+    td.TcHmi_Controls_Beckhoff_TcHmiDatagrid-template-cell:not([data-column-name='type']):not(
+        [data-column-name='severity']
+    ),
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-popup
+    td.TcHmi_Controls_Beckhoff_TcHmiDatagrid-template-cell:not([data-column-name='type']):not(
+        [data-column-name='severity']
+    ),
+.tchmi-event-grid-template
+    td.tchmi-datagrid-template-cell:not([data-column-name='type']):not([data-column-name='severity']),
+.tchmi-event-grid-template-popup
+    td.tchmi-datagrid-template-cell:not([data-column-name='type']):not([data-column-name='severity']) {
+    padding: 0 5px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template td[data-column-name='alarmState'],
+.tchmi-event-grid-template td[data-column-name='alarmState'] {
+    font-size: 0;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template tr.raised td[data-column-name='alarmState'],
+.tchmi-event-grid-template tr.raised td[data-column-name='alarmState'] {
+    background: var(--tchmi-alarm-raised-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template tr.confirmed td[data-column-name='alarmState'],
+.tchmi-event-grid-template tr.confirmed td[data-column-name='alarmState'] {
+    background: var(--tchmi-alarm-confirmed-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template tr.cleared td[data-column-name='alarmState'],
+.tchmi-event-grid-template tr.cleared td[data-column-name='alarmState'] {
+    background: var(--tchmi-alarm-cleared-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template tr.cleared-and-confirmed td[data-column-name='alarmState'],
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template tr.cleared.no-confirmation-needed td[data-column-name='alarmState'],
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template tr.cleared.confirmation-reset td[data-column-name='alarmState'],
+.tchmi-event-grid-template tr.cleared-and-confirmed td[data-column-name='alarmState'],
+.tchmi-event-grid-template tr.cleared.no-confirmation-needed td[data-column-name='alarmState'],
+.tchmi-event-grid-template tr.cleared.confirmation-reset td[data-column-name='alarmState'] {
+    background: var(--tchmi-alarm-cleared-and-confirmed-color);
+}
+
+/* Do not show focus overlay over alarm state cells, as that somewhat obscures the colors. */
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template tr.raised td[data-column-name='alarmState']::before,
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template tr.confirmed td[data-column-name='alarmState']::before,
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template tr.cleared td[data-column-name='alarmState']::before,
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template tr.cleared-and-confirmed td[data-column-name='alarmState']::before,
+.tchmi-event-grid-template tr.raised td[data-column-name='alarmState']::before,
+.tchmi-event-grid-template tr.confirmed td[data-column-name='alarmState']::before,
+.tchmi-event-grid-template tr.cleared td[data-column-name='alarmState']::before,
+.tchmi-event-grid-template tr.cleared-and-confirmed td[data-column-name='alarmState']::before {
+    display: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-alarm-toggle-button .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-alarm-toggle-button .tchmi-button-template {
+    background-image: url('Images/alarm.svg');
+    background-position: 0% 50%;
+}
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-alarm-toggle-button.down .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-alarm-toggle-button.down .tchmi-button-template {
+    background-image: url('Images/alarm-active.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-message-toggle-button .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-message-toggle-button .tchmi-button-template {
+    background-image: url('Images/message.svg');
+    background-position: 0% 50%;
+}
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-message-toggle-button.down
+    .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-message-toggle-button.down .tchmi-button-template {
+    background-image: url('Images/message-active.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-verbose-toggle-button .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-verbose-toggle-button .tchmi-button-template {
+    background-image: url('Images/verbose.svg');
+    background-position: 0% 50%;
+}
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-verbose-toggle-button.down
+    .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-verbose-toggle-button.down .tchmi-button-template {
+    background-image: url('Images/verbose-active.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-info-toggle-button .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-info-toggle-button .tchmi-button-template {
+    background-image: url('Images/info.svg');
+    background-position: 0% 50%;
+}
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-info-toggle-button.down .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-info-toggle-button.down .tchmi-button-template {
+    background-image: url('Images/info-active.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-warning-toggle-button .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-warning-toggle-button .tchmi-button-template {
+    background-image: url('Images/warning.svg');
+    background-position: 0% 50%;
+}
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-warning-toggle-button.down
+    .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-warning-toggle-button.down .tchmi-button-template {
+    background-image: url('Images/warning-active.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-error-toggle-button .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-error-toggle-button .tchmi-button-template {
+    background-image: url('Images/error.svg');
+    background-position: 0% 50%;
+}
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-error-toggle-button.down .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-error-toggle-button.down .tchmi-button-template {
+    background-image: url('Images/error-active.svg');
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-critical-toggle-button .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-critical-toggle-button .tchmi-button-template {
+    background-image: url('Images/critical.svg');
+    background-position: 0% 50%;
+}
+.TcHmi_Controls_Beckhoff_TcHmiEventGrid-template-critical-toggle-button.down
+    .TcHmi_Controls_Beckhoff_TcHmiButton-template,
+.tchmi-event-grid-template-critical-toggle-button.down .tchmi-button-template {
+    background-image: url('Images/critical-active.svg');
+}

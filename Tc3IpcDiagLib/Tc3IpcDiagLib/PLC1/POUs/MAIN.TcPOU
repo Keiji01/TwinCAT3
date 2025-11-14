@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="MAIN" Id="{6a604e98-bdef-4919-bcc9-b544e51e517c}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+    bStart                 : BOOL := TRUE;           // flag to trigger (re)start of statemachine
+    bSkipSettingIPAddr     : BOOL := TRUE;           // for safety reasons - set FALSE if you want to set the IP address
+    eState                 : E_State := E_State.Init;
+    
+    bError                 : BOOL;                   // error flag (indicator: error occured)
+    hrErrorCode            : HRESULT;                // last error code
+    hrGetValue             : HRESULT;
+    
+    nCpuUsage              : UINT;                   // CPU usage [%]
+    nCpuTemperature        : INT;                    // CPU temerature [°C]
+    sSerialNumberMainboard : STRING;                 // serial number of mainboard
+    sSerialNumberIPC       : STRING;                 // serial number of IPC
+    nNicModuleIdx          : USINT := 1;             // select which NIC adapter should be adapted with a new IP address
+    bDHCP                  : BOOL := FALSE;
+	sIPAddr				   : ARRAY[1..2] OF STRING(39);
+    sNewIPAddr             : T_IPv4Addr := '174.18.3.154'; // the new ip address 
+    aFanSpeed              : ARRAY[1..2] OF UINT;    // speed of fans - should be read periodically
+    
+    fbDiagRegister         : FB_IPCDiag_Register := (sNetId:=cNetId);
+    fbDiagRead             : FB_IPCDiag_ReadParameter := (sNetId:=cNetId);
+    fbDiagReadPeriodic     : FB_IPCDiag_ReadParameterPeriodic := (tPeriod:= T#10S, sNetId:=cNetId);
+    fbDiagWrite            : FB_IPCDiag_WriteParameter := (sNetId:=cNetId);
+	
+END_VAR
+VAR CONSTANT
+    cNetId : T_AmsNetID := ''; // local
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE eState OF
+	E_State.Init:
+		IF NOT fbDiagRegister.bBusy THEN
+			fbDiagRegister(bExecute:=TRUE);
+		ELSE
+			fbDiagRegister(bExecute:=FALSE, bError=>bError, hrErrorCode=>hrErrorCode);
+		END_IF
+		IF NOT fbDiagRegister.bBusy THEN
+			IF fbDiagRegister.bError THEN
+				eState := E_State.Error;
+			ELSE
+				eState := E_State.Idle;
+			END_IF
+		END_IF
+	
+	E_State.ReadOnce_IPv4_NIC:
+		IF NOT fbDiagRead.bBusy THEN
+			fbDiagRead(bExecute := TRUE, 
+						eParameterKey:= E_IPCDiag_ParameterKey.NIC_IPv4Address,
+						fbRegister:= fbDiagRegister);
+		ELSE
+			fbDiagRead(bExecute:= FALSE, fbRegister:=fbDiagRegister);
+    	END_IF;
+		
+		IF NOT fbDiagRead.bBusy THEN
+			IF fbDiagRead.bError THEN
+				eState := E_State.Error;
+			ELSE // get value from buffer registered
+				(* NIC Port 1 *)
+				hrGetValue := fbDiagRead.GetParameterByIdx(pBuffer:= ADR(sIPAddr[1]), 
+														nBufferSize:= SIZEOF(sIPAddr[1]),
+														nParameterIdx:= 1);
+				
+				(* NIC Port 2 *)
+				hrGetValue := fbDiagRead.GetParameterByIdx(pBuffer:= ADR(sIPAddr[2]), 
+														nBufferSize:= SIZEOF(sIPAddr[2]),
+														nParameterIdx:= 2);	
+				IF SUCCEEDED(hrGetValue) THEN
+					eState := E_State.Idle;
+				ELSE
+					eState := E_State.Error;
+				END_IF
+			END_IF
+		END_IF    			
+	
+	E_State.ReadOnce_CpuTemperature:
+		IF NOT fbDiagRead.bBusy THEN
+			fbDiagRead(bExecute:= TRUE, eParameterKey:=E_IPCDiag_ParameterKey.CPU_Temp, fbRegister:=fbDiagRegister);    
+		ELSE
+			fbDiagRead(bExecute:= FALSE, fbRegister:=fbDiagRegister, bError=>bError, hrErrorCode=>hrErrorCode);
+		END_IF
+		IF NOT fbDiagRead.bBusy THEN
+			IF fbDiagRead.bError THEN
+				eState := E_State.Error;
+			ELSE // get value
+				hrGetValue := fbDiagRead.GetParameter(pBuffer:=ADR(nCpuTemperature), nBufferSize:=SIZEOF(nCpuTemperature));    
+				IF FAILED(hrGetValue) THEN
+					eState := E_State.Error;
+				ELSE
+					// eState := E_State.ReadOnce_SrnMainboard;
+					eState := E_State.Idle;
+				END_IF
+			END_IF
+		END_IF        
+		
+	E_State.Write_IPAddr_Port1:
+		IF NOT fbDiagWrite.bBusy THEN
+			nNicModuleIdx := 1;
+			fbDiagWrite(bExecute:= TRUE, 
+						eParameterKey:=E_IPCDiag_ParameterKey.NIC_IPv4Address,
+						pBuffer:=ADR(sNewIPAddr),
+						nBufferSize:=INT_TO_UDINT(LEN(sNewIPAddr)+1),
+						nModuleIdx:=nNicModuleIdx,
+						fbRegister:=fbDiagRegister );    
+		ELSE
+			fbDiagWrite(bExecute:= FALSE, fbRegister:=fbDiagRegister, bError=>bError, hrErrorCode=>hrErrorCode);
+		END_IF
+		IF NOT fbDiagWrite.bBusy THEN
+			IF fbDiagWrite.bError THEN
+				eState := E_State.Error;
+			ELSE
+				eState := E_State.ReadPeriodically;
+			END_IF
+		END_IF
+		
+	E_State.Write_IPAddr_Port2:
+		IF NOT fbDiagWrite.bBusy THEN
+			nNicModuleIdx := 2;
+			fbDiagWrite(bExecute:= TRUE, 
+						eParameterKey:=E_IPCDiag_ParameterKey.NIC_IPv4Address,
+						pBuffer:=ADR(sIPAddr),
+						nBufferSize:=INT_TO_UDINT(LEN(sNewIPAddr)+1),
+						nModuleIdx:=nNicModuleIdx, // Changed nNicModuleIdx for 2 
+						fbRegister:=fbDiagRegister );    
+		ELSE
+			fbDiagWrite(bExecute:= FALSE, fbRegister:=fbDiagRegister, bError=>bError, hrErrorCode=>hrErrorCode);
+		END_IF
+		IF NOT fbDiagWrite.bBusy THEN
+			IF fbDiagWrite.bError THEN
+				eState := E_State.Error;
+			ELSE
+				eState := E_State.ReadPeriodically;
+			END_IF
+		END_IF
+		
+	E_State.ReadPeriodically:
+		RETURN;
+		(* fbDiagReadPeriodic(bEnable:=TRUE, eParameterKey:=E_IPCDiag_ParameterKey.Fan_Speed, fbRegister:=fbDiagRegister,
+						   bError=>bError, hrErrorCode=>hrErrorCode);
+		IF fbDiagReadPeriodic.bValid THEN
+			fbDiagReadPeriodic.GetParameter(pBuffer:=ADR(aFanSpeed), nBufferSize:=SIZEOF(aFanSpeed) );    
+		END_IF
+		IF fbDiagReadPeriodic.bError THEN
+			eState := E_State.Error;
+		END_IF *)
+END_CASE	
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

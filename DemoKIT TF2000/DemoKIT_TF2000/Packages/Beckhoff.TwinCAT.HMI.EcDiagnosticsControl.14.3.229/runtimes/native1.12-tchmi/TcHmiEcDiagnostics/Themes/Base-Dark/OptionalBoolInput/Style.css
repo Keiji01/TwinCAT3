@@ -1,0 +1,16 @@
+.beckhoff-ec-diagnostics beckhoff-ec-diagnostics-optional-bool-input {
+    background: var(--main-input-bg);
+    border: 1px var(--main-border-color) solid;
+}
+
+.beckhoff-ec-diagnostics beckhoff-ec-diagnostics-optional-bool-input.false {
+    background: black;
+    color: white;
+    border: none;
+}
+
+.beckhoff-ec-diagnostics beckhoff-ec-diagnostics-optional-bool-input.true {
+    background: var(--tchmi-highlight-color-1);
+    color: white;
+    border: none;
+}

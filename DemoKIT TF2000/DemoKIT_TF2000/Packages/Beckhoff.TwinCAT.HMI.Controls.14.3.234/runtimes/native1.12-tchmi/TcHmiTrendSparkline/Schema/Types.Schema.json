@@ -1,0 +1,208 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+        "TcHmi.Controls.Beckhoff.TcHmiTrendSparkline": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "type": "object",
+            "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+            "frameworkControlType": "TcHmiTrendSparkline",
+            "frameworkControlNamespace": "TcHmi.Controls.Beckhoff"
+        },
+        "TcHmiTrendSparkline": {
+            "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiTrendSparkline"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiTrendSparkline.HistorizedSymbolList": {
+            "title": "HistorizedSymbolList",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "title": "Historized symbol description",
+                "description": "Defines a historized symbol.",
+                "propertiesMeta": [
+                    {
+                        "name": "symbol",
+                        "displayName": "Symbol",
+                        "category": "General",
+                        "displayPriority": 10,
+                        "description": "Name of the historized Symbol",
+                        "defaultValue": null,
+                        "defaultValueInternal": null
+                    },
+                    {
+                        "name": "displayName",
+                        "displayName": "Display Name",
+                        "category": "General",
+                        "displayPriority": 10,
+                        "description": "Display name of the historized Symbol",
+                        "defaultValue": null,
+                        "defaultValueInternal": null
+                    },
+                    {
+                        "name": "lineWidth",
+                        "category": "General",
+                        "displayName": "Line Width",
+                        "displayPriority": 10,
+                        "description": "Describes the line thickness of the line.",
+                        "defaultValue": 1,
+                        "defaultValueInternal": null
+                    },
+                    {
+                        "name": "lineColor",
+                        "displayName": "Line Color",
+                        "category": "Colors",
+                        "displayPriority": 10,
+                        "description": "Color for this line",
+                        "defaultValue": "%tr%Control::TcHmi.Controls.Beckhoff.TcHmiTrendSparkline::DefaultGraphColor%/tr%",
+                        "defaultValueInternal": null
+                    },
+                    {
+                        "name": "referenceLines",
+                        "displayName": "Reference Lines",
+                        "category": "General",
+                        "displayPriority": 10,
+                        "description": "Reference lines",
+                        "defaultValue": null,
+                        "defaultValueInternal": null
+                    }
+                ],
+                "properties": {
+                    "symbol": {
+                        "type": "string",
+                        "frameworkMetaType": "historizedSymbol"
+                    },
+                    "displayName": {
+                        "type": "string"
+                    },
+                    "lineWidth": {
+                        "type": "number"
+                    },
+                    "lineColor": {
+                        "$ref": "tchmi:framework#/definitions/SolidColor"
+                    },
+                    "referenceLines": {
+                        "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiTrendSparkline.ReferenceLineDefinitionList"
+                    }
+                },
+                "additionalProperties": false,
+                "required": ["symbol"]
+            }
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiTrendSparkline.ChartStart": {
+            "anyOf": [
+                {
+                    "title": "Time",
+                    "$ref": "tchmi:general#/definitions/DateTime"
+                },
+                {
+                    "title": "Timespan",
+                    "$ref": "tchmi:general#/definitions/TimeSpan"
+                },
+                {
+                    "title": "KeyWords",
+                    "type": "string",
+                    "enum": ["First"]
+                }
+            ],
+            "default": "First"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiTrendSparkline.ChartEnd": {
+            "anyOf": [
+                {
+                    "title": "Time",
+                    "$ref": "tchmi:general#/definitions/DateTime"
+                },
+                {
+                    "title": "Timespan",
+                    "$ref": "tchmi:general#/definitions/TimeSpan"
+                },
+                {
+                    "title": "KeyWords",
+                    "type": "string",
+                    "enum": ["Latest"]
+                }
+            ],
+            "default": "Latest"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiTrendSparkline.ReferenceLineDefinition": {
+            "title": "ReferenceLineDefinition",
+            "type": "object",
+            "engineeringColumns": ["value"],
+            "propertiesMeta": [
+                {
+                    "name": "show",
+                    "category": "General",
+                    "displayName": "Show",
+                    "displayPriority": 10,
+                    "description": "Describes whether the reference line is displayed.",
+                    "defaultValue": null,
+                    "defaultValueInternal": true
+                },
+                {
+                    "name": "value",
+                    "category": "General",
+                    "displayName": "Value",
+                    "displayPriority": 10,
+                    "description": "Describes the value of the reference line.",
+                    "defaultValue": 0,
+                    "defaultValueInternal": 0
+                },
+                {
+                    "name": "color",
+                    "category": "Colors",
+                    "displayName": "Color",
+                    "displayPriority": 10,
+                    "description": "Describes the color of the reference line.",
+                    "defaultValue": "%tr%Control::TcHmi.Controls.Beckhoff.TcHmiTrendSparkline::ReferenceLineColor%/tr%",
+                    "defaultValueInternal": {
+                        "color": "#4794da"
+                    }
+                },
+                {
+                    "name": "lineWidth",
+                    "category": "General",
+                    "displayName": "Line Width",
+                    "displayPriority": 10,
+                    "description": "Describes the line thickness of the reference line.",
+                    "defaultValue": 1,
+                    "defaultValueInternal": null
+                }
+            ],
+            "properties": {
+                "show": {
+                    "type": "boolean"
+                },
+                "value": {
+                    "type": "number"
+                },
+                "color": {
+                    "$ref": "tchmi:framework#/definitions/SolidColor"
+                },
+                "lineWidth": {
+                    "type": "number"
+                }
+            },
+            "additionalProperties": false,
+            "required": ["value"]
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiTrendSparkline.ReferenceLineDefinitionList": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "title": "ReferenceLineDefinitionList",
+            "type": "array",
+            "items": {
+                "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiTrendSparkline.ReferenceLineDefinition"
+            }
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiTrendSparkline.AxisPosition": {
+            "title": "AxisPosition",
+            "type": "string",
+            "enum": ["Right", "Left"],
+            "default": "Right"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiTrendSparkline.LabelPosition": {
+            "title": "LabelPosition",
+            "type": "string",
+            "enum": ["Right", "Center", "Left"],
+            "default": "Right"
+        }
+    }
+}

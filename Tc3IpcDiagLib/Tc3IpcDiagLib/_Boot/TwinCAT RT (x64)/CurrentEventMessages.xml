@@ -1,0 +1,1455 @@
+<?xml version="1.0"?>
+<TcEventSources Version="2">
+	<Translations>
+		<Text TxtId="A blocking operation is currently executing."/>
+		<Text TxtId="A blocking operation was interrupted by a call to WSACancelBlockingCall."/>
+		<Text TxtId="A call to WSALookupServiceEnd was made while this call was still processing. The call has been canceled."/>
+		<Text TxtId="A connect request was made on an already connected socket."/>
+		<Text TxtId="A connection attempt failed because the connected party did not properly respond after a period of time, or the established connection failed because the connected host failed to respond."/>
+		<Text TxtId="A database query failed because it was actively refused."/>
+		<Text TxtId="A device attached to the system is not functioning."/>
+		<Text TxtId="A duplicate name exists on the network."/>
+		<Text TxtId="A fragment timeout has occurred.">
+			<Text LcId="1031">Fragment Timeout aufgetreten.</Text>
+		</Text>
+		<Text TxtId="A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself."/>
+		<Text TxtId="A nonblocking socket operation could not be completed immediately."/>
+		<Text TxtId="A nonrecoverable error occurred during a database lookup."/>
+		<Text TxtId="A protocol was specified in the socket function call that does not support the semantics of the socket type requested."/>
+		<Text TxtId="A request to send or receive data was disallowed because the socket had already been shut down in that direction with a previous shutdown call."/>
+		<Text TxtId="A request to send or receive data was disallowed because the socket is not connected and (when sending on a datagram socket using a sendto call) no address was supplied."/>
+		<Text TxtId="A required address was omitted from an operation on a socket."/>
+		<Text TxtId="A socket operation encountered a dead network."/>
+		<Text TxtId="A socket operation failed because the destination host was down."/>
+		<Text TxtId="A socket operation was attempted to an unreachable host."/>
+		<Text TxtId="A socket operation was attempted to an unreachable network."/>
+		<Text TxtId="A system call that should never fail has failed."/>
+		<Text TxtId="A Windows Sockets implementation might have a limit on the number of applications that can use it simultaneously."/>
+		<Text TxtId="Access denied – secure ADS access denied.">
+			<Text LcId="1031">Zugriff Verweigert – Secure ADS Zugriff verweigert.</Text>
+		</Text>
+		<Text TxtId="Access denied.">
+			<Text LcId="1031">Zugriff verweigert.</Text>
+		</Text>
+		<Text TxtId="Access is denied."/>
+		<Text TxtId="AdsTransMode is not supported.">
+			<Text LcId="1031">AdsTransMode wird nicht unterstützt.</Text>
+		</Text>
+		<Text TxtId="Allocated buffer is invalid (pointer is zero or buffer size is too small)."/>
+		<Text TxtId="Allocated index is invalid."/>
+		<Text TxtId="Allocation locked – memory error.">
+			<Text LcId="1031">Zuweisung gesperrt - Speicherfehler.</Text>
+		</Text>
+		<Text TxtId="AMS Sync error.">
+			<Text LcId="1031">AMS Sync Fehler.</Text>
+		</Text>
+		<Text TxtId="AMS Sync Timeout.">
+			<Text LcId="1031">AMS Sync Timeout.</Text>
+		</Text>
+		<Text TxtId="AMS Sync Win32 error.">
+			<Text LcId="1031">AMS Sync Win32 Fehler.</Text>
+		</Text>
+		<Text TxtId="An address incompatible with the requested protocol was used."/>
+		<Text TxtId="An attempt was made to access a socket in a way forbidden by its access permissions."/>
+		<Text TxtId="An established connection was aborted by the software in your host machine."/>
+		<Text TxtId="An existing connection was forcibly closed by the remote host."/>
+		<Text TxtId="An invalid argument was supplied."/>
+		<Text TxtId="An operation on a socket could not be performed because the system lacked sufficient buffer space or because a queue was full."/>
+		<Text TxtId="An operation was attempted on a nonblocking socket that already had an operation in progress."/>
+		<Text TxtId="An operation was attempted on something that is not a socket."/>
+		<Text TxtId="An unknown, invalid, or unsupported option or level was specified in a getsockopt or setsockopt call."/>
+		<Text TxtId="Arithmetic result exceeded 32 bits."/>
+		<Text TxtId="Attempt to access invalid address."/>
+		<Text TxtId="Buffer is too small."/>
+		<Text TxtId="Cannot create a file when that file already exists."/>
+		<Text TxtId="Cannot remove a directory that is not empty."/>
+		<Text TxtId="Cannot translate name."/>
+		<Text TxtId="Class ID is invalid.">
+			<Text LcId="1031">Class-ID ist ungültig.</Text>
+		</Text>
+		<Text TxtId="Context – forward to dispatch level.">
+			<Text LcId="1031">Kontext – Weiterleitung zum Dispatch-Level.</Text>
+		</Text>
+		<Text TxtId="Context – forward to passive level.">
+			<Text LcId="1031">Kontext – Weiterleitung zum Passiv-Level.</Text>
+		</Text>
+		<Text TxtId="Context – forward to real-time.">
+			<Text LcId="1031">Kontext – Weiterleitung zur Echtzeit.</Text>
+		</Text>
+		<Text TxtId="Data error (cyclic redundancy check)."/>
+		<Text TxtId="Demo license prohibited.">
+			<Text LcId="1031">Demo-Lizenz untersagt.</Text>
+		</Text>
+		<Text TxtId="Device (server) is in invalid state.">
+			<Text LcId="1031">Gerät (Server) ist im ungültigen Zustand.</Text>
+		</Text>
+		<Text TxtId="Device has a timeout.">
+			<Text LcId="1031">Gerät hat einen Timeout.</Text>
+		</Text>
+		<Text TxtId="Device is busy.">
+			<Text LcId="1031">Gerät ist beschäftigt.</Text>
+		</Text>
+		<Text TxtId="Device is not initialized.">
+			<Text LcId="1031">Gerät ist nicht initialisiert.</Text>
+		</Text>
+		<Text TxtId="Device is not ready to operate.">
+			<Text LcId="1031">Gerät ist nicht betriebsbereit.</Text>
+		</Text>
+		<Text TxtId="Either the application has not called WSAStartup, or WSAStartup failed."/>
+		<Text TxtId="Error in Win32 subsystem">
+			<Text LcId="1031">Fehler im Win32 Subsystem.</Text>
+		</Text>
+		<Text TxtId="Error that some of the requested parameter values returned an error (use GetParameterByIdx)."/>
+		<Text TxtId="Exception at system startup.">
+			<Text LcId="1031">Exception beim Systemstart.</Text>
+		</Text>
+		<Text TxtId="Fail - unspecified error."/>
+		<Text TxtId="File handle reference is no longer available."/>
+		<Text TxtId="General device error.">
+			<Text LcId="1031">Allgemeiner Gerätefehler.</Text>
+		</Text>
+		<Text TxtId="Hash table overflow.">
+			<Text LcId="1031">Überlauf der Hash-Tabelle.</Text>
+		</Text>
+		<Text TxtId="Host unreachable.">
+			<Text LcId="1031">Host nicht erreichbar.</Text>
+		</Text>
+		<Text TxtId="Incorrect function."/>
+		<Text TxtId="Info that some of the requested parameter values returned an error (use GetParameterByIdx)."/>
+		<Text TxtId="Insufficient memory.">
+			<Text LcId="1031">Nicht genügend Speicher.</Text>
+		</Text>
+		<Text TxtId="Interface query failed.">
+			<Text LcId="1031">Interface Abfrage fehlgeschlagen.</Text>
+		</Text>
+		<Text TxtId="Internal error in Ads sync.">
+			<Text LcId="1031">Interner Fehler in Ads-Sync.</Text>
+		</Text>
+		<Text TxtId="Internal error.">
+			<Text LcId="1031">Interner Fehler.</Text>
+		</Text>
+		<Text TxtId="Invalid access."/>
+		<Text TxtId="Invalid alignment.">
+			<Text LcId="1031">Ungültiges Alignment.</Text>
+		</Text>
+		<Text TxtId="Invalid AMS fragment.">
+			<Text LcId="1031">Ungültiges AMS Fragment.</Text>
+		</Text>
+		<Text TxtId="Invalid AMS length.">
+			<Text LcId="1031">Ungültige AMS-Länge.</Text>
+		</Text>
+		<Text TxtId="Invalid AMS Net ID.">
+			<Text LcId="1031">Ungültige AMS Net ID.</Text>
+		</Text>
+		<Text TxtId="Invalid AMS port.">
+			<Text LcId="1031">Ungültiger AMS-Port.</Text>
+		</Text>
+		<Text TxtId="Invalid argument."/>
+		<Text TxtId="Invalid array index.">
+			<Text LcId="1031">Ungültiger Array-Index.</Text>
+		</Text>
+		<Text TxtId="Invalid certificate.">
+			<Text LcId="1031">Zertifikat ungültig.</Text>
+		</Text>
+		<Text TxtId="Invalid client timeout value.">
+			<Text LcId="1031">Ungültiger Client Timeout-Wert.</Text>
+		</Text>
+		<Text TxtId="Invalid data value(s).">
+			<Text LcId="1031">Ungültige Daten-Werte.</Text>
+		</Text>
+		<Text TxtId="Invalid data."/>
+		<Text TxtId="Invalid function ID.">
+			<Text LcId="1031">Funktions-ID ungültig.</Text>
+		</Text>
+		<Text TxtId="Invalid index group.">
+			<Text LcId="1031">Ungültige Index-Gruppe.</Text>
+		</Text>
+		<Text TxtId="Invalid index offset.">
+			<Text LcId="1031">Ungültiger Index-Offset.</Text>
+		</Text>
+		<Text TxtId="Invalid index."/>
+		<Text TxtId="Invalid module list (initialization of IPCDiag required)."/>
+		<Text TxtId="Invalid operating system context. This can result from use of ADS function blocks in different tasks.">
+			<Text LcId="1031">Ungültiger Kontext vom Betriebssystem. Kann durch Verwendung von ADS Bausteinen in unterschiedlichen Tasks auftreten.</Text>
+		</Text>
+		<Text TxtId="Invalid parameter value(s).">
+			<Text LcId="1031">Ungültige Parameter-Werte.</Text>
+		</Text>
+		<Text TxtId="Invalid platform level.">
+			<Text LcId="1031">Ungültiger Plattform Level.</Text>
+		</Text>
+		<Text TxtId="Invalid response received">
+			<Text LcId="1031">Ungültige Antwort erhalten.</Text>
+		</Text>
+		<Text TxtId="Invalid signature.">
+			<Text LcId="1031">Ungültige Signatur.</Text>
+		</Text>
+		<Text TxtId="Invalid symbol version. This can occur due to an online change. Create a new handle.">
+			<Text LcId="1031">Symbol-Version ist ungültig. Kann durch einen Online-Change auftreten. Erzeuge einen neuen Handle.</Text>
+		</Text>
+		<Text TxtId="Invalid task ID.">
+			<Text LcId="1031">Ungültige Task-ID.</Text>
+		</Text>
+		<Text TxtId="Invoke ID is already in use.">
+			<Text LcId="1031">Die Invoke-ID ist bereits in Benutzung.</Text>
+		</Text>
+		<Text TxtId="Item is not available locally."/>
+		<Text TxtId="Key not found in hash table.">
+			<Text LcId="1031">Schlüssel in der Hash-Tabelle nicht gefunden.</Text>
+		</Text>
+		<Text TxtId="License file is read twice.">
+			<Text LcId="1031">Lizenz-Datei zweimal gelesen.</Text>
+		</Text>
+		<Text TxtId="License is exceeded.">
+			<Text LcId="1031">Lizenz überschritten.</Text>
+		</Text>
+		<Text TxtId="License is expired.">
+			<Text LcId="1031">Lizenz abgelaufen.</Text>
+		</Text>
+		<Text TxtId="License is invalid.">
+			<Text LcId="1031">Lizenz ungültig.</Text>
+		</Text>
+		<Text TxtId="License not limited in time.">
+			<Text LcId="1031">Lizenz nicht zeitlich begrenzt.</Text>
+		</Text>
+		<Text TxtId="License not valid for this system ID.">
+			<Text LcId="1031">Lizenz nicht gültig für diese System-ID.</Text>
+		</Text>
+		<Text TxtId="License problem: System ID is invalid.">
+			<Text LcId="1031">Lizenzproblem: System-ID ist ungültig.</Text>
+		</Text>
+		<Text TxtId="License problem: Time in the future.">
+			<Text LcId="1031">Lizenzproblem: Zeitpunkt in der Zukunft.</Text>
+		</Text>
+		<Text TxtId="License time period is too long.">
+			<Text LcId="1031">Lizenz-Zeitraum ist zu lang.</Text>
+		</Text>
+		<Text TxtId="Locked memory cannot be allocated.">
+			<Text LcId="1031">Lockierter Speicher kann nicht zugewiesen werden.</Text>
+		</Text>
+		<Text TxtId="Low installation level – TwinCAT 2 license error.">
+			<Text LcId="1031">Installations-Level ist zu niedrig – TwinCAT 2 Lizenzfehler.</Text>
+		</Text>
+		<Text TxtId="Mailbox full – the ADS message could not be sent. Reducing the number of ADS messages per cycle will help.">
+			<Text LcId="1031">Postfach voll – Es konnte die ADS Nachricht nicht versendet werden. Reduzieren der Anzahl der ADS Nachrichten pro Zyklus bringt Abhilfe.</Text>
+		</Text>
+		<Text TxtId="MDP API is not initialized."/>
+		<Text TxtId="Missing license.">
+			<Text LcId="1031">Fehlende Lizenz.</Text>
+		</Text>
+		<Text TxtId="Module of parameter is unavailable (not existing)."/>
+		<Text TxtId="Name or name component was too long."/>
+		<Text TxtId="No AMS address.">
+			<Text LcId="1031">Keine AMS Adresse.</Text>
+		</Text>
+		<Text TxtId="No connection could be made because the target machine actively refused it."/>
+		<Text TxtId="No data available."/>
+		<Text TxtId="No debugging available.">
+			<Text LcId="1031">Kein Debugging verfügbar.</Text>
+		</Text>
+		<Text TxtId="No further notification handles.">
+			<Text LcId="1031">Keine weiteren Notification Handles.</Text>
+		</Text>
+		<Text TxtId="No index map for AMS Sync available.">
+			<Text LcId="1031">Keine Index-Map für AMS Sync vorhanden.</Text>
+		</Text>
+		<Text TxtId="No IO.">
+			<Text LcId="1031">Kein IO.</Text>
+		</Text>
+		<Text TxtId="No memory.">
+			<Text LcId="1031">Kein Speicher.</Text>
+		</Text>
+		<Text TxtId="No more data is available."/>
+		<Text TxtId="No more results can be returned by WSALookupServiceNext."/>
+		<Text TxtId="No real-time.">
+			<Text LcId="1031">Keine Echtzeit.</Text>
+		</Text>
+		<Text TxtId="No such host is known."/>
+		<Text TxtId="No such service is known. The service cannot be found in the specified namespace."/>
+		<Text TxtId="No symbols in the cache.">
+			<Text LcId="1031">Keine Symbole im Cache.</Text>
+		</Text>
+		<Text TxtId="No valid parameter value available (reading is pending or failed)."/>
+		<Text TxtId="Not enough storage is available to process this command."/>
+		<Text TxtId="Not found (files, ...).">
+			<Text LcId="1031">Nicht gefunden (Dateien,...).</Text>
+		</Text>
+		<Text TxtId="Not implemented."/>
+		<Text TxtId="Not supported."/>
+		<Text TxtId="Notification client is not registered.">
+			<Text LcId="1031">Notification-Client nicht registriert. </Text>
+		</Text>
+		<Text TxtId="Notification handle is invalid.">
+			<Text LcId="1031">Notification Handle ist ungültig.</Text>
+		</Text>
+		<Text TxtId="Notification size too large.">
+			<Text LcId="1031">Größe der Notification zu groß.</Text>
+		</Text>
+		<Text TxtId="Object already exists.">
+			<Text LcId="1031">Objekt ist bereits vorhanden.</Text>
+		</Text>
+		<Text TxtId="Object ID is invalid.">
+			<Text LcId="1031">Object-ID ist ungültig.</Text>
+		</Text>
+		<Text TxtId="Objects do not match.">
+			<Text LcId="1031">Objekte stimmen nicht überein.</Text>
+		</Text>
+		<Text TxtId="Only one usage of each socket address (protocol/network address/port) is normally permitted."/>
+		<Text TxtId="Out of memory."/>
+		<Text TxtId="Outside the valid range.">
+			<Text LcId="1031">Außerhalb des gültigen Bereiches.</Text>
+		</Text>
+		<Text TxtId="Overlapped I/O event is not in a signaled state."/>
+		<Text TxtId="Overlapped I/O operation is in progress."/>
+		<Text TxtId="Parameter is unavailable (not existing)."/>
+		<Text TxtId="Parameter size is not correct.">
+			<Text LcId="1031">Parametergröße ist nicht korrekt.</Text>
+		</Text>
+		<Text TxtId="Polling list is empty.">
+			<Text LcId="1031">Polling-Liste ist leer.</Text>
+		</Text>
+		<Text TxtId="Port already connected.">
+			<Text LcId="1031">Port bereits verbunden.</Text>
+		</Text>
+		<Text TxtId="Port disabled – TwinCAT system service not started.">
+			<Text LcId="1031">Port deaktiviert – TwinCAT System Service nicht gestartet.</Text>
+		</Text>
+		<Text TxtId="Port is not open.">
+			<Text LcId="1031">Port nicht geöffnet.</Text>
+		</Text>
+		<Text TxtId="Port not connected.">
+			<Text LcId="1031">Port nicht verbunden.</Text>
+		</Text>
+		<Text TxtId="Public key not known from OEM.">
+			<Text LcId="1031">Public Key vom OEM nicht bekannt.</Text>
+		</Text>
+		<Text TxtId="Ran out of disk quota."/>
+		<Text TxtId="Ran out of quota."/>
+		<Text TxtId="Reading or writing is not permitted.">
+			<Text LcId="1031">Lesen oder Schreiben ist nicht gestattet.</Text>
+		</Text>
+		<Text TxtId="Request is aborted.">
+			<Text LcId="1031">Anforderung wird abgebrochen.</Text>
+		</Text>
+		<Text TxtId="Request pending.">
+			<Text LcId="1031">Anforderung steht aus.</Text>
+		</Text>
+		<Text TxtId="Returned by WSARecv or WSARecvFrom to indicate that the remote party has initiated a graceful shutdown sequence."/>
+		<Text TxtId="Server is busy."/>
+		<Text TxtId="Service contains an invalid parameter.">
+			<Text LcId="1031">Dienst enthält einen ungültigen Parameter. </Text>
+		</Text>
+		<Text TxtId="Service is not supported by the server.">
+			<Text LcId="1031">Service wird vom Server nicht unterstützt.</Text>
+		</Text>
+		<Text TxtId="Signal warning.">
+			<Text LcId="1031">Signal-Warnung.</Text>
+		</Text>
+		<Text TxtId="Symbol is not active.">
+			<Text LcId="1031">Symbol ist nicht aktiv.</Text>
+		</Text>
+		<Text TxtId="Symbol was not found.">
+			<Text LcId="1031">Symbol nicht gefunden.</Text>
+		</Text>
+		<Text TxtId="Sync port is locked.">
+			<Text LcId="1031">Sync Port ist verriegelt.</Text>
+		</Text>
+		<Text TxtId="Syntax error in file or command.">
+			<Text LcId="1031">Syntax-Fehler in Datei oder Befehl.</Text>
+		</Text>
+		<Text TxtId="Target computer not found – AMS route was not found. "/>
+		<Text TxtId="Target port not found – ADS server is not started or is not reachable.">
+			<Text LcId="1031">Ziel-Port nicht gefunden – ADS Server ist nicht gestartet oder erreichbar.</Text>
+		</Text>
+		<Text TxtId="TcGeneralAdsEventClass"/>
+		<Text TxtId="TcIPCDiagEventClass"/>
+		<Text TxtId="TcIPCDiagPlcApiEventClass"/>
+		<Text TxtId="TCP send error.">
+			<Text LcId="1031">TCP Sendefehler.</Text>
+		</Text>
+		<Text TxtId="TcRouterEventClass"/>
+		<Text TxtId="TcSystemEventClass"/>
+		<Text TxtId="The attempted operation is not supported for the type of object referenced."/>
+		<Text TxtId="The connection has been broken due to keep-alive activity detecting a failure while the operation was in progress."/>
+		<Text TxtId="The data is invalid."/>
+		<Text TxtId="The debug mailbox has reached the maximum number of possible messages.">
+			<Text LcId="1031">Das Debug Postfach hat die maximale Anzahl der möglichen Meldungen erreicht.</Text>
+		</Text>
+		<Text TxtId="The device does not recognize the command."/>
+		<Text TxtId="The device is not ready."/>
+		<Text TxtId="The directory or file cannot be created."/>
+		<Text TxtId="The file exists."/>
+		<Text TxtId="The file handle supplied is not valid."/>
+		<Text TxtId="The flag passed is not correct."/>
+		<Text TxtId="The handle is invalid."/>
+		<Text TxtId="The I/O operation has been aborted because of either a thread exit or an application request."/>
+		<Text TxtId="The local device name is already in use."/>
+		<Text TxtId="The mailbox has reached the maximum number for fragmented messages.">
+			<Text LcId="1031">Das Postfach hat die maximale Anzahl für fragmentierte Nachrichten erreicht.</Text>
+		</Text>
+		<Text TxtId="The mailbox has reached the maximum number of possible messages.">
+			<Text LcId="1031">Das Postfach hat die maximale Anzahl der möglichen Meldungen erreicht.</Text>
+		</Text>
+		<Text TxtId="The maximum number of ports has been reached.">
+			<Text LcId="1031">Die maximale Portanzahl ist erreicht.</Text>
+		</Text>
+		<Text TxtId="The network is busy."/>
+		<Text TxtId="The network path was not found."/>
+		<Text TxtId="The operation completed successfully."/>
+		<Text TxtId="The parameter is incorrect."/>
+		<Text TxtId="The port is invalid.">
+			<Text LcId="1031">Der Port ist ungültig.</Text>
+		</Text>
+		<Text TxtId="The port is not registered.">
+			<Text LcId="1031">Der Port ist nicht registriert.</Text>
+		</Text>
+		<Text TxtId="The port is removed.">
+			<Text LcId="1031">Port wird entfernt.</Text>
+		</Text>
+		<Text TxtId="The port number is already assigned.">
+			<Text LcId="1031">Die Portnummer ist bereits vergeben.</Text>
+		</Text>
+		<Text TxtId="The port type is unknown.">
+			<Text LcId="1031">Der Porttyp ist unbekannt.</Text>
+		</Text>
+		<Text TxtId="The procedure call table is invalid."/>
+		<Text TxtId="The program issued a command but the command length is incorrect."/>
+		<Text TxtId="The protocol family has not been configured into the system or no implementation for it exists."/>
+		<Text TxtId="The remote computer is not available."/>
+		<Text TxtId="The request is not supported."/>
+		<Text TxtId="The requested address is not valid in its context."/>
+		<Text TxtId="The requested name is valid, but no data of the requested type was found."/>
+		<Text TxtId="The requested protocol has not been configured into the system, or no implementation for it exists."/>
+		<Text TxtId="The requested service provider could not be loaded or initialized."/>
+		<Text TxtId="The requested service provider is invalid."/>
+		<Text TxtId="The router memory size could not be changed.">
+			<Text LcId="1031">Die Größe des Routerspeichers konnte nicht geändert werden.</Text>
+		</Text>
+		<Text TxtId="The specified class was not found."/>
+		<Text TxtId="The specified network password is not correct."/>
+		<Text TxtId="The specified network resource or device is no longer available."/>
+		<Text TxtId="The support for the specified socket type does not exist in this address family."/>
+		<Text TxtId="The system cannot find the file specified."/>
+		<Text TxtId="The system cannot find the path specified."/>
+		<Text TxtId="The system cannot open the device or file specified."/>
+		<Text TxtId="The system cannot open the file."/>
+		<Text TxtId="The system cannot read from the specified device."/>
+		<Text TxtId="The system cannot write to the specified device."/>
+		<Text TxtId="The system detected an invalid pointer address in attempting to use a pointer argument in a call."/>
+		<Text TxtId="The wait operation timed out."/>
+		<Text TxtId="The Windows Sockets version requested is not supported."/>
+		<Text TxtId="This is usually a temporary error during host name resolution and means that the local server did not receive a response from an authoritative server."/>
+		<Text TxtId="Timeout has occurred – the remote terminal is not responding in the specified ADS timeout.">
+			<Text LcId="1031">Timeout ist aufgetreten – Die Gegenstelle antwortet nicht im vorgegebenen ADS Timeout.</Text>
+		</Text>
+		<Text TxtId="TLS send error – secure ADS connection failed.">
+			<Text LcId="1031">TLS Sendefehler – Secure ADS Verbindung fehlgeschlagen.</Text>
+		</Text>
+		<Text TxtId="Too many open sockets."/>
+		<Text TxtId="Too many references to a kernel object."/>
+		<Text TxtId="TwinCAT Router is not active.">
+			<Text LcId="1031">Der TwinCAT Router ist nicht aktiv.</Text>
+		</Text>
+		<Text TxtId="TwinCAT Router is not initialised.">
+			<Text LcId="1031">Der TwinCAT Router ist nicht initialisiert.</Text>
+		</Text>
+		<Text TxtId="Type is not supported."/>
+		<Text TxtId="Unknown AMS command.">
+			<Text LcId="1031">Unbekannter AMS-Befehl.</Text>
+		</Text>
+		<Text TxtId="Unknown command ID.">
+			<Text LcId="1031">Unbekannte Befehl-ID.</Text>
+		</Text>
+		<Text TxtId="Value is out of range."/>
+		<Text TxtId="Variable connection is already in use.">
+			<Text LcId="1031">Variablen-Verbindung bereits im Einsatz.</Text>
+		</Text>
+		<Text TxtId="Win32 error.">
+			<Text LcId="1031">Win32 Fehler.</Text>
+		</Text>
+		<Text TxtId="Win32EventClass"/>
+		<Text TxtId="Wrong HMSG.">
+			<Text LcId="1031">Falsches HMSG.</Text>
+		</Text>
+		<Text TxtId="Wrong interface is requested.">
+			<Text LcId="1031">Falsches Interface angefordert. </Text>
+		</Text>
+		<Text TxtId="WSAStartup cannot function at this time because the underlying system it uses to provide network services is currently unavailable."/>
+	</Translations>
+	<Source>
+		<GUID>{7D760066-D373-4A0C-B0F1-328B1620B0F0}</GUID>
+		<Name>TcGeneralAdsEventClass</Name>
+		<Event>
+			<Id>1792</Id>
+			<Message>General device error.</Message>
+		</Event>
+		<Event>
+			<Id>1793</Id>
+			<Message>Service is not supported by the server.</Message>
+		</Event>
+		<Event>
+			<Id>1794</Id>
+			<Message>Invalid index group.</Message>
+		</Event>
+		<Event>
+			<Id>1795</Id>
+			<Message>Invalid index offset.</Message>
+		</Event>
+		<Event>
+			<Id>1796</Id>
+			<Message>Reading or writing is not permitted.</Message>
+		</Event>
+		<Event>
+			<Id>1797</Id>
+			<Message>Parameter size is not correct.</Message>
+		</Event>
+		<Event>
+			<Id>1798</Id>
+			<Message>Invalid data value(s).</Message>
+		</Event>
+		<Event>
+			<Id>1799</Id>
+			<Message>Device is not ready to operate.</Message>
+		</Event>
+		<Event>
+			<Id>1800</Id>
+			<Message>Device is busy.</Message>
+		</Event>
+		<Event>
+			<Id>1801</Id>
+			<Message>Invalid operating system context. This can result from use of ADS function blocks in different tasks.</Message>
+		</Event>
+		<Event>
+			<Id>1802</Id>
+			<Message>Insufficient memory.</Message>
+		</Event>
+		<Event>
+			<Id>1803</Id>
+			<Message>Invalid parameter value(s).</Message>
+		</Event>
+		<Event>
+			<Id>1804</Id>
+			<Message>Not found (files, ...).</Message>
+		</Event>
+		<Event>
+			<Id>1805</Id>
+			<Message>Syntax error in file or command.</Message>
+		</Event>
+		<Event>
+			<Id>1806</Id>
+			<Message>Objects do not match.</Message>
+		</Event>
+		<Event>
+			<Id>1807</Id>
+			<Message>Object already exists.</Message>
+		</Event>
+		<Event>
+			<Id>1808</Id>
+			<Message>Symbol was not found.</Message>
+		</Event>
+		<Event>
+			<Id>1809</Id>
+			<Message>Invalid symbol version. This can occur due to an online change. Create a new handle.</Message>
+		</Event>
+		<Event>
+			<Id>1810</Id>
+			<Message>Device (server) is in invalid state.</Message>
+		</Event>
+		<Event>
+			<Id>1811</Id>
+			<Message>AdsTransMode is not supported.</Message>
+		</Event>
+		<Event>
+			<Id>1812</Id>
+			<Message>Notification handle is invalid.</Message>
+		</Event>
+		<Event>
+			<Id>1813</Id>
+			<Message>Notification client is not registered.</Message>
+		</Event>
+		<Event>
+			<Id>1814</Id>
+			<Message>No further notification handles.</Message>
+		</Event>
+		<Event>
+			<Id>1815</Id>
+			<Message>Notification size too large.</Message>
+		</Event>
+		<Event>
+			<Id>1816</Id>
+			<Message>Device is not initialized.</Message>
+		</Event>
+		<Event>
+			<Id>1817</Id>
+			<Message>Device has a timeout.</Message>
+		</Event>
+		<Event>
+			<Id>1818</Id>
+			<Message>Interface query failed.</Message>
+		</Event>
+		<Event>
+			<Id>1819</Id>
+			<Message>Wrong interface is requested.</Message>
+		</Event>
+		<Event>
+			<Id>1820</Id>
+			<Message>Class ID is invalid.</Message>
+		</Event>
+		<Event>
+			<Id>1821</Id>
+			<Message>Object ID is invalid.</Message>
+		</Event>
+		<Event>
+			<Id>1822</Id>
+			<Message>Request pending.</Message>
+		</Event>
+		<Event>
+			<Id>1823</Id>
+			<Message>Request is aborted.</Message>
+		</Event>
+		<Event>
+			<Id>1824</Id>
+			<Message>Signal warning.</Message>
+		</Event>
+		<Event>
+			<Id>1825</Id>
+			<Message>Invalid array index.</Message>
+		</Event>
+		<Event>
+			<Id>1826</Id>
+			<Message>Symbol is not active.</Message>
+		</Event>
+		<Event>
+			<Id>1827</Id>
+			<Message>Access denied.</Message>
+		</Event>
+		<Event>
+			<Id>1828</Id>
+			<Message>Missing license.</Message>
+		</Event>
+		<Event>
+			<Id>1829</Id>
+			<Message>License is expired.</Message>
+		</Event>
+		<Event>
+			<Id>1830</Id>
+			<Message>License is exceeded.</Message>
+		</Event>
+		<Event>
+			<Id>1831</Id>
+			<Message>License is invalid.</Message>
+		</Event>
+		<Event>
+			<Id>1832</Id>
+			<Message>License problem: System ID is invalid.</Message>
+		</Event>
+		<Event>
+			<Id>1833</Id>
+			<Message>License not limited in time.</Message>
+		</Event>
+		<Event>
+			<Id>1834</Id>
+			<Message>License problem: Time in the future.</Message>
+		</Event>
+		<Event>
+			<Id>1835</Id>
+			<Message>License time period is too long.</Message>
+		</Event>
+		<Event>
+			<Id>1836</Id>
+			<Message>Exception at system startup.</Message>
+		</Event>
+		<Event>
+			<Id>1837</Id>
+			<Message>License file is read twice.</Message>
+		</Event>
+		<Event>
+			<Id>1838</Id>
+			<Message>Invalid signature.</Message>
+		</Event>
+		<Event>
+			<Id>1839</Id>
+			<Message>Invalid certificate.</Message>
+		</Event>
+		<Event>
+			<Id>1840</Id>
+			<Message>Public key not known from OEM.</Message>
+		</Event>
+		<Event>
+			<Id>1841</Id>
+			<Message>License not valid for this system ID.</Message>
+		</Event>
+		<Event>
+			<Id>1842</Id>
+			<Message>Demo license prohibited.</Message>
+		</Event>
+		<Event>
+			<Id>1843</Id>
+			<Message>Invalid function ID.</Message>
+		</Event>
+		<Event>
+			<Id>1844</Id>
+			<Message>Outside the valid range.</Message>
+		</Event>
+		<Event>
+			<Id>1845</Id>
+			<Message>Invalid alignment.</Message>
+		</Event>
+		<Event>
+			<Id>1846</Id>
+			<Message>Invalid platform level.</Message>
+		</Event>
+		<Event>
+			<Id>1847</Id>
+			<Message>Context – forward to passive level.</Message>
+		</Event>
+		<Event>
+			<Id>1848</Id>
+			<Message>Context – forward to dispatch level.</Message>
+		</Event>
+		<Event>
+			<Id>1849</Id>
+			<Message>Context – forward to real-time.</Message>
+		</Event>
+		<Event>
+			<Id>1857</Id>
+			<Message>Service contains an invalid parameter.</Message>
+		</Event>
+		<Event>
+			<Id>1858</Id>
+			<Message>Polling list is empty.</Message>
+		</Event>
+		<Event>
+			<Id>1859</Id>
+			<Message>Variable connection is already in use.</Message>
+		</Event>
+		<Event>
+			<Id>1860</Id>
+			<Message>Invoke ID is already in use.</Message>
+		</Event>
+		<Event>
+			<Id>1861</Id>
+			<Message>Timeout has occurred – the remote terminal is not responding in the specified ADS timeout.</Message>
+		</Event>
+		<Event>
+			<Id>1862</Id>
+			<Message>Error in Win32 subsystem</Message>
+		</Event>
+		<Event>
+			<Id>1863</Id>
+			<Message>Invalid client timeout value.</Message>
+		</Event>
+		<Event>
+			<Id>1864</Id>
+			<Message>Port is not open.</Message>
+		</Event>
+		<Event>
+			<Id>1865</Id>
+			<Message>No AMS address.</Message>
+		</Event>
+		<Event>
+			<Id>1872</Id>
+			<Message>Internal error in Ads sync.</Message>
+		</Event>
+		<Event>
+			<Id>1873</Id>
+			<Message>Hash table overflow.</Message>
+		</Event>
+		<Event>
+			<Id>1874</Id>
+			<Message>Key not found in hash table.</Message>
+		</Event>
+		<Event>
+			<Id>1875</Id>
+			<Message>No symbols in the cache.</Message>
+		</Event>
+		<Event>
+			<Id>1876</Id>
+			<Message>Invalid response received</Message>
+		</Event>
+		<Event>
+			<Id>1877</Id>
+			<Message>Sync port is locked.</Message>
+		</Event>
+	</Source>
+	<Source>
+		<GUID>{CC929187-3970-4CF4-8F39-946BEC12422D}</GUID>
+		<Name>TcIPCDiagEventClass</Name>
+		<Event>
+			<Id>#x0001</Id>
+			<Message>Fail - unspecified error.</Message>
+		</Event>
+		<Event>
+			<Id>#x0100</Id>
+			<Message>Invalid index.</Message>
+		</Event>
+		<Event>
+			<Id>#x0101</Id>
+			<Message>Invalid access.</Message>
+		</Event>
+		<Event>
+			<Id>#x0102</Id>
+			<Message>Buffer is too small.</Message>
+		</Event>
+		<Event>
+			<Id>#x0103</Id>
+			<Message>Type is not supported.</Message>
+		</Event>
+		<Event>
+			<Id>#x0104</Id>
+			<Message>Out of memory.</Message>
+		</Event>
+		<Event>
+			<Id>#x0105</Id>
+			<Message>No data available.</Message>
+		</Event>
+		<Event>
+			<Id>#x0106</Id>
+			<Message>Invalid data.</Message>
+		</Event>
+		<Event>
+			<Id>#x0107</Id>
+			<Message>Invalid argument.</Message>
+		</Event>
+		<Event>
+			<Id>#x0108</Id>
+			<Message>Value is out of range.</Message>
+		</Event>
+		<Event>
+			<Id>#x0200</Id>
+			<Message>Server is busy.</Message>
+		</Event>
+		<Event>
+			<Id>#x0201</Id>
+			<Message>MDP API is not initialized.</Message>
+		</Event>
+		<Event>
+			<Id>#x0F00</Id>
+			<Message>Not implemented.</Message>
+		</Event>
+		<Event>
+			<Id>#x1000</Id>
+			<Message>Not supported.</Message>
+		</Event>
+	</Source>
+	<Source>
+		<GUID>{20226F4C-54BA-479F-BA48-FBE52D0E9CD5}</GUID>
+		<Name>TcIPCDiagPlcApiEventClass</Name>
+		<Event>
+			<Id>1</Id>
+			<Message>Invalid module list (initialization of IPCDiag required).</Message>
+		</Event>
+		<Event>
+			<Id>#x2</Id>
+			<Message>Module of parameter is unavailable (not existing).</Message>
+		</Event>
+		<Event>
+			<Id>#x3</Id>
+			<Message>Parameter is unavailable (not existing).</Message>
+		</Event>
+		<Event>
+			<Id>#x4</Id>
+			<Message>No valid parameter value available (reading is pending or failed).</Message>
+		</Event>
+		<Event>
+			<Id>#x5</Id>
+			<Message>Allocated buffer is invalid (pointer is zero or buffer size is too small).</Message>
+		</Event>
+		<Event>
+			<Id>#x6</Id>
+			<Message>Allocated index is invalid.</Message>
+		</Event>
+		<Event>
+			<Id>7</Id>
+			<Message>Error that some of the requested parameter values returned an error (use GetParameterByIdx).</Message>
+		</Event>
+		<Event>
+			<Id>#x8</Id>
+			<Message>Info that some of the requested parameter values returned an error (use GetParameterByIdx).</Message>
+		</Event>
+	</Source>
+	<Source>
+		<GUID>{E759605A-2341-48FC-9F3F-C8FA405C4B24}</GUID>
+		<Name>TcRouterEventClass</Name>
+		<Event>
+			<Id>1280</Id>
+			<Message>Locked memory cannot be allocated.</Message>
+		</Event>
+		<Event>
+			<Id>1281</Id>
+			<Message>The router memory size could not be changed.</Message>
+		</Event>
+		<Event>
+			<Id>1282</Id>
+			<Message>The mailbox has reached the maximum number of possible messages.</Message>
+		</Event>
+		<Event>
+			<Id>1283</Id>
+			<Message>The debug mailbox has reached the maximum number of possible messages.</Message>
+		</Event>
+		<Event>
+			<Id>1284</Id>
+			<Message>The port type is unknown.</Message>
+		</Event>
+		<Event>
+			<Id>1285</Id>
+			<Message>TwinCAT Router is not initialised.</Message>
+		</Event>
+		<Event>
+			<Id>1286</Id>
+			<Message>The port number is already assigned.</Message>
+		</Event>
+		<Event>
+			<Id>1287</Id>
+			<Message>The port is not registered.</Message>
+		</Event>
+		<Event>
+			<Id>1288</Id>
+			<Message>The maximum number of ports has been reached.</Message>
+		</Event>
+		<Event>
+			<Id>1289</Id>
+			<Message>The port is invalid.</Message>
+		</Event>
+		<Event>
+			<Id>1290</Id>
+			<Message>TwinCAT Router is not active.</Message>
+		</Event>
+		<Event>
+			<Id>1291</Id>
+			<Message>The mailbox has reached the maximum number for fragmented messages.</Message>
+		</Event>
+		<Event>
+			<Id>1292</Id>
+			<Message>A fragment timeout has occurred.</Message>
+		</Event>
+		<Event>
+			<Id>1293</Id>
+			<Message>The port is removed.</Message>
+		</Event>
+	</Source>
+	<Source>
+		<GUID>{BB2A9999-102E-421A-8D3D-B0660E07B1FE}</GUID>
+		<Name>TcSystemEventClass</Name>
+		<Event>
+			<Id>1</Id>
+			<Message>Internal error.</Message>
+		</Event>
+		<Event>
+			<Id>2</Id>
+			<Message>No real-time.</Message>
+		</Event>
+		<Event>
+			<Id>3</Id>
+			<Message>Allocation locked – memory error.</Message>
+		</Event>
+		<Event>
+			<Id>4</Id>
+			<Message>Mailbox full – the ADS message could not be sent. Reducing the number of ADS messages per cycle will help.</Message>
+		</Event>
+		<Event>
+			<Id>5</Id>
+			<Message>Wrong HMSG.</Message>
+		</Event>
+		<Event>
+			<Id>6</Id>
+			<Message>Target port not found – ADS server is not started or is not reachable.</Message>
+		</Event>
+		<Event>
+			<Id>7</Id>
+			<Message>Target computer not found – AMS route was not found. </Message>
+		</Event>
+		<Event>
+			<Id>8</Id>
+			<Message>Unknown command ID.</Message>
+		</Event>
+		<Event>
+			<Id>9</Id>
+			<Message>Invalid task ID.</Message>
+		</Event>
+		<Event>
+			<Id>10</Id>
+			<Message>No IO.</Message>
+		</Event>
+		<Event>
+			<Id>11</Id>
+			<Message>Unknown AMS command.</Message>
+		</Event>
+		<Event>
+			<Id>12</Id>
+			<Message>Win32 error.</Message>
+		</Event>
+		<Event>
+			<Id>13</Id>
+			<Message>Port not connected.</Message>
+		</Event>
+		<Event>
+			<Id>14</Id>
+			<Message>Invalid AMS length.</Message>
+		</Event>
+		<Event>
+			<Id>15</Id>
+			<Message>Invalid AMS Net ID.</Message>
+		</Event>
+		<Event>
+			<Id>16</Id>
+			<Message>Low installation level – TwinCAT 2 license error.</Message>
+		</Event>
+		<Event>
+			<Id>17</Id>
+			<Message>No debugging available.</Message>
+		</Event>
+		<Event>
+			<Id>18</Id>
+			<Message>Port disabled – TwinCAT system service not started.</Message>
+		</Event>
+		<Event>
+			<Id>19</Id>
+			<Message>Port already connected.</Message>
+		</Event>
+		<Event>
+			<Id>20</Id>
+			<Message>AMS Sync Win32 error.</Message>
+		</Event>
+		<Event>
+			<Id>21</Id>
+			<Message>AMS Sync Timeout.</Message>
+		</Event>
+		<Event>
+			<Id>22</Id>
+			<Message>AMS Sync error.</Message>
+		</Event>
+		<Event>
+			<Id>23</Id>
+			<Message>No index map for AMS Sync available.</Message>
+		</Event>
+		<Event>
+			<Id>24</Id>
+			<Message>Invalid AMS port.</Message>
+		</Event>
+		<Event>
+			<Id>25</Id>
+			<Message>No memory.</Message>
+		</Event>
+		<Event>
+			<Id>26</Id>
+			<Message>TCP send error.</Message>
+		</Event>
+		<Event>
+			<Id>27</Id>
+			<Message>Host unreachable.</Message>
+		</Event>
+		<Event>
+			<Id>28</Id>
+			<Message>Invalid AMS fragment.</Message>
+		</Event>
+		<Event>
+			<Id>29</Id>
+			<Message>TLS send error – secure ADS connection failed.</Message>
+		</Event>
+		<Event>
+			<Id>30</Id>
+			<Message>Access denied – secure ADS access denied.</Message>
+		</Event>
+	</Source>
+	<Source>
+		<GUID>{4ABEFBBF-6620-4349-91AD-E6110A3BE851}</GUID>
+		<Name>Win32EventClass</Name>
+		<Event>
+			<Id>0</Id>
+			<Message>The operation completed successfully.</Message>
+		</Event>
+		<Event>
+			<Id>1</Id>
+			<Message>Incorrect function.</Message>
+		</Event>
+		<Event>
+			<Id>2</Id>
+			<Message>The system cannot find the file specified.</Message>
+		</Event>
+		<Event>
+			<Id>3</Id>
+			<Message>The system cannot find the path specified.</Message>
+		</Event>
+		<Event>
+			<Id>4</Id>
+			<Message>The system cannot open the file.</Message>
+		</Event>
+		<Event>
+			<Id>5</Id>
+			<Message>Access is denied.</Message>
+		</Event>
+		<Event>
+			<Id>6</Id>
+			<Message>The handle is invalid.</Message>
+		</Event>
+		<Event>
+			<Id>8</Id>
+			<Message>Not enough storage is available to process this command.</Message>
+		</Event>
+		<Event>
+			<Id>13</Id>
+			<Message>The data is invalid.</Message>
+		</Event>
+		<Event>
+			<Id>21</Id>
+			<Message>The device is not ready.</Message>
+		</Event>
+		<Event>
+			<Id>22</Id>
+			<Message>The device does not recognize the command.</Message>
+		</Event>
+		<Event>
+			<Id>23</Id>
+			<Message>Data error (cyclic redundancy check).</Message>
+		</Event>
+		<Event>
+			<Id>24</Id>
+			<Message>The program issued a command but the command length is incorrect.</Message>
+		</Event>
+		<Event>
+			<Id>29</Id>
+			<Message>The system cannot write to the specified device.</Message>
+		</Event>
+		<Event>
+			<Id>30</Id>
+			<Message>The system cannot read from the specified device.</Message>
+		</Event>
+		<Event>
+			<Id>31</Id>
+			<Message>A device attached to the system is not functioning.</Message>
+		</Event>
+		<Event>
+			<Id>50</Id>
+			<Message>The request is not supported.</Message>
+		</Event>
+		<Event>
+			<Id>51</Id>
+			<Message>The remote computer is not available.</Message>
+		</Event>
+		<Event>
+			<Id>52</Id>
+			<Message>A duplicate name exists on the network.</Message>
+		</Event>
+		<Event>
+			<Id>53</Id>
+			<Message>The network path was not found.</Message>
+		</Event>
+		<Event>
+			<Id>54</Id>
+			<Message>The network is busy.</Message>
+		</Event>
+		<Event>
+			<Id>55</Id>
+			<Message>The specified network resource or device is no longer available.</Message>
+		</Event>
+		<Event>
+			<Id>80</Id>
+			<Message>The file exists.</Message>
+		</Event>
+		<Event>
+			<Id>82</Id>
+			<Message>The directory or file cannot be created.</Message>
+		</Event>
+		<Event>
+			<Id>85</Id>
+			<Message>The local device name is already in use.</Message>
+		</Event>
+		<Event>
+			<Id>86</Id>
+			<Message>The specified network password is not correct.</Message>
+		</Event>
+		<Event>
+			<Id>87</Id>
+			<Message>The parameter is incorrect.</Message>
+		</Event>
+		<Event>
+			<Id>110</Id>
+			<Message>The system cannot open the device or file specified.</Message>
+		</Event>
+		<Event>
+			<Id>183</Id>
+			<Message>Cannot create a file when that file already exists.</Message>
+		</Event>
+		<Event>
+			<Id>186</Id>
+			<Message>The flag passed is not correct.</Message>
+		</Event>
+		<Event>
+			<Id>258</Id>
+			<Message>The wait operation timed out.</Message>
+		</Event>
+		<Event>
+			<Id>259</Id>
+			<Message>No more data is available.</Message>
+		</Event>
+		<Event>
+			<Id>487</Id>
+			<Message>Attempt to access invalid address.</Message>
+		</Event>
+		<Event>
+			<Id>534</Id>
+			<Message>Arithmetic result exceeded 32 bits.</Message>
+		</Event>
+		<Event>
+			<Id>995</Id>
+			<Message>The I/O operation has been aborted because of either a thread exit or an application request.</Message>
+		</Event>
+		<Event>
+			<Id>996</Id>
+			<Message>Overlapped I/O event is not in a signaled state.</Message>
+		</Event>
+		<Event>
+			<Id>997</Id>
+			<Message>Overlapped I/O operation is in progress.</Message>
+		</Event>
+		<Event>
+			<Id>10004</Id>
+			<Message>A blocking operation was interrupted by a call to WSACancelBlockingCall.</Message>
+		</Event>
+		<Event>
+			<Id>10009</Id>
+			<Message>The file handle supplied is not valid.</Message>
+		</Event>
+		<Event>
+			<Id>10013</Id>
+			<Message>An attempt was made to access a socket in a way forbidden by its access permissions.</Message>
+		</Event>
+		<Event>
+			<Id>10014</Id>
+			<Message>The system detected an invalid pointer address in attempting to use a pointer argument in a call.</Message>
+		</Event>
+		<Event>
+			<Id>10022</Id>
+			<Message>An invalid argument was supplied.</Message>
+		</Event>
+		<Event>
+			<Id>10024</Id>
+			<Message>Too many open sockets.</Message>
+		</Event>
+		<Event>
+			<Id>10035</Id>
+			<Message>A nonblocking socket operation could not be completed immediately.</Message>
+		</Event>
+		<Event>
+			<Id>10036</Id>
+			<Message>A blocking operation is currently executing.</Message>
+		</Event>
+		<Event>
+			<Id>10037</Id>
+			<Message>An operation was attempted on a nonblocking socket that already had an operation in progress.</Message>
+		</Event>
+		<Event>
+			<Id>10038</Id>
+			<Message>An operation was attempted on something that is not a socket.</Message>
+		</Event>
+		<Event>
+			<Id>10039</Id>
+			<Message>A required address was omitted from an operation on a socket.</Message>
+		</Event>
+		<Event>
+			<Id>10040</Id>
+			<Message>A message sent on a datagram socket was larger than the internal message buffer or some other network limit, or the buffer used to receive a datagram into was smaller than the datagram itself.</Message>
+		</Event>
+		<Event>
+			<Id>10041</Id>
+			<Message>A protocol was specified in the socket function call that does not support the semantics of the socket type requested.</Message>
+		</Event>
+		<Event>
+			<Id>10042</Id>
+			<Message>An unknown, invalid, or unsupported option or level was specified in a getsockopt or setsockopt call.</Message>
+		</Event>
+		<Event>
+			<Id>10043</Id>
+			<Message>The requested protocol has not been configured into the system, or no implementation for it exists.</Message>
+		</Event>
+		<Event>
+			<Id>10044</Id>
+			<Message>The support for the specified socket type does not exist in this address family.</Message>
+		</Event>
+		<Event>
+			<Id>10045</Id>
+			<Message>The attempted operation is not supported for the type of object referenced.</Message>
+		</Event>
+		<Event>
+			<Id>10046</Id>
+			<Message>The protocol family has not been configured into the system or no implementation for it exists.</Message>
+		</Event>
+		<Event>
+			<Id>10047</Id>
+			<Message>An address incompatible with the requested protocol was used.</Message>
+		</Event>
+		<Event>
+			<Id>10048</Id>
+			<Message>Only one usage of each socket address (protocol/network address/port) is normally permitted.</Message>
+		</Event>
+		<Event>
+			<Id>10049</Id>
+			<Message>The requested address is not valid in its context.</Message>
+		</Event>
+		<Event>
+			<Id>10050</Id>
+			<Message>A socket operation encountered a dead network.</Message>
+		</Event>
+		<Event>
+			<Id>10051</Id>
+			<Message>A socket operation was attempted to an unreachable network.</Message>
+		</Event>
+		<Event>
+			<Id>10052</Id>
+			<Message>The connection has been broken due to keep-alive activity detecting a failure while the operation was in progress.</Message>
+		</Event>
+		<Event>
+			<Id>10053</Id>
+			<Message>An established connection was aborted by the software in your host machine.</Message>
+		</Event>
+		<Event>
+			<Id>10054</Id>
+			<Message>An existing connection was forcibly closed by the remote host.</Message>
+		</Event>
+		<Event>
+			<Id>10055</Id>
+			<Message>An operation on a socket could not be performed because the system lacked sufficient buffer space or because a queue was full.</Message>
+		</Event>
+		<Event>
+			<Id>10056</Id>
+			<Message>A connect request was made on an already connected socket.</Message>
+		</Event>
+		<Event>
+			<Id>10057</Id>
+			<Message>A request to send or receive data was disallowed because the socket is not connected and (when sending on a datagram socket using a sendto call) no address was supplied.</Message>
+		</Event>
+		<Event>
+			<Id>10058</Id>
+			<Message>A request to send or receive data was disallowed because the socket had already been shut down in that direction with a previous shutdown call.</Message>
+		</Event>
+		<Event>
+			<Id>10059</Id>
+			<Message>Too many references to a kernel object.</Message>
+		</Event>
+		<Event>
+			<Id>10060</Id>
+			<Message>A connection attempt failed because the connected party did not properly respond after a period of time, or the established connection failed because the connected host failed to respond.</Message>
+		</Event>
+		<Event>
+			<Id>10061</Id>
+			<Message>No connection could be made because the target machine actively refused it.</Message>
+		</Event>
+		<Event>
+			<Id>10062</Id>
+			<Message>Cannot translate name.</Message>
+		</Event>
+		<Event>
+			<Id>10063</Id>
+			<Message>Name or name component was too long.</Message>
+		</Event>
+		<Event>
+			<Id>10064</Id>
+			<Message>A socket operation failed because the destination host was down.</Message>
+		</Event>
+		<Event>
+			<Id>10065</Id>
+			<Message>A socket operation was attempted to an unreachable host.</Message>
+		</Event>
+		<Event>
+			<Id>10066</Id>
+			<Message>Cannot remove a directory that is not empty.</Message>
+		</Event>
+		<Event>
+			<Id>10067</Id>
+			<Message>A Windows Sockets implementation might have a limit on the number of applications that can use it simultaneously.</Message>
+		</Event>
+		<Event>
+			<Id>10068</Id>
+			<Message>Ran out of quota.</Message>
+		</Event>
+		<Event>
+			<Id>10069</Id>
+			<Message>Ran out of disk quota.</Message>
+		</Event>
+		<Event>
+			<Id>10070</Id>
+			<Message>File handle reference is no longer available.</Message>
+		</Event>
+		<Event>
+			<Id>10071</Id>
+			<Message>Item is not available locally.</Message>
+		</Event>
+		<Event>
+			<Id>10091</Id>
+			<Message>WSAStartup cannot function at this time because the underlying system it uses to provide network services is currently unavailable.</Message>
+		</Event>
+		<Event>
+			<Id>10092</Id>
+			<Message>The Windows Sockets version requested is not supported.</Message>
+		</Event>
+		<Event>
+			<Id>10093</Id>
+			<Message>Either the application has not called WSAStartup, or WSAStartup failed.</Message>
+		</Event>
+		<Event>
+			<Id>10101</Id>
+			<Message>Returned by WSARecv or WSARecvFrom to indicate that the remote party has initiated a graceful shutdown sequence.</Message>
+		</Event>
+		<Event>
+			<Id>10102</Id>
+			<Message>No more results can be returned by WSALookupServiceNext.</Message>
+		</Event>
+		<Event>
+			<Id>10103</Id>
+			<Message>A call to WSALookupServiceEnd was made while this call was still processing. The call has been canceled.</Message>
+		</Event>
+		<Event>
+			<Id>10104</Id>
+			<Message>The procedure call table is invalid.</Message>
+		</Event>
+		<Event>
+			<Id>10105</Id>
+			<Message>The requested service provider is invalid.</Message>
+		</Event>
+		<Event>
+			<Id>10106</Id>
+			<Message>The requested service provider could not be loaded or initialized.</Message>
+		</Event>
+		<Event>
+			<Id>10107</Id>
+			<Message>A system call that should never fail has failed.</Message>
+		</Event>
+		<Event>
+			<Id>10108</Id>
+			<Message>No such service is known. The service cannot be found in the specified namespace.</Message>
+		</Event>
+		<Event>
+			<Id>10109</Id>
+			<Message>The specified class was not found.</Message>
+		</Event>
+		<Event>
+			<Id>10110</Id>
+			<Message>No more results can be returned by WSALookupServiceNext.</Message>
+		</Event>
+		<Event>
+			<Id>10111</Id>
+			<Message>A call to WSALookupServiceEnd was made while this call was still processing. The call has been canceled.</Message>
+		</Event>
+		<Event>
+			<Id>10112</Id>
+			<Message>A database query failed because it was actively refused.</Message>
+		</Event>
+		<Event>
+			<Id>11001</Id>
+			<Message>No such host is known.</Message>
+		</Event>
+		<Event>
+			<Id>11002</Id>
+			<Message>This is usually a temporary error during host name resolution and means that the local server did not receive a response from an authoritative server.</Message>
+		</Event>
+		<Event>
+			<Id>11003</Id>
+			<Message>A nonrecoverable error occurred during a database lookup.</Message>
+		</Event>
+		<Event>
+			<Id>11004</Id>
+			<Message>The requested name is valid, but no data of the requested type was found.</Message>
+		</Event>
+	</Source>
+</TcEventSources>

@@ -1,0 +1,8 @@
+{
+  "locale": "de",
+  "localizedText": {
+    "COM_ERROR": "COM-Fehler {0} in Methode {1}",
+    "RUNTIME_NOT_LOADABLE": "Laufzeit nicht ladbar",
+    "ERROR_FILE_WATCHER": "Dateiänderungen im Ordner {0} können nicht überwacht werden. Fehler {1}"
+  }
+}

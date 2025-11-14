@@ -1,0 +1,1098 @@
+{
+  "$schema": "../../TcHmiSrv/schema/ExtensionSettings.Schema.json",
+  "version": "14.4.80.0",
+  "configVersion": "1.0.1.2",
+  "guid": "5DC96C56-5913-4dbb-92A5-8557E1B87658",
+  "policies": [
+    "StrictPropertyValidation"
+  ],
+  "symbols": {
+    "Diagnostics": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "properties": {
+          "devices": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "propertyOrder": 1,
+                  "type": "boolean",
+                  "visibility": "HideInEngineering"
+                },
+                "target": {
+                  "propertyOrder": 2,
+                  "type": "string"
+                },
+                "targetAvailable": {
+                  "propertyOrder": 3,
+                  "type": "boolean",
+                  "visibility": "HideInEngineering"
+                },
+                "connectionState": {
+                  "propertyOrder": 4,
+                  "type": "string"
+                },
+                "targetAdsVersion": {
+                  "propertyOrder": 5,
+                  "type": "string"
+                },
+                "targetAdsState": {
+                  "propertyOrder": 6,
+                  "type": "string"
+                },
+                "master": {
+                  "propertyOrder": 7,
+                  "type": "string"
+                },
+                "masterState": {
+                  "propertyOrder": 8,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "enabled",
+                "target",
+                "targetAvailable",
+                "connectionState",
+                "master"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ListConfiguredDevices": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "targetNetId": {
+              "type": "string",
+              "format": "amsnetid"
+            },
+            "masterNetId": {
+              "type": "string",
+              "format": "amsnetid"
+            }
+          },
+          "required": [
+            "enabled",
+            "targetNetId",
+            "masterNetId"
+          ]
+        }
+      }
+    },
+    "ListMastersOfRoute": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true,
+        "type": "array",
+        "items": [
+          {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string",
+                "format": "amsnetid"
+              }
+            },
+            "required": [
+              "label",
+              "value"
+            ]
+          }
+        ]
+      }
+    },
+    "GetTarget": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "properties": {
+          "available": {
+            "type": "boolean"
+          },
+          "config": {
+            "type": "object",
+            "properties": {
+              "masterNetId": {
+                "type": "string",
+                "format": "amsnetid"
+              }
+            },
+            "required": [
+              "masterNetId"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "netId": {
+            "type": "string"
+          },
+          "sysServiceAdsState": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "available",
+          "config",
+          "name",
+          "netId",
+          "sysServiceAdsState"
+        ]
+      }
+    },
+    "GetMaster": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "properties": {
+          "config": {
+            "type": "object",
+            "properties": {
+              "targetNetId": {
+                "type": "string"
+              }
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "netId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "config",
+          "name",
+          "netId"
+        ]
+      }
+    },
+    "GetSlaves": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "properties": {
+          "config": {
+            "type": "object",
+            "properties": {
+              "targetNetId": {
+                "type": "string"
+              },
+              "masterNetId": {
+                "type": "string"
+              }
+            }
+          },
+          "slavesCount": {
+            "type": "number"
+          },
+          "disabledSlaves": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/slave"
+            }
+          },
+          "hotConnectGroups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/slave"
+            }
+          },
+          "master": {
+            "type": "object",
+            "properties": {
+              "configuredSlave": {
+                "$ref": "#/definitions/slave"
+              },
+              "portPhysic": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "required": [
+          "config",
+          "slavesCount"
+        ]
+      }
+    },
+    "GetSlavesScanned": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "properties": {
+          "config": {
+            "type": "object",
+            "properties": {
+              "targetNetId": {
+                "type": "string"
+              },
+              "masterNetId": {
+                "type": "string"
+              }
+            }
+          },
+          "slaves": {
+            "type": "array",
+            "items": [
+              {
+                "type": "object",
+                "properties": {
+                  "addr": {
+                    "type": "integer"
+                  },
+                  "productCode": {
+                    "type": "integer"
+                  },
+                  "revisionNumber": {
+                    "type": "integer"
+                  },
+                  "serialNumber": {
+                    "type": "integer"
+                  },
+                  "vendorId": {
+                    "type": "integer"
+                  },
+                  "vendorLabelName": {
+                    "type": "string"
+                  },
+                  "vendorMemberName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "addr",
+                  "productCode",
+                  "revisionNumber",
+                  "serialNumber",
+                  "vendorId",
+                  "vendorLabelName",
+                  "vendorMemberName"
+                ]
+              }
+            ]
+          },
+          "updated": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "config",
+          "slaves",
+          "updated"
+        ]
+      }
+    },
+    "SendSlavesScanCmd": {
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true
+      },
+      "access": 2
+    },
+    "GetMasterOnlineInfo": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "properties": {
+          "config": {
+            "type": "object",
+            "properties": {
+              "targetNetId": {
+                "type": "string"
+              },
+              "masterNetId": {
+                "type": "string"
+              }
+            }
+          },
+          "frames": {
+            "type": "object",
+            "properties": {
+              "damaged": {
+                "type": "object",
+                "properties": {
+                  "received": {
+                    "type": "integer"
+                  },
+                  "sent": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "received",
+                  "sent"
+                ]
+              },
+              "missed": {
+                "type": "object",
+                "properties": {
+                  "acyclic": {
+                    "type": "integer"
+                  },
+                  "cyclic": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "acyclic",
+                  "cyclic"
+                ]
+              },
+              "perSec": {
+                "type": "object",
+                "properties": {
+                  "acyclic": {
+                    "type": "integer"
+                  },
+                  "cyclic": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "acyclic",
+                  "cyclic"
+                ]
+              },
+              "total": {
+                "type": "object",
+                "properties": {
+                  "acyclic": {
+                    "type": "integer"
+                  },
+                  "cyclic": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "acyclic",
+                  "cyclic"
+                ]
+              }
+            },
+            "required": [
+              "damaged",
+              "missed",
+              "perSec",
+              "total"
+            ]
+          },
+          "stateMachine": {
+            "type": "integer"
+          },
+          "stateMachineRequested": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "config",
+          "frames",
+          "stateMachine"
+        ]
+      }
+    },
+    "SetMasterStateMachine": {
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "device": {
+            "type": "string"
+          },
+          "state": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "device",
+          "state"
+        ]
+      },
+      "readValue": {
+        "function": true
+      }
+    },
+    "SetSlaveStateMachine": {
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "device": {
+            "type": "string"
+          },
+          "slaveAddr": {
+            "type": "integer"
+          },
+          "state": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "device",
+          "slaveAddr",
+          "state"
+        ]
+      },
+      "readValue": {
+        "function": true
+      }
+    },
+    "ClearFrames": {
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true
+      }
+    },
+    "ClearCrc": {
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true
+      }
+    },
+    "GetSlavesOnlineInfo": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "properties": {
+          "config": {
+            "type": "object",
+            "properties": {
+              "targetNetId": {
+                "type": "string"
+              },
+              "masterNetId": {
+                "type": "string"
+              }
+            }
+          },
+          "slaves": {
+            "type": "object",
+            "properties": {
+              "1001": {
+                "type": "object",
+                "properties": {
+                  "counter": {
+                    "type": "object",
+                    "properties": {
+                      "abnormalChanges": {
+                        "type": "integer"
+                      },
+                      "connectionLosses": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "abnormalChanges",
+                      "connectionLosses"
+                    ]
+                  },
+                  "current": {
+                    "type": "object",
+                    "properties": {
+                      "disabled": {
+                        "type": "boolean"
+                      },
+                      "identity": {
+                        "type": "object",
+                        "properties": {
+                          "isInvalid": {
+                            "type": "boolean"
+                          },
+                          "isInvalidOnPrevSlaves": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "isInvalid",
+                          "isInvalidOnPrevSlaves"
+                        ]
+                      },
+                      "initError": {
+                        "type": "boolean"
+                      },
+                      "presence": {
+                        "type": "object",
+                        "properties": {
+                          "notPresent": {
+                            "type": "boolean"
+                          },
+                          "notPresentOnPrevSlaves": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "notPresent",
+                          "notPresentOnPrevSlaves"
+                        ]
+                      },
+                      "signalsError": {
+                        "type": "boolean"
+                      },
+                      "stateMachine": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "disabled",
+                      "identity",
+                      "initError",
+                      "presence",
+                      "signalsError",
+                      "stateMachine"
+                    ]
+                  },
+                  "ports": {
+                    "type": "array",
+                    "items": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "counter": {
+                            "type": "object",
+                            "properties": {
+                              "crc": {
+                                "type": "object",
+                                "properties": {
+                                  "errorOnPrevPort": {
+                                    "type": "boolean"
+                                  },
+                                  "total": {
+                                    "type": "integer"
+                                  }
+                                },
+                                "required": [
+                                  "errorOnPrevPort",
+                                  "total"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "crc"
+                            ]
+                          },
+                          "current": {
+                            "type": "object",
+                            "properties": {
+                              "linkError": {
+                                "type": "boolean"
+                              },
+                              "missingLink": {
+                                "type": "boolean"
+                              },
+                              "unexpectedLink": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "linkError",
+                              "missingLink",
+                              "unexpectedLink"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "counter",
+                          "current"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "counter": {
+                            "type": "object",
+                            "properties": {
+                              "crc": {
+                                "type": "object",
+                                "properties": {
+                                  "errorOnPrevPort": {
+                                    "type": "boolean"
+                                  },
+                                  "total": {
+                                    "type": "integer"
+                                  }
+                                },
+                                "required": [
+                                  "errorOnPrevPort",
+                                  "total"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "crc"
+                            ]
+                          },
+                          "current": {
+                            "type": "object",
+                            "properties": {
+                              "linkError": {
+                                "type": "boolean"
+                              },
+                              "missingLink": {
+                                "type": "boolean"
+                              },
+                              "unexpectedLink": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "linkError",
+                              "missingLink",
+                              "unexpectedLink"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "counter",
+                          "current"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "counter": {
+                            "type": "object",
+                            "properties": {
+                              "crc": {
+                                "type": "object",
+                                "properties": {
+                                  "errorOnPrevPort": {
+                                    "type": "boolean"
+                                  },
+                                  "total": {
+                                    "type": "integer"
+                                  }
+                                },
+                                "required": [
+                                  "errorOnPrevPort",
+                                  "total"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "crc"
+                            ]
+                          },
+                          "current": {
+                            "type": "object",
+                            "properties": {
+                              "linkError": {
+                                "type": "boolean"
+                              },
+                              "missingLink": {
+                                "type": "boolean"
+                              },
+                              "unexpectedLink": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "linkError",
+                              "missingLink",
+                              "unexpectedLink"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "counter",
+                          "current"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "counter": {
+                            "type": "object",
+                            "properties": {
+                              "crc": {
+                                "type": "object",
+                                "properties": {
+                                  "errorOnPrevPort": {
+                                    "type": "boolean"
+                                  },
+                                  "total": {
+                                    "type": "integer"
+                                  }
+                                },
+                                "required": [
+                                  "errorOnPrevPort",
+                                  "total"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "crc"
+                            ]
+                          },
+                          "current": {
+                            "type": "object",
+                            "properties": {
+                              "linkError": {
+                                "type": "boolean"
+                              },
+                              "missingLink": {
+                                "type": "boolean"
+                              },
+                              "unexpectedLink": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "linkError",
+                              "missingLink",
+                              "unexpectedLink"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "counter",
+                          "current"
+                        ]
+                      }
+                    ]
+                  },
+                  "requested": {
+                    "type": "object",
+                    "properties": {
+                      "stateMachine": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "stateMachine"
+                    ]
+                  },
+                  "syncUnits": {
+                    "type": "object",
+                    "properties": {
+                      "0": {
+                        "type": "object",
+                        "properties": {
+                          "error": {
+                            "type": "boolean"
+                          },
+                          "frameMissedCounter": {
+                            "type": "integer"
+                          },
+                          "wcFaultCounter": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "error",
+                          "frameMissedCounter",
+                          "wcFaultCounter"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "0"
+                    ]
+                  }
+                },
+                "required": [
+                  "counter",
+                  "current",
+                  "ports",
+                  "requested",
+                  "syncUnits"
+                ]
+              }
+            }
+          }
+        },
+        "required": [
+          "config",
+          "slaves"
+        ]
+      }
+    },
+    "EnableSlave": {
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "device": {
+            "type": "string"
+          },
+          "slaveAddr": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "device",
+          "slaveAddr"
+        ]
+      },
+      "readValue": {
+        "function": true
+      }
+    },
+    "DisableSlave": {
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "device": {
+            "type": "string"
+          },
+          "slaveAddr": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "device",
+          "slaveAddr"
+        ]
+      },
+      "readValue": {
+        "function": true
+      }
+    },
+    "GetProcessDataValues": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "device": {
+            "type": "string"
+          },
+          "slaveAddr": {
+            "type": "integer"
+          },
+          "updateForcedState": {
+            "type": "boolean"
+          },
+          "updateValue": {
+            "type": "boolean"
+          }
+        }
+      },
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "properties": {
+          "config": {
+            "type": "object",
+            "properties": {
+              "targetNetId": {
+                "type": "string"
+              },
+              "masterNetId": {
+                "type": "string"
+              }
+            }
+          },
+          "in": {
+            "type": "array",
+            "items": [
+              {
+                "$ref": "#/definitions/EcDiagnosticsProcessDataInOutValues"
+              }
+            ]
+          },
+          "out": {
+            "type": "array",
+            "items": [
+              {
+                "$ref": "#/definitions/EcDiagnosticsProcessDataInOutValues"
+              }
+            ]
+          }
+        },
+        "required": [
+          "config"
+        ]
+      }
+    },
+    "SetProcessDataValues": {
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "device": {
+            "type": "string"
+          },
+          "slaveAddr": {
+            "type": "integer"
+          },
+          "values": {
+            "type": "array",
+            "items": [
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/EcDiagnosticsProcessDataObjectEntryID"
+                  },
+                  {
+                    "$ref": "#/definitions/EcDiagnosticsProcessDataObjectEntryValue"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "readValue": {
+        "function": true
+      }
+    },
+    "ForceProcessDataValues": {
+      "writeValue": {
+        "type": "object",
+        "properties": {
+          "device": {
+            "type": "string"
+          },
+          "slaveAddr": {
+            "type": "integer"
+          },
+          "values": {
+            "type": "array",
+            "items": [
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/EcDiagnosticsProcessDataObjectEntryID"
+                  },
+                  {
+                    "$ref": "#/definitions/EcDiagnosticsProcessDataObjectEntryValue"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "readValue": {
+        "function": true
+      }
+    },
+    "ListSlavesWithForcedProcessData": {
+      "userGroups": [
+        "__SystemUsers"
+      ],
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true,
+        "config": {
+          "type": "object",
+          "properties": {
+            "targetNetId": {
+              "type": "string"
+            },
+            "masterNetId": {
+              "type": "string"
+            }
+          }
+        },
+        "slaves": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "ReleaseProcessDataValues": {
+      "writeValue": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "device": {
+                "type": "string"
+              },
+              "slaveAddr": {
+                "type": "integer"
+              },
+              "values": {
+                "type": "array",
+                "items": [
+                  {
+                    "$ref": "#/definitions/EcDiagnosticsProcessDataObjectEntryID"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "readValue": {
+        "function": true
+      }
+    }
+  },
+  "packageVersion": "22.0.7066",
+  "productVersion": "14.4.80.0",
+  "signature": "FLiyls3SCEiVv+Xu9j6IASOBX7ilsbXwGCbPjniuP7qFnqP5yEMEWdcfrtZ83hNciSbrd5hQUjh6ffohiGHO7AErB4Qftxtrd9hbvZ5prK8cwUSS5BijdX/OB/zKiKR1bVjYaSorlbL4AZKgFkO6mBYX5v0BkCvG4hShUQuF+heLpcIq4jYk+UTjs51hcULfTEVzixCBfEj00g98Kadi44LWK83NvuMX85LnTAd+nCpNnmdAKxHjPA9YBitJPMM1kuZggGrJTsh1BYGHDymAbQIG9RvMx5Rt7Da9r/ZjdPBVQIo+Sajl1sE+gzmjlNH17LEXzYlQxewHKuzJAT6xlw=="
+}

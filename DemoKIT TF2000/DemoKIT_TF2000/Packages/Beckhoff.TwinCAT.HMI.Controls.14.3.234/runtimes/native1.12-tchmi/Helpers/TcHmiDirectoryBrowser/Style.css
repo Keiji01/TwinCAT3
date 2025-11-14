@@ -1,0 +1,238 @@
+.TcHmi_Controls_Helpers_DirectoryBrowser-path-display {
+    --tchmi-path-display-height: 36px;
+    position: relative;
+    height: var(--tchmi-path-display-height);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-scroll-container {
+    margin-right: -20px;
+    height: calc(100% + 75px);
+    overflow: hidden;
+    overflow-x: scroll;
+    display: flex;
+    flex-flow: row;
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list {
+    list-style: none;
+    display: inline-block;
+    height: 100%;
+    flex-shrink: 0;
+    margin: 0px;
+    margin-left: 3px;
+    padding: 3px 1px 3px 1px;
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li {
+    float: left;
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li a {
+    display: inline-block;
+    position: relative;
+    margin-right: calc((var(--tchmi-path-display-height) - 6px) / 3 * 2 + 1px);
+    height: calc(var(--tchmi-path-display-height) - 8px);
+    line-height: calc(var(--tchmi-path-display-height) - 8px);
+    padding: 0px calc(var(--tchmi-path-display-height) - 5px) 0px 5px;
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li a:before,
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li a:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: calc(var(--tchmi-path-display-height) - 8px);
+    box-sizing: border-box;
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li a:before {
+    left: calc((var(--tchmi-path-display-height) - 9px) / 3 * -2);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li a:after {
+    left: 100%;
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li:first-child a {
+    padding-left: 15px;
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li:last-child a {
+    padding-right: calc(var(--tchmi-path-display-height) - 5px);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li:last-child:not(:first-child) a {
+    padding-left: 2px;
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-browsing-display {
+    list-style-type: none;
+    overflow: auto;
+    padding: 5px;
+    padding-bottom: 10px;
+    margin: 0;
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-browsing-display li {
+    position: relative;
+    height: 35px;
+    padding: 3px 3px 3px 55px;
+    margin-bottom: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+div.TcHmi_Controls_Helpers_DirectoryBrowser-tree-browsing-display {
+    --tchmi-row-height: 30px;
+    padding: 5px;
+    /*
+        For a directory tree like this:
+        + Folder 1
+          + Folder 2
+          - File 1
+        - File 2
+
+        DOM structure looks roughly like this:
+        <details>
+            <summary>Folder 1</summary>
+            <details>
+                <summary>Folder 2</summary>
+            </details>
+            <div>File1</div>
+        </details>
+        <div>File2</div>
+
+        So each folder is wrapped in a details element with the folder name in a summary element and child items below.
+        Files are simple divs. The details element provides native expanding capabilities.
+    */
+
+    details {
+        summary {
+            height: var(--tchmi-row-height);
+            /* Disable native expander icon */
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Define own expander icon */
+        > summary > .expander {
+            width: 7px;
+            height: 7px;
+            transform: rotate(-45deg);
+            transform-origin: center;
+            transition: transform 0.1s ease-in;
+        }
+
+        /*
+            Because of the nesting, the > operator must be used to avoid all items below an expanded item also getting
+            the open expander.
+        */
+        &[open] > summary > .expander {
+            transform: rotate(45deg);
+        }
+    }
+
+    div {
+        height: var(--tchmi-row-height);
+        display: flex;
+        align-items: center;
+
+        /* Expander for files is just a circle and is smaller, so additional margins are necessary. */
+        > .expander {
+            width: 4px;
+            height: 4px;
+            margin-left: 8px;
+            margin-right: 7px;
+        }
+    }
+
+    .expander {
+        display: inline-block;
+        box-sizing: border-box;
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+
+    .group-lines span {
+        display: inline-block;
+        box-sizing: border-box;
+        width: 8px;
+        height: var(--tchmi-row-height);
+        position: relative;
+        /*
+            Move group lines up by half the row height minus 2 px. This allows us to create a gap below L-shaped group
+            lines.
+        */
+        top: calc(var(--tchmi-row-height) / -2 + 2px);
+        margin-left: 9px;
+        /*
+            Ignore pointer events so hovering over the group line (which is moved up to extend into the row above) does
+            not highlight the wrong row.
+        */
+        pointer-events: none;
+
+        /*
+            The last group line in front of each tree item should be L-shaped. This group line is also slightly smaller and
+            positioned 1 px higher than |-shaped group lines to create a 1 px gap below it.
+        */
+        &:last-child {
+            height: calc(var(--tchmi-row-height) - 1px);
+            top: calc(var(--tchmi-row-height) / -2 + 1px);
+        }
+    }
+
+    /*
+        The last group line in front of the first child element of a folder must be smaller to make room for the
+        expander.
+        The first DOM element of a folder is the <summary> containing the folder name. So :nth-child(2) selects the DOM
+        element of the first actual child of the folder. .group-lines :last-child selects the last group line. This is
+        the line directly below the expander.
+    */
+    div:nth-child(2) > .group-lines :last-child,
+    details:nth-child(2) > summary > .group-lines :last-child {
+        height: calc(var(--tchmi-row-height) - 11px);
+        margin-top: 10px;
+    }
+
+    label {
+        display: inline-flex;
+        align-items: center;
+        flex-grow: 1;
+        box-sizing: border-box;
+        height: calc(100% - 2px);
+        padding: 3px;
+    }
+
+    &.filter {
+        /*
+            While a search is active, filter out all folders that don't contain a match and all files that are not
+            matches themselves. (If a folder matches a search, the <summary> element, which is a child of the <details>
+            element gets the match class.)
+        */
+        details:not(:has(.match)),
+        div:not(.match) {
+            display: none;
+        }
+
+        /*
+            Because non-matching items are just hidden and not actually removed from the DOM, the nth-child selectors
+            still count them when styling the group-lines. To fix group-lines overlapping the expanders in this case,
+            of .match or of :has(.match) are added.
+        */
+        div:nth-child(1 of .match) > .group-lines :last-child,
+        details:nth-child(1 of :has(.match)) > summary > .group-lines :last-child {
+            height: calc(var(--tchmi-row-height) - 11px);
+            margin-top: 10px;
+        }
+    }
+}

@@ -1,0 +1,43 @@
+{
+  "locale": "en",
+  "localizedText": {
+    "MAXENTRIES": "Maximum number of entries",
+    "DESC_MAXENTRIES": "To limit the database size, the oldest database entries are permanently deleted when this limit is exceeded.",
+    "MAXENTRYLENGTH": "Maximum length of an entry",
+    "DESC_MAXENTRYLENGTH": "Entries that exceed this limit will be truncated before being stored.",
+    "EVENTREQUIRESCONFIRMATION": "Event {0} requires confirmation",
+    "EVENTCONFIRMED": "Event {0} got confirmed",
+    "DEFAULT_LIST_LIMIT": "Default limit for entry lists",
+    "DESC_DEFAULT_LIST_LIMIT": "This limit is used for all requests for which no other limit has been specified.",
+    "VACUUM_ON_STARTUP": "Vacuum at startup",
+    "DESC_VACUUM_ON_STARTUP": "Tries to reduce database size. This might take a while on big databases.",
+    "MODE": "Mode",
+    "DESC_MODE": "Synchronous off mode is fast but can corrupt the database in case of a power failure.",
+
+    "ENUM_SYNCHRONOUS_EXTRA_PERSIST": "Synchronous extra",
+    "ENUM_SYNCHRONOUS_FULL_PERSIST": "Synchronous full",
+    "ENUM_SYNCHRONOUS_NORMAL_PERSIST": "Synchronous normal",
+    "ENUM_SYNCHRONOUS_OFF_PERSIST": "Synchronous off",
+
+    "REDIRECT_DIAGNOSTICS_MESSAGES_TO_FILE": "Redirect diagnostics messages to file",
+    "DESC_REDIRECT_DIAGNOSTICS_MESSAGES_TO_FILE": "Reduces the chance that a flood of diagnostics messages will overwhelm the system. Especially useful when diagnosing problems on smaller devices. Only supported on Windows. Server restart required.",
+    "REDIRECTING_DIAGNOSTICS_MESSAGES_TO_FILE": "Redirecting diagnostics messages to this file: {0}",
+    "MAX_DIAGNOSTICS_MESSAGES_FILE_SIZE": "Maximum size of the file containing the diagnostic messages",
+    "MAX_DIAGNOSTICS_ARCHIVE_FILE_COUNT": "Maximum count of archive files containing diagnostic messages",
+    "DESC_MAX_DIAGNOSTICS_MESSAGES_FILE_SIZE": "Server restart required.",
+    "DESC_MAX_DIAGNOSTICS_ARCHIVE_FILE_COUNT": "Server restart required.",
+
+    "MSG_SHUTDOWN": "Shutdown extension {0} succeeded.",
+  
+    "allDomains": "All domains",
+    "perDomain": "Per domain",
+    "databaseSize": "Database size",
+    "persistentDatabaseSize": "Size of the persistent database",
+    "numEvents": "Number of events",
+    "numPersistentEvents": "Number of persistent events",
+    "numEventsWithAlarmPayload": "Number of alarms",
+    "numPersistentEventsWithAlarmPayload": "Number of persistent alarms",
+    "numEventsWithMessagePayload": "Number of messages",
+    "numPersistentEventsWithMessagePayload": "Number of persistent messages"
+  }
+}

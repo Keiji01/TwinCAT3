@@ -1,0 +1,2632 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "adsRoute": {
+      "allOf": [
+        {
+          "oneOf": [
+            {
+              "format": "ipv4"
+            },
+            {
+              "format": "amsnetid"
+            }
+          ]
+        },
+        {
+          "configDescription": "descAdsRoute",
+          "type": "string",
+          "optionMethod": {
+            "symbol": "ADS.ListRoutes"
+          }
+        }
+      ]
+    },
+    "threadPoolSize": {
+      "configDescription": "descThreadPoolSize",
+      "type": "integer",
+      "minimum": 4,
+      "maximum": 128
+    },
+    "accessEnum": {
+      "configDescription": "descAccessEnum",
+      "type": "integer",
+      "default": 3,
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "options": [
+        {
+          "label": "ENUM_NONE",
+          "value": 0
+        },
+        {
+          "label": "ENUM_READ",
+          "value": 1
+        },
+        {
+          "label": "ENUM_WRITE",
+          "value": 2
+        },
+        {
+          "label": "ENUM_READWRITE",
+          "value": 3
+        }
+      ]
+    },
+    "fileSettings": {
+      "type": "object",
+      "configDescription": "descFileSettings",
+      "properties": {
+        "ACCESS": {
+          "allOf": [
+            {
+              "$ref": "tchmi:server#/definitions/accessEnum"
+            },
+            {
+              "default": 3
+            }
+          ]
+        },
+        "LOGINPAGE": {
+          "type": "string"
+        },
+        "FILESHTTPHEADERS": {
+          "type": "string",
+          "format": "multiline",
+          "configDescription": "DESC_FILESHTTPHEADERS"
+        },
+        "HTTPSTATUSCODE": {
+          "type": "string",
+          "enum": [
+            "",
+            "200",
+            "201",
+            "202",
+            "301",
+            "302",
+            "307",
+            "308",
+            "401",
+            "403",
+            "404"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "fileInfo": {
+      "configDescription": "descFileInfo",
+      "type": "object",
+      "properties": {
+        "modificationTime": {
+          "type": "string"
+        },
+        "fileSize": {
+          "type": "number",
+          "unit": "kilobyte"
+        },
+        "access": {
+          "$ref": "tchmi:server#/definitions/accessEnum"
+        },
+        "fileFlags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Directory",
+              "ReadOnly",
+              "UserAccessReadOnly",
+              "VirtualDirectory"
+            ]
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "severity": {
+      "configDescription": "descSeverity",
+      "type": "integer",
+      "default": 1,
+      "enum": [
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "options": [
+        {
+          "label": "ENUM_m1_DIAGNOSTICS",
+          "value": -1
+        },
+        {
+          "label": "ENUM_0_VERBOSE",
+          "value": 0
+        },
+        {
+          "label": "ENUM_1_INFO",
+          "value": 1
+        },
+        {
+          "label": "ENUM_2_WARNING",
+          "value": 2
+        },
+        {
+          "label": "ENUM_3_ERROR",
+          "value": 3
+        },
+        {
+          "label": "ENUM_4_CRITICAL",
+          "value": 4
+        }
+      ]
+    },
+    "timing": {
+      "configDescription": "descTiming",
+      "type": "integer",
+      "default": 1,
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "options": [
+        {
+          "label": "ENUM_EARLY",
+          "value": 0,
+          "propertyOrder": 1
+        },
+        {
+          "label": "ENUM_NORMAL",
+          "value": 1,
+          "propertyOrder": 2
+        },
+        {
+          "label": "ENUM_DELAYED",
+          "value": 2,
+          "propertyOrder": 3
+        }
+      ]
+    },
+    "valueType": {
+      "configDescription": "descValueType",
+      "type": "integer",
+      "default": 0,
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        64,
+        65,
+        66,
+        256
+      ],
+      "options": [
+        {
+          "label": "ENUM_VALUETYPE_NULL",
+          "value": 0
+        },
+        {
+          "label": "ENUM_VALUETYPE_BOOL",
+          "value": 1
+        },
+        {
+          "label": "ENUM_VALUETYPE_INT",
+          "value": 2
+        },
+        {
+          "label": "ENUM_VALUETYPE_DOUBLE",
+          "value": 3
+        },
+        {
+          "label": "ENUM_VALUETYPE_STRING",
+          "value": 4
+        },
+        {
+          "label": "ENUM_VALUETYPE_ARRAY",
+          "value": 5
+        },
+        {
+          "label": "ENUM_VALUETYPE_MAP",
+          "value": 6
+        },
+        {
+          "label": "ENUM_VALUETYPE_STRUCT",
+          "value": 7
+        },
+        {
+          "label": "ENUM_VALUETYPE_BINARY",
+          "value": 8
+        },
+        {
+          "label": "ENUM_VALUETYPE_INT64",
+          "value": 9
+        },
+        {
+          "label": "ENUM_VALUETYPE_DATETIME",
+          "value": 10
+        },
+        {
+          "label": "ENUM_VALUETYPE_TIMESPAN",
+          "value": 11
+        },
+        {
+          "label": "ENUM_VALUETYPE_EVENT",
+          "value": 64
+        },
+        {
+          "label": "ENUM_VALUETYPE_MESSAGE",
+          "value": 65
+        },
+        {
+          "label": "ENUM_VALUETYPE_ALARM",
+          "value": 66
+        },
+        {
+          "label": "ENUM_VALUETYPE_ANY",
+          "value": 256
+        }
+      ]
+    },
+    "alarmState": {
+      "configDescription": "descAlarmState",
+      "type": "integer",
+      "default": 0,
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "options": [
+        {
+          "label": "ENUM_0_RAISED",
+          "value": 0
+        },
+        {
+          "label": "ENUM_1_CONFIRMED",
+          "value": 1
+        },
+        {
+          "label": "ENUM_2_CLEARED",
+          "value": 2
+        },
+        {
+          "label": "ENUM_3_CLEARED_AND_CONFIRMED",
+          "value": 3
+        },
+        {
+          "label": "ENUM_4_INVALID",
+          "value": 4
+        }
+      ]
+    },
+    "confirmationState": {
+      "configDescription": "descConfirmationState",
+      "type": "integer",
+      "default": 1,
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "options": [
+        {
+          "label": "ENUM_NOTSUPPORTED",
+          "value": 0,
+          "propertyOrder": 2
+        },
+        {
+          "label": "ENUM_NOTREQUIRED",
+          "value": 1,
+          "propertyOrder": 5
+        },
+        {
+          "label": "ENUM_WAIT",
+          "value": 2,
+          "propertyOrder": 4
+        },
+        {
+          "label": "ENUM_CONFIRMED",
+          "value": 3,
+          "propertyOrder": 3
+        },
+        {
+          "label": "ENUM_RESET",
+          "value": 4,
+          "propertyOrder": 1
+        }
+      ]
+    },
+    "nullableDateTime": {
+      "allOf": [
+        {
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "configDescription": "descNullableDateTime"
+        }
+      ]
+    },
+    "eventType": {
+      "configDescription": "descEventType",
+      "type": "integer",
+      "default": 1,
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "options": [
+        {
+          "label": "ENUM_0_MESSAGE",
+          "value": 0
+        },
+        {
+          "label": "ENUM_1_ALARM",
+          "value": 1
+        },
+        {
+          "label": "ENUM_2_PAYLOAD",
+          "value": 2
+        }
+      ]
+    },
+    "message": {
+      "configDescription": "descMessage",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "severity": {
+          "$ref": "tchmi:server#/definitions/severity"
+        },
+        "timeRaised": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "params": {
+          "type": "object",
+          "additionalProperties": {}
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "domain",
+        "severity"
+      ]
+    },
+    "alarm": {
+      "configDescription": "descAlarm",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "severity": {
+          "$ref": "tchmi:server#/definitions/severity"
+        },
+        "confirmationState": {
+          "$ref": "tchmi:server#/definitions/confirmationState"
+        },
+        "timeRaised": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "timeCleared": {
+          "$ref": "tchmi:server#/definitions/nullableDateTime"
+        },
+        "timeConfirmed": {
+          "$ref": "tchmi:server#/definitions/nullableDateTime"
+        },
+        "alarmState": {
+          "$ref": "tchmi:server#/definitions/alarmState"
+        },
+        "params": {
+          "type": "object",
+          "additionalProperties": {}
+        },
+        "isActive": {
+          "$ref": "tchmi:general#/definitions/Boolean"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "domain",
+        "confirmationState"
+      ]
+    },
+    "event": {
+      "configDescription": "descEvent",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "sessionId": {
+          "type": "string"
+        },
+        "timeReceived": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "payload": {
+          "anyOf": [
+            {
+              "$ref": "tchmi:server#/definitions/alarm"
+            },
+            {
+              "$ref": "tchmi:server#/definitions/message"
+            },
+            {}
+          ],
+          "description": "Payload can be alarms, messages or any type of user data."
+        },
+        "payloadType": {
+          "$ref": "tchmi:server#/definitions/eventType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "domain"
+      ]
+    },
+    "schemaRef": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "default": null,
+      "configDescription": "descSchemaRef"
+    },
+    "symbol": {
+      "type": "object",
+      "configDescription": "DESC_SYMBOL",
+      "properties": {
+        "DOMAIN": {
+          "type": "string",
+          "description": "Domain of the symbol",
+          "optionMethod": {
+            "symbol": "ListDomains"
+          }
+        },
+        "USEMAPPING": {
+          "type": "boolean",
+          "default": true,
+          "description": "If true the mapping will be used, otherwise the symbol will be evaluated in the server."
+        },
+        "CUSTOMERDATA": {
+          "type": "string",
+          "visibility": "HideInEngineering"
+        },
+        "OPTIONS": {
+          "type": "object",
+          "additionalProperties": {},
+          "visibility": "HideInEngineering"
+        },
+        "MAPPING": {
+          "type": "string",
+          "description": "This is how the given domain will access the symbol."
+        },
+        "SUBSYMBOL_MAPPING": {
+          "type": "string",
+          "description": "This sub-path is not forwarded to the extension. The server automatically browses into the result of the mapped symbol."
+        },
+        "ACCESS": {
+          "allOf": [
+            {
+              "$ref": "tchmi:server#/definitions/accessEnum"
+            },
+            {
+              "configDescription": "DESC_ACCESS"
+            }
+          ]
+        },
+        "HIDDEN": {
+          "type": "boolean",
+          "default": false,
+          "description": "Only display this symbol in the advanced view.",
+          "visibility": "HideInEngineering"
+        },
+        "SCHEMA": {
+          "allOf": [
+            {
+              "$ref": "tchmi:server#/definitions/schemaRef"
+            },
+            {
+              "description": "Json schema describing the output parameters of the symbol."
+            }
+          ]
+        },
+        "DYNAMIC": {
+          "type": "boolean",
+          "default": true,
+          "description": "Only dynamic symbols can be removed.",
+          "visibility": "HideInEngineering"
+        },
+        "REAUTHENTICATION_REQUIRED": {
+          "type": "boolean",
+          "default": false,
+          "description": "Command for writing this symbol requires a login command."
+        },
+        "REVIEWER_GROUPS": {
+          "type": "array",
+          "configDescription": "DESC_REVIEWER_GROUPS",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "optionMethodAllowCustom": false,
+            "optionMethod": {
+              "symbol": "TcHmiSrv.Config::USERGROUPS"
+            }
+          }
+        },
+        "EXTENSION_DATA_DOMAINS": {
+          "configDescription": "DESC_EXTENSION_DATA_DOMAINS",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "optionMethod": {
+              "symbol": "ListDomains"
+            }
+          }
+        },
+        "FLOODPROTECTION_LEVEL": {
+          "visibility": "HideInEngineering",
+          "configDescription": "DESC_FLOODPROTECTION_LEVEL",
+          "type": "integer",
+          "enum": [
+            -1,
+            50,
+            10
+          ],
+          "options": [
+            {
+              "label": "ENUM_M1_FLOODPROTECTION_LEVEL_DISABLED",
+              "value": -1
+            },
+            {
+              "label": "ENUM_10_FLOODPROTECTION_LEVEL_RESTRICTIVE",
+              "value": 10
+            },
+            {
+              "label": "ENUM_50_FLOODPROTECTION_LEVEL_PERMISSIVE",
+              "value": 50
+            }
+          ]
+        }
+      },
+      "required": [
+        "DOMAIN",
+        "MAPPING",
+        "ACCESS"
+      ]
+    },
+    "filter": {
+      "configDescription": "descFilter",
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "configDescription": "descComparator",
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "comparator": {
+                "type": "string",
+                "enum": [
+                  "==",
+                  "!=",
+                  "<",
+                  ">",
+                  "<=",
+                  ">=",
+                  "contains",
+                  "contains not",
+                  "== [ignore case]",
+                  "!= [ignore case]",
+                  "contains [ignore case]",
+                  "contains not [ignore case]"
+                ]
+              },
+              "value": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "comparator",
+              "value"
+            ]
+          },
+          {
+            "type": "object",
+            "configDescription": "descLogic",
+            "additionalProperties": false,
+            "properties": {
+              "logic": {
+                "type": "string",
+                "enum": [
+                  "AND",
+                  "OR"
+                ]
+              }
+            },
+            "required": [
+              "logic"
+            ]
+          },
+          {
+            "$ref": "tchmi:server#/definitions/filter"
+          }
+        ]
+      }
+    },
+    "userLocale": {
+      "oneOf": [
+        {
+          "$ref": "tchmi:general#/definitions/Locale"
+        },
+        {
+          "configDescription": "descUserLocale",
+          "type": "string",
+          "enum": [
+            "client",
+            "project"
+          ],
+          "default": "project"
+        }
+      ]
+    },
+    "userTimeZone": {
+      "oneOf": [
+        {
+          "$ref": "tchmi:general#/definitions/TimeZone"
+        },
+        {
+          "configDescription": "descUserTimeZone",
+          "type": "string",
+          "enum": [
+            "client",
+            "project"
+          ],
+          "default": "project"
+        }
+      ]
+    },
+    "userGroups": {
+      "configDescription": "descUserGroups",
+      "type": "array",
+      "items": {
+        "configDescription": "DESC_GROUP",
+        "optionMethod": {
+          "symbol": "TcHmiSrv.Config::USERGROUPS"
+        },
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "eventFilter": {
+      "configDescription": "descEventFilter",
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "enum": [
+                  "domain",
+                  "sourceDomain",
+                  "name",
+                  "text",
+                  "sessionId"
+                ]
+              },
+              "comparator": {
+                "type": "string",
+                "enum": [
+                  "==",
+                  "!=",
+                  "contains",
+                  "contains not",
+                  "== [ignore case]",
+                  "!= [ignore case]",
+                  "contains [ignore case]",
+                  "contains not [ignore case]"
+                ]
+              },
+              "value": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "path",
+              "comparator",
+              "value"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "enum": [
+                  "id"
+                ]
+              },
+              "comparator": {
+                "type": "string",
+                "enum": [
+                  "==",
+                  "!=",
+                  "<",
+                  ">",
+                  "<=",
+                  ">="
+                ]
+              },
+              "value": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "path",
+              "comparator",
+              "value"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "enum": [
+                  "timeRaised"
+                ]
+              },
+              "comparator": {
+                "type": "string",
+                "enum": [
+                  "==",
+                  "!=",
+                  "<",
+                  ">",
+                  "<=",
+                  ">="
+                ]
+              },
+              "value": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "path",
+              "comparator",
+              "value"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "enum": [
+                  "timeCleared",
+                  "timeConfirmed"
+                ]
+              },
+              "comparator": {
+                "type": "string",
+                "enum": [
+                  "==",
+                  "!=",
+                  "<",
+                  ">",
+                  "<=",
+                  ">="
+                ]
+              },
+              "value": {
+                "$ref": "tchmi:server#/definitions/nullableDateTime"
+              }
+            },
+            "required": [
+              "path",
+              "comparator",
+              "value"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "enum": [
+                  "type"
+                ]
+              },
+              "comparator": {
+                "type": "string",
+                "enum": [
+                  "==",
+                  "!=",
+                  "<",
+                  ">",
+                  "<=",
+                  ">="
+                ]
+              },
+              "value": {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1
+                ],
+                "options": [
+                  {
+                    "label": "ENUM_0_MESSAGE",
+                    "value": 0
+                  },
+                  {
+                    "label": "ENUM_1_ALARM",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "required": [
+              "path",
+              "comparator",
+              "value"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "enum": [
+                  "severity"
+                ]
+              },
+              "comparator": {
+                "type": "string",
+                "enum": [
+                  "==",
+                  "!=",
+                  "<",
+                  ">",
+                  "<=",
+                  ">="
+                ]
+              },
+              "value": {
+                "$ref": "tchmi:server#/definitions/severity"
+              }
+            },
+            "required": [
+              "path",
+              "comparator",
+              "value"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "enum": [
+                  "alarmState"
+                ]
+              },
+              "comparator": {
+                "type": "string",
+                "enum": [
+                  "==",
+                  "!=",
+                  "<",
+                  ">",
+                  "<=",
+                  ">="
+                ]
+              },
+              "value": {
+                "$ref": "tchmi:server#/definitions/alarmState"
+              }
+            },
+            "required": [
+              "path",
+              "comparator",
+              "value"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "enum": [
+                  "confirmationState"
+                ]
+              },
+              "comparator": {
+                "type": "string",
+                "enum": [
+                  "==",
+                  "!=",
+                  "<",
+                  ">",
+                  "<=",
+                  ">="
+                ]
+              },
+              "value": {
+                "$ref": "tchmi:server#/definitions/confirmationState"
+              }
+            },
+            "required": [
+              "path",
+              "comparator",
+              "value"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "enum": [
+                  "isActive"
+                ]
+              },
+              "comparator": {
+                "type": "string",
+                "enum": [
+                  "==",
+                  "!="
+                ]
+              },
+              "value": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "path",
+              "comparator",
+              "value"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "pattern": "^payload::"
+              },
+              "comparator": {
+                "type": "string",
+                "enum": [
+                  "==",
+                  "!=",
+                  "<",
+                  ">",
+                  "<=",
+                  ">=",
+                  "contains",
+                  "contains not",
+                  "== [ignore case]",
+                  "!= [ignore case]",
+                  "contains [ignore case]",
+                  "contains not [ignore case]"
+                ]
+              },
+              "value": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "boolean"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "path",
+              "comparator",
+              "value"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "pattern": "^params::"
+              },
+              "comparator": {
+                "type": "string",
+                "enum": [
+                  "==",
+                  "!=",
+                  "<",
+                  ">",
+                  "<=",
+                  ">=",
+                  "contains",
+                  "contains not",
+                  "== [ignore case]",
+                  "!= [ignore case]",
+                  "contains [ignore case]",
+                  "contains not [ignore case]"
+                ]
+              },
+              "value": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "boolean"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "path",
+              "comparator",
+              "value"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "logic": {
+                "type": "string",
+                "enum": [
+                  "AND",
+                  "OR"
+                ]
+              }
+            },
+            "required": [
+              "logic"
+            ]
+          },
+          {
+            "$ref": "tchmi:server#/definitions/eventFilter"
+          }
+        ]
+      }
+    }
+  },
+  "properties": {
+    "BASE_HMI_URL": {
+      "type": "string",
+      "configDescription": "DESC_BASE_HMI_URL",
+      "category": "webserver",
+      "defaultConfigurable": true,
+      "default": ""
+    },
+    "SYMBOL_COMPLEXITY_LIMIT": {
+      "type": "integer",
+      "default": 100,
+      "category": "symbols",
+      "visibility": "HideInEngineering",
+      "minimum": 1,
+      "configDescription": "DESC_SYMBOL_COMPLEXITY_LIMIT"
+    },
+    "CLIENT_CACHE_MAX_AGE": {
+      "type": "integer",
+      "configDescription": "DESC_CLIENT_CACHE_MAX_AGE",
+      "category": "webserver",
+      "default": 0,
+      "minimum": 0,
+      "unit": "seconds"
+    },
+    "PROJECTNAME": {
+      "configDescription": "DESC_PROJECTNAME",
+      "type": "string"
+    },
+    "PROJECTVERSION": {
+      "configDescription": "DESC_PROJECTVERSION",
+      "type": "string",
+      "format": "version"
+    },
+    "MAXSESSIONS": {
+      "allOf": [
+        {
+          "$ref": "tchmi:general#/definitions/UINT32"
+        },
+        {
+          "default": 128,
+          "minimum": 1,
+          "category": "security",
+          "configDescription": "DESC_MAXSESSIONS"
+        }
+      ]
+    },
+    "THREADPOOLSIZE": {
+      "allOf": [
+        {
+          "$ref": "tchmi:server#/definitions/threadPoolSize"
+        },
+        {
+          "default": 32,
+          "category": "system",
+          "configDescription": "DESC_THREADPOOLSIZE"
+        }
+      ]
+    },
+    "FLOODPROTECTION": {
+      "allOf": [
+        {
+          "$ref": "tchmi:general#/definitions/UINT32"
+        },
+        {
+          "default": 500,
+          "category": "security",
+          "configDescription": "DESC_FLOODPROTECTION"
+        }
+      ]
+    },
+    "HTTP_FLOODPROTECTION": {
+      "allOf": [
+        {
+          "$ref": "tchmi:general#/definitions/UINT32"
+        },
+        {
+          "default": 100,
+          "category": "security",
+          "configDescription": "DESC_HTTP_FLOODPROTECTION"
+        }
+      ]
+    },
+    "SUBSCRIPTION_FLOODPROTECTION": {
+      "allOf": [
+        {
+          "$ref": "tchmi:general#/definitions/UINT32"
+        },
+        {
+          "default": 100,
+          "category": "security",
+          "configDescription": "DESC_SUBSCRIPTION_FLOODPROTECTION"
+        }
+      ]
+    },
+    "FLOODPROTECTION_LOG_INTERVAL": {
+      "type": "string",
+      "format": "timespan",
+      "default": "PT1M",
+      "category": "security",
+      "visibility": "HideInEngineering",
+      "configDescription": "DESC_FLOODPROTECTION_LOG_INTERVAL",
+      "formatMinimum": "PT2S"
+    },
+    "DEFAULTLOCALE": {
+      "allOf": [
+        {
+          "oneOf": [
+            {
+              "$ref": "tchmi:general#/definitions/Locale"
+            },
+            {
+              "type": "string",
+              "enum": [
+                "client"
+              ],
+              "default": "client"
+            }
+          ]
+        },
+        {
+          "configDescription": "DESC_LOCALE"
+        }
+      ]
+    },
+    "DEFAULTTIMEZONE": {
+      "allOf": [
+        {
+          "oneOf": [
+            {
+              "$ref": "tchmi:general#/definitions/TimeZone"
+            },
+            {
+              "type": "string",
+              "enum": [
+                "client"
+              ],
+              "default": "client"
+            }
+          ]
+        },
+        {
+          "configDescription": "DESC_TIMEZONE"
+        }
+      ]
+    },
+    "DEFAULTTIMEFORMATLOCALE": {
+      "allOf": [
+        {
+          "oneOf": [
+            {
+              "$ref": "tchmi:general#/definitions/Locale"
+            },
+            {
+              "type": "string",
+              "enum": [
+                "client"
+              ],
+              "default": "client"
+            }
+          ]
+        },
+        {
+          "configDescription": "DESC_LOCALE"
+        }
+      ]
+    },
+    "CONFIGURATIONS": {
+      "configDescription": "DESC_CONFIGURATIONS",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "default": [
+        "remote"
+      ]
+    },
+    "FILES": {
+      "configDescription": "DESC_FILES",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "tchmi:server#/definitions/fileSettings"
+      }
+    },
+    "FILESREGEX": {
+      "configDescription": "DESC_FILESREGEX",
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "tchmi:server#/definitions/fileSettings"
+          },
+          {
+            "properties": {
+              "REGEX": {
+                "type": "string"
+              },
+              "ENABLE_GZIP": {
+                "type": "boolean",
+                "default": false
+              },
+              "ENABLE_CACHE": {
+                "type": "boolean",
+                "default": true
+              },
+              "ENABLE_CHUNKING": {
+                "type": "boolean",
+                "default": true
+              }
+            },
+            "required": [
+              "REGEX"
+            ],
+            "additionalProperties": true
+          }
+        ]
+      },
+      "default": [
+        {
+          "REGEX": ".*\\.(xml|htm|html|shtml)$",
+          "FILESHTTPHEADERS": "Content-Security-Policy: frame-ancestors 'self' 127.0.0.1:* localhost:*\r\n Content-Type: text/html",
+          "ENABLE_GZIP": true
+        },
+        {
+          "REGEX": ".*\\.(txt|view|content|usercontrol)$",
+          "FILESHTTPHEADERS": "Content-Type: text/plain",
+          "ENABLE_GZIP": true
+        },
+        {
+          "REGEX": ".*\\.(config|xml)$",
+          "FILESHTTPHEADERS": "Content-Type: text/xml",
+          "ENABLE_GZIP": true
+        },
+        {
+          "REGEX": ".*\\.(js|mjs|jsonp)$",
+          "FILESHTTPHEADERS": "Content-Type: text/javascript",
+          "ENABLE_GZIP": true
+        },
+        {
+          "REGEX": ".*\\.(svg)$",
+          "FILESHTTPHEADERS": "Content-Type: image/svg+xml",
+          "ENABLE_GZIP": true
+        },
+        {
+          "REGEX": ".*\\.(json|map|localization|theme)$",
+          "FILESHTTPHEADERS": "Content-Type: application/json",
+          "ENABLE_GZIP": true
+        },
+        {
+          "REGEX": ".*\\.(pdf)$",
+          "FILESHTTPHEADERS": "Content-Type: application/pdf"
+        },
+        {
+          "REGEX": ".*\\.(gif)$",
+          "FILESHTTPHEADERS": "Content-Type: image/gif"
+        },
+        {
+          "REGEX": ".*\\.(jpeg|jpg)$",
+          "FILESHTTPHEADERS": "Content-Type: image/jpeg"
+        },
+        {
+          "REGEX": ".*\\.(png)$",
+          "FILESHTTPHEADERS": "Content-Type: image/png"
+        },
+        {
+          "REGEX": ".*\\.(bmp)$",
+          "FILESHTTPHEADERS": "Content-Type: image/bmp",
+          "ENABLE_GZIP": true
+        },
+        {
+          "REGEX": ".*\\.(ico)$",
+          "FILESHTTPHEADERS": "Content-Type: image/x-icon",
+          "ENABLE_GZIP": true
+        },
+        {
+          "REGEX": ".*\\.(css)$",
+          "FILESHTTPHEADERS": "Content-Type: text/css",
+          "ENABLE_GZIP": true
+        },
+        {
+          "REGEX": ".*\\.(bin|dll|exe|img|iso)$",
+          "FILESHTTPHEADERS": "Content-Type: application/octet-stream"
+        },
+        {
+          "REGEX": ".*\\.(ear|jar|war)$",
+          "FILESHTTPHEADERS": "Content-Type: application/java-archive"
+        },
+        {
+          "REGEX": ".*\\.(eot)$",
+          "FILESHTTPHEADERS": "Content-Type: vnd.ms-fontobject",
+          "ENABLE_GZIP": true
+        },
+        {
+          "REGEX": ".*\\.(ttf|otf)$",
+          "FILESHTTPHEADERS": "Content-Type: application/font-sfnt",
+          "ENABLE_GZIP": true
+        },
+        {
+          "REGEX": ".*\\.(woff)$",
+          "FILESHTTPHEADERS": "Content-Type: application/font-woff"
+        },
+        {
+          "REGEX": ".*\\.(woff2)$",
+          "FILESHTTPHEADERS": "Content-Type: application/font-woff2"
+        },
+        {
+          "REGEX": ".*\\.(zip)$",
+          "FILESHTTPHEADERS": "Content-Type: application/zip"
+        },
+        {
+          "REGEX": ".*\\.(mp4)$",
+          "FILESHTTPHEADERS": "Content-Type: video/mp4",
+          "ENABLE_CACHE": false,
+          "ENABLE_CHUNKING": false
+        },
+        {
+          "REGEX": ".*\\.(mp3)$",
+          "FILESHTTPHEADERS": "Content-Type: audio/mpeg",
+          "ENABLE_CACHE": false,
+          "ENABLE_CHUNKING": false
+        },
+        {
+          "REGEX": ".*\\.(webm)$",
+          "FILESHTTPHEADERS": "Content-Type: video/webm",
+          "ENABLE_CACHE": false,
+          "ENABLE_CHUNKING": false
+        },
+        {
+          "REGEX": ".*\\.(ogg)$",
+          "FILESHTTPHEADERS": "Content-Type: video/ogg",
+          "ENABLE_CACHE": false,
+          "ENABLE_CHUNKING": false
+        },
+        {
+          "REGEX": ".*\\.(ogv)$",
+          "FILESHTTPHEADERS": "Content-Type: video/ogg",
+          "ENABLE_CACHE": false,
+          "ENABLE_CHUNKING": false
+        },
+        {
+          "REGEX": ".*\\.(pem)$",
+          "FILESHTTPHEADERS": "Content-Type: application/x-pem-file",
+          "ENABLE_CACHE": false,
+          "ENABLE_CHUNKING": false
+        },
+        {
+          "REGEX": ".*\\.(pem)$",
+          "FILESHTTPHEADERS": "Content-Type: application/x-x509-ca-cert",
+          "ENABLE_CACHE": false,
+          "ENABLE_CHUNKING": false
+        }
+      ]
+    },
+    "VIRTUALDIRECTORIES": {
+      "configDescription": "DESC_VIRTUALDIRECTORIES",
+      "type": "object",
+      "defaultConfigurable": true,
+      "additionalProperties": {
+        "type": "string",
+        "format": "filename"
+      },
+      "minProperties": 1,
+      "default": {
+        "/": "www"
+      }
+    },
+    "REQUIREAUTH": {
+      "configDescription": "DESC_REQUIREAUTH",
+      "type": "integer",
+      "defaultConfigurable": true,
+      "default": 2,
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "options": [
+        {
+          "label": "ENUM_NONE",
+          "value": 0
+        },
+        {
+          "label": "ENUM_REMOTE",
+          "value": 1
+        },
+        {
+          "label": "ENUM_ALWAYS",
+          "value": 2
+        }
+      ]
+    },
+    "INITTIMEOUT": {
+      "configDescription": "DESC_INITTIMEOUT",
+      "type": "string",
+      "format": "timespan",
+      "default": "PT10S",
+      "formatMinimum": "PT1S",
+      "category": "system"
+    },
+    "SHUTDOWNTIMEOUT": {
+      "configDescription": "DESC_SHUTDOWNTIMEOUT",
+      "type": "string",
+      "format": "timespan",
+      "default": "PT10S",
+      "formatMinimum": "PT1S",
+      "category": "system"
+    },
+    "UPLOADTIMEOUT": {
+      "configDescription": "DESC_UPLOADTIMEOUT",
+      "type": "string",
+      "format": "timespan",
+      "default": "PT20S",
+      "formatMinimum": "PT1S",
+      "category": "system"
+    },
+    "CHUNKSIZE": {
+      "allOf": [
+        {
+          "$ref": "tchmi:general#/definitions/UINT32"
+        },
+        {
+          "default": 1048576,
+          "category": "webserver",
+          "configDescription": "DESC_CHUNKSIZE",
+          "unit": "byte"
+        }
+      ]
+    },
+    "VIDEOSEGMENTSIZE": {
+      "allOf": [
+        {
+          "$ref": "tchmi:general#/definitions/UINT32"
+        },
+        {
+          "configDescription": "DESC_RANGE_REQUEST_SIZE",
+          "default": 1048576,
+          "category": "webserver",
+          "unit": "byte"
+        }
+      ]
+    },
+    "CHECKSUMENABLED": {
+      "type": "boolean",
+      "default": true,
+      "category": "webserver",
+      "configDescription": "DESC_CHECKSUMENABLED"
+    },
+    "DEFAULTAUTHEXTENSION": {
+      "configDescription": "DESC_DEFAULTAUTHEXTENSION",
+      "type": "string",
+      "default": "TcHmiUserManagement",
+      "category": "security",
+      "optionMethod": {
+        "symbol": "ListDomains",
+        "filter": [
+          {
+            "path": "authExtension",
+            "comparator": "==",
+            "value": true
+          }
+        ]
+      }
+    },
+    "DEFAULTEVENTEXTENSION": {
+      "configDescription": "DESC_DEFAULTEVENTEXTENSION",
+      "type": "string",
+      "default": "TcHmiSqliteLogger",
+      "category": "security",
+      "visibility": "HideInEngineering"
+    },
+    "USERSELECTTYPE": {
+      "configDescription": "DESC_USERSELECTTYPE",
+      "propertyOrder": 14,
+      "type": "integer",
+      "default": 0,
+      "enum": [
+        0,
+        1
+      ],
+      "options": [
+        {
+          "label": "ENUM_COMBOBOX",
+          "value": 0
+        },
+        {
+          "label": "ENUM_TEXTFIELD",
+          "value": 1
+        }
+      ],
+      "category": "security"
+    },
+    "DIAGNOSTICS_DOMAINS": {
+      "configDescription": "DESC_DIAGNOSTICS_DOMAINS",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "optionMethod": {
+          "symbol": "ListDomains"
+        }
+      },
+      "default": [],
+      "category": "system"
+    },
+    "EXTENSIONS": {
+      "configDescription": "DESC_EXTENSION",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "title": "TITLE_EXTENSION",
+        "readOnly": {
+          "$data": "#/properties/EXTENSIONS/additionalProperties/properties/REQUIRED"
+        },
+        "properties": {
+          "PATH": {
+            "type": "string",
+            "format": "filename",
+            "configDescription": "DESC_EXTENSION_PATH"
+          },
+          "NAME": {
+            "type": "string"
+          },
+          "ENABLED": {
+            "type": "boolean",
+            "default": true
+          },
+          "STARTUPTYPE": {
+            "$ref": "tchmi:server#/definitions/timing"
+          },
+          "REQUIRED": {
+            "type": "boolean",
+            "default": false,
+            "readOnly": true
+          },
+          "PROCESSID": {
+            "type": "integer",
+            "default": -1,
+            "visibility": "HideInEngineering"
+          },
+          "METADATA": {
+            "allOf": [
+              {
+                "$ref": "tchmi:general#/definitions/Any"
+              },
+              {
+                "visibility": "AlwaysHide",
+                "default": {
+                  "migrationVersion": "1.14"
+                }
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "NAME",
+          "ENABLED",
+          "STARTUPTYPE"
+        ]
+      },
+      "default": {
+        "ADS": {
+          "NAME": "TcHmiAds",
+          "PATH": "TcHmiAds",
+          "STARTUPTYPE": 1,
+          "REQUIRED": true
+        },
+        "TcHmiSqliteLogger": {
+          "NAME": "TcHmiSqliteLogger",
+          "PATH": "TcHmiSqliteLogger",
+          "STARTUPTYPE": 0,
+          "REQUIRED": true
+        },
+        "TcHmiLua": {
+          "NAME": "TcHmiLua",
+          "PATH": "TcHmiLua",
+          "STARTUPTYPE": 0,
+          "REQUIRED": true
+        },
+        "TcHmiUserManagement": {
+          "NAME": "TcHmiUserManagement",
+          "PATH": "TcHmiUserManagement",
+          "STARTUPTYPE": 1,
+          "REQUIRED": true
+        }
+      },
+      "required": [
+        "TcHmiSqliteLogger",
+        "TcHmiLua",
+        "TcHmiUserManagement",
+        "ADS"
+      ]
+    },
+    "DEFINITIONS": {
+      "configDescription": "DESC_DEFINITIONS",
+      "type": "object",
+      "category": "symbols",
+      "additionalProperties": {
+        "type": "object",
+        "configDescription": "DESC_DEFINITION_DOMAIN",
+        "additionalProperties": {
+          "$ref": "tchmi:server#/definitions/schemaRef"
+        },
+        "default": {}
+      },
+      "default": {}
+    },
+    "SYMBOLS": {
+      "configDescription": "DESC_SYMBOLS",
+      "category": "symbols",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "tchmi:server#/definitions/symbol"
+      },
+      "default": {
+        "UserSelectType": {
+          "DOMAIN": "TcHmiSrv",
+          "USEMAPPING": true,
+          "MAPPING": "Config::USERSELECTTYPE",
+          "ACCESS": 3,
+          "DYNAMIC": false,
+          "HIDDEN": true,
+          "SCHEMA": {
+            "configDescription": "DESC_USERSELECTTYPE",
+            "propertyOrder": 14,
+            "type": "integer",
+            "default": 0,
+            "enum": [
+              0,
+              1
+            ],
+            "options": [
+              {
+                "label": "ENUM_COMBOBOX",
+                "value": 0
+              },
+              {
+                "label": "ENUM_TEXTFIELD",
+                "value": 1
+              }
+            ],
+            "category": "security"
+          }
+        }
+      }
+    },
+    "USERGROUPS": {
+      "configDescription": "DESC_USERGROUPS",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "configDescription": "DESC_USERGROUP",
+        "properties": {
+          "ENABLED": {
+            "type": "boolean",
+            "default": true
+          },
+          "SYMBOLACCESS": {
+            "allOf": [
+              {
+                "$ref": "tchmi:server#/definitions/accessEnum"
+              },
+              {
+                "configDescription": "DESC_SYMBOLACCESS"
+              },
+              {
+                "default": 0
+              }
+            ]
+          },
+          "FILEACCESS": {
+            "$ref": "tchmi:server#/definitions/accessEnum"
+          },
+          "SYMBOLS": {
+            "configDescription": "DESC_USERGROUPS_SYMBOLS",
+            "type": "object",
+            "additionalProperties": {
+              "allOf": [
+                {
+                  "$ref": "tchmi:server#/definitions/accessEnum"
+                },
+                {
+                  "configDescription": "DESC_SYMBOL"
+                },
+                {
+                  "keyOptionMethod": {
+                    "symbol": "ListSymbolNames"
+                  }
+                }
+              ]
+            }
+          },
+          "FILES": {
+            "type": "object",
+            "additionalProperties": {
+              "allOf": [
+                {
+                  "$ref": "tchmi:server#/definitions/accessEnum"
+                },
+                {
+                  "configDescription": "DESC_FILE"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "ENABLED",
+          "SYMBOLACCESS",
+          "FILEACCESS",
+          "SYMBOLS",
+          "FILES"
+        ]
+      },
+      "default": {
+        "__SystemGuests": {
+          "ENABLED": true,
+          "SYMBOLACCESS": 0,
+          "FILEACCESS": 0,
+          "FILES": {
+            "/FavIcon.ico": 1,
+            "/Config/ServerState": 1
+          },
+          "SYMBOLS": {
+            "ListDomains": 3,
+            "GetCurrentUser": 3,
+            "ListUserNames": 3,
+            "IsAuthRequired": 3,
+            "GetSymbolAccess": 3,
+            "Login": 3,
+            "Logout": 3,
+            "Heartbeat": 3,
+            "DefaultAuthExtension": 1,
+            "DefaultUserGroup": 1,
+            "UserSelectType": 1,
+            "Unsubscribe": 3,
+            "SetLocale": 3
+          }
+        },
+        "__SystemUsers": {
+          "ENABLED": true,
+          "SYMBOLACCESS": 0,
+          "FILEACCESS": 3,
+          "FILES": {
+            "/Config": 1
+          },
+          "SYMBOLS": {
+            "ListUserNames": 3,
+            "IsAuthRequired": 3,
+            "GetSymbolAccess": 3,
+            "TcHmiUserManagement.GetComplexityRules": 3,
+            "Login": 3,
+            "ChangeUserSettings": 3,
+            "GetSchema": 3,
+            "GetDefinitions": 3,
+            "GetConfiguration": 3,
+            "Export": 3,
+            "UserSelectType": 1,
+            "Unsubscribe": 3,
+            "UnsubscribeEvents": 3,
+            "Logout": 3,
+            "Diagnostics": 3,
+            "SetLocale": 3,
+            "GetCurrentUser": 3,
+            "ConfirmAlarm": 3,
+            "ListEvents": 3,
+            "LocalizeText": 3,
+            "CreateEvent": 3,
+            "SubscribeEvents": 3,
+            "UpdateEventsSubscription": 3,
+            "ListDomains": 3,
+            "Heartbeat": 3,
+            "ListSymbols": 3,
+            "DefaultAuthExtension": 1,
+            "DefaultUserGroup": 1,
+            "GetFileInformation": 3,
+            "GetServerInformation": 3
+          }
+        },
+        "__SystemAdministrators": {
+          "ENABLED": true,
+          "SYMBOLACCESS": 3,
+          "FILEACCESS": 3
+        },
+        "__SystemMaintenanceUsers": {
+          "ENABLED": true,
+          "SYMBOLACCESS": 0
+        }
+      },
+      "required": [
+        "__SystemAdministrators",
+        "__SystemUsers",
+        "__SystemMaintenanceUsers",
+        "__SystemGuests"
+      ]
+    },
+    "AUTO_LOGOFF": {
+      "configDescription": "DESC_AUTO_LOGOFF",
+      "type": "string",
+      "format": "timespan",
+      "default": "P30D",
+      "category": "security",
+      "propertyOrder": 2
+    },
+    "AUTO_LOGINUSER": {
+      "configDescription": "DESC_AUTO_LOGINUSER",
+      "type": "string",
+      "optionMethod": {
+        "symbol": "ListUserNames"
+      },
+      "default": "",
+      "category": "security",
+      "propertyOrder": 1
+    },
+    "ALLOW_REMOTE_ADMIN": {
+      "configDescription": "DESC_ALLOW_REMOTE_ADMIN",
+      "type": "boolean",
+      "default": true,
+      "category": "security"
+    },
+    "SHOW_MAINTENANCE_MODE": {
+      "configDescription": "DESC_SHOW_MAINTENANCE_MODE",
+      "type": "boolean",
+      "default": true,
+      "category": "security"
+    },
+    "CUSTOM_CSS": {
+      "configDescription": "DESC_CUSTOM_CSS",
+      "type": "string",
+      "default": "",
+      "format": "css",
+      "category": "webserver"
+    },
+    "USERGROUPUSERS": {
+      "configDescription": "DESC_USERGROUPUSERS",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "configDescription": "DESC_AUTHENTICATION_DOMAIN",
+        "additionalProperties": {
+          "keyOptionMethod": {
+            "symbol": "ListUserNames"
+          },
+          "type": "object",
+          "configDescription": "DESC_USERNAME",
+          "properties": {
+            "USERGROUPUSERS_LOCALE": {
+              "allOf": [
+                {
+                  "$ref": "tchmi:server#/definitions/userLocale"
+                },
+                {
+                  "configDescription": "DESC_LOCALE"
+                }
+              ]
+            },
+            "USERGROUPUSERS_TIMEFORMATLOCALE": {
+              "allOf": [
+                {
+                  "$ref": "tchmi:server#/definitions/userLocale"
+                },
+                {
+                  "configDescription": "DESC_LOCALE"
+                }
+              ]
+            },
+            "USERGROUPUSERS_TIMEZONE": {
+              "allOf": [
+                {
+                  "$ref": "tchmi:server#/definitions/userTimeZone"
+                },
+                {
+                  "configDescription": "DESC_TIMEZONE"
+                }
+              ]
+            },
+            "USERGROUPUSERS_AUTO_LOGOFF": {
+              "type": "string",
+              "format": "timespan",
+              "default": "PT0S"
+            },
+            "USERGROUPUSERS_GROUPS": {
+              "$ref": "tchmi:server#/definitions/userGroups"
+            },
+            "USERGROUPUSERS_FORCE_PASSWORD_CHANGE": {
+              "type": "boolean",
+              "default": false
+            },
+            "USERGROUPUSERS_FORCE_2FA_INIT": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "USERGROUPUSERS_LOCALE",
+            "USERGROUPUSERS_GROUPS",
+            "USERGROUPUSERS_AUTO_LOGOFF"
+          ]
+        }
+      },
+      "required": [
+        "TcHmiUserManagement"
+      ],
+      "default": {
+        "TcHmiUserManagement": {
+          "__SystemGuest": {
+            "USERGROUPUSERS_LOCALE": "project",
+            "USERGROUPUSERS_GROUPS": [
+              "__SystemGuests"
+            ]
+          },
+          "__SystemUser": {
+            "USERGROUPUSERS_LOCALE": "project",
+            "USERGROUPUSERS_GROUPS": [
+              "__SystemUsers"
+            ]
+          },
+          "__SystemAdministrator": {
+            "USERGROUPUSERS_LOCALE": "project",
+            "USERGROUPUSERS_GROUPS": [
+              "__SystemAdministrators"
+            ]
+          }
+        }
+      }
+    },
+    "CERTIFICATE": {
+      "type": "string",
+      "default": "",
+      "format": "certificate",
+      "configDescription": "DESC_PEM_CERT",
+      "acceptFileTypes": [
+        ".pem",
+        ".pfx",
+        ".cer",
+        ".crt"
+      ],
+      "category": "security",
+      "propertyOrder": 6
+    },
+    "CERTIFICATEEXPIRATION": {
+      "configDescription": "DESC_CERTIFICATEEXPIRATION",
+      "type": "string",
+      "format": "timespan",
+      "default": "P14000D",
+      "category": "security",
+      "defaultConfigurable": true,
+      "visibility": "HideInEngineering"
+    },
+    "SELFSIGNEDROOTCA": {
+      "configDescription": "DESC_SELFSIGNEDROOTCA",
+      "type": "string",
+      "default": "",
+      "format": "certificate",
+      "acceptFileTypes": [
+        ".pem",
+        ".pfx",
+        ".cer",
+        ".crt"
+      ],
+      "category": "security",
+      "propertyOrder": 7
+    },
+    "SELFSIGNEDROOTCAKEY": {
+      "configDescription": "DESC_SELFSIGNEDROOTCAKEY",
+      "type": "string",
+      "default": "",
+      "format": "base64",
+      "category": "security",
+      "propertyOrder": 8
+    },
+    "KEY": {
+      "configDescription": "DESC_KEY",
+      "type": "string",
+      "default": "",
+      "format": "base64",
+      "category": "security",
+      "propertyOrder": 9
+    },
+    "TEMPDH": {
+      "configDescription": "DESC_TEMPDH",
+      "type": "string",
+      "default": "",
+      "format": "base64",
+      "category": "security",
+      "propertyOrder": 11
+    },
+    "KEYPASSWORD": {
+      "configDescription": "DESC_KEYPASSWORD",
+      "type": "string",
+      "default": "",
+      "format": "base64",
+      "category": "security",
+      "propertyOrder": 10
+    },
+    "REQUIRE_CLIENT_CERTIFICATE": {
+      "type": "boolean",
+      "default": false,
+      "configDescription": "DESC_REQUIRE_CLIENT_CERTIFICATE",
+      "category": "security",
+      "propertyOrder": 4
+    },
+    "CLIENTCERTIFICATES": {
+      "configDescription": "DESC_CLIENTCERTIFICATES",
+      "propertyOrder": 5,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "CLIENTCERTIFICATE": {
+            "type": "string",
+            "default": "",
+            "format": "certificate",
+            "configDescription": "DESC_PEM_CERT",
+            "acceptFileTypes": [
+              ".pem",
+              ".pfx",
+              ".cer",
+              ".crt"
+            ]
+          },
+          "ENABLECLIENTCERTIFICATE": {
+            "type": "boolean",
+            "default": true
+          },
+          "DEFAULTUSER": {
+            "optionMethod": {
+              "symbol": "ListUserNames"
+            },
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+      "uniqueItems": true,
+      "category": "security"
+    },
+    "COOKIEEXPIRATIONDATE": {
+      "configDescription": "DESC_COOKIEEXPIRATIONDATE",
+      "type": "string",
+      "format": "timespan",
+      "default": "P30D",
+      "category": "webserver"
+    },
+    "MAXCONNECTIONSPERCLIENT": {
+      "configDescription": "DESC_MAXCONNECTIONSPERCLIENT",
+      "type": "integer",
+      "minimum": 1,
+      "default": 32,
+      "category": "security"
+    },
+    "CLIENTPRIORITYLIST": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "category": "webserver",
+      "configDescription": "DESC_CLIENTPRIORITYLIST"
+    },
+    "SESSIONSTORAGE": {
+      "configDescription": "DESC_SESSIONSTORAGE",
+      "type": "object",
+      "category": "webserver",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "userName": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "created",
+          "userName",
+          "domain"
+        ]
+      }
+    },
+    "DISCOVERY": {
+      "type": "integer",
+      "default": 1,
+      "category": "webserver",
+      "configDescription": "DISCOVERY_DESC",
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "options": [
+        {
+          "label": "DISCOVERY_0_DISABLED",
+          "value": 0
+        },
+        {
+          "label": "DISCOVERY_1_ENABLED",
+          "value": 1
+        },
+        {
+          "label": "DISCOVERY_2_ALTERNATIVE",
+          "value": 2
+        }
+      ]
+    },
+    "REMOTESERVERS": {
+      "configDescription": "DESC_REMOTESERVERS",
+      "configDescription": "DESC_REMOTESERVERS",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "title": "REMOTESERVERS_TITLE",
+        "properties": {
+          "REMOTE_URL": {
+            "propertyOrder": 1,
+            "type": "string"
+          },
+          "REMOTE_USERNAME": {
+            "propertyOrder": 2,
+            "type": "string",
+            "default": "",
+            "configDescription": "DESC_REMOTE_USERNAME"
+          },
+          "REMOTE_PASSWORD": {
+            "propertyOrder": 3,
+            "type": "string",
+            "format": "masked",
+            "default": ""
+          },
+          "REMOTE_ENABLED": {
+            "type": "boolean",
+            "default": true
+          },
+          "REMOTE_CONNECT_TIMEOUT": {
+            "type": "string",
+            "format": "timespan",
+            "default": "PT5S"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "REMOTE_ENABLED",
+          "REMOTE_URL",
+          "REMOTE_USERNAME",
+          "REMOTE_PASSWORD",
+          "REMOTE_CONNECT_TIMEOUT"
+        ]
+      }
+    },
+    "REMOTESERVERS_CERTIFICATES": {
+      "configDescription": "DESC_REMOTESERVERS_CERTIFICATES",
+      "configDescription": "DESC_REMOTESERVERS_CERTIFICATES",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "default": "",
+        "format": "certificate",
+        "configDescription": "DESC_PEM_CERT",
+        "acceptFileTypes": [
+          ".pem",
+          ".pfx",
+          ".cer",
+          ".crt"
+        ]
+      }
+    },
+    "ENDPOINTS": {
+      "configDescription": "DESC_ENDPOINTS",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1,
+      "default": [
+        "http://127.0.0.1:2010",
+        "https://[::]:2020"
+      ],
+      "category": "webserver"
+    },
+    "KEEP_ALIVE": {
+      "type": "string",
+      "format": "timespan",
+      "default": "PT40S",
+      "formatMinimum": "PT1S",
+      "configDescription": "DESC_KEEP_ALIVE",
+      "category": "webserver"
+    },
+    "SOCKET_TIMEOUT": {
+      "type": "string",
+      "format": "timespan",
+      "default": "PT10S",
+      "formatMinimum": "PT1S",
+      "configDescription": "DESC_SOCKET_TIMEOUT",
+      "category": "webserver"
+    },
+    "ETAGENABLED": {
+      "configDescription": "DESC_ETAGENABLED",
+      "type": "boolean",
+      "default": true,
+      "category": "webserver"
+    },
+    "GZIPENABLED": {
+      "configDescription": "DESC_GZIPENABLED",
+      "type": "boolean",
+      "default": true,
+      "category": "webserver"
+    },
+    "GZIPMINSIZE": {
+      "allOf": [
+        {
+          "$ref": "tchmi:general#/definitions/UINT32"
+        },
+        {
+          "default": 800,
+          "configDescription": "DESC_GZIP_MIN_SIZE",
+          "category": "webserver",
+          "unit": "byte"
+        }
+      ]
+    },
+    "DEFLATECOMPRESSIONLEVEL": {
+      "configDescription": "DESC_DEFLATECOMPRESSIONLEVEL",
+      "type": "integer",
+      "default": 5,
+      "minimum": 0,
+      "maximum": 9,
+      "options": [
+        {
+          "label": "GZIP_BEST_SPEED",
+          "value": 1
+        },
+        {
+          "label": "GZIP_MEDIUM",
+          "value": 5
+        },
+        {
+          "label": "GZIP_BEST_SIZE",
+          "value": 9
+        }
+      ],
+      "category": "webserver"
+    },
+    "PERMESSAGEDEFLATEENABLED": {
+      "configDescription": "DESC_PERMESSAGEDEFLATEENABLED",
+      "type": "boolean",
+      "default": true,
+      "category": "webserver"
+    },
+    "MAXHTTPHEADERSIZE": {
+      "configDescription": "DESC_MAXHTTPHEADERSIZE",
+      "type": "integer",
+      "minimum": 1024,
+      "default": 32768,
+      "category": "webserver",
+      "unit": "byte"
+    },
+    "MAXREQUESTSIZE": {
+      "configDescription": "DESC_MAXREQUESTSIZE",
+      "type": "integer",
+      "minimum": 1024,
+      "default": 1048576,
+      "category": "webserver",
+      "unit": "byte",
+      "defaultConfigurable": true
+    },
+    "CACHEENABLED": {
+      "configDescription": "DESC_CACHEENABLED",
+      "type": "boolean",
+      "default": true,
+      "category": "webserver"
+    },
+    "CACHEMAXENTRYSIZE": {
+      "allOf": [
+        {
+          "$ref": "tchmi:general#/definitions/UINT32"
+        },
+        {
+          "default": 1048576,
+          "configDescription": "DESC_CACHE",
+          "category": "webserver",
+          "unit": "byte"
+        }
+      ]
+    },
+    "CACHEMAXSIZE": {
+      "allOf": [
+        {
+          "$ref": "tchmi:general#/definitions/UINT32"
+        },
+        {
+          "default": 2097152,
+          "configDescription": "DESC_CACHE",
+          "category": "webserver",
+          "unit": "byte"
+        }
+      ]
+    },
+    "CACHEMAXAGE": {
+      "type": "string",
+      "configDescription": "DESC_CACHE",
+      "format": "timespan",
+      "default": "P30D",
+      "category": "webserver"
+    },
+    "GLOBALHTTPHEADERS": {
+      "type": "string",
+      "default": "{LASTMODIFIED}\nStrict-Transport-Security: max-age=31536000; includeSubDomains\nX-Content-Type-Options: nosniff",
+      "format": "multiline",
+      "configDescription": "DESC_GLOBAL_HTTP_HEADERS",
+      "category": "webserver"
+    },
+    "USEINT64STRING": {
+      "type": "boolean",
+      "default": true,
+      "category": "system",
+      "configDescription": "DESC_USEINT64STRING",
+      "visibility": "HideInEngineering"
+    },
+    "DEFAULTDOCUMENT": {
+      "configDescription": "DESC_DEFAULTDOCUMENT",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "filename"
+      },
+      "uniqueItems": true,
+      "default": [
+        "Default.html"
+      ],
+      "category": "webserver"
+    },
+    "RECORDING_MESSAGE_MAX_LENGTH": {
+      "allOf": [
+        {
+          "$ref": "tchmi:general#/definitions/UINT32"
+        },
+        {
+          "default": 5120,
+          "configDescription": "DESC_RECORDING_MESSAGE_MAX_LENGTH",
+          "category": "webserver"
+        }
+      ]
+    },
+    "SHOW_CONFIGURATION_HINTS": {
+      "configDescription": "DESC_SHOW_CONFIGURATION_HINTS",
+      "type": "boolean",
+      "default": true,
+      "category": "system"
+    },
+    "DISABLED_CONFIGURATION_HINTS": {
+      "type": "array",
+      "configDescription": "DESC_DISABLED_CONFIG_HINTS",
+      "category": "system",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "SAMESITE_ATTRIBUTE": {
+      "type": "integer",
+      "configDescription": "DESC_SAMESITE_ATTRIBUTE",
+      "category": "security",
+      "options": [
+        {
+          "label": "ENUM_SAMESITE_NONE",
+          "value": 0
+        },
+        {
+          "label": "ENUM_SAMESITE_LAX",
+          "value": 1
+        },
+        {
+          "label": "ENUM_SAMESITE_STRICT",
+          "value": 2
+        }
+      ],
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "default": 2
+    }
+  },
+  "type": "object",
+  "required": [
+    "PROJECTNAME",
+    "PROJECTVERSION",
+    "EXTENSIONS",
+    "CONFIGURATIONS",
+    "USERGROUPS",
+    "USERGROUPUSERS",
+    "DEFAULTLOCALE",
+    "DEFAULTTIMEZONE",
+    "DEFAULTTIMEFORMATLOCALE",
+    "FILES",
+    "FILESREGEX",
+    "VIRTUALDIRECTORIES",
+    "DEFLATECOMPRESSIONLEVEL",
+    "REQUIREAUTH",
+    "REMOTESERVERS",
+    "REMOTESERVERS_CERTIFICATES",
+    "SHOW_CONFIGURATION_HINTS",
+    "DIAGNOSTICS_DOMAINS",
+    "DISABLED_CONFIGURATION_HINTS",
+    "BASE_HMI_URL",
+    "SYMBOL_COMPLEXITY_LIMIT",
+    "CHECKSUMENABLED",
+    "CHUNKSIZE",
+    "VIDEOSEGMENTSIZE",
+    "MAXHTTPHEADERSIZE",
+    "MAXREQUESTSIZE",
+    "MAXSESSIONS",
+    "MAXCONNECTIONSPERCLIENT",
+    "FLOODPROTECTION",
+    "HTTP_FLOODPROTECTION",
+    "SUBSCRIPTION_FLOODPROTECTION",
+    "FLOODPROTECTION_LOG_INTERVAL",
+    "UPLOADTIMEOUT",
+    "INITTIMEOUT",
+    "SHUTDOWNTIMEOUT",
+    "THREADPOOLSIZE",
+    "USEINT64STRING",
+    "DEFAULTEVENTEXTENSION",
+    "SYMBOLS",
+    "DEFINITIONS",
+    "DISCOVERY",
+    "ENDPOINTS",
+    "CACHEENABLED",
+    "CACHEMAXAGE",
+    "CACHEMAXENTRYSIZE",
+    "CACHEMAXSIZE",
+    "ETAGENABLED",
+    "GZIPENABLED",
+    "PERMESSAGEDEFLATEENABLED",
+    "GZIPMINSIZE",
+    "SOCKET_TIMEOUT",
+    "COOKIEEXPIRATIONDATE",
+    "KEEP_ALIVE",
+    "CLIENT_CACHE_MAX_AGE",
+    "CLIENTPRIORITYLIST",
+    "GLOBALHTTPHEADERS",
+    "SESSIONSTORAGE",
+    "DEFAULTDOCUMENT",
+    "RECORDING_MESSAGE_MAX_LENGTH",
+    "USERSELECTTYPE",
+    "DEFAULTAUTHEXTENSION",
+    "REQUIRE_CLIENT_CERTIFICATE",
+    "AUTO_LOGINUSER",
+    "ALLOW_REMOTE_ADMIN",
+    "SHOW_MAINTENANCE_MODE",
+    "AUTO_LOGOFF",
+    "CERTIFICATEEXPIRATION",
+    "CLIENTCERTIFICATES",
+    "KEYPASSWORD",
+    "SAMESITE_ATTRIBUTE",
+    "CUSTOM_CSS"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,248 @@
+.TcHmi_Controls_Helpers_DirectoryBrowser-path-display {
+    --tchmi-background-color: var(--tchmi-background-color-4);
+    --tchmi-text-color: var(--tchmi-foreground-color-4);
+    --tchmi-item-color: var(--tchmi-background-color-3);
+    --tchmi-active-text-color: var(--tchmi-foreground-color-1);
+    --tchmi-active-item-color: var(--tchmi-highlight-color-1);
+    --tchmi-hover-color: var(--tchmi-background-color-2);
+    --tchmi-border-color: var(--tchmi-background-color-2);
+    background-color: var(--tchmi-background-color);
+    border: 1px solid var(--tchmi-border-color);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li a {
+    color: var(--tchmi-text-color);
+    background: var(--tchmi-item-color);
+    text-decoration: none;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: calc(var(--tchmi-path-display-height) - 8px);
+    background-position: right center;
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li.folder a {
+    background-image: url('Images/folder.svg');
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li.file a {
+    background-image: url('Images/file.svg');
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li:nth-child(even) a {
+    background-color: var(--tchmi-item-color);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li:nth-child(even) a:before {
+    border-color: var(--tchmi-item-color);
+    border-left-color: transparent;
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li:nth-child(even) a:after {
+    border-left-color: var(--tchmi-item-color);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li:first-child a {
+    border-radius: 4px 0 0 4px;
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li:first-child a:before {
+    border: none;
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li:last-child a {
+    border-radius: 0 4px 4px 0;
+    background-color: var(--tchmi-active-item-color);
+    color: var(--tchmi-active-text-color);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li.folder:last-child a {
+    background-image: url('Images/folder_active.svg');
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li.file:last-child a {
+    background-image: url('Images/file_active.svg');
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li:last-child a:after {
+    border: none;
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li a:before,
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li a:after {
+    border: 0 solid var(--tchmi-item-color);
+    border-width: calc((var(--tchmi-path-display-height) - 8px) / 2)
+        calc((var(--tchmi-path-display-height) - 8px) / 3 + 1px);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li:last-child a:before {
+    border-color: var(--tchmi-active-item-color);
+    border-left-color: transparent;
+    color: var(--tchmi-active-text-color);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li a:before {
+    border-left-color: transparent;
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li a:after {
+    border-color: transparent;
+    border-left-color: var(--tchmi-item-color);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li:not(:last-child) a:hover {
+    background-color: var(--tchmi-hover-color);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li:not(:last-child) a:hover:before {
+    border-color: var(--tchmi-hover-color);
+    border-left-color: transparent;
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-path-display-item-list li:not(:last-child) a:hover:after {
+    border-left-color: var(--tchmi-hover-color);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-browsing-display {
+    --tchmi-item-background: var(--tchmi-background-color-3);
+    --tchmi-text-color: var(--tchmi-foreground-color-1);
+    --tchmi-item-hover-background: var(--tchmi-background-color-2);
+    --tchmi-item-active-background: var(--tchmi-highlight-color-1);
+    --tchmi-active-text-color: var(--tchmi-foreground-color-1);
+    --tchmi-metadata-text-color: var(--tchmi-foreground-color-4);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-browsing-display li {
+    background-color: var(--tchmi-item-background);
+    color: var(--tchmi-text-color);
+    text-decoration: none;
+    background-repeat: no-repeat;
+    background-size: 60px;
+    background-position: 0px -10px;
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-browsing-display li span {
+    color: var(--tchmi-metadata-text-color);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-browsing-display li:hover {
+    background-color: var(--tchmi-item-hover-background);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-browsing-display li.selected,
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-browsing-display li.current {
+    background-color: var(--tchmi-item-active-background);
+    color: var(--tchmi-active-text-color);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-browsing-display li.folder {
+    background-image: url(Images/folder.svg);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-browsing-display li.folder[data-is-parent='true'] {
+    background-image: url(Images/parent_folder.svg);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-browsing-display li.folder.selected,
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-browsing-display li.folder.current {
+    background-image: url(Images/folder_active.svg);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-browsing-display li.file {
+    background-image: url(Images/file.svg);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-browsing-display li.file.selected,
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-browsing-display li.file.current {
+    background-image: url(Images/file_active.svg);
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-browsing-display li.dragging {
+    background-color: var(--tchmi-item-active-background);
+    color: var(--tchmi-active-text-color);
+    opacity: 0.5;
+}
+
+ul.TcHmi_Controls_Helpers_DirectoryBrowser-browsing-display li.drop-zone {
+    background-color: var(--tchmi-item-active-background);
+    color: var(--tchmi-active-text-color);
+}
+
+div.TcHmi_Controls_Helpers_DirectoryBrowser-tree-browsing-display {
+    --tchmi-text-color: var(--tchmi-foreground-color-1);
+    --tchmi-group-line-color: var(--tchmi-foreground-color-3);
+    --tchmi-hover-color: var(--tchmi-background-color-3);
+    --tchmi-selected-color: var(--tchmi-background-color-1);
+    --tchmi-current-item-color: var(--tchmi-highlight-color-1);
+    --tchmi-current-item-text-color: var(--tchmi-foreground-color-1);
+    color: var(--tchmi-text-color);
+
+    label {
+        background-size: contain;
+        background-repeat: no-repeat;
+        padding-left: var(--tchmi-row-height);
+    }
+
+    summary > label {
+        background-image: url('Images/folder.svg');
+    }
+
+    div > label {
+        background-image: url('Images/file.svg');
+    }
+
+    summary.current > label {
+        background-image: url('Images/folder_active.svg');
+    }
+
+    /* It's important to use the > operator, otherwise all labels below the current item will have the active icon. */
+    div.current > label {
+        background-image: url('Images/file_active.svg');
+    }
+
+    /*
+        Enable hover styles only on devices where the primary pointer is something like a mouse. If we enable hover
+        styles generally, rows will have a sticky hover effect after expanding or collapsing them on a touch device.
+        Unfortunately our laptops always declare the mouse as the primary pointer, even if you use the touch screen, so
+        this media query only has an effect on devices which are primarily used with touch.
+    */
+    @media (hover: hover) {
+        :where(summary, div):hover {
+            background: var(--tchmi-hover-color);
+        }
+    }
+
+    .selected {
+        background: var(--tchmi-selected-color);
+    }
+
+    .current {
+        background: var(--tchmi-current-item-color);
+        color: var(--tchmi-current-item-text-color);
+    }
+
+    .group-lines span {
+        /* By default, group lines are created as an L-shape. */
+        border: 1px solid var(--tchmi-group-line-color);
+        border-top: none;
+        border-right: none;
+
+        /*
+            Then group lines that are not the last group line in front of the item name have their bottom border
+            removed, creating an |-shape.
+        */
+        &:not(:last-child) {
+            border-bottom: none;
+        }
+    }
+
+    div > .expander {
+        border: 1px solid var(--tchmi-text-color);
+        border-radius: 4px;
+    }
+
+    details > summary > .expander {
+        border: 1px solid var(--tchmi-text-color);
+        border-top: none;
+        border-left: none;
+    }
+}

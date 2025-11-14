@@ -1,0 +1,29 @@
+/** Styles for all themes */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiTextblock,
+.tchmi-textblock {
+    /* Prevent overflow if the border radius is huge */
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiTextblock-template,
+.tchmi-textblock-template {
+    display: grid;
+    position: relative;
+    cursor: default;
+    height: 100%;
+    width: 100%;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiTextblock-template-text-container,
+.tchmi-textblock-template-text-container {
+    align-self: start;
+    justify-self: start;
+    text-align: left;
+    position: absolute;
+}

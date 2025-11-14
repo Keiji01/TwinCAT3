@@ -1,0 +1,37 @@
+{
+    "$schema": "../TcHmiFramework/Schema/FunctionDescription.Schema.json",
+    "apiVersion": 1,
+    "version": {
+        "full": "14.3.229.0",
+        "major": 14,
+        "minor": 3,
+        "build": 229,
+        "revision": 0
+    },
+    "dependencyFiles": [
+        {
+            "name": "StopInterval.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "function": {
+        "name": "StopInterval",
+        "namespace": "TcHmi.Functions.Beckhoff",
+        "displayName": "StopInterval",
+        "visible": true,
+        "category": "Timer",
+        "description": "Stops a globally configured interval.",
+        "returnValue": null,
+        "arguments": [
+            {
+                "name": "name",
+                "displayName": "Name",
+                "type": "tchmi:framework#/definitions/Interval",
+                "description": "The name of the interval to stop.",
+                "required": true,
+                "bindable": true
+            }
+        ]
+    }
+}

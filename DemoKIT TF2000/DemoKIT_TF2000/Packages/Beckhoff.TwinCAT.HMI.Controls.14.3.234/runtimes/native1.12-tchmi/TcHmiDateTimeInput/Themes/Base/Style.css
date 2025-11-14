@@ -1,0 +1,62 @@
+/** Styles for the theme: Base */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiDateTimeInput {
+    --tchmi-background: var(--tchmi-background-color-4);
+    --tchmi-background-invalid: var(--tchmi-invalid-color);
+    --tchmi-color: var(--tchmi-foreground-color-1);
+    --tchmi-border-color: var(--tchmi-background-color-2);
+    background-color: var(--tchmi-background);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiDateTimeInput-template {
+    grid-template-columns: auto 26px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiDateTimeInput-template.left {
+    grid-template-columns: 26px auto;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiDateTimeInput-template-input {
+    -webkit-appearance: none; /* Important to have visible box-shadow on input elements in iOS/Safari.  */
+    appearance: none;
+    color: var(--tchmi-color);
+    border: 1px solid var(--tchmi-border-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiDateTimeInput .TcHmi_Controls_Beckhoff_TcHmiDateTimeInput-template-button {
+    font-size: var(--tchmi-button-font-size);
+    background: url(Images/datetimepicker_normal.svg), var(--tchmi-highlight-button-background);
+    background-repeat: no-repeat;
+    background-position: center;
+    color: var(--tchmi-highlight-button-text-color);
+    border: var(--tchmi-highlight-button-border);
+    box-shadow: var(--tchmi-highlight-button-shadow);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiDateTimeInput .TcHmi_Controls_Beckhoff_TcHmiDateTimeInput-template-button:active {
+    background: url(Images/datetimepicker_pressed.svg), var(--tchmi-highlight-button-background-pressed);
+    background-repeat: no-repeat;
+    background-position: center;
+    color: var(--tchmi-highlight-button-text-color-pressed);
+    border: var(--tchmi-highlight-button-border-pressed);
+    box-shadow: var(--tchmi-highlight-button-shadow-pressed);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiDateTimeInput-template-input:is(:focus, .tchmi-focus, .tchmi-keyboard-user-input) {
+    background: rgba(76, 99, 116, 0.05);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiDateTimeInput-template-input:invalid {
+    background: var(--tchmi-background-invalid);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiDateTimeInput-template-input-invalid-notification {
+    color: red;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiDateTimeInput.read-only {
+    background: var(--tchmi-read-only-color);
+}

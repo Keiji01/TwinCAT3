@@ -1,0 +1,106 @@
+/** Theme dependent style for Accordion helper: Base */
+tchmi-accordion {
+    --tchmi-item-header-color: var(--tchmi-foreground-color-1);
+    --tchmi-item-header-hover-color: var(--tchmi-foreground-color-1);
+    --tchmi-item-header-pressed-color: var(--tchmi-foreground-color-3);
+    --tchmi-item-header-background: var(--tchmi-background-color-2);
+    --tchmi-item-header-hover-background: var(--tchmi-background-color-3);
+    --tchmi-item-header-pressed-background: var(--tchmi-background-color-3);
+    --tchmi-item-header-border: var(--tchmi-foreground-color-3);
+}
+
+tchmi-accordion > tchmi-accordion-item {
+    margin-top: 8px;
+}
+
+tchmi-accordion > tchmi-accordion-item:first-child {
+    margin-top: 0;
+}
+
+tchmi-accordion > tchmi-accordion-item > tchmi-accordion-header {
+    background: var(--tchmi-item-header-background);
+    color: var(--tchmi-item-header-color);
+    font-weight: bold;
+    font-size: 15px;
+    border: 1px solid var(--tchmi-item-header-border);
+    transition: box-shadow 0.2s ease;
+}
+
+tchmi-accordion > tchmi-accordion-item:not(.disabled) > tchmi-accordion-header:hover {
+    background: var(--tchmi-item-header-hover-background);
+    color: var(--tchmi-item-header-hover-color);
+}
+
+tchmi-accordion > tchmi-accordion-item[open] > tchmi-accordion-header:before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: var(--tchmi-item-header-background);
+    left: 20px;
+    bottom: -10px;
+    transform: rotate(45deg);
+    border-right: 1px solid var(--tchmi-item-header-border);
+    border-bottom: 1px solid var(--tchmi-item-header-border);
+    z-index: 1;
+    border-radius: 100% 0 0 0;
+}
+
+tchmi-accordion > tchmi-accordion-item[open] > tchmi-accordion-header:hover:before {
+    background: var(--tchmi-item-header-hover-background);
+    color: var(--tchmi-item-header-hover-color);
+}
+
+tchmi-accordion > tchmi-accordion-item.has-content > tchmi-accordion-header > tchmi-accordion-expander:after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    right: 20px;
+    top: 22px;
+    transform: rotate(-45deg);
+    border-right: 1px solid var(--tchmi-item-header-color);
+    border-bottom: 1px solid var(--tchmi-item-header-color);
+    transition: transform 0.4s ease;
+    z-index: 1;
+}
+
+tchmi-accordion > tchmi-accordion-item.has-content[open] > tchmi-accordion-header > tchmi-accordion-expander:after {
+    transform: rotate(45deg);
+}
+
+tchmi-accordion
+    > tchmi-accordion-item.has-content:not(.disabled)
+    > tchmi-accordion-header
+    > tchmi-accordion-expander:hover:after {
+    border-right: 2px solid var(--tchmi-item-header-hover-color);
+    border-bottom: 2px solid var(--tchmi-item-header-hover-color);
+}
+
+tchmi-accordion > tchmi-accordion-item[open] > tchmi-accordion-content {
+    border: 1px solid var(--tchmi-item-header-border);
+    border-top: none;
+}
+
+tchmi-accordion > tchmi-accordion-item > tchmi-accordion-header.down {
+    box-shadow: var(--tchmi-button-shadow-pressed);
+    color: var(--tchmi-item-header-pressed-color);
+    background: var(--tchmi-item-header-pressed-background);
+}
+
+tchmi-accordion > tchmi-accordion-item.has-content > tchmi-accordion-header > tchmi-accordion-expander.down:after {
+    border-right: 1px solid var(--tchmi-item-header-pressed-color);
+    border-bottom: 1px solid var(--tchmi-item-header-pressed-color);
+}
+
+tchmi-accordion > tchmi-accordion-item.disabled > tchmi-accordion-header::after {
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-color: var(--tchmi-disabled-color);
+    z-index: 100;
+    margin: 0;
+    left: 0;
+    top: 0;
+}

@@ -1,0 +1,50 @@
+/** Styles for the theme: Base */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiToggleSwitch {
+    --tchmi-background: var(--tchmi-background-color-4);
+    --tchmi-indicator: var(--tchmi-foreground-color-3);
+    --tchmi-indicator-active: var(--tchmi-highlight-color-1);
+    --tchmi-border-color: var(--tchmi-background-color-2);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiToggleSwitch .TcHmi_Controls_Beckhoff_TcHmiCheckbox-template {
+    background-color: var(--tchmi-background);
+    border-radius: calc(var(--square-size) / 2);
+    height: var(--square-size);
+    width: calc(var(--square-size) + var(--square-size));
+    border: 1px solid var(--tchmi-border-color);
+    transition: background-color 0.25s ease;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiToggleSwitch
+    .TcHmi_Controls_Beckhoff_TcHmiCheckbox-template
+    .TcHmi_Controls_Beckhoff_TcHmiToggleSwitch-toggle-state-indicator {
+    background: var(--tchmi-indicator);
+    --indicator-ratio: 0.618;
+    --indicator-size: calc((var(--square-size) - 2px) * var(--indicator-ratio));
+    --indicator-margin: calc((var(--square-size) - 2px) * (1 - var(--indicator-ratio)) / 2);
+    border-radius: 50%;
+    height: var(--indicator-size);
+    width: var(--indicator-size);
+    top: var(--indicator-margin);
+    left: var(--indicator-margin);
+    transition:
+        left 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiToggleSwitch.TcHmi_Controls_Beckhoff_TcHmiCheckbox-active
+    .TcHmi_Controls_Beckhoff_TcHmiCheckbox-template
+    .TcHmi_Controls_Beckhoff_TcHmiToggleSwitch-toggle-state-indicator {
+    left: calc(var(--square-size) + var(--indicator-margin));
+    background: var(--tchmi-indicator-active);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiToggleSwitch.read-only .TcHmi_Controls_Beckhoff_TcHmiCheckbox-template {
+    background: var(--tchmi-read-only-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiToggleSwitch.TcHmi_Controls_System_TcHmiControl-operate-disallowed::after {
+    background-color: var(--tchmi-disabled-color);
+}

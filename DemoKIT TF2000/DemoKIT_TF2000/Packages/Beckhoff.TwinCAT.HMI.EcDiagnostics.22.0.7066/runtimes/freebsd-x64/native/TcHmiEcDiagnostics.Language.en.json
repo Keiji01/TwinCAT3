@@ -1,0 +1,30 @@
+{
+  "locale": "en",
+  "localizedText": {
+    "enabled": "Enabled",
+    "netId": "AmsNetId",
+    "target": "Target",
+    "targetNetId": "TargetNetId",
+    "targetAvailable": "Target available",
+    "connectionState": "Connection state",
+    "targetAdsVersion": "Target ADS version",
+    "targetAdsState": "Target ADS state",
+    "master": "Master",
+    "masterNetId": "MasterNetId",
+    "masterState": "Master state",
+    "vendorsOverwrite": "Vendors overwrite",
+    "descVendorsOverwrite": "Add vendor ID",
+    "devices": "EtherCAT devices",
+    "masters": "Masters",
+    "longName": "Long name",
+    "shortName": "Short name",
+    "pattern": "Pattern",
+    "descSlave": "EtherCAT slave",
+    "descEcDiagnosticsProcessDataInOutValues": "Process data (IN-OUT values)",
+    "descEcDiagnosticsProcessDataObjectEntryValue": "Process data (object entry value)",
+    "descEcDiagnosticsProcessDataObjectEntryID": "Process data (object entry ID)",
+    "updateIntervals": "Update intervals",
+    "runtimeStateCheckTimeout": "Maximum timeout for determining the runtime status",
+    "descRuntimeStateCheckTimeout": "A configured runtime is considered unreachable if a request takes longer than this timeout."
+  }
+}

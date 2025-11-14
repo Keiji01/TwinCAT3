@@ -1,0 +1,107 @@
+/** Styles for the theme: Base-Dark */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard,
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-additional-keys-container,
+.tchmi-keyboard {
+    --tchmi-background: var(--tchmi-background-color-1);
+    --tchmi-color: var(--tchmi-foreground-color-1);
+    --tchmi-backdrop-background: var(--tchmi-background-color-3);
+    --tchmi-input-background: var(--tchmi-background-color-4);
+    --tchmi-light-text-color: var(--tchmi-foreground-color-4);
+    --tchmi-error-text-color: var(--tchmi-error-color);
+    --tchmi-border-color: var(--tchmi-background-color-2);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard,
+.tchmi-keyboard {
+    background-color: var(--tchmi-background);
+    box-shadow: var(--tchmi-card-shadow);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-key,
+.tchmi-keyboard-template-key {
+    font-size: var(--tchmi-button-font-size);
+    background: var(--tchmi-button-background);
+    color: var(--tchmi-button-text-color);
+    border: var(--tchmi-button-border);
+    box-shadow: var(--tchmi-button-shadow);
+}
+
+/* tchmibutton, not disabled, not operate-disallowed, mouse over, mousedown on it and still pressed */
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard:not(.TcHmi_Controls_System_TcHmiControl-disabled):not(
+        .TcHmi_Controls_System_TcHmiControl-operate-disallowed
+    )
+    .TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-key.hover.down,
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-additional-keys-container
+    .TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-key.hover.down,
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard:not(.TcHmi_Controls_System_TcHmiControl-disabled):not(
+        .TcHmi_Controls_System_TcHmiControl-operate-disallowed
+    )
+    .TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-key.down
+    .TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-key.additional-key.hover,
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-key.show-additional-keys,
+.tchmi-keyboard:not(.tchmi-control-disabled):not(.tchmi-control-operate-disallowed)
+    .tchmi-keyboard-template-key.hover.down,
+.tchmi-keyboard:not(.tchmi-control-disabled):not(.tchmi-control-operate-disallowed)
+    .tchmi-keyboard-template-key.down
+    .tchmi-keyboard-template-key.additional-key.hover,
+.tchmi-keyboard-template-key.show-additional-keys {
+    background: var(--tchmi-button-background-pressed);
+    color: var(--tchmi-button-text-color-pressed);
+    border: var(--tchmi-button-border-pressed);
+    box-shadow: var(--tchmi-button-shadow-pressed);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-key.active,
+.tchmi-keyboard-template-key.active {
+    background: var(--tchmi-highlight-button-background-pressed);
+    color: var(--tchmi-highlight-button-text-color-pressed);
+    border: var(--tchmi-highlight-button-border-pressed);
+    box-shadow: var(--tchmi-highlight-button-shadow-pressed);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-backdrop,
+.tchmi-keyboard-template-backdrop {
+    background-color: var(--tchmi-backdrop-background);
+    box-shadow: var(--tchmi-popup-shadow);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-label svg,
+.tchmi-keyboard-template-label svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.1px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-textbox {
+    border: 1px solid var(--tchmi-border-color);
+    color: var(--tchmi-color);
+    background: var(--tchmi-input-background);
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    resize: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-textbox:focus {
+    /* A blinking cursor is enough for ourself. The manipulated text element is highlighted. */
+    outline: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-key.disabled::after {
+    background-color: var(--tchmi-disabled-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-hints {
+    color: var(--tchmi-light-text-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-hints span.violated {
+    color: var(--tchmi-error-text-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-hints span.violated::after {
+    color: var(--tchmi-light-text-color);
+}

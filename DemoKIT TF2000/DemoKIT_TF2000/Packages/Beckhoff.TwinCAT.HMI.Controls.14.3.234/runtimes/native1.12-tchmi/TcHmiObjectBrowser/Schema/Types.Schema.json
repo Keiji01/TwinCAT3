@@ -1,0 +1,315 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+        "TcHmi.Controls.Beckhoff.TcHmiObjectBrowser": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "type": "object",
+            "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+            "frameworkControlType": "TcHmiObjectBrowser",
+            "frameworkControlNamespace": "TcHmi.Controls.Beckhoff"
+        },
+        "TcHmiObjectBrowser": {
+            "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiObjectBrowser"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiObjectBrowser.Index": {
+            "type": "array",
+            "title": "The hierarchical index of treeview data.",
+            "items": {
+                "type": "number"
+            }
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiObjectBrowser.DataSymbol": {
+            "allOf": [
+                {
+                    "$ref": "tchmi:framework#/definitions/Symbol"
+                },
+                {
+                    "frameworkSymbolSubType": {
+                        "anyOf": [
+                            {
+                                "$ref": "tchmi:general#/definitions/Object"
+                            },
+                            {
+                                "$ref": "tchmi:general#/definitions/Array"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiObjectBrowser.ColumnName": {
+            "type": "string",
+            "enum": ["Name", "Value", "Datatype", "ValueDisplay"]
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiObjectBrowser.ColumnDefinitionList": {
+            "title": "ColumnDefinitionList",
+            "type": "array",
+            "items": {
+                "title": "ColumnDefinition",
+                "type": "object",
+                "engineeringColumns": ["columnData", "width", "widthUnit"],
+                "propertiesMeta": [
+                    {
+                        "name": "cellBackground",
+                        "displayName": "Cell Background",
+                        "category": "Colors",
+                        "displayPriority": 10,
+                        "description": "Background color of the cells in this column",
+                        "defaultValue": null,
+                        "defaultValueInternal": null
+                    },
+                    {
+                        "name": "textColor",
+                        "displayName": "Text Color",
+                        "category": "Colors",
+                        "displayPriority": 11,
+                        "description": "Text color of the cells in this column",
+                        "defaultValue": null,
+                        "defaultValueInternal": null
+                    },
+                    {
+                        "name": "columnData",
+                        "displayName": "Column Data",
+                        "category": "General",
+                        "displayPriority": 10,
+                        "description": "The data that will be displayed in the column.",
+                        "defaultValue": null,
+                        "defaultValueInternal": null
+                    },
+                    {
+                        "name": "width",
+                        "displayName": "Width",
+                        "category": "General",
+                        "displayPriority": 11,
+                        "description": "Width for this column",
+                        "defaultValue": 100,
+                        "defaultValueInternal": null
+                    },
+                    {
+                        "name": "widthUnit",
+                        "refTo": "width",
+                        "displayName": "Width Unit",
+                        "category": "General",
+                        "displayPriority": 11,
+                        "description": "Width unit for this column. px defines an absolute width, % is relative to the control width and factor can be used to divide the available space into fractions.",
+                        "defaultValue": "px",
+                        "defaultValueInternal": "px"
+                    },
+                    {
+                        "name": "editable",
+                        "displayName": "Editable",
+                        "category": "General",
+                        "displayPriority": 12,
+                        "description": "Can this column be edited (text, number) or operated (button, checkbox)?",
+                        "defaultValue": false,
+                        "defaultValueInternal": false
+                    },
+                    {
+                        "name": "minWidth",
+                        "displayName": "Min Width",
+                        "category": "General",
+                        "displayPriority": 13,
+                        "description": "Minimum width for this column",
+                        "defaultValue": 100,
+                        "defaultValueInternal": null
+                    },
+                    {
+                        "name": "minWidthUnit",
+                        "refTo": "minWidth",
+                        "displayName": "Min Width Unit",
+                        "category": "General",
+                        "displayPriority": 13,
+                        "description": "Minimum width unit for this column",
+                        "defaultValue": "px",
+                        "defaultValueInternal": "px"
+                    },
+                    {
+                        "name": "resize",
+                        "displayName": "Resize",
+                        "category": "General",
+                        "displayPriority": 14,
+                        "description": "Can this column be resized? Columns that have factor as their widthUnit can never be resizeable.",
+                        "defaultValue": false,
+                        "defaultValueInternal": false
+                    },
+                    {
+                        "name": "sortable",
+                        "displayName": "Sortable",
+                        "category": "General",
+                        "displayPriority": 15,
+                        "description": "Can this column be sortedby user interaction?",
+                        "defaultValue": true,
+                        "defaultValueInternal": true
+                    },
+                    {
+                        "name": "horizontalAlignment",
+                        "displayName": "Horizontal Alignment",
+                        "category": "General",
+                        "displayPriority": 16,
+                        "description": "Horizontal alignment of this column",
+                        "defaultValue": "Left",
+                        "defaultValueInternal": "Left"
+                    },
+                    {
+                        "name": "verticalAlignment",
+                        "displayName": "Vertical Alignment",
+                        "category": "General",
+                        "displayPriority": 17,
+                        "description": "Vertical alignment of this column",
+                        "defaultValue": "Center",
+                        "defaultValueInternal": "Center"
+                    },
+                    {
+                        "name": "headerHorizontalAlignment",
+                        "displayName": "Header Horizontal Alignment",
+                        "category": "General",
+                        "displayPriority": 18,
+                        "description": "Horizontal alignment of the header of this column",
+                        "defaultValue": "Center",
+                        "defaultValueInternal": "Center"
+                    },
+                    {
+                        "name": "headerVerticalAlignment",
+                        "displayName": "Header Vertical Alignment",
+                        "category": "General",
+                        "displayPriority": 19,
+                        "description": "Vertical alignment of the header of this column",
+                        "defaultValue": "Center",
+                        "defaultValueInternal": "Center"
+                    },
+                    {
+                        "name": "format",
+                        "displayName": "Format",
+                        "category": "General",
+                        "displayPriority": 20,
+                        "description": "A reference of function which is called with each entry",
+                        "allowedFunctions": {
+                            "returnType": "tchmi:general#/definitions/String",
+                            "requiredArguments": [
+                                {
+                                    "type": "tchmi:general#/definitions/Any",
+                                    "description": "The value to format."
+                                },
+                                {
+                                    "type": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TchmiTreeView.ValueMetaData",
+                                    "description": "Meta data of the value. Includes the json schema."
+                                }
+                            ],
+                            "requiredWaitMode": "Synchronous"
+                        },
+                        "defaultValue": null,
+                        "defaultValueInternal": null
+                    },
+                    {
+                        "name": "ignoreEscapeSequences",
+                        "displayName": "Ignore Escape Sequences",
+                        "category": "General",
+                        "displayPriority": 21,
+                        "description": "When set to true a backslash in a text will be shown verbatim in the HMI",
+                        "defaultValue": false,
+                        "defaultValueInternal": false
+                    },
+                    {
+                        "name": "autoFocusOut",
+                        "displayName": "Auto Focus Out",
+                        "category": "General",
+                        "displayPriority": 22,
+                        "description": "When set to true the control will automatically lose focus when the user presses the enter or escape key",
+                        "defaultValue": true,
+                        "defaultValueInternal": true
+                    },
+                    {
+                        "name": "autoSelectText",
+                        "displayName": "Auto Select Text",
+                        "category": "General",
+                        "displayPriority": 23,
+                        "description": "When set to true all text within the control will be selected when the control gains focus",
+                        "defaultValue": false,
+                        "defaultValueInternal": false
+                    }
+                ],
+                "properties": {
+                    "cellBackground": {
+                        "$ref": "tchmi:framework#/definitions/Color"
+                    },
+                    "textColor": {
+                        "$ref": "tchmi:framework#/definitions/SolidColor"
+                    },
+                    "columnData": {
+                        "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiObjectBrowser.ColumnName"
+                    },
+                    "width": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/PositiveNumber"
+                            },
+                            {
+                                "$ref": "#/definitions/MeasurementValue"
+                            }
+                        ]
+                    },
+                    "widthUnit": {
+                        "$ref": "tchmi:framework#/definitions/MeasurementUnitOrFactor"
+                    },
+                    "resize": {
+                        "type": "boolean"
+                    },
+                    "minWidth": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/PositiveNumber"
+                            },
+                            {
+                                "$ref": "#/definitions/MeasurementValue"
+                            }
+                        ]
+                    },
+                    "minWidthUnit": {
+                        "$ref": "tchmi:framework#/definitions/MeasurementUnit"
+                    },
+                    "editable": {
+                        "type": "boolean"
+                    },
+                    "sortable": {
+                        "type": "boolean"
+                    },
+                    "horizontalAlignment": {
+                        "$ref": "tchmi:framework#/definitions/HorizontalAlignment"
+                    },
+                    "verticalAlignment": {
+                        "$ref": "tchmi:framework#/definitions/VerticalAlignment"
+                    },
+                    "headerHorizontalAlignment": {
+                        "$ref": "tchmi:framework#/definitions/HorizontalAlignment"
+                    },
+                    "headerVerticalAlignment": {
+                        "$ref": "tchmi:framework#/definitions/VerticalAlignment"
+                    },
+                    "format": {
+                        "$ref": "tchmi:framework#/definitions/Function"
+                    },
+                    "ignoreEscapeSequences": {
+                        "type": "boolean"
+                    },
+                    "autoFocusOut": {
+                        "type": "boolean"
+                    },
+                    "autoSelectText": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "columnData",
+                    "width",
+                    "widthUnit",
+                    "resize",
+                    "minWidth",
+                    "minWidthUnit",
+                    "horizontalAlignment",
+                    "verticalAlignment"
+                ],
+                "additionalProperties": false
+            }
+        }
+    }
+}

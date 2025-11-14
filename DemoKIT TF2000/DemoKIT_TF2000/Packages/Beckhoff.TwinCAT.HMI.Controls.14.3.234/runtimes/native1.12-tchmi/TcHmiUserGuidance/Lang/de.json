@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../TwinCAT-HMI-Common/JsonSchemas/Language.Schema.json",
+    "locale": "de",
+    "localizedText": {
+        "Cancel": "Abbrechen",
+        "Next": "Weiter >",
+        "Finish": "Fertigstellen",
+        "Back": "< Zurück",
+        "UserGuidanceFinished": "Die Benutzerführung ist beendet!"
+    }
+}

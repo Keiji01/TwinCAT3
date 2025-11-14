@@ -1,0 +1,135 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+        "TcHmi.Controls.Beckhoff.TcHmiUserGuidance": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "type": "object",
+            "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+            "frameworkControlType": "TcHmiUserGuidance",
+            "frameworkControlNamespace": "TcHmi.Controls.Beckhoff"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiUserGuidance.UserControlInterop": {
+            "type": "object",
+            "title": "User Control Interop",
+            "description": "The User Control Interop object used by the User Guidance control. \nA User Control with a parameter of this type can enable the 'Next' button of the User Guidance control.",
+            "properties": {
+                "confirmNext": {
+                    "type": "boolean"
+                }
+            },
+            "frameworkMetaType": "TcHmi.Controls.Beckhoff.TcHmiUserGuidance.UserControlInterop",
+            "additionalProperties": false
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiUserGuidance.Page": {
+            "type": "object",
+            "title": "Page",
+            "description": "A single page",
+            "engineeringColumns": ["name"],
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "targetFile": {
+                    "$ref": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiPopup.TargetFile"
+                },
+                "scrolling": {
+                    "$ref": "tchmi:framework#/definitions/ScrollMode"
+                },
+                "hidden": {
+                    "type": "boolean"
+                },
+                "horizontalAlignment": {
+                    "$ref": "tchmi:framework#/definitions/HorizontalAlignment"
+                },
+                "verticalAlignment": {
+                    "$ref": "tchmi:framework#/definitions/VerticalAlignment"
+                }
+            },
+            "propertiesMeta": [
+                {
+                    "name": "name",
+                    "displayName": "Name",
+                    "category": "General",
+                    "displayPriority": 10,
+                    "description": "Name of the Page. Please select a unique name for each page!",
+                    "defaultValue": "newPage",
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "displayName",
+                    "displayName": "Display Name",
+                    "category": "General",
+                    "displayPriority": 10,
+                    "description": "Name of the Page that will be displayed in the progress bar.",
+                    "defaultValue": "New Page",
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "targetFile",
+                    "displayName": "Target File",
+                    "category": "General",
+                    "displayPriority": 11,
+                    "description": "The content or usercontrol to show.",
+                    "defaultValue": null,
+                    "defaultValueInternal": null
+                },
+                {
+                    "name": "scrolling",
+                    "displayName": "Scrolling",
+                    "category": "General",
+                    "displayPriority": 16,
+                    "description": "Defines whether a content is scrollable. Possible values are No, Yes, Auto. Does not affect user controls.",
+                    "defaultValue": null,
+                    "defaultValueInternal": "Auto"
+                },
+                {
+                    "name": "hidden",
+                    "displayName": "Hidden",
+                    "category": "General",
+                    "displayPriority": 17,
+                    "description": "Defines whether the page is hidden or not.",
+                    "defaultValue": null,
+                    "defaultValueInternal": false
+                },
+                {
+                    "name": "horizontalAlignment",
+                    "displayName": "Horizontal Alignment",
+                    "category": "General",
+                    "displayPriority": 20,
+                    "description": "Horizontal alignment of the text in the progress bar.",
+                    "defaultValue": "Left",
+                    "defaultValueInternal": "Left"
+                },
+                {
+                    "name": "verticalAlignment",
+                    "displayName": "Vertical Alignment",
+                    "category": "General",
+                    "displayPriority": 21,
+                    "description": "Vertical alignment of the text in the progress bar.",
+                    "defaultValue": "Center",
+                    "defaultValueInternal": "Center"
+                }
+            ],
+            "additionalProperties": false,
+            "required": ["name"]
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiUserGuidance.ProgressBarAlignment": {
+            "type": "string",
+            "enum": ["Top", "Bottom", "Right", "Left"]
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiUserGuidance.PageList": {
+            "type": "array",
+            "title": "Pages",
+            "description": "A list of pages",
+            "items": {
+                "$ref": "#/definitions/TcHmi.Controls.Beckhoff.TcHmiUserGuidance.Page"
+            }
+        },
+        "TcHmiUserGuidance": {
+            "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiUserGuidance"
+        }
+    }
+}

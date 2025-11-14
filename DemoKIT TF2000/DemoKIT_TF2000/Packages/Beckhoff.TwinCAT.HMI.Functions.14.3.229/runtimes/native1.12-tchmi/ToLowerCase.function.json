@@ -1,0 +1,39 @@
+{
+    "$schema": "../TcHmiFramework/Schema/FunctionDescription.Schema.json",
+    "apiVersion": 1,
+    "version": {
+        "full": "14.3.229.0",
+        "major": 14,
+        "minor": 3,
+        "build": 229,
+        "revision": 0
+    },
+    "dependencyFiles": [
+        {
+            "name": "ToLowerCase.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "function": {
+        "name": "ToLowerCase",
+        "namespace": "TcHmi.Functions.Beckhoff",
+        "displayName": "ToLowerCase",
+        "visible": true,
+        "description": "Converts string value to lowercase.",
+        "category": "Data Conversion",
+        "returnValue": {
+            "type": "tchmi:general#/definitions/String"
+        },
+        "arguments": [
+            {
+                "name": "value",
+                "displayName": "Value",
+                "type": "tchmi:general#/definitions/String",
+                "description": "Value to lowercase",
+                "required": true,
+                "bindable": true
+            }
+        ]
+    }
+}

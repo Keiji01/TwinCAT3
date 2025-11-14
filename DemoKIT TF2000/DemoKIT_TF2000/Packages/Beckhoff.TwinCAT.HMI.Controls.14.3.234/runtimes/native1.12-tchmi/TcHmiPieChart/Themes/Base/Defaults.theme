@@ -1,0 +1,40 @@
+{
+    "$schema": "../../../../TcHmiFramework/Schema/ThemeDescription.Schema.json",
+    "controlTypeValues": {
+        "TcHmi.Controls.Beckhoff.TcHmiPieChart": {
+            "attributes": {},
+            "themedResources": {
+                "DefaultGraphColor": {
+                    "color": "#4794da"
+                },
+                "DefaultLabelColor": {
+                    "color": "#4794da"
+                },
+                "DefaultPieColor1": {
+                    "color": "#4794DA"
+                },
+                "DefaultPieColor2": {
+                    "color": "#CBD932"
+                },
+                "DefaultPieColor3": {
+                    "color": "#FFA500"
+                },
+                "DefaultPieColor4": {
+                    "color": "#009940"
+                },
+                "DefaultPieLabelColor1": {
+                    "color": "#000000"
+                },
+                "DefaultPieLabelColor2": {
+                    "color": "#000000"
+                },
+                "DefaultPieLabelColor3": {
+                    "color": "#000000"
+                },
+                "DefaultPieLabelColor4": {
+                    "color": "#000000"
+                }
+            }
+        }
+    }
+}

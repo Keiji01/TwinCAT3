@@ -1,0 +1,62 @@
+{
+    "$schema": "../../../../TcHmiFramework/Schema/ThemeDescription.Schema.json",
+    "controlTypeValues": {
+        "TcHmi.Controls.Beckhoff.TcHmiLineChart": {
+            "attributes": {
+                "XLabelFontColor": {
+                    "color": "#ffffff"
+                },
+                "XAxisNameFontColor": {
+                    "color": "#ffffff"
+                },
+                "XAxisColor": {
+                    "color": "#ffffff"
+                },
+                "GridLineColor": {
+                    "color": "#ffffff"
+                },
+                "SubgridLineColor": {
+                    "color": "#ffffff"
+                },
+                "GridBackgroundColor": {
+                    "color": "#2b2b2c"
+                }
+            },
+            "themedResources": {
+                "LineGraphDescriptionLineColor": {
+                    "color": "#2775be"
+                },
+                "LineGraphDescriptionPointDotFillColor": {
+                    "color": "#2775be"
+                },
+                "LineGraphDescriptionPointDotStrokeColor": {
+                    "color": "#2775be"
+                },
+                "YAxisLabelFontColor": {
+                    "color": "#ffffff"
+                },
+                "YAxisAxisColor": {
+                    "color": "#ffffff"
+                },
+                "YAxisAxisNameFontColor": {
+                    "color": "#ffffff"
+                },
+                "ReferenceLineColor": {
+                    "color": "#ffffff"
+                },
+                "LineGraphDescriptionFillColor": {
+                    "color": "#2775be"
+                },
+                "DefaultColorRangeColor": {
+                    "color": "#ffffff"
+                },
+                "HighlightDotColor": {
+                    "color": "#ffffff"
+                },
+                "HighlightDotStrokeColor": {
+                    "color": "#000000"
+                }
+            }
+        }
+    }
+}

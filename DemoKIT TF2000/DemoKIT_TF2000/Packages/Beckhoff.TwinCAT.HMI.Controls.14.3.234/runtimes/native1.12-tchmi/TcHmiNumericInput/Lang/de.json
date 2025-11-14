@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../TwinCAT-HMI-Common/JsonSchemas/Language.Schema.json",
+    "locale": "de",
+    "localizedText": {
+        "ValueNaN": "Der eingegebene Wert ist keine Zahl.",
+        "ValueEmpty": "Es wurde kein Wert eingegeben.",
+        "ValueOutOfRangeMin": "Der eingegebene Wert ist kleiner als der minimale Wert ({0}).",
+        "ValueOutOfRangeMax": "Der eingegebene Wert ist größer als der maximale Wert ({0})."
+    }
+}

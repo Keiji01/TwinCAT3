@@ -1,0 +1,195 @@
+/** Styles for all themes */
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard,
+.tchmi-keyboard {
+    overflow: hidden;
+
+    --input-hint-separator: '';
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template,
+.tchmi-keyboard-template {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-padding-container,
+.tchmi-keyboard-template-padding-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-key,
+.tchmi-keyboard-template-key,
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-textbox {
+    position: absolute;
+    box-sizing: border-box;
+    pointer-events: auto;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-additional-keys-container {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-additional-keys-container.tchmi-in-topmostlayer {
+    position: absolute;
+    visibility: visible;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-backdrop,
+.tchmi-keyboard-template-backdrop {
+    pointer-events: none;
+    position: absolute;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-label,
+.tchmi-keyboard-template-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    overflow: hidden;
+    /* fix for IE to get active state on key root */
+    pointer-events: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-label.top,
+.tchmi-keyboard-template-label.top {
+    align-items: flex-start;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-label.bottom,
+.tchmi-keyboard-template-label.bottom {
+    align-items: flex-end;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-label.left,
+.tchmi-keyboard-template-label.left {
+    justify-content: flex-start;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-label.right,
+.tchmi-keyboard-template-label.right {
+    justify-content: flex-end;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-label.show,
+.tchmi-keyboard-template-label.show {
+    display: flex;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-label.show-always,
+.tchmi-keyboard-template-label.show-always {
+    display: flex;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-key.locked
+    .TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-label.show-locked,
+.tchmi-keyboard-template-key.locked .tchmi-keyboard-template-label.show-locked {
+    display: flex;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-label.hide,
+.tchmi-keyboard-template-label.hide {
+    display: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-key.locked
+    .TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-label.hide-locked,
+.tchmi-keyboard-template-key.locked .tchmi-keyboard-template-label.hide-locked {
+    display: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-key.disabled {
+    pointer-events: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-key.disabled::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-hints {
+    position: absolute;
+    box-sizing: border-box;
+    padding: 0;
+    pointer-events: none;
+    overflow: hidden;
+    display: grid;
+    align-content: center;
+    grid-template-columns: repeat(4, minmax(auto, min-content));
+    grid-template-rows: repeat(2, min-content);
+    container: input-hints / size;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-hints.textbox-overlay {
+    align-content: space-between;
+    justify-content: end;
+    padding: 3px 5px 3px 25%;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-hints.textbox-overlay.left-aligned {
+    justify-content: start;
+    padding: 3px 25% 3px 5px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-hints span {
+    grid-row: 1 / 3;
+    align-self: center;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-hints span.value {
+    padding-left: 2px;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-hints span.value:not(:last-child)::after {
+    content: var(--input-hint-separator);
+    padding-right: 4px;
+}
+
+@container input-hints (min-height: 40px) {
+    .TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-hints span.min {
+        grid-row: 2;
+    }
+
+    .TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-hints span.max {
+        grid-row: 1;
+    }
+
+    .TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-hints span.label {
+        grid-column: 1;
+    }
+
+    .TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-hints span.value {
+        grid-column: 2;
+    }
+
+    .TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-hints span.value:not(:last-child)::after {
+        display: none;
+    }
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-hints.hidden {
+    display: none;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiKeyboard-template-hints span.hidden {
+    display: none;
+}

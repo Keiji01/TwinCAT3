@@ -1,0 +1,37 @@
+{
+    "$schema": "../TcHmiFramework/Schema/FunctionDescription.Schema.json",
+    "apiVersion": 1,
+    "version": {
+        "full": "14.3.229.0",
+        "major": 14,
+        "minor": 3,
+        "build": 229,
+        "revision": 0
+    },
+    "dependencyFiles": [
+        {
+            "name": "StartInterval.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "function": {
+        "name": "StartInterval",
+        "namespace": "TcHmi.Functions.Beckhoff",
+        "displayName": "StartInterval",
+        "visible": true,
+        "category": "Timer",
+        "description": "Starts a globally configured interval.",
+        "returnValue": null,
+        "arguments": [
+            {
+                "name": "name",
+                "displayName": "Name",
+                "type": "tchmi:framework#/definitions/Interval",
+                "description": "The name of the interval to start.",
+                "required": true,
+                "bindable": true
+            }
+        ]
+    }
+}

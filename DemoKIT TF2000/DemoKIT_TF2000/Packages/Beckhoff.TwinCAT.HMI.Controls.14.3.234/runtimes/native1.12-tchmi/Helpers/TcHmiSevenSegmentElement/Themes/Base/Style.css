@@ -1,0 +1,102 @@
+/* Theme dependend style for Theme: Base */
+
+tchmi-seven-segment {
+    --tchmi-color: var(--tchmi-foreground-color-1);
+    --tchmi-color-inactive: var(--tchmi-background-color-3);
+}
+
+tchmi-seven-segment > svg {
+    height: 100%;
+    width: 100%;
+}
+
+tchmi-seven-segment > svg > g > polygon {
+    fill: var(--tchmi-color-inactive);
+}
+
+tchmi-seven-segment[value='0'] > svg > g > .top,
+tchmi-seven-segment[value='0'] > svg > g > .top-left,
+tchmi-seven-segment[value='0'] > svg > g > .top-right,
+tchmi-seven-segment[value='0'] > svg > g > .bottom-right,
+tchmi-seven-segment[value='0'] > svg > g > .bottom-left,
+tchmi-seven-segment[value='0'] > svg > g > .bottom {
+    fill: var(--tchmi-color);
+}
+
+tchmi-seven-segment[value='1'] > svg > g > .top-right,
+tchmi-seven-segment[value='1'] > svg > g > .bottom-right {
+    fill: var(--tchmi-color);
+}
+
+tchmi-seven-segment[value='2'] > svg > g > .top,
+tchmi-seven-segment[value='2'] > svg > g > .top-right,
+tchmi-seven-segment[value='2'] > svg > g > .middle,
+tchmi-seven-segment[value='2'] > svg > g > .bottom-left,
+tchmi-seven-segment[value='2'] > svg > g > .bottom {
+    fill: var(--tchmi-color);
+}
+
+tchmi-seven-segment[value='3'] > svg > g > .top,
+tchmi-seven-segment[value='3'] > svg > g > .top-right,
+tchmi-seven-segment[value='3'] > svg > g > .middle,
+tchmi-seven-segment[value='3'] > svg > g > .bottom-right,
+tchmi-seven-segment[value='3'] > svg > g > .bottom {
+    fill: var(--tchmi-color);
+}
+
+tchmi-seven-segment[value='4'] > svg > g > .top-left,
+tchmi-seven-segment[value='4'] > svg > g > .top-right,
+tchmi-seven-segment[value='4'] > svg > g > .middle,
+tchmi-seven-segment[value='4'] > svg > g > .bottom-right {
+    fill: var(--tchmi-color);
+}
+
+tchmi-seven-segment[value='5'] > svg > g > .top,
+tchmi-seven-segment[value='5'] > svg > g > .top-left,
+tchmi-seven-segment[value='5'] > svg > g > .middle,
+tchmi-seven-segment[value='5'] > svg > g > .bottom-right,
+tchmi-seven-segment[value='5'] > svg > g > .bottom {
+    fill: var(--tchmi-color);
+}
+
+tchmi-seven-segment[value='6'] > svg > g > .top,
+tchmi-seven-segment[value='6'] > svg > g > .top-left,
+tchmi-seven-segment[value='6'] > svg > g > .middle,
+tchmi-seven-segment[value='6'] > svg > g > .bottom-right,
+tchmi-seven-segment[value='6'] > svg > g > .bottom-left,
+tchmi-seven-segment[value='6'] > svg > g > .bottom {
+    fill: var(--tchmi-color);
+}
+
+tchmi-seven-segment[value='7'] > svg > g > .top,
+tchmi-seven-segment[value='7'] > svg > g > .top-right,
+tchmi-seven-segment[value='7'] > svg > g > .bottom-right {
+    fill: var(--tchmi-color);
+}
+
+tchmi-seven-segment[value='8'] > svg > g > .top,
+tchmi-seven-segment[value='8'] > svg > g > .top-left,
+tchmi-seven-segment[value='8'] > svg > g > .top-right,
+tchmi-seven-segment[value='8'] > svg > g > .middle,
+tchmi-seven-segment[value='8'] > svg > g > .bottom-right,
+tchmi-seven-segment[value='8'] > svg > g > .bottom-left,
+tchmi-seven-segment[value='8'] > svg > g > .bottom {
+    fill: var(--tchmi-color);
+}
+
+tchmi-seven-segment[value='9'] > svg > g > .top,
+tchmi-seven-segment[value='9'] > svg > g > .top-left,
+tchmi-seven-segment[value='9'] > svg > g > .top-right,
+tchmi-seven-segment[value='9'] > svg > g > .middle,
+tchmi-seven-segment[value='9'] > svg > g > .bottom-right,
+tchmi-seven-segment[value='9'] > svg > g > .bottom {
+    fill: var(--tchmi-color);
+}
+
+tchmi-seven-segment[value='-'] > svg > g > .middle {
+    fill: var(--tchmi-color);
+}
+
+tchmi-seven-segment[value='.'] > svg > g > .decimal-point {
+    fill: var(--tchmi-color);
+}

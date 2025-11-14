@@ -1,0 +1,151 @@
+{
+    "$schema": "../../TcHmiFramework/Schema/ControlDescription.Schema.json",
+    "apiVersion": 1,
+    "name": "TcHmiLoadingSpinner",
+    "namespace": "TcHmi.Controls.Beckhoff",
+    "displayName": "Loading Spinner",
+    "version": {
+        "full": "14.3.234.0",
+        "major": 14,
+        "minor": 3,
+        "build": 234,
+        "revision": 0
+    },
+    "visible": true,
+    "themeable": "Standard",
+    "description": "Shows a Loading Spinner.",
+    "base": "TcHmi.Controls.System.TcHmiControl",
+    "defaultDesignerEvent": ".onPressed",
+    "properties": {
+        "containerControl": false,
+        "geometry": {
+            "width": 50,
+            "height": 50
+        }
+    },
+    "icons": [
+        {
+            "name": "Icons/16x16.png",
+            "width": 16,
+            "height": 16
+        }
+    ],
+    "template": "Template.html",
+    "dependencyFiles": [
+        {
+            "name": "Style.css",
+            "type": "Stylesheet",
+            "description": ""
+        },
+        {
+            "name": "TcHmiLoadingSpinner.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "themes": {
+        "Base": {
+            "resources": [
+                {
+                    "name": "Themes/Base/Style.css",
+                    "type": "Stylesheet",
+                    "description": ""
+                }
+            ]
+        },
+        "Base-Dark": {
+            "resources": [
+                {
+                    "name": "Themes/Base-Dark/Style.css",
+                    "type": "Stylesheet",
+                    "description": ""
+                }
+            ]
+        }
+    },
+    "attributes": [
+        {
+            "name": "data-tchmi-visibility",
+            "propertyName": "Visibility",
+            "propertySetterName": "setVisibility",
+            "propertyGetterName": "getVisibility",
+            "displayName": "Visibility",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 10,
+            "type": "tchmi:framework#/definitions/Visibility",
+            "category": "Common",
+            "description": "The visibility property can be used to hide (still receives pointer events) or collapse (does not use space or receive pointer events) an element and its childrens. Hidden still uses space in fluid calculations, collapsed is ignored there.\nCollapsed controls are skipped in layouting so it is much faster then opacity=0",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "Visible"
+        },
+        {
+            "name": "data-tchmi-color",
+            "propertyName": "Color",
+            "propertySetterName": "setColor",
+            "propertyGetterName": "getColor",
+            "displayName": "Color",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 10,
+            "type": "tchmi:framework#/definitions/SolidColor",
+            "category": "Colors",
+            "description": "Definition of the color of the spinner",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "allowSymbolExpressionsInObject": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-stroke-thickness",
+            "propertyName": "StrokeThickness",
+            "propertySetterName": "setStrokeThickness",
+            "propertyGetterName": "getStrokeThickness",
+            "displayName": "Stroke Thickness",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 10,
+            "type": "tchmi:framework#/definitions/MeasurementValue",
+            "category": "Common",
+            "description": "Specifies the stroke thickness of the spinner.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": 6
+        },
+        {
+            "name": "data-tchmi-stroke-thickness-unit",
+            "propertyName": "StrokeThicknessUnit",
+            "propertyGetterName": "getStrokeThicknessUnit",
+            "refTo": "StrokeThickness",
+            "displayName": "Stroke Thickness Unit",
+            "visible": true,
+            "displayPriority": 50,
+            "type": "tchmi:framework#/definitions/PixelUnit",
+            "category": "Common",
+            "description": "Is 'px'.",
+            "readOnly": true,
+            "bindable": false,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValueInternal": "px"
+        }
+    ],
+    "themedResources": [],
+    "functions": [],
+    "events": [],
+    "dataTypes": [
+        {
+            "schema": "Schema/Types.Schema.json"
+        }
+    ]
+}

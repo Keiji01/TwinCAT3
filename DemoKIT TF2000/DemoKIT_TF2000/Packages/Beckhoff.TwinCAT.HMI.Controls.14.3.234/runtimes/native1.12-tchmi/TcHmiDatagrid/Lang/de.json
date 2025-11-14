@@ -1,0 +1,8 @@
+{
+    "$schema": "../../../TwinCAT-HMI-Common/JsonSchemas/Language.Schema.json",
+    "locale": "de",
+    "localizedText": {
+        "NoElements": "Aufgrund der aktuellen Konfiguration wurden keine Einträge empfangen.",
+        "MaxTextLengthReached": "Maximale Textlänge erreicht."
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "$schema": "../TcHmiFramework/Schema/FunctionDescription.Schema.json",
+    "apiVersion": 1,
+    "version": {
+        "full": "14.3.229.0",
+        "major": 14,
+        "minor": 3,
+        "build": 229,
+        "revision": 0
+    },
+    "dependencyFiles": [
+        {
+            "name": "IsSafeInteger.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "function": {
+        "name": "IsSafeInteger",
+        "namespace": "TcHmi.Functions.Beckhoff",
+        "displayName": "IsSafeInteger",
+        "visible": true,
+        "description": "Checks if a bigint value fits safe into number.",
+        "category": "Data Conversion",
+        "returnValue": {
+            "type": "tchmi:general#/definitions/Boolean"
+        },
+        "arguments": [
+            {
+                "name": "value",
+                "displayName": "Value",
+                "type": "tchmi:general#/definitions/BigInt",
+                "description": "Value to be converted",
+                "required": true,
+                "bindable": true
+            }
+        ]
+    }
+}

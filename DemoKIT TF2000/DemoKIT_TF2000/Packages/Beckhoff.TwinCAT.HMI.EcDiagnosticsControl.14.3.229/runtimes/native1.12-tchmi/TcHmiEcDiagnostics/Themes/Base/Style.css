@@ -1,0 +1,198 @@
+/* Styles for theme: Base */
+.beckhoff-ec-diagnostics {
+    --main-background-color: var(--tchmi-background-color-4);
+    --main-text-color: var(--tchmi-foreground-color-1);
+    --main-tooltip-bg-color: rgba(0, 0, 0, 0.7);
+    --main-tooltip-text-color: var(--tchmi-foreground-color-2);
+    --main-toolbox-bg-color: rgba(245, 245, 245, 0.7);
+    --main-change-highlight: var(--tchmi-background-color-3);
+    --main-change-error-highlight: rgba(255, 0, 0, 0.4);
+    --main-grayed-out: var(--tchmi-foreground-color-3);
+    --main-dark-color: #1e1e1e;
+    --main-error-color: var(--tchmi-error-color);
+    --main-error-light-color: var(--tchmi-invalid-color);
+    --main-warning-color: var(--tchmi-error-color);
+    --main-warning-light-color: var(--tchmi-user-input-color);
+    --main-success-color: var(--tchmi-ready-color);
+    --main-border-color: var(--tchmi-background-color-2);
+    --main-trace-slave-highlight: rgba(175, 175, 175, 0.1);
+    --main-trace-odd-row: var(--tchmi-background-color-1);
+    --main-process-data-entry-even: var(--tchmi-background-color-1);
+    --main-slave-message-error-bg-color: var(--tchmi-invalid-color);
+    --main-slave-message-error-text-color: var(--tchmi-error-color);
+    --main-slave-message-warning-text-color: var(--tchmi-foreground-color-1);
+    --main-slave-message-warning-bg-color: var(--tchmi-warning-color);
+    --main-slave-message-info-text-color: var(--tchmi-foreground-color-2);
+    --main-slave-message-info-bg-color: black;
+    --main-input-bg: var(--tchmi-background-color-4);
+    color: var(--main-text-color);
+}
+.beckhoff-ec-diagnostics hr {
+    border-top: 1px solid var(--main-border-color);
+}
+.beckhoff-ec-diagnostics .arrow {
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+}
+.beckhoff-ec-diagnostics .crossed-out {
+    color: var(--main-error-color);
+}
+.beckhoff-ec-diagnostics .text-error {
+    color: var(--main-error-color);
+}
+.beckhoff-ec-diagnostics .text-warning {
+    color: var(--main-warning-color);
+}
+.beckhoff-ec-diagnostics .text-success {
+    color: var(--main-success-color);
+}
+.beckhoff-ec-diagnostics .no-value {
+    color: var(--main-grayed-out);
+}
+.beckhoff-ec-diagnostics .arrow:before {
+    border-color: transparent transparent #007bff transparent;
+}
+.beckhoff-ec-diagnostics .toolbox {
+    background: var(--main-toolbox-bg-color);
+}
+
+.beckhoff-ec-diagnostics .toolbox-reset-view {
+    background-image: url('center.png');
+}
+
+.beckhoff-ec-diagnostics .change-highlight {
+    background: var(--main-change-highlight) !important;
+}
+
+.beckhoff-ec-diagnostics .change-highlight.error-value {
+    background: var(--main-change-error-highlight) !important;
+}
+.beckhoff-ec-diagnostics .regular-button {
+    transition: none;
+    font-size: var(--tchmi-button-font-size);
+    background: var(--tchmi-button-background);
+    color: var(--tchmi-button-text-color);
+    border: var(--tchmi-button-border);
+    box-shadow: var(--tchmi-button-shadow);
+}
+.beckhoff-ec-diagnostics .regular-button:hover {
+    font-size: var(--tchmi-button-font-size);
+    background: var(--tchmi-button-background);
+    color: var(--tchmi-button-text-color);
+    border: var(--tchmi-button-border);
+    box-shadow: var(--tchmi-button-shadow);
+}
+.beckhoff-ec-diagnostics .regular-button:active:not(:disabled, [disabled]) {
+    background: var(--tchmi-button-background-pressed);
+    color: var(--tchmi-button-text-color-pressed);
+    border: var(--tchmi-button-border-pressed);
+    box-shadow: var(--tchmi-button-shadow-pressed);
+}
+.beckhoff-ec-diagnostics .regular-button:disabled::after,
+.beckhoff-ec-diagnostics .regular-button[disabled]::after {
+    background: var(--tchmi-disabled-color);
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+.beckhoff-ec-diagnostics input.regular-text-input {
+    background: var(--main-input-bg);
+    border: 1px solid var(--main-border-color);
+}
+/** trace view*/
+.beckhoff-ec-diagnostics .trace-view .table-vertical .head {
+    border-right: 1px solid var(--main-border-color);
+}
+.beckhoff-ec-diagnostics .trace-view .table-vertical .content .col:hover {
+    box-shadow: 0px 0px 10px 1px var(--main-border-color);
+}
+.beckhoff-ec-diagnostics .trace-view .table-vertical .trace-slave-highlight,
+.table-vertical .col.trace-slave-highlight > div:nth-child(2n + 1) {
+    background: var(--main-trace-slave-highlight) !important;
+}
+.beckhoff-ec-diagnostics .trace-view .table-vertical .col > div:nth-child(2n + 1) {
+    background: var(--main-trace-odd-row);
+}
+/** slave view */
+.beckhoff-ec-diagnostics .slave-view {
+    background: var(--main-background-color);
+}
+.beckhoff-ec-diagnostics .slave-view .tab-content[tab='online'] .port {
+    border-top: 1px solid var(--main-border-color);
+}
+.beckhoff-ec-diagnostics .slave-view .tab-content[tab='online'] .port.not-connected {
+    color: var(--main-grayed-out);
+}
+/** error */
+.beckhoff-ec-diagnostics .slave-message.slave-message-error {
+    border-left-color: var(--tchmi-error-color);
+    border-bottom-color: var(--tchmi-error-color);
+}
+
+/** warning */
+.beckhoff-ec-diagnostics .slave-message.slave-message-warning {
+    border-left-color: var(--tchmi-warning-color);
+    border-bottom-color: var(--tchmi-warning-color);
+}
+.beckhoff-ec-diagnostics beckhoff-ec-diagnostics-pop-up .inner-frame > .header {
+    border-bottom: 1px solid var(--main-border-color);
+}
+/** process data */
+.beckhoff-ec-diagnostics .forced-process-data-value-flag {
+    background: rgb(230, 115, 0);
+    color: white;
+}
+.beckhoff-ec-diagnostics .boolean-representation.false {
+    background: black;
+    color: white;
+}
+.beckhoff-ec-diagnostics .boolean-representation.true {
+    background: blue;
+    color: white;
+}
+.beckhoff-ec-diagnostics .icon-input-channel {
+    background: url('TcBase/input_channel.png');
+}
+
+.beckhoff-ec-diagnostics .icon-input-struct-entry {
+    background: url('TcBase/input_struct_entry.png');
+}
+
+.beckhoff-ec-diagnostics .icon-input-array-entry {
+    background: url('TcBase/input_array_entry.png');
+}
+
+.beckhoff-ec-diagnostics .icon-input-entry {
+    background: url('TcBase/input_entry.png');
+}
+
+.beckhoff-ec-diagnostics .icon-input-entry-linked {
+    background: url('TcBase/input_entry_linked.png');
+}
+
+.beckhoff-ec-diagnostics .icon-output-channel {
+    background: url('TcBase/output_channel.png');
+}
+.beckhoff-ec-diagnostics .icon-output-struct-entry {
+    background: url('TcBase/output_struct_entry.png');
+}
+.beckhoff-ec-diagnostics .icon-output-array-entry {
+    background: url('TcBase/output_array_entry.png');
+}
+.beckhoff-ec-diagnostics .icon-output-entry {
+    background: url('TcBase/output_entry.png');
+}
+.beckhoff-ec-diagnostics .icon-output-entry-linked {
+    background: url('TcBase/output_entry_linked.png');
+}
+.beckhoff-ec-diagnostics .drawing-wrapper .drawing-info {
+    background: var(--main-toolbox-bg-color);
+}
+
+.beckhoff-ec-diagnostics .navigation-link {
+    color: blue;
+}

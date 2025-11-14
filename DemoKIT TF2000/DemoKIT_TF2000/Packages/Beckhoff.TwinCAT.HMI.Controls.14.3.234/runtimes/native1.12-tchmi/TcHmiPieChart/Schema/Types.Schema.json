@@ -1,0 +1,129 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+        "TcHmi.Controls.Beckhoff.TcHmiPieChart": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "type": "object",
+            "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+            "frameworkControlType": "TcHmiPieChart",
+            "frameworkControlNamespace": "TcHmi.Controls.Beckhoff"
+        },
+        "TcHmiPieChart": {
+            "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiPieChart"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiPieChart.LabelPosition": {
+            "title": "LabelPosition",
+            "type": "string",
+            "enum": ["Outside", "Inside"],
+            "default": "Inside"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiPieChart.ChartPieGraphDescriptionDefinitionList": {
+            "title": "ChartPieGraphDescriptionDefinitionList",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "engineeringColumns": ["name", "unit"],
+                "propertiesMeta": [
+                    {
+                        "name": "pieColor",
+                        "displayName": "Pie Color",
+                        "category": "Colors",
+                        "displayPriority": 10,
+                        "description": "Color for this piece of pie",
+                        "defaultValue": {
+                            "color": "#2775be"
+                        },
+                        "defaultValueInternal": null
+                    },
+                    {
+                        "name": "labelColor",
+                        "displayName": "Label Color",
+                        "category": "Colors",
+                        "displayPriority": 10,
+                        "description": "Color for the label of piece of pie",
+                        "defaultValue": {
+                            "color": "#2775be"
+                        },
+                        "defaultValueInternal": null
+                    },
+                    {
+                        "name": "name",
+                        "category": "General",
+                        "displayName": "Name",
+                        "displayPriority": 10,
+                        "description": "The name that is displayed.",
+                        "defaultValue": null,
+                        "defaultValueInternal": null
+                    },
+                    {
+                        "name": "showName",
+                        "category": "General",
+                        "displayName": "Show Name",
+                        "displayPriority": 10,
+                        "description": "Specifies whether the name should be displayed in the value label.",
+                        "defaultValue": null,
+                        "defaultValueInternal": false
+                    },
+                    {
+                        "name": "showPercentLabel",
+                        "category": "General",
+                        "displayName": "Show Percent Label",
+                        "displayPriority": 10,
+                        "description": "Specifies whether the percentage label should be displayed.",
+                        "defaultValue": null,
+                        "defaultValueInternal": false
+                    },
+                    {
+                        "name": "showValueLabel",
+                        "category": "General",
+                        "displayName": "Show Value Label",
+                        "displayPriority": 10,
+                        "description": "Specifies whether the value label should be displayed.",
+                        "defaultValue": null,
+                        "defaultValueInternal": true
+                    },
+                    {
+                        "name": "showUnit",
+                        "category": "General",
+                        "displayName": "Show Unit",
+                        "displayPriority": 10,
+                        "description": "Specifies whether the unit should be displayed in the value label.",
+                        "defaultValue": null,
+                        "defaultValueInternal": false
+                    }
+                ],
+                "properties": {
+                    "pieColor": {
+                        "$ref": "tchmi:framework#/definitions/SolidColor"
+                    },
+                    "labelColor": {
+                        "$ref": "tchmi:framework#/definitions/SolidColor"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "showName": {
+                        "type": "boolean"
+                    },
+                    "showValueLabel": {
+                        "type": "boolean"
+                    },
+                    "showUnit": {
+                        "type": "boolean"
+                    },
+                    "showPercentLabel": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiPieChart.ChartPieGraphDataDefinitionList": {
+            "title": "ChartPieGraphDataDefinitionList",
+            "type": "array",
+            "items": {
+                "type": "number"
+            }
+        }
+    }
+}

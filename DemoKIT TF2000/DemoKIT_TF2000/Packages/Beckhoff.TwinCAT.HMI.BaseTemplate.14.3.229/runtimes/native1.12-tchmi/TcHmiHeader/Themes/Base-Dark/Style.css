@@ -1,0 +1,87 @@
+/* Theme depended control css. */
+/*Base-Dark Theme*/
+.TcHmi_Controls_BaseTemplate_TcHmiHeader {
+    --tchmi-description-text: var(--tchmi-foreground-color-1);
+    --tchmi-description-background: var(--tchmi-background-color-1);
+    --tchmi-item-margin: 16px;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-expandable-container {
+    --tchmi-description-text: var(--tchmi-foreground-color-1);
+    --tchmi-description-background: var(--tchmi-background-color-1);
+    --tchmi-item-margin: 16px;
+    --tchmi-expandable-container-background: var(--tchmi-background-color-1);
+    background: var(--tchmi-expandable-container-background);
+    box-shadow: var(--tchmi-dropdown-shadow);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-expandable-container.above-control {
+    box-shadow: var(--tchmi-dropdown-shadow-above);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template-Align-Left .TcHmi_Controls_Beckhoff_TcHmiUserManagement,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template-Align-Left .TcHmi_Controls_Beckhoff_TcHmiAdsState,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template-Align-Left .TcHmi_Controls_Beckhoff_TcHmiDateTimeDisplay,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template-Align-Left .TcHmi_Controls_Beckhoff_TcHmiEventLine,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template-Align-Left .TcHmi_Controls_Beckhoff_TcHmiImage,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template-Align-Left .TcHmi_Controls_Beckhoff_TcHmiLocalizationSelect,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template-Align-Left .TcHmi_Controls_Beckhoff_TcHmiTextblock,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template-Align-Left .TcHmi_Controls_Beckhoff_TcHmiThemeSelect,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template-Align-Left .TcHmi_Controls_Beckhoff_TcHmiStateImage {
+    margin-left: var(--tchmi-item-margin);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template-Align-Right .TcHmi_Controls_Beckhoff_TcHmiUserManagement,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template-Align-Right .TcHmi_Controls_Beckhoff_TcHmiAdsState,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template-Align-Right .TcHmi_Controls_Beckhoff_TcHmiDateTimeDisplay,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template-Align-Right .TcHmi_Controls_Beckhoff_TcHmiEventLine,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template-Align-Right .TcHmi_Controls_Beckhoff_TcHmiImage,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template-Align-Right .TcHmi_Controls_Beckhoff_TcHmiLocalizationSelect,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template-Align-Right .TcHmi_Controls_Beckhoff_TcHmiTextblock,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template-Align-Right .TcHmi_Controls_Beckhoff_TcHmiThemeSelect,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template-Align-Right .TcHmi_Controls_Beckhoff_TcHmiStateImage {
+    margin-right: var(--tchmi-item-margin);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-expandable-container .TcHmi_Controls_Beckhoff_TcHmiUserManagement,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-expandable-container .TcHmi_Controls_Beckhoff_TcHmiAdsState,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-expandable-container .TcHmi_Controls_Beckhoff_TcHmiDateTimeDisplay,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-expandable-container .TcHmi_Controls_Beckhoff_TcHmiEventLine,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-expandable-container .TcHmi_Controls_Beckhoff_TcHmiLocalizationSelect,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-expandable-container .TcHmi_Controls_Beckhoff_TcHmiImage,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-expandable-container .TcHmi_Controls_Beckhoff_TcHmiTextblock,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-expandable-container .TcHmi_Controls_Beckhoff_TcHmiThemeSelect,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-expandable-container .TcHmi_Controls_Beckhoff_TcHmiStateImage {
+    margin-left: var(--tchmi-item-margin);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template .description-text,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-expandable-container .description-text {
+    color: var(--tchmi-description-text);
+    background: var(--tchmi-description-background);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiHeader .TcHmi_Controls_Beckhoff_TcHmiUserManagement,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader .TcHmi_Controls_Beckhoff_TcHmiAdsState,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader .TcHmi_Controls_Beckhoff_TcHmiEventLine,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader .TcHmi_Controls_Beckhoff_TcHmiLocalizationSelect,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader .TcHmi_Controls_Beckhoff_TcHmiThemeSelect,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader .TcHmi_Controls_Beckhoff_TcHmiStateImage,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-expandable-container .TcHmi_Controls_Beckhoff_TcHmiUserManagement,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-expandable-container .TcHmi_Controls_Beckhoff_TcHmiAdsState,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-expandable-container .TcHmi_Controls_Beckhoff_TcHmiEventLine,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-expandable-container .TcHmi_Controls_Beckhoff_TcHmiLocalizationSelect,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-expandable-container .TcHmi_Controls_Beckhoff_TcHmiThemeSelect,
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-expandable-container .TcHmi_Controls_Beckhoff_TcHmiStateImage {
+    box-shadow: var(--tchmi-card-shadow);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template > div > .TcHmi_Controls_Beckhoff_TcHmiTextblock {
+    font-size: 16px;
+    align-items: center;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiHeader-Template .TcHmi_Controls_Beckhoff_TcHmiCombobox-template-select-content {
+    font-size: 16px;
+    padding: 10px;
+}

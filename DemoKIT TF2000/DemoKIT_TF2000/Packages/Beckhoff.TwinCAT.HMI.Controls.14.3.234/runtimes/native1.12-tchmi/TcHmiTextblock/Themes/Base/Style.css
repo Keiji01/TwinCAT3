@@ -1,0 +1,8 @@
+/** Styles for the theme: Base */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiTextblock,
+.tchmi-textblock {
+    --tchmi-color: var(--tchmi-foreground-color-4);
+    color: var(--tchmi-color);
+}

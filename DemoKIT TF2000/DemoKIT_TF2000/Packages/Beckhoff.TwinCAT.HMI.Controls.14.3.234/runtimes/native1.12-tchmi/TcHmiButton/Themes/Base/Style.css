@@ -1,0 +1,25 @@
+/** Styles for the theme: Base */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiButton,
+.tchmi-button {
+    font-size: var(--tchmi-button-font-size);
+    background: var(--tchmi-button-background);
+    color: var(--tchmi-button-text-color);
+    border: var(--tchmi-button-border);
+    box-shadow: var(--tchmi-button-shadow);
+}
+
+/* Class down will be set/unset in the control on mouse/touch down */
+.TcHmi_Controls_Beckhoff_TcHmiButton.down,
+.tchmi-button.down {
+    background: var(--tchmi-button-background-pressed);
+    color: var(--tchmi-button-text-color-pressed);
+    border: var(--tchmi-button-border-pressed);
+    box-shadow: var(--tchmi-button-shadow-pressed);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiButton.read-only::after,
+.tchmi-button.read-only::after {
+    background-color: var(--tchmi-disabled-color);
+}

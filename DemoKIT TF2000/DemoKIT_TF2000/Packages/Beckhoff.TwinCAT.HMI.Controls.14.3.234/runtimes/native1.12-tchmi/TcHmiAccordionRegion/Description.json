@@ -1,0 +1,288 @@
+{
+    "$schema": "../../TcHmiFramework/Schema/ControlDescription.Schema.json",
+    "apiVersion": 1,
+    "name": "TcHmiAccordionRegion",
+    "namespace": "TcHmi.Controls.Beckhoff",
+    "displayName": "Accordion Region",
+    "version": {
+        "full": "14.3.234.0",
+        "major": 14,
+        "minor": 3,
+        "build": 234,
+        "revision": 0
+    },
+    "visible": true,
+    "themeable": "Standard",
+    "base": "TcHmi.Controls.System.TcHmiControl",
+    "description": "A Region control that displays its content in an accordion.",
+    "properties": {
+        "containerControl": false,
+        "geometry": {
+            "width": 500,
+            "height": 500
+        }
+    },
+    "icons": [
+        {
+            "name": "Icons/16x16.png",
+            "width": 16,
+            "height": 16
+        }
+    ],
+    "template": "Template.html",
+    "dependencyFiles": [
+        {
+            "name": "TcHmiAccordionRegion.js",
+            "type": "JavaScript",
+            "description": "Contains all the main logic."
+        },
+        {
+            "name": "Style.css",
+            "type": "Stylesheet",
+            "description": "Theme independent style"
+        }
+    ],
+    "themes": {
+        "Base": {
+            "resources": [
+                {
+                    "name": "Themes/Base/Style.css",
+                    "type": "Stylesheet",
+                    "description": "Theme dependent style"
+                }
+            ]
+        },
+        "Base-Dark": {
+            "resources": [
+                {
+                    "name": "Themes/Base-Dark/Style.css",
+                    "type": "Stylesheet",
+                    "description": "Theme dependent style"
+                }
+            ]
+        }
+    },
+    "attributes": [
+        {
+            "name": "data-tchmi-accordion-items",
+            "propertyName": "AccordionItems",
+            "propertySetterName": "setAccordionItems",
+            "propertyGetterName": "getAccordionItems",
+            "displayName": "Accordion Items",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 10,
+            "type": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiAccordionRegion.AccordionItemList",
+            "category": "Common",
+            "description": "A list of accordion items to be displayed in the control.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "allowSymbolExpressionsInObject": true,
+            "defaultValue": [
+                {
+                    "name": "item1",
+                    "text": "Item 1",
+                    "horizontalAlignment": "Left",
+                    "verticalAlignment": "Center"
+                },
+                {
+                    "name": "item2",
+                    "text": "Item 2",
+                    "horizontalAlignment": "Left",
+                    "verticalAlignment": "Center"
+                }
+            ],
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-auto-collapse",
+            "propertyName": "AutoCollapse",
+            "propertySetterName": "setAutoCollapse",
+            "propertyGetterName": "getAutoCollapse",
+            "displayName": "Auto Collapse",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 50,
+            "type": "tchmi:general#/definitions/Boolean",
+            "category": "Common",
+            "description": "When set to true only one item is kept open.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": true
+        },
+        {
+            "name": "data-tchmi-text-horizontal-alignment",
+            "propertyName": "TextHorizontalAlignment",
+            "propertySetterName": "setTextHorizontalAlignment",
+            "propertyGetterName": "getTextHorizontalAlignment",
+            "displayName": "Text Horizontal Alignment",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 30,
+            "type": "tchmi:framework#/definitions/HorizontalAlignment",
+            "category": "Text",
+            "description": "Defines the horizontal alignment of the text.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-text-vertical-alignment",
+            "propertyName": "TextVerticalAlignment",
+            "propertySetterName": "setTextVerticalAlignment",
+            "propertyGetterName": "getTextVerticalAlignment",
+            "displayName": "Text Vertical Alignment",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 30,
+            "type": "tchmi:framework#/definitions/VerticalAlignment",
+            "category": "Text",
+            "description": "Defines the vertical alignment of the text.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-text-padding",
+            "propertyName": "TextPadding",
+            "propertySetterName": "setTextPadding",
+            "propertyGetterName": "getTextPadding",
+            "displayName": "Text Padding",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 55,
+            "type": "tchmi:framework#/definitions/Padding",
+            "category": "Text",
+            "description": "The distance of the text to the border.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "allowSymbolExpressionsInObject": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-text-font-family",
+            "propertyName": "TextFontFamily",
+            "propertySetterName": "setTextFontFamily",
+            "propertyGetterName": "getTextFontFamily",
+            "displayName": "Text Font Family",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 60,
+            "type": "tchmi:framework#/definitions/FontFamily",
+            "category": "Text",
+            "description": "Comma separated list of family name or keyword: 'serif', 'sans-serif', 'monospace'.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-text-font-size",
+            "propertyName": "TextFontSize",
+            "propertySetterName": "setTextFontSize",
+            "propertyGetterName": "getTextFontSize",
+            "displayName": "Text Font Size",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 30,
+            "type": "tchmi:framework#/definitions/MeasurementValue",
+            "category": "Text",
+            "description": "The size of the font. Percent values are relative to the parent elements font size.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-text-font-size-unit",
+            "propertyName": "TextFontSizeUnit",
+            "propertySetterName": "setTextFontSizeUnit",
+            "propertyGetterName": "getTextFontSizeUnit",
+            "refTo": "TextFontSize",
+            "displayName": "Text Font Size Unit",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 30,
+            "type": "tchmi:framework#/definitions/MeasurementUnit",
+            "category": "Text",
+            "description": "Could be 'px' or for relative sizing '%'.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "px"
+        },
+        {
+            "name": "data-tchmi-text-font-style",
+            "propertyName": "TextFontStyle",
+            "propertySetterName": "setTextFontStyle",
+            "propertyGetterName": "getTextFontStyle",
+            "displayName": "Text Font Style",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 60,
+            "type": "tchmi:framework#/definitions/FontStyle",
+            "category": "Text",
+            "description": "'Normal', 'Italic' (slanted with special glyphs), 'Oblique' (slanted normal glyphs) or 'Auto' for inherited.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "Auto"
+        },
+        {
+            "name": "data-tchmi-text-font-weight",
+            "propertyName": "TextFontWeight",
+            "propertySetterName": "setTextFontWeight",
+            "propertyGetterName": "getTextFontWeight",
+            "displayName": "Text Font Weight",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 60,
+            "type": "tchmi:framework#/definitions/FontWeight",
+            "category": "Text",
+            "description": "'Normal', 'Bold' (glyphs with more weight) or 'Auto' for inherited.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "Auto"
+        }
+    ],
+    "attributeCategories": [
+        {
+            "name": "Text",
+            "displayPriority": 500,
+            "defaultCollapsed": true,
+            "description": "Attributes defining an text of the control."
+        }
+    ],
+    "functions": [],
+    "events": [],
+    "dataTypes": [
+        {
+            "schema": "Schema/Types.Schema.json"
+        }
+    ]
+}

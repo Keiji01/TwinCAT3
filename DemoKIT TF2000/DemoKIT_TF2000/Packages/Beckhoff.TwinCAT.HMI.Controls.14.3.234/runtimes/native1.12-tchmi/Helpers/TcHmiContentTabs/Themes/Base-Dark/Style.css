@@ -1,0 +1,132 @@
+/* ContentTab style for Theme: Base-Dark */
+tchmi-content-tabs,
+tchmi-content-tabs-dropdown {
+    --tchmi-background: var(--tchmi-background-color-1);
+    --tchmi-link-background: var(--tchmi-background-color-3);
+    --tchmi-link-background-hover: var(--tchmi-background-color-2);
+    --tchmi-color: var(--tchmi-foreground-color-1);
+    --tchmi-link-color-active: var(--tchmi-foreground-color-1);
+    --tchmi-link-color-disabled: var(--tchmi-foreground-color-3);
+    --tchmi-separator-color: var(--tchmi-foreground-color-4);
+}
+
+tchmi-content-tabs-dropdown {
+    background: var(--tchmi-background);
+}
+
+tchmi-content-tabs tchmi-tab-contents {
+    background: var(--tchmi-background);
+}
+
+tchmi-content-tabs tchmi-tab-links tchmi-tab-link,
+tchmi-content-tabs-dropdown tchmi-tab-link,
+tchmi-content-tabs tchmi-tab-links tchmi-tab-links-overflow {
+    color: var(--tchmi-color);
+    background: var(--tchmi-link-background);
+}
+
+tchmi-content-tabs tchmi-tab-links > tchmi-tab-link:not([disabled])[active],
+tchmi-content-tabs-dropdown > tchmi-tab-link:not([disabled])[active] {
+    background: var(--tchmi-background);
+    color: var(--tchmi-link-color-active);
+}
+
+tchmi-content-tabs tchmi-tab-links > tchmi-tab-link:not([disabled]):hover:not([active]),
+tchmi-content-tabs-dropdown > tchmi-tab-link:not([disabled]):hover:not([active]) {
+    background: var(--tchmi-link-background-hover);
+}
+
+tchmi-content-tabs tchmi-tab-links > tchmi-tab-link[disabled],
+tchmi-content-tabs-dropdown > tchmi-tab-link[disabled] {
+    color: var(--tchmi-link-color-disabled);
+}
+
+/* tab alignment - left */
+tchmi-content-tabs[tab-alignment='Left'] > tchmi-tab-links > tchmi-tab-link,
+tchmi-content-tabs[tab-alignment='Left'] > tchmi-tab-links > tchmi-tab-links-overflow {
+    min-height: 50px;
+}
+
+/* tab alignment - right */
+tchmi-content-tabs[tab-alignment='Right'] > tchmi-tab-links > tchmi-tab-link,
+tchmi-content-tabs[tab-alignment='Right'] > tchmi-tab-links > tchmi-tab-links-overflow {
+    min-height: 50px;
+}
+
+tchmi-content-tabs tchmi-tab-links tchmi-tab-links-overflow {
+    background:
+        url('Images/dropdown.svg') 100% 50% no-repeat,
+        var(--tchmi-link-background);
+}
+
+tchmi-content-tabs tchmi-tab-links > tchmi-tab-links-overflow:not([disabled]):hover {
+    background:
+        url('Images/dropdown.svg') 100% 50% no-repeat,
+        var(--tchmi-link-background-hover);
+}
+
+tchmi-content-tabs tchmi-tab-links > tchmi-tab-links-overflow:not([disabled])[active] {
+    background:
+        url('Images/dropdown.svg') 100% 50% no-repeat,
+        var(--tchmi-background);
+    color: var(--tchmi-link-color-active);
+}
+
+tchmi-content-tabs tchmi-tab-links tchmi-tab-links-overflow tchmi-tab-link {
+    border: none;
+    background: none;
+}
+
+tchmi-content-tabs:not([tab-alignment='Left']):not([tab-alignment='Right'])
+    tchmi-tab-links
+    tchmi-tab-link:not([active]):not(:last-child)::after,
+tchmi-content-tabs:not([tab-alignment='Left']):not([tab-alignment='Right'])
+    tchmi-tab-links
+    tchmi-tab-links-overflow:not([active]):not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 25%;
+    right: 0;
+    height: 50%;
+    width: 1px;
+    border-right: 1px solid var(--tchmi-separator-color);
+    box-sizing: border-box;
+}
+
+tchmi-content-tabs:not([tab-alignment='Left']):not([tab-alignment='Right'])
+    tchmi-tab-links
+    tchmi-tab-link[active]::after,
+tchmi-content-tabs:not([tab-alignment='Left']):not([tab-alignment='Right'])
+    tchmi-tab-links
+    tchmi-tab-links-overflow[active]::after {
+    content: '';
+    position: absolute;
+    top: 25%;
+    left: -1px;
+    height: 50%;
+    width: 1px;
+    border-right: 1px solid var(--tchmi-link-background);
+    box-sizing: border-box;
+}
+
+tchmi-content-tabs:not([tab-alignment='Left']):not([tab-alignment='Right'])
+    tchmi-tab-links
+    tchmi-tab-link:hover
+    + tchmi-tab-link[active]::after,
+tchmi-content-tabs:not([tab-alignment='Left']):not([tab-alignment='Right'])
+    tchmi-tab-links
+    tchmi-tab-link:hover
+    + tchmi-tab-links-overflow[active]::after {
+    content: '';
+    position: absolute;
+    top: 25%;
+    left: -1px;
+    height: 50%;
+    width: 1px;
+    border-right: 1px solid var(--tchmi-link-background-hover);
+    box-sizing: border-box;
+}
+
+tchmi-content-tabs[disabled]::after {
+    background-color: var(--tchmi-disabled-color);
+}

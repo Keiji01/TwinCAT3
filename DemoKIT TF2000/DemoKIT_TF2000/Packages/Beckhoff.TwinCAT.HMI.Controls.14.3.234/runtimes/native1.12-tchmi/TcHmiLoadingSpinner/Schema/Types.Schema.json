@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+        "TcHmi.Controls.Beckhoff.TcHmiLoadingSpinner": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "type": "object",
+            "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+            "frameworkControlType": "TcHmiLoadingSpinner",
+            "frameworkControlNamespace": "TcHmi.Controls.Beckhoff"
+        },
+        "TcHmiLoadingSpinner": {
+            "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiLoadingSpinner"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiLoadingSpinner.SpinnerVelocity": {
+            "title": "SpinnerVelocity",
+            "type": "string",
+            "enum": ["Slow", "Normal", "Fast"],
+            "default": "Normal"
+        }
+    }
+}

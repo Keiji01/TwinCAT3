@@ -1,0 +1,29 @@
+{
+    "$schema": "../TcHmiFramework/Schema/FunctionDescription.Schema.json",
+    "apiVersion": 1,
+    "version": {
+        "full": "14.3.229.0",
+        "major": 14,
+        "minor": 3,
+        "build": 229,
+        "revision": 0
+    },
+    "dependencyFiles": [
+        {
+            "name": "GetTheme.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "function": {
+        "name": "GetTheme",
+        "namespace": "TcHmi.Functions.Beckhoff",
+        "displayName": "GetTheme",
+        "description": "Gets the current Themename.",
+        "category": "Theme",
+        "returnValue": {
+            "type": "tchmi:framework#/definitions/ThemeName"
+        },
+        "arguments": []
+    }
+}

@@ -1,0 +1,351 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "adsState": {
+      "type": "integer",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "options": [
+        {
+          "label": "adsStateInvalid",
+          "value": 0
+        },
+        {
+          "label": "adsStateIdle",
+          "value": 1
+        },
+        {
+          "label": "adsStateReset",
+          "value": 2
+        },
+        {
+          "label": "adsStateInit",
+          "value": 3
+        },
+        {
+          "label": "adsStateStart",
+          "value": 4
+        },
+        {
+          "label": "adsStateRun",
+          "value": 5
+        },
+        {
+          "label": "adsStateStop",
+          "value": 6
+        },
+        {
+          "label": "adsStateSaveCfg",
+          "value": 7
+        },
+        {
+          "label": "adsStateLoadCfg",
+          "value": 8
+        },
+        {
+          "label": "adsStatePowerFailure",
+          "value": 9
+        },
+        {
+          "label": "adsStatePowerGood",
+          "value": 10
+        },
+        {
+          "label": "adsStateError",
+          "value": 11
+        },
+        {
+          "label": "adsStateShutdown",
+          "value": 12
+        },
+        {
+          "label": "adsStateSuspend",
+          "value": 13
+        },
+        {
+          "label": "adsStateResume",
+          "value": 14
+        },
+        {
+          "label": "adsStateConfig",
+          "value": 15
+        },
+        {
+          "label": "adsStateReconfig",
+          "value": 16
+        },
+        {
+          "label": "adsStateStopping",
+          "value": 17
+        },
+        {
+          "label": "adsStateIncompatible",
+          "value": 18
+        },
+        {
+          "label": "adsStateException",
+          "value": 19
+        }
+      ]
+    }
+  },
+  "properties": {
+    "TIMEOUT": {
+      "configDescription": "DESC_TIMEOUT",
+      "type": "string",
+      "propertyOrder": 2,
+      "format": "timespan",
+      "default": "PT1S",
+      "formatMinimum": "PT0.1S"
+    },
+    "RUNTIME_STATE_CHECK_TIMEOUT": {
+      "configDescription": "DESC_RUNTIME_STATE_CHECK_TIMEOUT",
+      "type": "string",
+      "propertyOrder": 3,
+      "format": "timespan",
+      "default": "PT5S",
+      "formatMinimum": "PT1S",
+      "formatMaximum": "PT30S",
+      "visibility": "HideInEngineering"
+    },
+    "RUNTIME_STATE_CHECK_INTERVAL": {
+      "configDescription": "DESC_RUNTIME_STATE_CHECK_INTERVAL",
+      "type": "string",
+      "propertyOrder": 4,
+      "format": "timespan",
+      "default": "PT2S",
+      "formatMinimum": "PT1S",
+      "formatMaximum": "PT30S",
+      "visibility": "HideInEngineering"
+    },
+    "RUNTIMES": {
+      "configDescription": "DESC_RUNTIMES",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "configDescription": "DESC_RUNTIME",
+        "properties": {
+          "PORT": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 851,
+            "optionMethod": {
+              "symbol": "{domain}.RuntimePorts",
+              "writeValue": {
+                "NETID": {
+                  "$data": "#/properties/RUNTIMES/additionalProperties/NETID"
+                }
+              }
+            },
+            "propertyOrder": 3
+          },
+          "NETID": {
+            "allOf": [
+              {
+                "$ref": "tchmi:server#/definitions/adsRoute"
+              },
+              {
+                "propertyOrder": 2,
+                "configDescription": "DESC_ADS_ROUTE"
+              }
+            ]
+          },
+          "ENABLED": {
+            "type": "boolean",
+            "default": true,
+            "propertyOrder": 1
+          },
+          "USE_WHITELISTING": {
+            "type": "boolean",
+            "default": false,
+            "propertyOrder": 4
+          },
+          "READ_ONLY": {
+            "type": "boolean",
+            "default": false,
+            "propertyOrder": 5,
+            "configDescription": "DESC_READ_ONLY"
+          },
+          "SYMBOLS": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "configDescription": "DESC_SYMBOL",
+              "properties": {
+                "INDEXGROUP": {
+                  "$ref": "tchmi:general#/definitions/UINT32"
+                },
+                "INDEXOFFSET": {
+                  "$ref": "tchmi:general#/definitions/UINT32"
+                },
+                "TYPENAME": {
+                  "type": "string",
+                  "configDescription": "DESC_TYPENAME",
+                  "optionMethod": {
+                    "symbol": "{domain}.ListCommonTypes"
+                  }
+                }
+              },
+              "required": [ "INDEXGROUP", "INDEXOFFSET", "TYPENAME" ]
+            },
+            "default": {},
+            "propertyOrder": 6
+          }
+        },
+        "additionalProperties": false,
+        "required": ["PORT", "USE_WHITELISTING", "NETID", "ENABLED", "SYMBOLS", "READ_ONLY" ]
+      },
+      "default": {
+        "PLC1": {
+          "PORT": 851,
+          "NETID": "127.0.0.1.1.1",
+          "ENABLED": true,
+          "USE_WHITELISTING": false,
+          "READ_ONLY": false,
+          "SYMBOLS": {}
+        }
+      },
+      "defaultConfigurable": true,
+      "propertyOrder": 1
+    },
+    "IGNORED_PLC_ATTRIBUTES": {
+      "configDescription": "DESC_IGNORED_PLC_ATTRIBUTES",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [
+          "DisplayMinValue",
+          "DisplayMaxValue",
+          "DisplayMinValueX64",
+          "DisplayMaxValueX64",
+          "LowerBorder",
+          "UpperBorder",
+          "TcRpcEnable",
+          "TcGenerateDeRefType",
+          "TcHmiSymbol.ReadOnly",
+          "TcHmiSymbol.AddSymbol",
+          "TcHmiSymbol.AddSymbol.UserGroups",
+          "TcHmiSymbol.AddSymbol.UserGroups.Read",
+          "TcHmiSymbol.AddSymbol.Hidden",
+          "to_string_function",
+          "to_wstring_function"
+      ],
+      "visibility": "HideInEngineering",
+      "propertyOrder": 5
+    },
+    "VISIBLE_RUNTIME_PORTS": {
+      "configDescription": "DESC_VISIBLE_RUNTIME_PORTS",
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "tchmi:general#/definitions/UINT16"
+          },
+          {
+            "minimum": 1
+          }
+        ]
+      },
+      "default": [
+          301,
+          302,
+          303,
+          304,
+          350,
+          351,
+          352,
+          353,
+          354,
+          355,
+          501,
+          801,
+          811,
+          821,
+          831,
+          851,
+          852,
+          853,
+          854,
+          10000,
+          19800
+      ],
+      "visibility": "HideInEngineering",
+      "propertyOrder": 6
+    },
+    "RESPONSE_SIZE_LIMIT": {
+      "allOf": [
+        {
+          "$ref": "tchmi:general#/definitions/INT32"
+        },
+        {
+          "configDescription": "DESC_RESPONSE_SIZE_LIMIT",
+          "type": "integer",
+          "minimum": 2048,
+          "default": 2097152,
+          "unit": "byte",
+          "visibility": "HideInEngineering",
+          "propertyOrder": 7
+        }
+      ]
+    },
+    "SUM_REQUEST_LIMIT": {
+      "configDescription": "DESC_SUM_REQUEST_LIMIT",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000,
+      "default": 500,
+      "visibility": "HideInEngineering",
+      "propertyOrder": 8
+    },
+    "NEW_HANDLES_PER_SUM_REQUEST_LIMIT": {
+      "configDescription": "DESC_NEW_HANDLES_PER_SUM_REQUEST_LIMIT",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000,
+      "default": 100,
+      "visibility": "HideInEngineering",
+      "propertyOrder": 9
+    },
+    "ENABLE_READ_BEFORE_WRITE": {
+      "configDescription": "DESC_ENABLE_READ_BEFORE_WRITE",
+      "type": "boolean",
+      "default": false,
+      "propertyOrder": 10
+    }
+  },
+  "type": "object",
+  "required": [
+    "TIMEOUT",
+    "RUNTIME_STATE_CHECK_TIMEOUT",
+    "RUNTIME_STATE_CHECK_INTERVAL",
+    "RUNTIMES",
+    "IGNORED_PLC_ATTRIBUTES",
+    "VISIBLE_RUNTIME_PORTS",
+    "RESPONSE_SIZE_LIMIT",
+    "SUM_REQUEST_LIMIT",
+    "NEW_HANDLES_PER_SUM_REQUEST_LIMIT",
+    "ENABLE_READ_BEFORE_WRITE"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,48 @@
+/** Styles for the theme: Base-Dark */
+
+/* Style for the main element */
+.TcHmi_Controls_Beckhoff_TcHmiTextbox,
+.tchmi-textbox {
+    --tchmi-background: var(--tchmi-background-color-4);
+    --tchmi-color: var(--tchmi-foreground-color-1);
+    --tchmi-border-color: var(--tchmi-background-color-2);
+    background-color: var(--tchmi-background);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiTextbox-template,
+.tchmi-textbox-template {
+    border: 1px solid var(--tchmi-border-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiTextbox-template-input-container,
+.tchmi-textbox-template-input-container {
+    color: var(--tchmi-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiTextbox-template-input:is(:focus, .tchmi-focus, .tchmi-keyboard-user-input) {
+    background: rgba(76, 99, 116, 0.05);
+    /* We are inside a border container here */
+    outline-offset: 0px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiTextbox.read-only {
+    background: var(--tchmi-read-only-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiTextbox-template-border.invalid,
+.tchmi-textbox-template-border.invalid {
+    background-color: var(--tchmi-background-invalid);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiTextbox-template-input:invalid {
+    background-color: var(
+        --tchmi-background-invalid
+    ) !important; /*set as important because it would be overwritten by the onInput selector during an input*/
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiTextbox-template-input-invalid-notification,
+.tchmi-template-input-invalid-notification {
+    color: red;
+    font-weight: bold;
+    font-size: 15px;
+}

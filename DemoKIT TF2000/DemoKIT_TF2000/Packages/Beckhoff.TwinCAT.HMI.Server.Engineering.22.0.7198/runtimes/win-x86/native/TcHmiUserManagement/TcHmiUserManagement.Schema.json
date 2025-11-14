@@ -1,0 +1,196 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "USERS": {
+      "configDescription": "DESC_USERS",
+      "type": "object",
+      "visibility": "AlwaysHide",
+      "additionalProperties": {
+        "type": "object",
+        "configDescription": "DESC_USER",
+        "properties": {
+          "PASSWORD": {
+            "type": "string",
+            "default": ""
+          },
+          "SALT": {
+            "type": "string",
+            "format": "base64",
+            "default": ""
+          },
+          "ALGORITHM": {
+            "type": "integer",
+            "default": 0,
+            "enum": [
+              0,
+              1
+            ],
+            "options": [
+              {
+                "label": "SHA256",
+                "value": 0
+              },
+              {
+                "label": "PBKDF2-HMAC-64-SHA512-1000",
+                "value": 1
+              }
+            ]
+          },
+          "SECRET": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string"
+              },
+              "iv": {
+                "type": "string"
+              },
+              "algorithm": {
+                "type": "integer",
+                "default": 0,
+                "enum": [
+                  0
+                ],
+                "options": [
+                  {
+                    "label": "SHA1",
+                    "value": 0
+                  }
+                ]
+              },
+              "configuration": {
+                "type": "integer",
+                "default": 0,
+                "enum": [
+                  0
+                ],
+                "options": [
+                  {
+                    "label": "google-authenticator",
+                    "value": 0
+                  }
+                ]
+              }
+            }
+          },
+          "TWO_FACTOR_AUTHENTICATION_ENABLED": {
+            "type": "boolean",
+            "default": false
+          },
+          "ENABLED": {
+            "type": "boolean",
+            "default": true
+          },
+          "LAST_PASSWORD_CHANGE": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "PASSWORD",
+          "SALT",
+          "ALGORITHM",
+          "ENABLED",
+          "TWO_FACTOR_AUTHENTICATION_ENABLED"
+        ]
+      },
+      "default": {
+        "__SystemGuest": {
+          "PASSWORD": "",
+          "SALT": "",
+          "ENABLED": true
+        },
+        "__SystemUser": {
+          "PASSWORD": "",
+          "SALT": "",
+          "ENABLED": true
+        },
+        "__SystemAdministrator": {
+          "PASSWORD": "",
+          "SALT": "",
+          "ENABLED": false
+        }
+      },
+      "required": [
+        "__SystemAdministrator"
+      ]
+    },
+    "PASSWORD_MINIMUM_LENGTH": {
+      "configDescription": "DESC_PASSWORD_MINIMUM_LENGTH",
+      "type": "integer",
+      "minimum": 1,
+      "default": 1
+    },
+    "PASSWORD_ENABLE_AGING": {
+      "configDescription": "DESC_PASSWORD_ENABLE_AGING",
+      "type": "boolean",
+      "default": false
+    },
+    "PASSWORD_MAXIMUM_AGE": {
+      "configDescription": "DESC_PASSWORD_MAXIMUM_AGE",
+      "type": "string",
+      "format": "timespan",
+      "default": "P90D"
+    },
+    "PASSWORD_BLACKLIST": {
+      "configDescription": "DESC_PASSWORD_BLACKLIST",
+      "type": "string",
+      "format": "multiline",
+      "default": ""
+    },
+    "PASSWORD_FORCE_COMPLEX": {
+      "configDescription": "DESC_PASSWORD_FORCE_COMPLEX",
+      "type": "integer",
+      "default": 0,
+      "enum": [
+        0,
+        1
+      ],
+      "options": [
+        {
+          "label": "ENUM_NO_COMPLEXITY_RULES",
+          "value": 0
+        },
+        {
+          "label": "ENUM_GMP_COMPLEXITY_RULES",
+          "value": 1
+        }
+      ]
+    },
+    "ENABLE_TWO_FACTOR_AUTHENTICATION": {
+      "configDescription": "DESC_ENABLE_TWO_FACTOR_AUTHENTICATION",
+      "type": "integer",
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "options": [
+        {
+          "label": "ALWAYS_OFF_2FA",
+          "value": 0
+        },
+        {
+          "label": "ALWAYS_ON_2FA",
+          "value": 1
+        },
+        {
+          "label": "REMOTE_2FA",
+          "value": 2
+        }
+      ]
+      
+    }
+  },
+  "additionalProperties": false,
+  "type": "object",
+  "required": [
+    "USERS",
+    "PASSWORD_MINIMUM_LENGTH",
+    "PASSWORD_ENABLE_AGING",
+    "PASSWORD_MAXIMUM_AGE",
+    "PASSWORD_BLACKLIST",
+    "PASSWORD_FORCE_COMPLEX"
+  ]
+}

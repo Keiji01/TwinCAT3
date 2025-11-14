@@ -1,0 +1,39 @@
+tchmi-split-view {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+tchmi-split-view > [data-resizable='horizontal'],
+tchmi-split-view > [data-resizable='vertical'] {
+    overflow: auto;
+    box-sizing: border-box;
+    min-width: 50px; /* for horizontal division */
+    min-height: 50px; /* for vertical division */
+    flex-shrink: 0; /* prevents shrinking */
+}
+
+tchmi-split-view > [data-resizable='horizontal']::after,
+tchmi-split-view > [data-resizable='vertical']::after {
+    content: '';
+    position: absolute;
+    background: transparent; /* only to listen to events */
+    z-index: 1;
+}
+
+tchmi-split-view > [data-resizable='horizontal']::after {
+    top: 0;
+    right: 0;
+    width: 8px; /* width of the resize bar */
+    height: 100%;
+    cursor: col-resize;
+}
+
+tchmi-split-view > [data-resizable='vertical']::after {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px; /* height of the resize bar */
+    cursor: row-resize;
+}

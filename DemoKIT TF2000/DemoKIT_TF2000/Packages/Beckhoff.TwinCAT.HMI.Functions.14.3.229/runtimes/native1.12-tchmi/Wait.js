@@ -1,0 +1,1 @@
+"use strict";var TcHmi;!function(TcHmi){!function(Functions){!function(Beckhoff){Beckhoff.Wait=function(ctx,time){setTimeout(()=>{ctx.success()},time)}}(Functions.Beckhoff||(Functions.Beckhoff={}))}(TcHmi.Functions||(TcHmi.Functions={}))}(TcHmi||(TcHmi={})),TcHmi.Functions.registerFunctionEx("Wait","TcHmi.Functions.Beckhoff",TcHmi.Functions.Beckhoff.Wait);

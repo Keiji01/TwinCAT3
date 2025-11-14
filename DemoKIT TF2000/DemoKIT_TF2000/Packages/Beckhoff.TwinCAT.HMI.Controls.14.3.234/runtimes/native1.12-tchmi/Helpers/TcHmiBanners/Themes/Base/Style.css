@@ -1,0 +1,10 @@
+/** TcHmiBanners theme dependend style for theme: Base */
+.TcHmi_Controls_Helpers_Banner {
+    background: #f6f7f8;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 1px 10px 2px;
+}
+
+.TcHmi_Controls_Helpers_Banner-header-container {
+    background: url(Images/warning.svg) no-repeat 0% 0%;
+    background-size: 48px;
+}

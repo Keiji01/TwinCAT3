@@ -1,0 +1,43 @@
+{
+  "locale": "de",
+  "localizedText": {
+    "MAXENTRIES": "Maximale Anzahl von Einträgen",
+    "DESC_MAXENTRIES": "Um die Datenbankgröße zu begrenzen, werden die ältesten Datenbankeinträge unwiderruflich gelöscht, wenn dieses Limit überschritten wird.",
+    "MAXENTRYLENGTH": "Maximale Länge eines Eintrags",
+    "DESC_MAXENTRYLENGTH": "Einträge, die dieses Limit überschreiten, werden vor dem Speichern gekürzt.",
+    "EVENTREQUIRESCONFIRMATION": "Ereignis {0} benötigt eine Bestätigung",
+    "EVENTCONFIRMED": "Ereignis {0} wurde bestätigt",
+    "DEFAULT_LIST_LIMIT": "Standardlimit für Eintragslisten",
+    "DESC_DEFAULT_LIST_LIMIT": "Dieses Limit wird für alle Anfragen verwendet, für die kein anderes Limit angegeben wurde.",
+    "VACUUM_ON_STARTUP": "Vacuum beim Start",
+    "DESC_VACUUM_ON_STARTUP": "Versucht, die Datenbankgröße zu reduzieren. Dies kann bei großen Datenbanken sehr lange dauern.",
+    "MODE": "Modus",
+    "DESC_MODE": "Synchronisation aus ist schneller, kann aber im Fall eines Stromausfalls die Datenbank korrumpieren.",
+
+    "ENUM_SYNCHRONOUS_EXTRA_PERSIST": "Synchronisation extra",
+    "ENUM_SYNCHRONOUS_FULL_PERSIST": "Synchronisation vollständig",
+    "ENUM_SYNCHRONOUS_NORMAL_PERSIST": "Synchronisation normal",
+    "ENUM_SYNCHRONOUS_OFF_PERSIST": "Synchronisation aus",
+
+    "REDIRECT_DIAGNOSTICS_MESSAGES_TO_FILE": "Diagnosemeldungen in eine Datei umleiten",
+    "DESC_REDIRECT_DIAGNOSTICS_MESSAGES_TO_FILE": "Verringert die Wahrscheinlichkeit, dass eine Flut von Diagnosemeldungen das System überfordert. Besonders nützlich bei der Diagnose von Problemen auf kleineren Geräten. Diese Funktion wird nur auf Windows unterstützt. Server-Neustart erforderlich.",
+    "REDIRECTING_DIAGNOSTICS_MESSAGES_TO_FILE": "Diagnosemeldungen werden in diese Datei umgeleitet: {0}",
+    "MAX_DIAGNOSTICS_MESSAGES_FILE_SIZE": "Maximale Größe der Datei, die die Diagnosemeldungen enthält",
+    "MAX_DIAGNOSTICS_ARCHIVE_FILE_COUNT": "Maximale Anzahl der Archivdateien, die Diagnosemeldungen enthalten",
+    "DESC_MAX_DIAGNOSTICS_MESSAGES_FILE_SIZE": "Server-Neustart erforderlich.",
+    "DESC_MAX_DIAGNOSTICS_ARCHIVE_FILE_COUNT": "Server-Neustart erforderlich.",
+
+    "MSG_SHUTDOWN": "Herunterfahren der Erweiterung {0} war erfolgreich.",
+  
+    "allDomains": "Alle Domains",
+    "perDomain": "Pro Domain",
+    "databaseSize": "Datenbankgröße",
+    "persistentDatabaseSize": "Größe der persistenten Datenbank",
+    "numEvents": "Anzahl Ereignisse",
+    "numPersistentEvents": "Anzahl persistierter Ereignisse",
+    "numEventsWithAlarmPayload": "Anzahl Alarme",
+    "numPersistentEventsWithAlarmPayload": "Anzahl persistierter Alarme",
+    "numEventsWithMessagePayload": "Anzahl Nachrichten",
+    "numPersistentEventsWithMessagePayload": "Anzahl persistierter Nachrichten"
+  }
+}

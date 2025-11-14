@@ -1,0 +1,134 @@
+{
+    "$schema": "../../TcHmiFramework/Schema/ControlDescription.Schema.json",
+    "apiVersion": 1,
+    "name": "TcHmiThermometer",
+    "namespace": "TcHmi.Controls.Beckhoff",
+    "displayName": "Thermometer",
+    "version": {
+        "full": "14.3.234.0",
+        "major": 14,
+        "minor": 3,
+        "build": 234,
+        "revision": 0
+    },
+    "template": "Template.html",
+    "visible": true,
+    "themeable": "Standard",
+    "base": "TcHmi.Controls.Beckhoff.TcHmiLinearGauge",
+    "description": "A simple thermometer control.",
+    "properties": {
+        "containerControl": false,
+        "geometry": {
+            "width": 128,
+            "height": 215
+        }
+    },
+    "icons": [
+        {
+            "name": "Icons/16x16.png",
+            "width": 16,
+            "height": 16
+        }
+    ],
+    "dependencyFiles": [
+        {
+            "name": "TcHmiThermometer.js",
+            "type": "JavaScript",
+            "description": "Contains all the main logic."
+        },
+        {
+            "name": "Style.css",
+            "type": "Stylesheet",
+            "description": "Theme independent style"
+        }
+    ],
+    "themes": {
+        "Base": {
+            "resources": [
+                {
+                    "name": "Themes/Base/Style.css",
+                    "type": "Stylesheet",
+                    "description": "Theme dependent style"
+                }
+            ]
+        },
+        "Base-Dark": {
+            "resources": [
+                {
+                    "name": "Themes/Base-Dark/Style.css",
+                    "type": "Stylesheet",
+                    "description": "Theme dependent style"
+                }
+            ]
+        }
+    },
+    "attributes": [
+        {
+            "name": "data-tchmi-orientation",
+            "propertyName": "Orientation",
+            "propertySetterName": "setOrientation",
+            "propertyGetterName": "getOrientation",
+            "displayName": "Orientation",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 10,
+            "type": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiLinearGauge.Orientation",
+            "category": "Appearance",
+            "description": "The orientation of the gauge.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "Vertical"
+        },
+        {
+            "name": "data-tchmi-start-from-zero",
+            "propertyName": "StartFromZero",
+            "propertySetterName": "setStartFromZero",
+            "propertyGetterName": "getStartFromZero",
+            "displayName": "Start From Zero",
+            "visible": false,
+            "themeable": "Standard",
+            "displayPriority": 60,
+            "type": "tchmi:general#/definitions/Boolean",
+            "category": "Value",
+            "description": "Whether to start the progress bar at the zero mark or on the left side. This has no effect if the min value is equal to or greater than zero.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": false
+        },
+        {
+            "name": "data-tchmi-progress-foreground-color",
+            "propertyName": "ProgressForegroundColor",
+            "propertySetterName": "setProgressForegroundColor",
+            "propertyGetterName": "getProgressForegroundColor",
+            "displayName": "Progress Foreground Color",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 10,
+            "type": "tchmi:framework#/definitions/SolidColor",
+            "category": "Colors",
+            "description": "Fill color of the progress bar.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "allowSymbolExpressionsInObject": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        }
+    ],
+    "attributeCategories": [],
+    "themedResources": [],
+    "functions": [],
+    "events": [],
+    "dataTypes": [
+        {
+            "schema": "Schema/Types.Schema.json"
+        }
+    ]
+}

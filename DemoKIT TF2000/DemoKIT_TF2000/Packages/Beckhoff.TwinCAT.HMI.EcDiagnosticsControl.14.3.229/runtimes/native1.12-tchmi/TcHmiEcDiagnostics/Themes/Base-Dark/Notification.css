@@ -1,0 +1,43 @@
+.beckhoff-ec-diagnostics .notifications-wrapper-category {
+    background: #333;
+    border-left-style: solid;
+    border-left-width: 12px;
+    border-left-color: var(--tchmi-highlight-color-1);
+}
+.beckhoff-ec-diagnostics .notifications-wrapper-category::before {
+    background: var(--tchmi-highlight-color-1);
+}
+.beckhoff-ec-diagnostics .notifications-wrapper-success {
+    border-left-color: var(--tchmi-confirmed-color);
+}
+
+.beckhoff-ec-diagnostics .notifications-wrapper-success::before {
+    background: var(--tchmi-confirmed-color);
+}
+
+.beckhoff-ec-diagnostics .notifications-wrapper-error {
+    border-left: 12px solid var(--tchmi-error-color);
+}
+
+.beckhoff-ec-diagnostics .notifications-wrapper-error::before {
+    background: var(--tchmi-error-color);
+}
+
+.beckhoff-ec-diagnostics .notifications-wrapper-warning {
+    border-left-color: var(--tchmi-warning-color);
+}
+
+.beckhoff-ec-diagnostics .notifications-wrapper-warning::before {
+    background: var(--tchmi-warning-color);
+}
+
+.beckhoff-ec-diagnostics .notification-wrapper-v2.level-warning {
+    background: #544900;
+    border: 1px solid #a68a18;
+}
+.beckhoff-ec-diagnostics .notification-wrapper-v2.level-warning .icon-wrapper {
+    background: #a68a18;
+}
+.beckhoff-ec-diagnostics .notification-wrapper-v2 .close-btn {
+    color: #dedede;
+}

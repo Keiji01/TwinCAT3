@@ -1,0 +1,395 @@
+{
+    "$schema": "../../TcHmiFramework/Schema/ControlDescription.Schema.json",
+    "apiVersion": 1,
+    "name": "TcHmiUserGuidance",
+    "namespace": "TcHmi.Controls.Beckhoff",
+    "displayName": "User Guidance",
+    "version": {
+        "full": "14.3.234.0",
+        "major": 14,
+        "minor": 3,
+        "build": 234,
+        "revision": 0
+    },
+    "visible": true,
+    "themeable": "Standard",
+    "base": "TcHmi.Controls.System.TcHmiControl",
+    "description": "A tab navigation control.",
+    "defaultDesignerEvent": "",
+    "properties": {
+        "containerControl": false,
+        "geometry": {
+            "width": 500,
+            "height": 600
+        }
+    },
+    "icons": [
+        {
+            "name": "Icons/16x16.png",
+            "width": 16,
+            "height": 16
+        }
+    ],
+    "template": "Template.html",
+    "dependencyFiles": [
+        {
+            "name": "Style.css",
+            "type": "Stylesheet",
+            "description": ""
+        },
+        {
+            "name": "TcHmiUserGuidance.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "themes": {
+        "Base": {
+            "resources": [
+                {
+                    "name": "Themes/Base/Style.css",
+                    "type": "Stylesheet",
+                    "description": "Theme dependent style"
+                }
+            ]
+        },
+        "Base-Dark": {
+            "resources": [
+                {
+                    "name": "Themes/Base-Dark/Style.css",
+                    "type": "Stylesheet",
+                    "description": "Theme dependent style"
+                }
+            ]
+        }
+    },
+    "attributes": [
+        {
+            "name": "data-tchmi-pages",
+            "propertyName": "Pages",
+            "propertySetterName": "setPages",
+            "propertyGetterName": "getPages",
+            "displayName": "Pages",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 10,
+            "type": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiUserGuidance.PageList",
+            "category": "Common",
+            "description": "A list of pages to be displayed in the control.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "allowSymbolExpressionsInObject": true,
+            "defaultValue": [
+                {
+                    "name": "page1",
+                    "displayName": "Page 1",
+                    "horizontalAlignment": "Left",
+                    "verticalAlignment": "Center"
+                },
+                {
+                    "name": "page2",
+                    "displayName": "Page 2",
+                    "horizontalAlignment": "Left",
+                    "verticalAlignment": "Center"
+                },
+                {
+                    "name": "page3",
+                    "displayName": "Page 3",
+                    "horizontalAlignment": "Left",
+                    "verticalAlignment": "Center"
+                }
+            ],
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-progress-bar-alignment",
+            "propertyName": "ProgressBarAlignment",
+            "propertySetterName": "setProgressBarAlignment",
+            "propertyGetterName": "getProgressBarAlignment",
+            "displayName": "Progress Bar Alignment",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 11,
+            "type": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiUserGuidance.ProgressBarAlignment",
+            "category": "Common",
+            "description": "The alignment of the progress bar.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "Left"
+        },
+        {
+            "name": "data-tchmi-active-page-name",
+            "propertyName": "ActivePageName",
+            "propertyGetterName": "getActivePageName",
+            "displayName": "Active Page Name",
+            "visible": true,
+            "displayPriority": 12,
+            "type": "tchmi:general#/definitions/String",
+            "category": "Common",
+            "description": "The name of the active page.",
+            "readOnly": true,
+            "bindable": false,
+            "defaultBindingMode": "OneWay",
+            "heritable": true
+        },
+        {
+            "name": "data-tchmi-text-horizontal-alignment",
+            "propertyName": "TextHorizontalAlignment",
+            "propertySetterName": "setTextHorizontalAlignment",
+            "propertyGetterName": "getTextHorizontalAlignment",
+            "displayName": "Text Horizontal Alignment",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 30,
+            "type": "tchmi:framework#/definitions/HorizontalAlignment",
+            "category": "Text",
+            "description": "Defines the horizontal alignment of the progress bar text.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "Left"
+        },
+        {
+            "name": "data-tchmi-text-vertical-alignment",
+            "propertyName": "TextVerticalAlignment",
+            "propertySetterName": "setTextVerticalAlignment",
+            "propertyGetterName": "getTextVerticalAlignment",
+            "displayName": "Text Vertical Alignment",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 30,
+            "type": "tchmi:framework#/definitions/VerticalAlignment",
+            "category": "Text",
+            "description": "Defines the vertical alignment of the progress bar text.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-text-padding",
+            "propertyName": "TextPadding",
+            "propertySetterName": "setTextPadding",
+            "propertyGetterName": "getTextPadding",
+            "displayName": "Text Padding",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 55,
+            "type": "tchmi:framework#/definitions/Padding",
+            "category": "Text",
+            "description": "The distance of the text to the border in the progress bar.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "allowSymbolExpressionsInObject": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-text-font-family",
+            "propertyName": "TextFontFamily",
+            "propertySetterName": "setTextFontFamily",
+            "propertyGetterName": "getTextFontFamily",
+            "displayName": "Text Font Family",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 60,
+            "type": "tchmi:framework#/definitions/FontFamily",
+            "category": "Text",
+            "description": "Comma separated list of family name or keyword: 'serif', 'sans-serif', 'monospace'.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-text-font-size",
+            "propertyName": "TextFontSize",
+            "propertySetterName": "setTextFontSize",
+            "propertyGetterName": "getTextFontSize",
+            "displayName": "Text Font Size",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 30,
+            "type": "tchmi:framework#/definitions/MeasurementValue",
+            "category": "Text",
+            "description": "The size of the progress bar font. Percent values are relative to the parent elements font size.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-text-font-size-unit",
+            "propertyName": "TextFontSizeUnit",
+            "propertySetterName": "setTextFontSizeUnit",
+            "propertyGetterName": "getTextFontSizeUnit",
+            "refTo": "TextFontSize",
+            "displayName": "Text Font Size Unit",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 30,
+            "type": "tchmi:framework#/definitions/MeasurementUnit",
+            "category": "Text",
+            "description": "Could be 'px' or for relative sizing '%'.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "px"
+        },
+        {
+            "name": "data-tchmi-text-font-style",
+            "propertyName": "TextFontStyle",
+            "propertySetterName": "setTextFontStyle",
+            "propertyGetterName": "getTextFontStyle",
+            "displayName": "Text Font Style",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 60,
+            "type": "tchmi:framework#/definitions/FontStyle",
+            "category": "Text",
+            "description": "'Normal', 'Italic' (slanted with special glyphs), 'Oblique' (slanted normal glyphs) or 'Auto' for inherited.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "Auto"
+        },
+        {
+            "name": "data-tchmi-text-font-weight",
+            "propertyName": "TextFontWeight",
+            "propertySetterName": "setTextFontWeight",
+            "propertyGetterName": "getTextFontWeight",
+            "displayName": "Text Font Weight",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 60,
+            "type": "tchmi:framework#/definitions/FontWeight",
+            "category": "Text",
+            "description": "'Normal', 'Bold' (glyphs with more weight) or 'Auto' for inherited.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "Auto"
+        },
+        {
+            "name": "data-tchmi-guidance-finished",
+            "propertyName": "GuidanceFinished",
+            "propertyGetterName": "getGuidanceFinished",
+            "displayName": "Guidance Finished",
+            "visible": true,
+            "displayPriority": 60,
+            "type": "tchmi:general#/definitions/Boolean",
+            "category": "Common",
+            "description": "Is true when the user guidance process is finished.",
+            "readOnly": true,
+            "bindable": false,
+            "defaultBindingMode": "OneWay",
+            "heritable": true
+        }
+    ],
+    "attributeCategories": [
+        {
+            "name": "Text",
+            "displayPriority": 500,
+            "defaultCollapsed": true,
+            "description": "Attributes defining the text of the control."
+        }
+    ],
+    "functions": [
+        {
+            "name": "restartUserGuidance",
+            "displayName": "restartUserGuidance",
+            "visible": true,
+            "description": "Restarts the user guidance process.",
+            "category": "Common",
+            "heritable": true,
+            "type": null,
+            "params": [
+                {
+                    "name": "force",
+                    "displayName": "Force",
+                    "description": "Force the restart even if the process is not finshed yet.",
+                    "type": "tchmi:general#/definitions/Boolean",
+                    "bindable": true,
+                    "visible": true
+                }
+            ]
+        }
+    ],
+    "events": [
+        {
+            "name": ".onNextButtonPress",
+            "displayName": ".onNextButtonPress",
+            "visible": true,
+            "displayPriority": 10,
+            "category": "Control",
+            "description": "The onNextButtonPress event is fired when the 'next' button is pressed.",
+            "heritable": true
+        },
+        {
+            "name": ".onFinishButtonPress",
+            "displayName": ".onFinishButtonPress",
+            "visible": true,
+            "displayPriority": 10,
+            "category": "Control",
+            "description": "The onFinishButtonPress event is fired when the 'Finish' button is pressed.",
+            "heritable": true
+        },
+        {
+            "name": ".onBackButtonPress",
+            "displayName": ".onBackButtonPress",
+            "visible": true,
+            "displayPriority": 10,
+            "category": "Control",
+            "description": "The onBackButtonPress event is fired when the 'back' button is pressed.",
+            "heritable": true
+        },
+        {
+            "name": ".onCancelButtonPress",
+            "displayName": ".onCancelButtonPress",
+            "visible": true,
+            "displayPriority": 10,
+            "category": "Control",
+            "description": "The onCancelButtonPress event is fired when the 'cancel' button is pressed.",
+            "heritable": true
+        },
+        {
+            "name": ".onFinished",
+            "displayName": ".onFinished",
+            "visible": true,
+            "displayPriority": 10,
+            "category": "Control",
+            "description": "The onFinished event is fired when the user guidance process is finished.",
+            "heritable": true
+        }
+    ],
+    "languages": {
+        "en": "Lang/en.json",
+        "de": "Lang/de.json"
+    },
+    "dataTypes": [
+        {
+            "schema": "Schema/Types.Schema.json"
+        }
+    ]
+}

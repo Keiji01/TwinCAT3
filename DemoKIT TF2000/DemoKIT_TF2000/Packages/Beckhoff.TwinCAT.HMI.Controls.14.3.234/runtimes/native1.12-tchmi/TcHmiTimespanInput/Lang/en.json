@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../TwinCAT-HMI-Common/JsonSchemas/Language.Schema.json",
+    "locale": "en",
+    "localizedText": {
+        "ValueFormat": "Wrong value format. The value must conform to the ISO 8601 standard.",
+        "ValueFormatNumeric": "Wrong value format. The value must be a positive number or conform to the ISO 8601 standard.",
+        "ValueEmpty": "No value entered.",
+        "Milliseconds": "ms",
+        "Seconds": "s",
+        "Minutes": "min",
+        "Hours": "h",
+        "Days": "d",
+        "Months": "mo",
+        "Years": "yr"
+    }
+}

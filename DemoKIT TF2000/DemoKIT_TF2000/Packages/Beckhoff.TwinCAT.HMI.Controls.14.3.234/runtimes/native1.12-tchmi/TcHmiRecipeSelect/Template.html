@@ -1,0 +1,59 @@
+<div class="TcHmi_Controls_Beckhoff_TcHmiRecipeSelect-template tchmi-box">
+    <div class="TcHmi_Controls_Beckhoff_TcHmiRecipeSelect-buttons">
+        <div
+            class="TcHmi_Controls_Beckhoff_TcHmiRecipeSelect-selected-recipe"
+            data-tchmi-localized-content-key="Label_Text_Select"
+        >
+            Label_Text_Select
+        </div>
+        <div
+            id="{Id}_ButtonActivate"
+            class="button-activate"
+            data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton"
+            data-tchmi-text="%l%Control::TcHmi.Controls.Beckhoff.TcHmiRecipeSelect::Button_Text_Activate%/l%"
+            data-tchmi-tooltip="%l%Control::TcHmi.Controls.Beckhoff.TcHmiRecipeSelect::Button_Tooltip_Activate%/l%"
+            data-tchmi-is-enabled="false"
+        >
+            <script data-tchmi-target-attribute="data-tchmi-virtual-control-right-mappings" type="application/json">
+                [{ "controlRight": "operate", "virtualControlRight": "activateRecipe" }]
+            </script>
+            <script data-tchmi-target-attribute="data-tchmi-text-padding" type="application/json">
+                {
+                    "left": 3,
+                    "right": 3,
+                    "top": 3,
+                    "bottom": 3,
+                    "leftUnit": "px",
+                    "rightUnit": "px",
+                    "topUnit": "px",
+                    "bottomUnit": "px"
+                }
+            </script>
+        </div>
+        <div
+            id="{Id}_ButtonTeach"
+            class="button-teach"
+            data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton"
+            data-tchmi-text="%l%Control::TcHmi.Controls.Beckhoff.TcHmiRecipeSelect::Button_Text_Teach%/l%"
+            data-tchmi-tooltip="%l%Control::TcHmi.Controls.Beckhoff.TcHmiRecipeSelect::Button_Tooltip_Teach%/l%"
+            data-tchmi-is-enabled="false"
+        >
+            <script data-tchmi-target-attribute="data-tchmi-virtual-control-right-mappings" type="application/json">
+                [{ "controlRight": "operate", "virtualControlRight": "teachRecipe" }]
+            </script>
+            <script data-tchmi-target-attribute="data-tchmi-text-padding" type="application/json">
+                {
+                    "left": 3,
+                    "right": 3,
+                    "top": 3,
+                    "bottom": 3,
+                    "leftUnit": "px",
+                    "rightUnit": "px",
+                    "topUnit": "px",
+                    "bottomUnit": "px"
+                }
+            </script>
+        </div>
+    </div>
+    <div class="TcHmi_Controls_Beckhoff_TcHmiRecipeSelect-path-box"></div>
+</div>

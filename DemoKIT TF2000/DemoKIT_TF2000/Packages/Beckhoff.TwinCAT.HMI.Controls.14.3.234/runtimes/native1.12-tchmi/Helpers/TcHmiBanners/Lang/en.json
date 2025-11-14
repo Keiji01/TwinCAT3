@@ -1,0 +1,8 @@
+{
+    "$schema": "../../../TwinCAT-HMI-Common/JsonSchemas/Language.Schema.json",
+    "locale": "en",
+    "localizedText": {
+        "ButtonApprove": "Approve",
+        "CheckboxDontShowAgain": "Don't show again"
+    }
+}

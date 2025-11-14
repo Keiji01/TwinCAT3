@@ -1,0 +1,224 @@
+/** Styles for the theme: Base-Dark */
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation {
+    --tchmi-background: var(--tchmi-background-color-1);
+    --tchmi-back-icon-stroke: var(--tchmi-foreground-color-1);
+    --tchmi-back-icon-stroke-pressed: var(--tchmi-foreground-color-1);
+    --tchmi-text-color-active: var(--tchmi-foreground-color-1);
+    --tchmi-background-active: var(--tchmi-highlight-color-1);
+    --tchmi-border-color: var(--tchmi-foreground-color-2);
+    --tchmi-button-height: 48px;
+    --tchmi-default-gaps: 8px;
+    --tchmi-default-font-size: 16px;
+    --tchmi-horizontal-font-size: 13px;
+    --tchmi-scroll-shadow-top: inset 0 -10px 5px 0 var(--tchmi-shadow-color-2);
+    --tchmi-scroll-shadow-bottom: inset 0 10px 5px 0 var(--tchmi-shadow-color-2);
+    --tchmi-scroll-shadow-left: inset -10px 0 5px 0 var(--tchmi-shadow-color-2);
+    --tchmi-scroll-shadow-right: inset 10px 0 5px 0 var(--tchmi-shadow-color-2);
+    background: var(--tchmi-background);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation {
+    flex-basis: calc(100% - 2 * var(--tchmi-default-gaps) - var(--tchmi-button-height));
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template.horizontal
+    .TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation {
+    flex-basis: calc(100% - 4 * var(--tchmi-default-gaps) - var(--tchmi-button-height));
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Static,
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Context {
+    padding-bottom: var(--tchmi-default-gaps);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Static-Shadow[data-scroll='top'],
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Context-Shadow[data-scroll='top'] {
+    box-shadow: var(--tchmi-scroll-shadow-top);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Static-Shadow[data-scroll='vertical-center'],
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Context-Shadow[data-scroll='vertical-center'] {
+    box-shadow: var(--tchmi-scroll-shadow-top), var(--tchmi-scroll-shadow-bottom);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Static-Shadow[data-scroll='bottom'],
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Context-Shadow[data-scroll='bottom'] {
+    box-shadow: var(--tchmi-scroll-shadow-bottom);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Static-Shadow[data-scroll='left'],
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Context-Shadow[data-scroll='left'] {
+    box-shadow: var(--tchmi-scroll-shadow-left);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Static-Shadow[data-scroll='horizontal-center'],
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Context-Shadow[data-scroll='horizontal-center'] {
+    box-shadow: var(--tchmi-scroll-shadow-left), var(--tchmi-scroll-shadow-right);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Static-Shadow[data-scroll='right'],
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Context-Shadow[data-scroll='right'] {
+    box-shadow: var(--tchmi-scroll-shadow-right);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation .TcHmi_Controls_Beckhoff_TcHmiButton {
+    position: relative;
+    width: calc(100% - 2 * var(--tchmi-default-gaps));
+    height: var(--tchmi-button-height);
+    min-height: var(--tchmi-button-height);
+    margin: var(--tchmi-default-gaps) var(--tchmi-default-gaps) 0 var(--tchmi-default-gaps);
+    font-size: var(--tchmi-default-font-size);
+    overflow: hidden;
+}
+
+/* class active will be set/unset in the control when the button was selected */
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation .TcHmi_Controls_Beckhoff_TcHmiButton.active {
+    background: var(--tchmi-background-active);
+    color: var(--tchmi-text-color-active);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation .TcHmi_Controls_Beckhoff_TcHmiButton > div {
+    padding-left: calc(var(--tchmi-default-gaps));
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation .TcHmi_Controls_Beckhoff_TcHmiButton.icon > div {
+    padding-left: calc(var(--tchmi-default-gaps) + var(--tchmi-button-height));
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation .TcHmi_Controls_Beckhoff_TcHmiButton-template {
+    background-size: var(--tchmi-button-height) var(--tchmi-button-height);
+    background-position: 0% 50%;
+    background-repeat: no-repeat;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template .TcHmi_Controls_Beckhoff_TcHmiButton span {
+    text-align: left;
+}
+
+/* Back button styles */
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Back {
+    flex-basis: calc(var(--tchmi-default-gaps) + var(--tchmi-default-gaps) + var(--tchmi-button-height));
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Back .TcHmi_Controls_Beckhoff_TcHmiButton {
+    height: var(--tchmi-button-height);
+    top: var(--tchmi-default-gaps);
+    left: var(--tchmi-default-gaps);
+    right: var(--tchmi-default-gaps);
+    padding-right: 10px;
+    font-size: var(--tchmi-default-font-size);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Back .TcHmi_Controls_Beckhoff_TcHmiButton-template {
+    padding-left: calc(var(--tchmi-default-gaps) + var(--tchmi-button-height));
+    background-image: url(Icons/icons_previous_normal.svg);
+    background-size: var(--tchmi-button-height) var(--tchmi-button-height);
+    background-position: 0% 50%;
+    background-repeat: no-repeat;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Back .down .TcHmi_Controls_Beckhoff_TcHmiButton-template {
+    background-image: url(Icons/icons_previous_pressed.svg);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template .TcHmi_Controls_BaseTemplate_TcHmiNavigation-Back,
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template .TcHmi_Controls_BaseTemplate_TcHmiNavigation-Static {
+    border-bottom: 1px solid var(--tchmi-border-color);
+}
+
+/* horizontal styles */
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template.horizontal .TcHmi_Controls_BaseTemplate_TcHmiNavigation-Back,
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template.horizontal .TcHmi_Controls_BaseTemplate_TcHmiNavigation-Static {
+    border-bottom: none;
+    border-right: 1px solid var(--tchmi-border-color);
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template.horizontal
+    .TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation
+    .TcHmi_Controls_Beckhoff_TcHmiButton {
+    position: relative;
+    height: calc(100% - 2 * var(--tchmi-default-gaps));
+    width: calc(var(--tchmi-button-height) + 2 * var(--tchmi-default-gaps));
+    min-width: calc(var(--tchmi-button-height) + 2 * var(--tchmi-default-gaps));
+    margin: var(--tchmi-default-gaps) var(--tchmi-default-gaps) 0 var(--tchmi-default-gaps);
+    font-size: var(--tchmi-horizontal-font-size);
+    overflow: hidden;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template.horizontal
+    .TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation
+    .TcHmi_Controls_Beckhoff_TcHmiButton
+    > div {
+    padding-left: 0;
+    padding-top: calc(var(--tchmi-default-gaps));
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template.horizontal
+    .TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation
+    .TcHmi_Controls_Beckhoff_TcHmiButton.icon
+    > div {
+    padding-left: 0;
+    padding-top: calc(var(--tchmi-button-height) - 2 * var(--tchmi-default-gaps));
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template.horizontal
+    .TcHmi_Controls_BaseTemplate_TcHmiNavigation-Navigation
+    .TcHmi_Controls_Beckhoff_TcHmiButton-template {
+    background-size: calc(var(--tchmi-button-height) - 2 * var(--tchmi-default-gaps))
+        calc(var(--tchmi-button-height) - 2 * var(--tchmi-default-gaps));
+    background-position: 50% 0%;
+    background-repeat: no-repeat;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template.horizontal .TcHmi_Controls_Beckhoff_TcHmiButton span {
+    text-align: center;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template.horizontal .TcHmi_Controls_BaseTemplate_TcHmiNavigation {
+    flex-basis: calc(100% - 4 * var(--tchmi-default-gaps) - var(--tchmi-button-height));
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template.horizontal .TcHmi_Controls_BaseTemplate_TcHmiNavigation-Back {
+    flex-basis: calc(4 * var(--tchmi-default-gaps) + var(--tchmi-button-height));
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template.horizontal
+    .TcHmi_Controls_BaseTemplate_TcHmiNavigation-Back
+    .TcHmi_Controls_Beckhoff_TcHmiButton-template {
+    background-size: calc(var(--tchmi-button-height) - 2 * var(--tchmi-default-gaps))
+        calc(var(--tchmi-button-height) - 2 * var(--tchmi-default-gaps));
+    background-position: 50% 0%;
+    background-repeat: no-repeat;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template.horizontal
+    .TcHmi_Controls_BaseTemplate_TcHmiNavigation-Back
+    .TcHmi_Controls_Beckhoff_TcHmiButton {
+    height: calc(100% - 2 * var(--tchmi-default-gaps));
+    width: calc(var(--tchmi-button-height) + 2 * var(--tchmi-default-gaps));
+    min-width: calc(var(--tchmi-button-height) + 2 * var(--tchmi-default-gaps));
+    font-size: var(--tchmi-horizontal-font-size);
+    padding-right: 0;
+    overflow: hidden;
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Template.horizontal
+    .TcHmi_Controls_BaseTemplate_TcHmiNavigation-Back
+    .TcHmi_Controls_Beckhoff_TcHmiButton
+    div {
+    padding-left: 0;
+    padding-top: calc(var(--tchmi-button-height) - 2 * var(--tchmi-default-gaps));
+}
+
+.TcHmi_Controls_BaseTemplate_TcHmiNavigation-Context > .TcHmi_Controls_BaseTemplate_TcHmiBreadcrumb {
+    position: relative;
+    overflow: hidden;
+    width: calc(100% - 2 * var(--tchmi-default-gaps));
+    margin: var(--tchmi-default-gaps) var(--tchmi-default-gaps) 0 var(--tchmi-default-gaps);
+    --tchmi-icon-size: 24px;
+    background: transparent;
+}

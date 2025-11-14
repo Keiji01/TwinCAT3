@@ -1,0 +1,528 @@
+{
+    "$schema": "../../TcHmiFramework/Schema/ControlDescription.Schema.json",
+    "apiVersion": 1,
+    "name": "TcHmiTrendSparkline",
+    "namespace": "TcHmi.Controls.Beckhoff",
+    "displayName": "Trend Sparkline",
+    "version": {
+        "full": "14.3.234.0",
+        "major": 14,
+        "minor": 3,
+        "build": 234,
+        "revision": 0
+    },
+    "visible": true,
+    "themeable": "Standard",
+    "base": "TcHmi.Controls.System.TcHmiControl",
+    "description": "A multipurpose trend Sparkline.",
+    "defaultDesignerEvent": "",
+    "properties": {
+        "containerControl": false,
+        "geometry": {
+            "width": 300,
+            "height": 100
+        }
+    },
+    "icons": [
+        {
+            "name": "Icons/16x16.png",
+            "width": 16,
+            "height": 16
+        }
+    ],
+    "template": "Template.html",
+    "dependencyFiles": [
+        {
+            "name": "Style.css",
+            "type": "Stylesheet",
+            "description": ""
+        },
+        {
+            "name": "TcHmiTrendSparkline.js",
+            "type": "JavaScript",
+            "description": ""
+        }
+    ],
+    "themes": {
+        "Base": {
+            "resources": [
+                {
+                    "name": "Themes/Base/Defaults.theme",
+                    "type": "ThemedValues",
+                    "description": ""
+                },
+                {
+                    "name": "Themes/Base/Style.css",
+                    "type": "Stylesheet",
+                    "description": ""
+                }
+            ]
+        },
+        "Base-Dark": {
+            "resources": [
+                {
+                    "name": "Themes/Base-Dark/Defaults.theme",
+                    "type": "ThemedValues",
+                    "description": ""
+                },
+                {
+                    "name": "Themes/Base-Dark/Style.css",
+                    "type": "Stylesheet",
+                    "description": ""
+                }
+            ]
+        }
+    },
+    "attributes": [
+        {
+            "name": "data-tchmi-historized-symbols",
+            "propertyName": "HistorizedSymbols",
+            "propertySetterName": "setHistorizedSymbols",
+            "propertyGetterName": "getHistorizedSymbols",
+            "displayName": "Historized Symbols",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 50,
+            "type": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiTrendSparkline.HistorizedSymbolList",
+            "category": "Common",
+            "description": "Defines a list of historized symbols.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "allowSymbolExpressionsInObject": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-server-domain",
+            "propertyName": "ServerDomain",
+            "propertySetterName": "setServerDomain",
+            "propertyGetterName": "getServerDomain",
+            "displayName": "Server Domain",
+            "visible": true,
+            "displayPriority": 100,
+            "type": "tchmi:general#/definitions/String",
+            "category": "Common",
+            "themeable": "Advanced",
+            "description": "The domain of the historize extension in the server. Defaults to 'TcHmiSqliteHistorize'",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "TcHmiSqliteHistorize"
+        },
+        {
+            "name": "data-tchmi-interval",
+            "propertyName": "Interval",
+            "propertySetterName": "setInterval",
+            "propertyGetterName": "getInterval",
+            "displayName": "Interval",
+            "visible": true,
+            "displayPriority": 100,
+            "type": "tchmi:general#/definitions/Number",
+            "category": "Common",
+            "description": "Defines the interval at which the data is updated.",
+            "themeable": "Standard",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": 1000
+        },
+        {
+            "name": "data-tchmi-start",
+            "propertyName": "Start",
+            "propertySetterName": "setStart",
+            "propertyGetterName": "getStart",
+            "displayName": "Start",
+            "visible": true,
+            "displayPriority": 10,
+            "type": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiTrendSparkline.ChartStart",
+            "category": "Common",
+            "themeable": "Standard",
+            "description": "The start of the sparkline (time in UTC!, timespan or keyword 'First').",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": "First",
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-end",
+            "propertyName": "End",
+            "propertySetterName": "setEnd",
+            "propertyGetterName": "getEnd",
+            "displayName": "End",
+            "visible": true,
+            "displayPriority": 10,
+            "type": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiTrendSparkline.ChartEnd",
+            "category": "Common",
+            "themeable": "Standard",
+            "description": "The end of the sparkline (time in UTC!, timespan or keyword 'Latest').",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": "Latest",
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-show-label",
+            "propertyName": "ShowLabel",
+            "propertySetterName": "setShowLabel",
+            "propertyGetterName": "getShowLabel",
+            "displayName": "Show Label",
+            "visible": true,
+            "displayPriority": 10,
+            "type": "tchmi:general#/definitions/Boolean",
+            "category": "Label",
+            "description": "Defines whether the label of each the chart is displayed or not.",
+            "themeable": "Standard",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": false
+        },
+        {
+            "name": "data-tchmi-label-color",
+            "propertyName": "LabelColor",
+            "propertySetterName": "setLabelColor",
+            "propertyGetterName": "getLabelColor",
+            "displayName": "Label Color",
+            "visible": true,
+            "displayPriority": 60,
+            "type": "tchmi:framework#/definitions/SolidColor",
+            "category": "Colors",
+            "themeable": "Standard",
+            "description": "Defines the color of the label.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "allowSymbolExpressionsInObject": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-label-position",
+            "propertyName": "LabelPosition",
+            "propertySetterName": "setLabelPosition",
+            "propertyGetterName": "getLabelPosition",
+            "displayName": "Label Position",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 10,
+            "type": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiTrendSparkline.LabelPosition",
+            "category": "Label",
+            "description": "Defines where the label is displayed.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "Left"
+        },
+        {
+            "name": "data-tchmi-label-font-family",
+            "propertyName": "LabelFontFamily",
+            "propertySetterName": "setLabelFontFamily",
+            "propertyGetterName": "getLabelFontFamily",
+            "displayName": "Label Font Family",
+            "visible": true,
+            "displayPriority": 60,
+            "type": "tchmi:framework#/definitions/FontFamily",
+            "category": "Label",
+            "themeable": "Standard",
+            "description": "Defines the font family of the label.  Comma separated list of family name or keyword: 'serif', 'sans-serif', 'monospace'.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-label-font-size",
+            "propertyName": "LabelFontSize",
+            "propertySetterName": "setLabelFontSize",
+            "propertyGetterName": "getLabelFontSize",
+            "displayName": "Label Font Size",
+            "visible": true,
+            "displayPriority": 60,
+            "themeable": "Standard",
+            "type": "tchmi:framework#/definitions/MeasurementValue",
+            "category": "Label",
+            "description": "Defines the label font size.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": 12
+        },
+        {
+            "name": "data-tchmi-label-font-size-unit",
+            "propertyName": "LabelFontSizeUnit",
+            "propertyGetterName": "getLabelFontSizeUnit",
+            "refTo": "LabelFontSize",
+            "displayName": "Label Font Size Unit",
+            "visible": true,
+            "displayPriority": 50,
+            "type": "tchmi:framework#/definitions/PixelUnit",
+            "category": "Label",
+            "description": "Is 'px'.",
+            "readOnly": true,
+            "bindable": false,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValueInternal": "px"
+        },
+        {
+            "name": "data-tchmi-label-font-weight",
+            "propertyName": "LabelFontWeight",
+            "propertySetterName": "setLabelFontWeight",
+            "propertyGetterName": "getLabelFontWeight",
+            "displayName": "Label Font Weight",
+            "visible": true,
+            "displayPriority": 60,
+            "type": "tchmi:framework#/definitions/FontWeight",
+            "category": "Label",
+            "themeable": "Standard",
+            "description": "Defines the font weight of the label. 'Normal', 'Bold' (glyphs with more weight) or 'Auto' for inherited.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "Auto"
+        },
+        {
+            "name": "data-tchmi-show-y-axis",
+            "propertyName": "ShowYAxis",
+            "propertySetterName": "setShowYAxis",
+            "propertyGetterName": "getShowYAxis",
+            "displayName": "Show YAxis",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 10,
+            "type": "tchmi:general#/definitions/Boolean",
+            "category": "Y Axis",
+            "description": "Defines whether the y-axis is displayed or not.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": false
+        },
+        {
+            "name": "data-tchmi-y-axis-color",
+            "propertyName": "YAxisColor",
+            "propertySetterName": "setYAxisColor",
+            "propertyGetterName": "getYAxisColor",
+            "displayName": "Y Axis Color",
+            "visible": true,
+            "displayPriority": 60,
+            "type": "tchmi:framework#/definitions/SolidColor",
+            "category": "Colors",
+            "themeable": "Standard",
+            "description": "Defines the color of the y-axis.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "allowSymbolExpressionsInObject": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-y-axis-position",
+            "propertyName": "YAxisPosition",
+            "propertySetterName": "setYAxisPosition",
+            "propertyGetterName": "getYAxisPosition",
+            "displayName": "YAxis Position",
+            "visible": true,
+            "themeable": "Standard",
+            "displayPriority": 10,
+            "type": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiTrendSparkline.AxisPosition",
+            "category": "Y Axis",
+            "description": "Defines where the y-axis is displayed.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "Right"
+        },
+        {
+            "name": "data-tchmi-y-axis-decimal-places",
+            "propertyName": "YAxisDecimalPlaces",
+            "propertySetterName": "setYAxisDecimalPlaces",
+            "propertyGetterName": "getYAxisDecimalPlaces",
+            "displayName": "Y Axis Decimal Places",
+            "visible": true,
+            "displayPriority": 60,
+            "type": "tchmi:general#/definitions/Number",
+            "category": "Y Axis",
+            "themeable": "Standard",
+            "description": "Determines the decimal places of the label on the y-axis.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": 0
+        },
+        {
+            "name": "data-tchmi-y-axis-width",
+            "propertyName": "YAxisWidth",
+            "propertySetterName": "setYAxisWidth",
+            "propertyGetterName": "getYAxisWidth",
+            "displayName": "Y Axis Width",
+            "visible": true,
+            "displayPriority": 60,
+            "type": "tchmi:general#/definitions/Number",
+            "category": "Y Axis",
+            "themeable": "Standard",
+            "description": "Defines the thickness of the Y-axis.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": 1
+        },
+        {
+            "name": "data-tchmi-y-label-font-family",
+            "propertyName": "YLabelFontFamily",
+            "propertySetterName": "setYLabelFontFamily",
+            "propertyGetterName": "getYLabelFontFamily",
+            "displayName": "Y Label Font Family",
+            "visible": true,
+            "displayPriority": 60,
+            "type": "tchmi:framework#/definitions/FontFamily",
+            "category": "Y Axis",
+            "themeable": "Standard",
+            "description": "Defines the font family of the Y-axis labels.  Comma separated list of family name or keyword: 'serif', 'sans-serif', 'monospace'.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": null
+        },
+        {
+            "name": "data-tchmi-y-label-font-size",
+            "propertyName": "YLabelFontSize",
+            "propertySetterName": "setYLabelFontSize",
+            "propertyGetterName": "getYLabelFontSize",
+            "displayName": "Y Label Font Size",
+            "visible": true,
+            "displayPriority": 60,
+            "themeable": "Standard",
+            "type": "tchmi:framework#/definitions/MeasurementValue",
+            "category": "Y Axis",
+            "description": "Defines the Y-axis label font size.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": 12
+        },
+        {
+            "name": "data-tchmi-y-label-font-size-unit",
+            "propertyName": "YLabelFontSizeUnit",
+            "propertyGetterName": "getYLabelFontSizeUnit",
+            "refTo": "YLabelFontSize",
+            "displayName": "Y Label Font Size Unit",
+            "visible": true,
+            "displayPriority": 50,
+            "type": "tchmi:framework#/definitions/PixelUnit",
+            "category": "Y Axis",
+            "description": "Is 'px'.",
+            "readOnly": true,
+            "bindable": false,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValueInternal": "px"
+        },
+        {
+            "name": "data-tchmi-y-label-font-weight",
+            "propertyName": "YLabelFontWeight",
+            "propertySetterName": "setYLabelFontWeight",
+            "propertyGetterName": "getYLabelFontWeight",
+            "displayName": "Y Label Font Weight",
+            "visible": true,
+            "displayPriority": 60,
+            "type": "tchmi:framework#/definitions/FontWeight",
+            "category": "Y Axis",
+            "themeable": "Standard",
+            "description": "Defines the font weight of the X-axis label. 'Normal', 'Bold' (glyphs with more weight) or 'Auto' for inherited.",
+            "readOnly": false,
+            "bindable": true,
+            "defaultBindingMode": "OneWay",
+            "heritable": true,
+            "defaultValue": null,
+            "defaultValueInternal": "Auto"
+        }
+    ],
+    "attributeCategories": [
+        {
+            "name": "Label",
+            "displayPriority": 510,
+            "description": "Attributes defining the label of the chart"
+        },
+        {
+            "name": "Y Axis",
+            "displayPriority": 520,
+            "description": "Attributes defining the Y-Axis of the chart"
+        }
+    ],
+    "themedResources": [
+        {
+            "name": "DefaultGraphColor",
+            "displayName": "Default Graph Color",
+            "description": "Color of a line",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "DefaultYAxisColor",
+            "displayName": "Default Y Axis Color",
+            "description": "Color of a y-axis line",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "ReferenceLineColor",
+            "displayName": "Reference Line Color",
+            "description": "Color of a reference line",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        },
+        {
+            "name": "LabelColor",
+            "displayName": "Label Color",
+            "description": "Color of the label",
+            "type": "tchmi:framework#/definitions/SolidColor"
+        }
+    ],
+    "functions": [],
+    "events": [],
+    "dataTypes": [
+        {
+            "schema": "Schema/Types.Schema.json"
+        },
+        {
+            "schema": "../Schema/Types.Schema.json"
+        }
+    ],
+    "languages": {
+        "en": "Lang/en.json",
+        "de": "Lang/de.json"
+    }
+}

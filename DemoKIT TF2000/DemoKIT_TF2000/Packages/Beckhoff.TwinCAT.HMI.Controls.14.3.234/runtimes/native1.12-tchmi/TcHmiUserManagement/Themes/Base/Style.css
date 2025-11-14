@@ -1,0 +1,102 @@
+/* Theme dependend control CSS*/
+/*Base Theme*/
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement,
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement-Dropdown,
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement-popup {
+    --tchmi-background: var(--tchmi-background-color-1);
+    --tchmi-text-color: var(--tchmi-foreground-color-1);
+    --tchmi-text-color-pressed: var(--tchmi-foreground-color-1);
+    --tchmi-popup-background: var(--tchmi-background-color-4);
+    --tchmi-popup-color: var(--tchmi-foreground-color-1);
+    --tchmi-dropdown-background: var(--tchmi-background-color-4);
+    --tchmi-dropdown-background-hover: var(--tchmi-highlight-color-1);
+    --tchmi-dropdown-text-color: var(--tchmi-foreground-color-1);
+    --tchmi-dropdown-text-color-hover: var(--tchmi-foreground-color-2);
+    --tchmi-password-requirement-background: var(--tchmi-background-color-1);
+    --tchmi-scroll-shadow-top: inset 0 -5px 5px 0 rgba(0, 0, 0, 0.05);
+    --tchmi-scroll-shadow-bottom: inset 0 5px 5px 0 rgba(0, 0, 0, 0.05);
+    background: var(--tchmi-background);
+    box-shadow: var(--tchmi-card-shadow);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement-popup .TcHmi_Controls_Beckhoff_TcHmiCheckbox,
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement-popup .TcHmi_Controls_Beckhoff_TcHmiRadioButton,
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement-popup .TcHmi_Controls_Beckhoff_TcHmiToggleSwitch {
+    --tchmi-color: var(--tchmi-popup-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement
+    .TcHmi_Controls_Beckhoff_TcHmiUserManagement-Template
+    .TcHmi_Controls_Beckhoff_TcHmiUserManagement-button {
+    stroke: currentColor;
+    font-size: var(--tchmi-button-font-size);
+    background: var(--tchmi-highlight-button-background);
+    color: var(--tchmi-highlight-button-text-color);
+    border: var(--tchmi-highlight-button-border);
+    box-shadow: var(--tchmi-highlight-button-shadow);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement.down
+    .TcHmi_Controls_Beckhoff_TcHmiUserManagement-Template
+    .TcHmi_Controls_Beckhoff_TcHmiUserManagement-button {
+    background: var(--tchmi-highlight-button-background-pressed);
+    color: var(--tchmi-highlight-button-text-color-pressed);
+    border: var(--tchmi-highlight-button-border-pressed);
+    box-shadow: var(--tchmi-highlight-button-shadow-pressed);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement .TcHmi_Controls_Beckhoff_TcHmiUserManagement-Base {
+    color: var(--tchmi-text-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement.down .TcHmi_Controls_Beckhoff_TcHmiUserManagement-Base {
+    color: var(--tchmi-text-color-pressed);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement-popup {
+    background: var(--tchmi-popup-background);
+    color: var(--tchmi-popup-color);
+    box-shadow: var(--tchmi-popup-shadow);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement-popup svg {
+    stroke: var(--tchmi-popup-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement-Dropdown {
+    background: var(--tchmi-dropdown-background);
+    box-shadow: var(--tchmi-dropdown-shadow);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement-Dropdown.above-control {
+    box-shadow: var(--tchmi-dropdown-shadow-above);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement-template-Dropdown-Element {
+    color: var(--tchmi-dropdown-text-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement-template-Dropdown-Element:hover {
+    background: var(--tchmi-dropdown-background-hover);
+    color: var(--tchmi-dropdown-text-color-hover);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement-button {
+    width: 48px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement-popup-groups[data-scroll='top'] {
+    box-shadow: var(--tchmi-scroll-shadow-top);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement-popup-groups[data-scroll='center'] {
+    box-shadow: var(--tchmi-scroll-shadow-bottom), var(--tchmi-scroll-shadow-top);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiUserManagement-popup-groups[data-scroll='bottom'] {
+    box-shadow: var(--tchmi-scroll-shadow-bottom);
+}
+
+tchmi-password-requirements {
+    background: var(--tchmi-password-requirement-background);
+}

@@ -1,0 +1,21 @@
+/** Styles for the theme: Base */
+
+.TcHmi_Controls_Beckhoff_TcHmiRecipeSelect {
+    --tchmi-control-background: var(--tchmi-background-color-1);
+    --tchmi-control-shadow: var(--tchmi-card-shadow);
+    --tchmi-selected-recipe-background: var(--tchmi-highlight-color-1);
+    --tchmi-selected-recipe-background-active: var(--tchmi-ready-color);
+    --tchmi-selected-recipe-text-color: var(--tchmi-foreground-color-2);
+
+    background: var(--tchmi-control-background);
+    box-shadow: var(--tchmi-control-shadow);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRecipeSelect-selected-recipe {
+    background-color: var(--tchmi-selected-recipe-background);
+    color: var(--tchmi-selected-recipe-text-color);
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiRecipeSelect-selected-recipe.active {
+    background-color: var(--tchmi-selected-recipe-background-active);
+}

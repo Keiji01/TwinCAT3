@@ -1,0 +1,215 @@
+/**
+ * Popup 
+ */
+
+.TcHmi_Controls_Helpers_Popup {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: absolute;
+}
+
+.TcHmi_Controls_Helpers_Popup-content
+    .TcHmi_Controls_System_TcHmiControl:not(.TcHmi_Controls_System_TcHmiControl .TcHmi_Controls_System_TcHmiControl) {
+    position: relative;
+}
+
+.TcHmi_Controls_Helpers_Popup-header-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto min-content;
+    margin-top: 0px;
+    min-height: 26px;
+    padding: 5px 10px;
+}
+
+.TcHmi_Controls_Helpers_Popup-header-container > h1 {
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.TcHmi_Controls_Helpers_Popup-content {
+    position: relative;
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: auto;
+    padding: 10px;
+}
+
+.TcHmi_Controls_Helpers_Popup-label-block {
+    display: block;
+    white-space: pre;
+    margin-bottom: 2px;
+}
+
+.TcHmi_Controls_Helpers_Popup-label-block:not(:first-child) {
+    margin-top: 10px;
+}
+
+.TcHmi_Controls_Helpers_Popup-footer {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.TcHmi_Controls_Helpers_Popup-footer:not(:empty) {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.TcHmi_Controls_Helpers_Popup-footer .TcHmi_Controls_System_TcHmiControl {
+    position: relative;
+}
+
+.TcHmi_Controls_Helpers_Popup-footer .TcHmi_Controls_System_TcHmiControl:not(:first-child) {
+    margin-left: 5px;
+}
+
+/**
+ * TextAndButtonsPrompt 
+ */
+
+.TcHmi_Controls_Helpers_Popup-TextAndButtonsPrompt .TcHmi_Controls_Helpers_Popup-content {
+    white-space: pre;
+}
+
+/**
+ * FilterPrompt
+ */
+
+.TcHmi_Controls_Helpers_FilterPrompt-popup .TcHmi_Controls_Helpers_Popup-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-popup
+    .TcHmi_Controls_Helpers_Popup-footer
+    .TcHmi_Controls_Beckhoff_TcHmiButton.align-left {
+    margin-right: auto;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-popup .TcHmi_Controls_Helpers_Popup-content .TcHmi_Controls_Beckhoff_TcHmiButton {
+    position: relative;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-popup .TcHmi_Controls_Helpers_FilterPrompt-template-remove-button {
+    margin-right: 15px;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-popup table {
+    border-collapse: collapse;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-table-header {
+    display: block;
+    overflow: hidden;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-table-header th {
+    height: 30px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-table-header .TcHmi_Controls_Helpers_FilterPrompt-scroll-placeholder {
+    width: 200px;
+    position: absolute;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-table {
+    overflow: auto;
+    display: block;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-table .TcHmi_Controls_Helpers_FilterPrompt-indentation-column {
+    display: flex;
+    padding: 0;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-selection-column {
+    min-width: 30px;
+    max-width: 30px;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-logic-column {
+    min-width: 60px;
+    max-width: 60px;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-path-column {
+    min-width: 120px;
+    max-width: 120px;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-comparator-column {
+    min-width: 160px;
+    max-width: 160px;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-value-column {
+    min-width: 250px;
+    max-width: 250px;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-table td {
+    position: relative;
+    white-space: nowrap;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    padding: 0;
+    height: 30px;
+    overflow: hidden;
+    cursor: default;
+    box-sizing: border-box;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-table .TcHmi_Controls_Helpers_FilterPrompt-indentation-marker {
+    width: 5px;
+    height: 30px;
+    border-left: 1px solid;
+    float: left;
+    box-sizing: border-box;
+    margin-left: 4px;
+    margin-right: -3px;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-table .TcHmi_Controls_Helpers_FilterPrompt-indentation-marker:last-child {
+    margin-right: 1px;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-table .TcHmi_Controls_Helpers_FilterPrompt-indentation-marker.first {
+    border-top: 1px solid;
+    height: 28px;
+    margin-top: 2px;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-table .TcHmi_Controls_Helpers_FilterPrompt-indentation-marker.last {
+    border-bottom: 1px solid;
+    height: 28px;
+    margin-bottom: 2px;
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-table .TcHmi_Controls_Beckhoff_TcHmiCombobox,
+.TcHmi_Controls_Helpers_FilterPrompt-table .TcHmi_Controls_Beckhoff_TcHmiTextbox,
+.TcHmi_Controls_Helpers_FilterPrompt-table .TcHmi_Controls_Beckhoff_TcHmiCheckbox,
+.TcHmi_Controls_Helpers_FilterPrompt-table .TcHmi_Controls_Beckhoff_TcHmiDateTimeInput {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 30px; /* Fix for IE who refuses to properly size absolutely positioned elements in table cells */
+}
+
+.TcHmi_Controls_Helpers_FilterPrompt-table .TcHmi_Controls_Beckhoff_TcHmiButton {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+}

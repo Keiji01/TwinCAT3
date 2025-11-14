@@ -1,0 +1,74 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+        "TcHmi.Controls.Beckhoff.TcHmiVideo": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "type": "object",
+            "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+            "frameworkControlType": "TcHmiVideo",
+            "frameworkControlNamespace": "TcHmi.Controls.Beckhoff"
+        },
+        "TcHmi.Controls.Beckhoff.TcHmiVideo.VideoSourceList": {
+            "title": "VideoSourceList",
+            "description": "Video Source List",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "title": "Video Source",
+                "engineeringColumns": ["source", "type"],
+                "propertiesMeta": [
+                    {
+                        "name": "source",
+                        "displayName": "Source",
+                        "category": "General",
+                        "displayPriority": 10,
+                        "description": "The source path of the video source",
+                        "defaultValue": null,
+                        "defaultValueInternal": null
+                    },
+                    {
+                        "name": "type",
+                        "displayName": "Type",
+                        "category": "General",
+                        "displayPriority": 10,
+                        "description": "The type of the video source.",
+                        "defaultValue": null,
+                        "defaultValueInternal": null
+                    }
+                ],
+                "properties": {
+                    "source": {
+                        "$ref": "tchmi:framework#/definitions/Path"
+                    },
+                    "type": {
+                        "type": "string",
+                        "category": "Common",
+                        "enum": [
+                            "",
+                            "video/mp4",
+                            "video/webm",
+                            "video/ogg",
+                            "application/dash+xml",
+                            "application/vnd.apple.mpegurl"
+                        ],
+                        "options": [
+                            {
+                                "label": "<auto detect>",
+                                "value": ""
+                            }
+                        ],
+                        "default": ""
+                    }
+                },
+                "required": ["source"],
+                "additionalProperties": false
+            }
+        },
+        "TcHmiVideo": {
+            "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiVideo"
+        },
+        "VideoSourceList": {
+            "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiVideo.VideoSourceList"
+        }
+    }
+}

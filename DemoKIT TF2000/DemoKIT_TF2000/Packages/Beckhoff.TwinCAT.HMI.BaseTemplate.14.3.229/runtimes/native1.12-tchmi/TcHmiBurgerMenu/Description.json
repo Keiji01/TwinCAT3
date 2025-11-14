@@ -1,0 +1,103 @@
+{
+    "$schema": "../../TcHmiFramework/Schema/ControlDescription.Schema.json",
+    "apiVersion": 1,
+    "name": "TcHmiBurgerMenu",
+    "namespace": "TcHmi.Controls.BaseTemplate",
+    "displayName": "Burger Menu",
+    "version": {
+        "full": "14.3.229.0",
+        "major": 14,
+        "minor": 3,
+        "build": 229,
+        "revision": 0
+    },
+    "visible": true,
+    "themeable": "Standard",
+    "base": "TcHmi.Controls.Beckhoff.TcHmiToggleButton",
+    "description": "A simple burger menu control to display any other control on click.",
+    "properties": {
+        "containerControl": false,
+        "geometry": {
+            "width": 96,
+            "height": 96
+        }
+    },
+    "icons": [
+        {
+            "name": "Icons/16x16.png",
+            "width": 16,
+            "height": 16
+        }
+    ],
+    "dependencyFiles": [
+        {
+            "name": "../dist/TcHmiBurgerMenu.esm.js",
+            "type": "EsModule",
+            "description": "Contains all the main logic."
+        },
+        {
+            "name": "Style.css",
+            "type": "Stylesheet",
+            "description": "Theme independent style"
+        }
+    ],
+    "themes": {
+        "Base": {
+            "resources": [
+                {
+                    "name": "Themes/Base/Style.css",
+                    "type": "Stylesheet",
+                    "description": "Theme dependent style"
+                }
+            ]
+        },
+        "Base-Dark": {
+            "resources": [
+                {
+                    "name": "Themes/Base-Dark/Style.css",
+                    "type": "Stylesheet",
+                    "description": "Theme dependent style"
+                }
+            ]
+        }
+    },
+    "attributes": [
+        {
+            "name": "data-tchmi-target-control",
+            "propertyName": "TargetControl",
+            "propertySetterName": "setTargetControl",
+            "propertyGetterName": "getTargetControl",
+            "displayName": "Target Control",
+            "visible": true,
+            "themeable": "Advanced",
+            "displayPriority": 10,
+            "type": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiControl",
+            "category": "Common",
+            "description": "Definition of the target Control which will be displayed.",
+            "defaultValue": null,
+            "defaultValueInternal": null,
+            "readOnly": false,
+            "bindable": true,
+            "heritable": true
+        }
+    ],
+    "attributeCategories": [],
+    "functions": [
+        {
+            "name": "closeMenu",
+            "displayName": "closeMenu",
+            "visible": true,
+            "description": "Closes the menu if open",
+            "category": "Menu",
+            "params": [],
+            "type": null,
+            "heritable": true
+        }
+    ],
+    "events": [],
+    "dataTypes": [
+        {
+            "schema": "Schema/Types.Schema.json"
+        }
+    ]
+}

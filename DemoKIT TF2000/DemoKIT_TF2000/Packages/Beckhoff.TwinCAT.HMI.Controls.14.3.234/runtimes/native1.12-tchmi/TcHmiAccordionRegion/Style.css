@@ -1,0 +1,40 @@
+/* Theme independent styles for control TcHmiAccordionRegion */
+
+.TcHmi_Controls_Beckhoff_TcHmiAccordionRegion-Template {
+    height: 100%;
+    overflow: auto;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiAccordionRegion-Template > tchmi-accordion {
+    height: 100%;
+    width: 100%;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiAccordionRegion-Template
+    > tchmi-accordion
+    > tchmi-accordion-item
+    > tchmi-accordion-header
+    > i {
+    margin-right: 8px;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiAccordionRegion-Template
+    > tchmi-accordion
+    > tchmi-accordion-item
+    > tchmi-accordion-content
+    > .scroll-container {
+    position: relative;
+    overflow: auto;
+    height: 100%;
+}
+.TcHmi_Controls_Beckhoff_TcHmiAccordionRegion-Template
+    > tchmi-accordion
+    > tchmi-accordion-item
+    > tchmi-accordion-content
+    > .scroll-container
+    > .TcHmi_Controls_System_TcHmiUserControlHost
+    > .TcHmi_Controls_System_TcHmiUserControlHost-template {
+    position: relative;
+    height: 100%;
+    overflow: auto;
+}
